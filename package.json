@@ -1,0 +1,20 @@
+{
+  "name": "certificate-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover --reporter=html _mocha -- ./helpers.js \"./{,!(node_modules)/**/}*.test.js\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^4.1.0",
+    "chai": "^4.1.2"
+  },
+  "dependencies": {
+    "chai": "^4.1.2",
+    "deep-reduce": "^1.0.5",
+    "ethereumjs-util": "^5.1.2"
+  }
+}

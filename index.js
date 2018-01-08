@@ -102,7 +102,7 @@ const proofs = [
   'fb6b46ff0ff649926a033836c9b2454d12da8093b64144e3ea62314e703090b8',
 ]
 
-console.log("============================== Claim Check ==============================");
+console.log("============================== Multiple Claims Check ==============================");
 console.log("Claim is valid (using original cert):", certificate.proofCertificate(claims, proofs));
 console.log("Claim is valid (without certificate content):", "TBD");
 

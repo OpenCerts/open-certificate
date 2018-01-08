@@ -1,5 +1,5 @@
 const {sha3} = require('ethereumjs-util');
-const {bufSortJoin, toBuffer} = require('./utils');
+const {bufSortJoin, toBuffer, hashToBuffer} = require('./utils');
 
 function MerkleTree(_elements) {
   const elements = _elements
@@ -35,13 +35,15 @@ MerkleTree.prototype.getProof = function(_element) {
 }
 
 const checkProof = function(_proof, _root, _element) {
-  const proof = _proof.map(step => toBuffer(step));
-  const root = toBuffer(_root);
+  const proof = _proof.map(step => hashToBuffer(step));
+  const root = hashToBuffer(_root);
   const element = toBuffer(_element);
 
-  return root.equals(proof.reduce((hash, pair) => {
+  const proofRoot = proof.reduce((hash, pair) => {
     return combinedHash(hash, pair);
-  }, element))
+  }, element)
+
+  return root.equals(proofRoot);
 }
 
 function combinedHash(first, second) {

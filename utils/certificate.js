@@ -6,17 +6,12 @@ function Certificate(certificate) {
 
   const flattenedObject = flattenJson(certificate);
   const hashedArray = hashArray(flattenedObject);
-
-  this.elements = hashedArray;
+  
   this.merkleTree = new MerkleTree(hashedArray);
 }
 
 Certificate.prototype.getRoot = function(){
   return this.merkleTree.getRoot();
-}
-
-Certificate.prototype.getProof = function(element){
-  return this.merkleTree.getProof(element);
 }
 
 Certificate.prototype.proofCertificate = function(claims, proofs){
@@ -45,13 +40,15 @@ Certificate.prototype.proofClaim = function(claim, proofs){
 Certificate.prototype.getProof = function(claim){
   let proof = null;
 
+  const flattenedClaim = flattenJson(claim);
+  const claimToValidate = flattenedClaim[0];
+
   try {
-    proof = this.merkleTree.getProof(toBuffer(claim));
+    proof = this.merkleTree.getProof(toBuffer(claimToValidate))
+    .map(p => p.toString('hex'));
   }catch(err){}
 
   return proof;
 }
 
-module.exports = {
-  Certificate,
-}
+module.exports = Certificate;

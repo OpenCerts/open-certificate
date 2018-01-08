@@ -29,7 +29,24 @@ function hashArray(arr){
   return hashedArray;
 }
 
+function bufSortJoin(...args) {
+  return Buffer.concat([...args].sort(Buffer.compare))
+}
+
+function toBuffer(element){
+  return (Buffer.isBuffer(element) && element.length === 32)
+  ? element : sha3(JSON.stringify(element));
+}
+
+function hashToBuffer(hash){
+  return (Buffer.isBuffer(hash) && hash.length === 32)
+  ? hash: Buffer(hash, 'hex');
+}
+
 module.exports = {
   flattenJson,
   hashArray,
+  bufSortJoin,
+  toBuffer,
+  hashToBuffer,
 }

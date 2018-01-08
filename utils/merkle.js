@@ -1,7 +1,10 @@
 const {sha3} = require('ethereumjs-util');
+const {bufSortJoin, toBuffer} = require('./utils');
 
 function MerkleTree(_elements) {
-  const elements = _elements.map(e => toBuffer(e));
+  const elements = _elements
+  .map(e => toBuffer(e))
+  .sort(Buffer.compare);
 
   if (!(this instanceof MerkleTree)) {
     return new MerkleTree(elements)
@@ -21,14 +24,14 @@ MerkleTree.prototype.getRoot = function() {
   return this.layers[this.layers.length - 1][0]
 }
 
-MerkleTree.prototype.getProof = function(_element, hex) {
+MerkleTree.prototype.getProof = function(_element) {
   const element = toBuffer(_element);
 
   const index = getBufIndex(element, this.elements)
   if (index === -1) {
-    throw new Error('element not found in merkle tree')
+    throw new Error('Element not found')
   }
-  return getProof(index, this.layers, hex)
+  return getProof(index, this.layers)
 }
 
 const checkProof = function(_proof, _root, _element) {
@@ -90,21 +93,6 @@ function getBufIndex(element, array) {
     if (element.equals(array[i])) { return i }
   }
   return -1
-}
-
-function bufToHex(element) {
-  return Buffer.isBuffer(element) ? '0x' + element.toString('hex') : element
-}
-
-function bufSortJoin(...args) {
-  return Buffer.concat([...args].sort(Buffer.compare))
-}
-
-function toBuffer(element){
-  if(!(Buffer.isBuffer(element) && element.length === 32)){
-    return sha3(JSON.stringify(element));
-  }
-  return element;
 }
 
 module.exports = {

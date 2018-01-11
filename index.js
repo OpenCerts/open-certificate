@@ -1,6 +1,6 @@
 const Certificate = require('./utils/certificate');
 const {checkProof} = require('./utils/merkle');
-const {flattenJson, hashArray} = require('./utils/utils');
+const {flattenJson, hashArray, toBuffer} = require('./utils/utils');
 
 
 const certificateData = {
@@ -58,9 +58,11 @@ console.log(merkleRoot);
 
 // Create a proof for a single claim
 const claim = {'recipient.identity':'alice@example.org'};
+const claimHash = toBuffer(claim);
 const proof = certificate.getProof(claim);
 console.log("============================== Claim ==============================");
 console.log(claim);
+console.log("Hash:", claimHash.toString('hex'));
 console.log("============================== Proof for Claim ==============================");
 console.log(proof);
 

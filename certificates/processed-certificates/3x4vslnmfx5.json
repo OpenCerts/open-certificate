@@ -1,0 +1,58 @@
+{
+  "certificate": {
+    "@context": "https://w3id.org/openbadges/v2",
+    "id": "https://example.org/assertions/3x4vslnmfx5",
+    "type": "Assertion",
+    "recipient": {
+      "type": "email",
+      "identity": "4tuc8r81wf@example.org"
+    },
+    "issuedOn": "2016-12-31T23:59:59+00:00",
+    "verification": {
+      "type": "hosted"
+    },
+    "badge": {
+      "type": "BadgeClass",
+      "id": "https://example.org/badges/bivohm0wi4",
+      "name": "rgq7tb5dzuc",
+      "description": "6p375lwf5tf",
+      "image": "https://example.org/badges/3avi1zpk0cs/image",
+      "criteria": {
+        "narrative": "h2ukdka57s"
+      },
+      "issuer": {
+        "id": "https://example.org/issuer",
+        "type": "Profile",
+        "name": "33k648efkfr",
+        "url": "https://example.org",
+        "email": "cr5ul2mziwf@example.org",
+        "verification": {
+          "allowedOrigins": "example.org"
+        }
+      }
+    },
+    "evidence": [
+      {
+        "id": "https://example.org/s6s3k1uhwd.html",
+        "name": "cfexs1htlhm",
+        "description": "6nlnr25024",
+        "genre": "ggvqlx2tego"
+      },
+      {
+        "id": "https://example.org/xh7kxntckv.html",
+        "name": "t24qo6yl9v",
+        "description": "2elqfgjj29v"
+      }
+    ]
+  },
+  "merkleRoot": "458a80232eda8a816972be8ac731feb50727149aff6287d70142821ae160caf7",
+  "targetHash": "d7b7f7402a43e4468282a409888a2784b9c98192447d3107a3dd6e1335b331d6",
+  "proof": [
+    "d8059beb28cb01c322d91404b5ffd3320005b6e863acec160db333e6a27a77fc",
+    "3aa201ec181c6b883451c63a39c606e28ff4ce2863f59df2a11aa20d2363eddc",
+    "61dad5f5e72ab727a4c2f150e6a3eec8dba8693626e8a71285f78a797c79f682",
+    "c31d781d0dafd0498177b173dda215f599a12cee58b33ff548f04c46c3106cf1",
+    "58a3f9b304ead7f11b202760a327cc7d81d233a0535207cbcde43684765255b6",
+    "a4571199578e394188ea9f40f22cb3f63b2c3bcdf225e6f7389f8b0e6c926253"
+  ]
+}

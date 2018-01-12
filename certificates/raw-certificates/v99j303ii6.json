@@ -1,0 +1,46 @@
+{
+  "@context": "https://w3id.org/openbadges/v2",
+  "id": "https://example.org/assertions/v99j303ii6",
+  "type": "Assertion",
+  "recipient": {
+    "type": "email",
+    "identity": "swstkf2ijog@example.org"
+  },
+  "issuedOn": "2016-12-31T23:59:59+00:00",
+  "verification": {
+    "type": "hosted"
+  },
+  "badge": {
+    "type": "BadgeClass",
+    "id": "https://example.org/badges/sx1nw12qwv",
+    "name": "zmukrki5sos",
+    "description": "dythqr8acu",
+    "image": "https://example.org/badges/3dfpyszfrq/image",
+    "criteria": {
+      "narrative": "zsqa11l6gmh"
+    },
+    "issuer": {
+      "id": "https://example.org/issuer",
+      "type": "Profile",
+      "name": "x5y9minnsdf",
+      "url": "https://example.org",
+      "email": "87jv9vni24f@example.org",
+      "verification": {
+        "allowedOrigins": "example.org"
+      }
+    }
+  },
+  "evidence": [
+    {
+      "id": "https://example.org/yvqt0so5ah.html",
+      "name": "lr5n2zlkcwb",
+      "description": "hwuqhkalxc",
+      "genre": "f9j9rp1qno6"
+    },
+    {
+      "id": "https://example.org/h9jqg75dx8j.html",
+      "name": "51fds487xq5",
+      "description": "h6xr3tp8azf"
+    }
+  ]
+}

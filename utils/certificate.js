@@ -45,7 +45,6 @@ Certificate.prototype.getProof = function(claim){
 
   try {
     proof = this.merkleTree.getProof(toBuffer(claimToValidate))
-    .map(p => p.toString('hex'));
   }catch(err){}
 
   return proof;

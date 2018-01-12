@@ -101,11 +101,11 @@ describe('certificate', () => {
         const claimToValidate = claims[0];
 
         const proofs = cert.getProof(claimToValidate);
-        expect(proofs[0]).to
+        expect(proofs[0].toString('hex')).to
         .eql('6d0c0226e52a1632f9f5b72176b81b34efbb27f7244580bc0d4f0172a6b62838');
-        expect(proofs[1]).to
+        expect(proofs[1].toString('hex')).to
         .eql('707ba78e305dc247c51f3e1186f78695fa979a884c38d435a565e37ef8f6eca4');
-        expect(proofs[2]).to
+        expect(proofs[2].toString('hex')).to
         .eql('e1493cf92567c23ba497012854eb51c670b55110e4cf7127008ea2bdcf47dd90');
       });
 

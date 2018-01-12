@@ -88,7 +88,7 @@ _:c14n3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/ema
 _:c14n3 <https://w3id.org/openbadges#identityHash> "alice@example.org" .
 ```
 
-**Sorted SHA256 Results**
+**Sorted SHA256 Results (New steps to add selective privacy to Blockcert)**
 
 ```
 [ '00025dc34052dc80c7284591a24aee7f7fa38bf598f799bf394054ecd154ede0',

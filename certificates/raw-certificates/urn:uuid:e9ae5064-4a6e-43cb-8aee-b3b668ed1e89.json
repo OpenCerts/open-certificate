@@ -1,0 +1,45 @@
+{
+  "id": "urn:uuid:e9ae5064-4a6e-43cb-8aee-b3b668ed1e89",
+  "type": "Assertion",
+  "issuedOn": "2018-02-07T09:52:35.334Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "9cat54t2ms0wuwji00gi1e79n",
+    "criteria": "vg665oug08203mttcf9kzfqybdvsj3aol3sscx2a1bp9t796k71c2r7ds6ed6fb3opj42cpug3zk5woo"
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "Kiley_Mohr@yahoo.com",
+      "hashed": false
+    },
+    {
+      "type": "did",
+      "identity": "did:jennie:364264b0-a063-4540-8359-0d46f5a4a1a6",
+      "hashed": false
+    },
+    {
+      "type": "url",
+      "identity": "http://kailee.info",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "sha256$1a37f0f9c4790afcc24bc66941788e0fce71022dceaf287340bbefe159b98f56",
+      "salt": "r631ol8j7d",
+      "hashed": true
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "urn:uuid:1ee4b818-f479-419b-906e-8dca7326c479",
+  "type": "Assertion",
+  "issuedOn": "2018-02-07T09:52:35.302Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "7pcbo7jkwjrmmuoi7gpy8rezx",
+    "criteria": "ya9q59h7d2870n812t18vorxathl8qgtogngn3gxiwukko2wx1e943yoxqb7b18a8hrtgnm3kb4zyimn",
+    "evidenceRoot": "ce9aa967dc4fb43bdb41cf5dd408ec81212a39af07f96a19ef6cd301dad384d4"
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$7cf7ef6734e32b8ba5188ea22dad39e3a26b208fcd7648a73087772b01397ead",
+      "salt": "uov6epfje0",
+      "hashed": true
+    },
+    {
+      "type": "did",
+      "identity": "sha256$8e073f8cc57ec754348c0bcb1bcfb45961f02549fa98ef65864c60e60bfe3718",
+      "salt": "eojzxzbrn1",
+      "hashed": true
+    },
+    {
+      "type": "url",
+      "identity": "sha256$781b84cbce90e08dc97a5aa478248e1e03c330cc2664c7ba385de99463d82e7f",
+      "salt": "7csz88sjbd",
+      "hashed": true
+    },
+    {
+      "type": "telephone",
+      "identity": "sha256$5a6c5e5e56f15a299aa5168c3395a69f0d80d1fa5a7000922b27954b4ddd7a50",
+      "salt": "ecrnz2bvbf",
+      "hashed": true
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "60cfca5f8df51b3802cbd8e7b3a6c9b56f7e545e6185ad777c8f4bf759d9a3b0",
+    "proof": [
+      "603eea18d64b46ddbfd206e04da99dd22749c2d11a15f08cf09eacf4a4b1dfae",
+      "3b36cb739b406fd3c6e033fde5c7352323d2afdea1e6a1c18c2f1d1f39acdd66",
+      "48ce06ae4ba7c51c133a8df939e475e377307e958f7cef50ce9f2d637166b22a",
+      "af2afa79852bc3cfd4596e9f6662ba50c6ecee4e64d0c1bc88e33a33ffd75a0a",
+      "7c2c75897e4e9a162b622ab001fafb6bf4c9cb6205d796d67c6804ca66048625",
+      "91fe49e0fe47846c67f62e9a29c9c8fff99d4d3fc38ff5719dfb8487e615465f"
+    ],
+    "merkleRoot": "e1ea7e88a109f2e448500df9a9c3b54903be02502d8ddd53c46c16e4c490ea17"
+  }
+}

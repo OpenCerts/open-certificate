@@ -21,6 +21,7 @@
   "dependencies": {
     "commander": "^2.14.0",
     "deep-reduce": "^1.0.5",
-    "ethereumjs-util": "^5.1.2"
+    "ethereumjs-util": "^5.1.2",
+    "faker": "^4.1.0"
   }
 }

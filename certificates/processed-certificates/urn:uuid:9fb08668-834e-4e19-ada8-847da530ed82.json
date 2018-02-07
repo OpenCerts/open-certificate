@@ -1,0 +1,56 @@
+{
+  "id": "urn:uuid:9fb08668-834e-4e19-ada8-847da530ed82",
+  "type": "Assertion",
+  "issuedOn": "2018-02-07T09:52:35.319Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "zzk5sj1rps1v8gemsstcg9rax",
+    "criteria": "io677lie3hy0oepnr410hkc1bsa005hsrjww1env23yp5r0blrus6om3l5hr5ccb2oqtildkdcv81owf",
+    "evidenceRoot": "d656bf74ec7a1349dd0f806e615801ea7daf95804bd4cc0cfdc6b28e2ac56e2e"
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$46868e794092b8c62b89ae76ff016068356ae5c9728d21b8214786b062bcda68",
+      "salt": "s6kdgsjats",
+      "hashed": true
+    },
+    {
+      "type": "did",
+      "identity": "sha256$1e3ed6da0d78075163e514805f2436bc60011c5804eff261b26d1eeba854a4c9",
+      "salt": "x3coxbkv1n",
+      "hashed": true
+    },
+    {
+      "type": "url",
+      "identity": "sha256$416ba4c068aadfa4fcc10e1bf783ba549aea2308402158e1b27422c0a96c5e22",
+      "salt": "zalh8skk0w",
+      "hashed": true
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "cc473f2f49e29e56b36f7c9abc882c0730058ef9d94733d327af89563924ed82",
+    "proof": [
+      "c02621a46331b47163bb39e4fa9d35fd0ed75175206766dedad7389f5494bfd3",
+      "bfcad23ce5d64eaaeb981e3631b4f19f2c68aaddd1b2c36ace883d887d42830e",
+      "8ac9d4d8cbbce7675fbeba8ee3b970b1f4c9f13e5cc389537a473b51b211ef30",
+      "46f03ad8d163d25c83eb707ca148b47ca6716da29f73574202020ed1454cb347",
+      "23333504d80bf87ca7278b866d349d14f9be3d732614666078b21782cfe6a0ba",
+      "5a65c07cf958aa724f3235868ef998c14c1059829677b9823c1e6be68b9e067a"
+    ],
+    "merkleRoot": "e1ea7e88a109f2e448500df9a9c3b54903be02502d8ddd53c46c16e4c490ea17"
+  }
+}

@@ -4,6 +4,26 @@
 yarn
 ```
 
+## Generate Sample Certificates
+
+Generates a number of sample certificates based on the specification by open badge v2 with our extension.
+
+```
+node index.js -g <CertificatesToGenerate>
+```
+
+Example:
+
+```
+node index.js -g 50
+
+========================== Generating random certificate ==========================
+
+Generated 50 certificates.
+
+===================================================================================
+```
+
 ## Issuing Certificates
 
 This command process all certificates in the input directory and issue all of them in a single batch. It will then add the signature to the individual certificates. 

@@ -1,0 +1,82 @@
+{
+  "id": "urn:uuid:478c4fd1-1301-40a9-878b-b8ce66c0e743",
+  "type": "Assertion",
+  "issuedOn": "2018-02-07T09:52:35.337Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "52h226gp8gst4stth8ihnil9w",
+    "criteria": "oqdkgpuq5qru3cmpuvzqjqxnhuanhhlzt34m446en4oo7hr51az2e51n1fibiexh9lc5gamfvydhxkmb",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "208580w57o:zp9x0q0epsku3in",
+          "grade": "ea69ece3qb:A+",
+          "courseCredit": "rlf1roka78:4.0",
+          "courseCode": "khgnalbqsz:aflit"
+        },
+        {
+          "name": "sgpqqgkdue:y05xtlyt6njrh03",
+          "grade": "3j62g6r5vx:A+",
+          "courseCredit": "igfe5t9fae:4.0",
+          "courseCode": "6kgiaiv2cz:4vqyk"
+        },
+        {
+          "name": "0u1l0nkeyq:08jw8yup9qanwfl",
+          "grade": "wbfubzy794:A+",
+          "courseCredit": "gak2nz1fch:4.0",
+          "courseCode": "wlngxthkac:aztcm"
+        }
+      ]
+    },
+    "privateEvidence": [
+      "5759d78e72b979dae73342c9fe290520157f588c1da2f5e62e03a5808b97ac8d",
+      "ed488cd5f5da876422b2045d28d271d9ed61b5439e781bff293c74476c433b2e",
+      "c9a6351648f4cca925dcda0b46576da22aaea78e8ab05fbf4a1e96de1b80277f",
+      "01e63a69d1fcc9b81680dee77047eab72e449381348e8bdd09200eea8b8140be",
+      "69a2c50fa7134582e39d60420a757bad12e89cbf049cf104c1c0d90a461b7f18",
+      "5bdc54a8ac2a75aa1e1557b0b0a6b3f1e794729224fc3939a4087f08d1beebe2",
+      "73e54cafe0127f0999fa2d796b6f728c3be3a4e3d8d1795e7fa78b5b6f30bf9d",
+      "e77259fc6263d97bba0372a72aebf522b6fcb6420c96c9c1e8648092cebf2be3",
+      "418f7a8748d1cc686663d624211b8ed8238a269b957093386de56acdc173dfc5",
+      "0105c3396793544c43117c62aa452f4e97503991c563ba08a9ffb8a3e386ce8a",
+      "ca56efd43f6042d492ca9e9475c70b55f7caae10a1477ced42b6814c223670ec",
+      "9a04331c483d8fcf9ca914d210103b19e82d7e3061c3e9f6a8c039034d567d41",
+      "a8149c0ee6ebef953e10e769a6bccffa47c6fa26765a8cb5594b11b561e7e552",
+      "d72f9f7100f95a7a02466738051ac831e06a795ad9f8b1bdebfa563c11cf764b",
+      "d33c51188cf51767e448dda515d27541d180e3600e9f2940eb9dad205eb35350",
+      "30e793c2d86dc5198e94fd81ce0352025ff415e0e6b085ad3477915d39b03412",
+      "80840febb4c5077b0b78920260c64019a6dd282c51ba9be785665b1894b40e5e",
+      "0fe639b7d31c6827b2962167bcebdca35d0ef92a1e3ff49d62f0d17996f73146"
+    ]
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$2b8934a5f16ea5fbce3e5b039ff8776bff3bc0bcb3269d45710acedfc2e7c66e",
+      "salt": "fu59nfk1n6",
+      "hashed": true
+    },
+    {
+      "type": "url",
+      "identity": "https://silas.org",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "838-469-7627 x11878",
+      "hashed": false
+    }
+  ]
+}

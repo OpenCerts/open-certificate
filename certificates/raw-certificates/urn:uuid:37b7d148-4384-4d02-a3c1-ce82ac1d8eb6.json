@@ -1,0 +1,140 @@
+{
+  "id": "urn:uuid:37b7d148-4384-4d02-a3c1-ce82ac1d8eb6",
+  "type": "Assertion",
+  "issuedOn": "2018-02-07T09:52:35.296Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "co4lb90e9gl37v424m3ui5940",
+    "criteria": "si4u9u0z8i0zcd53qyjygfjlv4hxjp8evhex6bzuwbcjwknq8s8n253wcb0yqr7d0jzh0etarlsyzgdo",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "5gi252tek0:qwo5co1d9spee0x",
+          "grade": "idayacjofv:A+",
+          "courseCredit": "q94ejt34gm:4.0",
+          "courseCode": "porpzrkqjp:6cmpr"
+        },
+        {
+          "name": "2zcu1mt6ax:1rnn430djeef9r9",
+          "grade": "uftkrqmmah:A+",
+          "courseCredit": "f7p0p8kr85:4.0",
+          "courseCode": "ooc4kmiefe:4s546"
+        },
+        {
+          "name": "wsar96hhiw:w9eqrwkkzwsdvsb",
+          "grade": "vz5z4vpuvt:A+",
+          "courseCredit": "lfs4sew4t1:4.0",
+          "courseCode": "wyqbcrbwdw:kymvb"
+        },
+        {
+          "name": "myqivuv921:fo9j0miysq7imka",
+          "grade": "86lrz6w621:A+",
+          "courseCredit": "tbxhptja0b:4.0",
+          "courseCode": "5t4t5hw6qi:8hfcq"
+        },
+        {
+          "name": "s712q8uji4:e0cja0508bd35h3",
+          "grade": "axbdua9e7k:A+",
+          "courseCredit": "lyko77beib:4.0",
+          "courseCode": "xbwkbtdg4d:nyqjt"
+        },
+        {
+          "name": "8r0rhjv6tr:5f4cs75g421gxal",
+          "grade": "rhtahumd8k:A+",
+          "courseCredit": "0lebjy3l5h:4.0",
+          "courseCode": "2s93e4lu5x:5d486"
+        },
+        {
+          "name": "wo6tx7xgfj:jevp21a6a0f1kgt",
+          "grade": "qkia2ot6hg:A+",
+          "courseCredit": "nj2vq46jx0:4.0",
+          "courseCode": "zqg9hadm9e:namgn"
+        },
+        {
+          "name": "q8uhrbe6cm:2yg245h1ydja4xy",
+          "grade": "jwriqfy12d:A+",
+          "courseCredit": "gc2rlmc5s8:4.0",
+          "courseCode": "74lw7rydbf:jzu37"
+        },
+        {
+          "name": "ucpl8p1fq2:uifo5ilnh6cm7df",
+          "grade": "ognwqyxchi:A+",
+          "courseCredit": "0sf6ro4qdo:4.0",
+          "courseCode": "kdclrcnf8b:6vttw"
+        },
+        {
+          "name": "mvk7efv7yy:8rlppf454zr1niz",
+          "grade": "2upkdrk8km:A+",
+          "courseCredit": "ers0qjy3oh:4.0",
+          "courseCode": "46sbuqupo1:z12jn"
+        },
+        {
+          "name": "4gx12yuofg:q7bx2fjghjlpikn",
+          "grade": "k5exmmlw82:A+",
+          "courseCredit": "yixb8q5xfq:4.0",
+          "courseCode": "ryw34kkwwb:hmmbo"
+        },
+        {
+          "name": "96v44998yc:5sa7e3mi376717x",
+          "grade": "yrd33gevgb:A+",
+          "courseCredit": "irsk62v4sb:4.0",
+          "courseCode": "i60ob9mez0:fq54k"
+        },
+        {
+          "name": "ghtjd4ctif:idj3kjo7np5p3pz",
+          "grade": "6n4wlnazzt:A+",
+          "courseCredit": "yihv09uub5:4.0",
+          "courseCode": "29cxjsmx89:j59y9"
+        },
+        {
+          "name": "qhqiw80ajy:h6qz65d9b4mne85",
+          "grade": "g1m9kkgmdm:A+",
+          "courseCredit": "a6o5e7og1a:4.0",
+          "courseCode": "75wl9wm4id:xdnjw"
+        },
+        {
+          "name": "y3cvrnxqdo:y3vcu1802ylhtj2",
+          "grade": "eyxdefqy0w:A+",
+          "courseCredit": "pb839o6gjw:4.0",
+          "courseCode": "4u77s5083l:rwzde"
+        },
+        {
+          "name": "j4b53nkh1u:oo4g6l47m8pocfb",
+          "grade": "osgjczb0vl:A+",
+          "courseCredit": "57qhmrp4w4:4.0",
+          "courseCode": "lsmj3ehzcj:qlt9k"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$d084fb6f75f495553cb8a67f0ee4702c610838d925d56e3b92d0ff831a3a2d29",
+      "salt": "pnmx8azaak",
+      "hashed": true
+    },
+    {
+      "type": "url",
+      "identity": "http://nikko.name",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "(520) 342-3828",
+      "hashed": false
+    }
+  ]
+}

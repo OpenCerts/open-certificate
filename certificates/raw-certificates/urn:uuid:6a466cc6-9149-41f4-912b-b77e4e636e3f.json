@@ -1,0 +1,49 @@
+{
+  "id": "urn:uuid:6a466cc6-9149-41f4-912b-b77e4e636e3f",
+  "type": "Assertion",
+  "issuedOn": "2018-02-07T09:52:35.293Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "hwn7aeenw9slo0scw8csuae1v",
+    "criteria": "kp31djlf8q5ga0h8g0kyd4ynq5fbupeml5twocrk9ki4c1o1il37cvsfcmog7ozq07i8fu74r1yrv5cw",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "7f9d4n6fxi:owj6fwegz96z0pd",
+          "grade": "o3pll6dv89:A+",
+          "courseCredit": "tphbhuo0hi:4.0",
+          "courseCode": "flg50ceuhd:j4sfr"
+        },
+        {
+          "name": "crim4til9w:64l0b8r6k2yyung",
+          "grade": "basyvjl6zz:A+",
+          "courseCredit": "b25ucr7vsi:4.0",
+          "courseCode": "ae6ftq30v9:73hh6"
+        },
+        {
+          "name": "hnakpjys74:k6gi0k0rn7v31qy",
+          "grade": "9m2zos01ol:A+",
+          "courseCredit": "h8dkcdts2o:4.0",
+          "courseCode": "r1jkga8xv3:658fp"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": {
+    "type": "email",
+    "identity": "Madelyn43@gmail.com",
+    "hashed": false
+  }
+}

@@ -5,6 +5,18 @@ const fs = require('fs');
 const {issueCertificates} = require('./utils/certificateBatch');
 const Certificate = require('./utils/certificate');
 const {checkProof} = require('./utils/merkle');
+const {randomCertificate} = require('./test/utils');
+
+
+function generateRandomCertificate(num, dir){
+  for (let i = 0; i < num; i++) {
+    const cert = randomCertificate();
+    const certId = cert.id;
+    fs.writeFileSync(`./certificates/raw-certificates/${certId}.json`, JSON.stringify(cert, null, 2));
+  }
+
+  return num;
+}
 
 function batchIssueCertificates(inputDir, outputDir){
   function getRawCertificates (path) {
@@ -34,7 +46,7 @@ function batchIssueCertificates(inputDir, outputDir){
           }
         });
 
-        const fileName = c.id.substring(31);
+        const fileName = c.id;
 
         fs.writeFileSync(`${outputDir}${fileName}.json`, JSON.stringify(receipt, null, 2));
       });
@@ -69,11 +81,11 @@ function verifyCertificate(certificate){
 program
   .version('0.1.0', '-v, --version')
   .option('-i, --input <inputDir>', 'Raw certificates directory')
-  .option('-o, --output <outputDir>', 'Processed certificates directory')
+  .option('-o, --output <outputDir>', 'Output directory')
 
   .option('-V, --verify <certificateFile>', 'Verify authencity of certificate')
 
-  .option('-g, --generate', 'Generate sample raw certificates')
+  .option('-g, --generate <certificatesToGenerator>', 'Generate sample raw certificates', parseInt)
   .parse(process.argv);
 
 
@@ -106,9 +118,11 @@ if(program.input && program.output){
   console.log('===================================================================================\n');
   
 }else if(program.generate){
-  console.log('Generating certificates');
+  console.log('========================== Generating random certificate ==========================\n');
 
-  console.log('TBD lol...');
+  const generated = generateRandomCertificate(program.generate, './certificates/raw-certificates');
+  console.log(`Generated ${generated} certificates.\n`);
+  console.log('===================================================================================\n');
 }else{
   program.help();
 }

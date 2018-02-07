@@ -1,0 +1,54 @@
+{
+  "id": "urn:uuid:acc7923f-0120-4109-a209-3a61b788cb27",
+  "type": "Assertion",
+  "issuedOn": "2018-02-07T09:52:35.312Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "u52rui6l86ti5nbcg64ple8mt",
+    "criteria": "61t1ulhznaweeyfxflo3sdzmkf6h1kuhy0ub022gp6j7vuuf4nar95x3ooq3qi161jxbcvq2vq25gmja",
+    "evidenceRoot": "f1b6c88c9314ceb1be90cec2ed6d0159ae2dea4b147bbe14aa89bc0120c0498c"
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$64ca451af9329240d1529afeaf7e9f5c6946b2506449dcf05a20fc721f225a2e",
+      "salt": "b4c1xftfea",
+      "hashed": true
+    },
+    {
+      "type": "url",
+      "identity": "https://joe.org",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "211.152.2883 x829",
+      "hashed": false
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "f1c9b9066c24bbca0b21bd505c284efdd4935676c0a816a282ffd3855e0aefaf",
+    "proof": [
+      "ec62b4da962e951a3b7f1083276e7d78bf1ce36da99a182f7bacc78cfe432dc8",
+      "9e30df6b02cbe4ee6d506bf0d4ceb0c9d1d3b36946c4ff72ac2088edd7ed1972",
+      "bd4da4808f0935eb1f05fc9ea4b186bb6ba3309eb07e22b65334c4ff26937b0f",
+      "46f03ad8d163d25c83eb707ca148b47ca6716da29f73574202020ed1454cb347",
+      "23333504d80bf87ca7278b866d349d14f9be3d732614666078b21782cfe6a0ba",
+      "5a65c07cf958aa724f3235868ef998c14c1059829677b9823c1e6be68b9e067a"
+    ],
+    "merkleRoot": "e1ea7e88a109f2e448500df9a9c3b54903be02502d8ddd53c46c16e4c490ea17"
+  }
+}

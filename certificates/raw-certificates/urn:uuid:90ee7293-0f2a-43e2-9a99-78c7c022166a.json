@@ -1,0 +1,74 @@
+{
+  "id": "urn:uuid:90ee7293-0f2a-43e2-9a99-78c7c022166a",
+  "type": "Assertion",
+  "issuedOn": "2018-02-07T09:52:35.301Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "ylwujs4guvn187oni6dgzj9dt",
+    "criteria": "iy05vf2lckw0050y96o4ciyem5yap79brttvrpx2asbbmgpmptuw45w6uu6cq55pw2o8azmcfghy8n7h",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "g9y2gmkabb:htn1rep6h4mlgpc",
+          "grade": "dlwuqqjfnp:A+",
+          "courseCredit": "1uuh2si4xg:4.0",
+          "courseCode": "rn7ydp3hhd:kaeti"
+        },
+        {
+          "name": "5pb0bvq3le:n7eh3wmmfzkw0fv",
+          "grade": "b3vkzauxln:A+",
+          "courseCredit": "72ub2sj63w:4.0",
+          "courseCode": "bdi6l4ay95:7xvyp"
+        },
+        {
+          "name": "j7p05mr48x:v5dqzs1sdyovbpq",
+          "grade": "rv1fws5pwy:A+",
+          "courseCredit": "igfc1w5zxb:4.0",
+          "courseCode": "35qpgy7xf0:bdl16"
+        },
+        {
+          "name": "rlly7jokdd:tf15t7ccpxm13qo",
+          "grade": "zkvxr8lqfp:A+",
+          "courseCredit": "tsd1di2fps:4.0",
+          "courseCode": "mebgg2zafz:cof6y"
+        }
+      ]
+    },
+    "privateEvidence": [
+      "67f6cb8989cf8938b7bda9f0d7cf17374a1630ffafae7759c0a8d1277e5a5e97",
+      "ed8abdfc2b47fe04e91545a5fe4cb72978f60e23b0f0956cf52912f9fdfe3c16",
+      "439efb1353e04d42117374c7731a896b819ae1741b86025321c01c236c8efde6",
+      "593df1b60b8efc662738d2b22fe34e3181c362412c638e1926f7dfd3ade2aaa5"
+    ]
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "Kolby_Heller@hotmail.com",
+      "hashed": false
+    },
+    {
+      "type": "url",
+      "identity": "sha256$96ccdbf671d9a2be5087ba37f8dd6b4186c3f08d8284a26960ec931f01caf7ca",
+      "salt": "7f4q9vg9sx",
+      "hashed": true
+    },
+    {
+      "type": "telephone",
+      "identity": "1-303-559-3344 x17060",
+      "hashed": false
+    }
+  ]
+}

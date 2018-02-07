@@ -1,5 +1,4 @@
 const Certificate = require('./certificate');
-const {flattenJson, hashArray, toBuffer} = require('./utils');
 
 const rawCertificate = {
   'type': 'Assertion',

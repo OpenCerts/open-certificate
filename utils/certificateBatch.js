@@ -1,6 +1,5 @@
 const Certificate = require('./Certificate');
-const {MerkleTree, checkProof} = require('./merkle');
-const {flattenJson, hashArray, hashToBuffer, toBuffer} = require('./utils');
+const {MerkleTree} = require('./merkle');
 
 function CertificateBatch (certificates) {
   this.certificates = certificates
@@ -23,12 +22,7 @@ CertificateBatch.prototype.getProof = function (certificate) {
     buf = new Certificate(certificate).getRoot();
   }
 
-  let proof = null;
-  try {
-    proof = this.merkleTree.getProof(buf);
-  } catch (err) {}
-
-  return proof;
+  return this.merkleTree.getProof(buf);
 };
 
 function issueCertificates (certificates) {

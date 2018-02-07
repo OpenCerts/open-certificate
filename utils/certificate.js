@@ -1,6 +1,5 @@
-const jsonld = require('jsonld');
-const {MerkleTree, checkProof} = require('./merkle');
-const {flattenJson, hashArray, hashToBuffer, toBuffer} = require('./utils');
+const {MerkleTree} = require('./merkle');
+const {flattenJson, hashToBuffer, toBuffer} = require('./utils');
 
 function evidenceTree (certificate) {
   const {

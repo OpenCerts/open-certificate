@@ -1,10 +1,9 @@
 const certificateBatch = require('./certificateBatch');
 const Certificate = require('./certificate');
 const {randomCertificate} = require('../test/utils');
-const {sha3} = require('ethereumjs-util');
 const {checkProof} = require('./merkle');
 
-describe.only('certificateBatch', () => {
+describe('certificateBatch', () => {
   const CERTIFICATES_TO_ISSUE = 500;
   let certificates = [];
   for (let i = 0; i < CERTIFICATES_TO_ISSUE; i++) { certificates.push(randomCertificate()); }
@@ -36,11 +35,11 @@ describe.only('certificateBatch', () => {
         assert(checkProof(proof, batchedCerts.getRoot(), buf));
       });
 
-      it('returns null for certificate not in the batch', () => {
+      it('throws when certificate is not in the batch', () => {
         const batchedCerts = certificateBatch.issueCertificates(certificates);
         const cert = randomCertificate();
-        const proof = batchedCerts.getProof(cert);
-        expect(proof).to.be.null;
+        const proof = () => {return batchedCerts.getProof(cert);};
+        expect(proof).to.throw;
       });
     });
   });

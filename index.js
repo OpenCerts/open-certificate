@@ -1,5 +1,5 @@
 const fs = require('fs');
-const {issueCertificates, getCertificateProof} = require('./utils/certificateBatch');
+const {issueCertificates} = require('./utils/certificateBatch');
 const Certificate = require('./utils/certificate');
 
 const rawCertificatePath = './certificates/raw-certificates/';
@@ -8,6 +8,7 @@ const certificateReceiptPath = './certificates/processed-certificates/';
 function getRawCertificates () {
   return new Promise((resolve, reject) => {
     fs.readdir(rawCertificatePath, function (err, items) {
+      if (err) return reject(err);
       const certificates = items.map(i => require(rawCertificatePath + i));
       resolve(certificates);
     });

@@ -28,6 +28,9 @@
     "semi": [
       "error",
       "always"
+    ],
+    "no-console": [
+      "warn"
     ]
   }
 }

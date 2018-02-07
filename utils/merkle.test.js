@@ -2,16 +2,6 @@ const utils = require('./utils');
 const {sha3} = require('ethereumjs-util');
 const {MerkleTree, checkProof} = require('./merkle');
 
-function combinedHash (first, second) {
-  if (!second) { return first; }
-  if (!first) { return second; }
-  return sha3(bufJoin(first, second));
-}
-
-function bufJoin (...args) {
-  return Buffer.concat([...args]);
-}
-
 describe('merkle', () => {
   const arr = [
     'item1',

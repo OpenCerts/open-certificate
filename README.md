@@ -6,7 +6,7 @@ yarn
 
 ## Generate Sample Certificates
 
-Generates a number of sample certificates based on the specification by open badge v2 with our extension.
+Generates a number of sample certificates based on the specification by open badge v2 with our extension. Generated samples will be in ./certificates/raw-certificates
 
 ```
 node index.js -g <CertificatesToGenerate>

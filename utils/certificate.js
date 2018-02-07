@@ -1,53 +1,63 @@
+const jsonld = require('jsonld');
 const {MerkleTree, checkProof} = require('./merkle');
 const {flattenJson, hashArray, hashToBuffer, toBuffer} = require('./utils');
 
-function Certificate(certificate) {
-  this.certificate = certificate;
+function evidenceTree (certificate) {
+  const {
+    evidence,
+    privateEvidence
+  } = certificate.badge;
 
-  const flattenedObject = flattenJson(certificate);
-  const hashedArray = hashArray(flattenedObject);
-  
-  this.merkleTree = new MerkleTree(hashedArray);
+  let evidenceHashes = [];
+
+  // Flatten visible evidencee and hash each of them
+  if (evidence) {
+    const flattenedEvidence = flattenJson(evidence);
+    const hashedEvidences = flattenedEvidence.map(e => toBuffer(e));
+    evidenceHashes = evidenceHashes.concat(hashedEvidences);
+  }
+
+  // Include all private evidence hashes
+  if (privateEvidence) {
+    const hashedPrivateEvidences = privateEvidence.map(e => hashToBuffer(e));
+    evidenceHashes = evidenceHashes.concat(hashedPrivateEvidences);
+  }
+
+  // Build a merkle tree with all the hashed evidences
+  const tree = new MerkleTree(evidenceHashes);
+
+  return tree;
 }
 
-Certificate.prototype.getRoot = function(){
-  return this.merkleTree.getRoot();
+function certificateTree (certificate, evidenceTree) {
+  if (certificate.signature) delete certificate.signature;
+  if (certificate.badge.evidence) delete certificate.badge.evidence;
+  if (certificate.badge.privateEvidence) delete certificate.badge.privateEvidence;
+
+  if (evidenceTree) {
+    certificate.badge.evidenceRoot = evidenceTree.getRoot().toString('hex');
+  }
+
+  const flattenedCertificate = flattenJson(certificate);
+  const certificateElements = flattenedCertificate.map(e => toBuffer(e));
+
+  const tree = new MerkleTree(certificateElements);
+
+  return tree;
 }
 
-Certificate.prototype.proofCertificate = function(claims, proofs){
-  let elements = [];
+function Certificate (certificate) {
+  // Build an evidence tree if either evidence or private evidence is present
+  if (certificate.badge.evidence || certificate.badge.privateEvidence) {
+    this.evidenceTree = evidenceTree(certificate);
+    this.evidenceRoot = this.evidenceTree.getRoot().toString('hex');
+  }
 
-  if(claims && !(claims instanceof Array)) claims = flattenJson(claims);
-
-  claims && claims.forEach(claim => {
-    elements.push(toBuffer(claim));
-  });
-
-  proofs && proofs.forEach(proof => {
-    elements.push(hashToBuffer(proof));
-  });
-
-  const treeToCompare = new MerkleTree(elements);
-
-  return treeToCompare.getRoot().equals(this.merkleTree.getRoot());
+  this.certificateTree = certificateTree(certificate, this.evidenceTree);
 }
 
-Certificate.prototype.proofClaim = function(claim, proofs){
-  const proofsBuf = proofs.map(p => hashToBuffer(p));
-  return checkProof(proofsBuf, this.merkleTree.getRoot(), toBuffer(claim));
-}
-
-Certificate.prototype.getProof = function(claim){
-  let proof = null;
-
-  const flattenedClaim = flattenJson(claim);
-  const claimToValidate = flattenedClaim[0];
-
-  try {
-    proof = this.merkleTree.getProof(toBuffer(claimToValidate))
-  }catch(err){}
-
-  return proof;
-}
+Certificate.prototype.getRoot = function () {
+  return this.certificateTree.getRoot();
+};
 
 module.exports = Certificate;

@@ -2,50 +2,49 @@ const Certificate = require('./utils/certificate');
 const {checkProof} = require('./utils/merkle');
 const {flattenJson, hashArray, toBuffer} = require('./utils/utils');
 
-
 const certificateData = {
-  "@context": "https://w3id.org/openbadges/v2",
-  "id": "https://example.org/assertions/123",
-  "type": "Assertion",
-  "recipient": {
-    "type": "email",
-    "identity": "alice@example.org"
+  '@context': 'https://w3id.org/openbadges/v2',
+  'id': 'https://example.org/assertions/123',
+  'type': 'Assertion',
+  'recipient': {
+    'type': 'email',
+    'identity': 'alice@example.org'
   },
-  "issuedOn": "2016-12-31T23:59:59+00:00",
-  "verification": {
-    "type": "hosted"
+  'issuedOn': '2016-12-31T23:59:59+00:00',
+  'verification': {
+    'type': 'hosted'
   },
-  "badge": {
-    "type": "BadgeClass",
-    "id": "https://example.org/badges/5",
-    "name": "3-D Printmaster",
-    "description": "This badge is awarded for passing the 3-D printing knowledge and safety test.",
-    "image": "https://example.org/badges/5/image",
-    "criteria": {
-      "narrative": "Students are tested on knowledge and safety, both through a paper test and a supervised performance evaluation on live equipment"
+  'badge': {
+    'type': 'BadgeClass',
+    'id': 'https://example.org/badges/5',
+    'name': '3-D Printmaster',
+    'description': 'This badge is awarded for passing the 3-D printing knowledge and safety test.',
+    'image': 'https://example.org/badges/5/image',
+    'criteria': {
+      'narrative': 'Students are tested on knowledge and safety, both through a paper test and a supervised performance evaluation on live equipment'
     },
-    "issuer": {
-      "id": "https://example.org/issuer",
-      "type": "Profile",
-      "name": "Example Maker Society",
-      "url": "https://example.org",
-      "email": "contact@example.org",
-      "verification": {
-         "allowedOrigins": "example.org"
+    'issuer': {
+      'id': 'https://example.org/issuer',
+      'type': 'Profile',
+      'name': 'Example Maker Society',
+      'url': 'https://example.org',
+      'email': 'contact@example.org',
+      'verification': {
+        'allowedOrigins': 'example.org'
       }
     }
   },
-  "evidence": [
+  'evidence': [
     {
-      "id": "https://example.org/beths-robot-photos.html",
-      "name": "Robot Photoshoot",
-      "description": "A gallery of photos of the student's robot",
-      "genre": "Photography"
+      'id': 'https://example.org/beths-robot-photos.html',
+      'name': 'Robot Photoshoot',
+      'description': 'A gallery of photos of the student\'s robot',
+      'genre': 'Photography'
     },
     {
-      "id": "https://example.org/beths-robot-work.html",
-      "name": "Robotics Reflection #1",
-      "description": "Reflective writing about the first week of a robotics learning journey."
+      'id': 'https://example.org/beths-robot-work.html',
+      'name': 'Robotics Reflection #1',
+      'description': 'Reflective writing about the first week of a robotics learning journey.'
     }
   ]
 };
@@ -53,23 +52,23 @@ const certificateData = {
 // Creating a certificate
 const certificate = new Certificate(certificateData);
 const merkleRoot = certificate.getRoot().toString('hex');
-console.log("============================== Certificate Root ==============================");
+console.log('============================== Certificate Root ==============================');
 console.log(merkleRoot);
 
 // Create a proof for a single claim
-const claim = {'recipient.identity':'alice@example.org'};
+const claim = {'recipient.identity': 'alice@example.org'};
 const claimHash = toBuffer(claim);
 const proof = certificate.getProof(claim);
-console.log("============================== Claim ==============================");
+console.log('============================== Claim ==============================');
 console.log(claim);
-console.log("Hash:", claimHash.toString('hex'));
-console.log("============================== Proof for Claim ==============================");
+console.log('Hash:', claimHash.toString('hex'));
+console.log('============================== Proof for Claim ==============================');
 console.log(proof);
 
 // Prove the claim
-console.log("============================== Claim Check ==============================");
-console.log("Claim is valid (using original cert):", certificate.proofClaim(claim, proof));
-console.log("Claim is valid (without certificate content):", checkProof(proof, merkleRoot, claim));
+console.log('============================== Claim Check ==============================');
+console.log('Claim is valid (using original cert):', certificate.proofClaim(claim, proof));
+console.log('Claim is valid (without certificate content):', checkProof(proof, merkleRoot, claim));
 
 // Create a proof for some part of the certificate
 const claims = [
@@ -79,7 +78,7 @@ const claims = [
   { 'evidence.0.genre': 'Photography' },
   { 'evidence.1.id': 'https://example.org/beths-robot-work.html' },
   { 'evidence.1.name': 'Robotics Reflection #1' },
-  { 'evidence.1.description': 'Reflective writing about the first week of a robotics learning journey.' },
+  { 'evidence.1.description': 'Reflective writing about the first week of a robotics learning journey.' }
 ];
 
 const proofs = [
@@ -101,11 +100,9 @@ const proofs = [
   'd23912aae627c0fd5b12cae675f08680fdc9aad9decb19e2f7a30de383268478',
   'f5baaef0b7bddd090f83010321c9564dc69a54c924ab7ad9c7f145a8ec2214bc',
   'fa21ffcb839ead91346e6da5d1b705378dd644b23d7dfa47144f4fe415bfe601',
-  'fb6b46ff0ff649926a033836c9b2454d12da8093b64144e3ea62314e703090b8',
-]
+  'fb6b46ff0ff649926a033836c9b2454d12da8093b64144e3ea62314e703090b8'
+];
 
-console.log("============================== Multiple Claims Check ==============================");
-console.log("Claim is valid (using original cert):", certificate.proofCertificate(claims, proofs));
-console.log("Claim is valid (without certificate content):", "TBD");
-
-
+console.log('============================== Multiple Claims Check ==============================');
+console.log('Claim is valid (using original cert):', certificate.proofCertificate(claims, proofs));
+console.log('Claim is valid (without certificate content):', 'TBD');

@@ -1,161 +1,204 @@
 const Certificate = require('./certificate');
 const {flattenJson, hashArray, toBuffer} = require('./utils');
 
-describe('certificate', () => {
-  const sampleCertificate = {
-    key1: 'value1',
-    key2: ['value1', 'value2' , {a: 'b'}],
-    key3: {
-      a: 1,
-      b: 'c',
+const rawCertificate = {
+  'type': 'Assertion',
+  'issuedOn': '2017-05-01',
+  'id': 'urn:uuid:8e0b8a28-beff-43de-a72c-820bc360db3d',
+  '@context': [
+    'https://openbadgespec.org/v2/context.json',
+    'https://govtechsg.github.io/certificate-schema/schema/1.0/context.json'
+  ],
+  'badge': {
+    'type': 'BadgeClass',
+    'issuer': {
+      'type': 'Profile',
+      'id': 'https://www.nus.edu.sg/profile.json',
+      'url': 'https://www.nus.edu.sg',
+      'name': 'National University of Singapore'
+    },
+    'name': 'BACHELOR OF ARTS',
+    'criteria': {
+      'narrative': 'Student must complete all require academic units'
+    },
+    'evidencePrivacyFilter': {
+      'type': 'SaltedProof',
+      'saltLength': '10'
+    },
+    'evidence': {
+      'transcript': [{
+        'name': 'AUSJDLEOFP:AN INTRODUCTION TO LITERARY STUDIES',
+        'grade': 'DUEJFOSDEL:C+',
+        'courseCredit': 'UDIFMCJSPD:4.00',
+        'courseCode': 'EPDUSJCNZL:EN1101E'
+      }, {
+        'name': 'FKSIDKFLXO:HIDDEN COURSE NAME',
+        'grade': 'DUFOEPLIID:D',
+        'courseCredit': 'UDIFMCJSPD:4.00',
+        'courseCode': 'EPDUSJCNZL:HID001'
+      }, {
+        'name': 'PAJSUDJCHS:EINSTEIN\'s UNIVERSE & QUANTUM WEIRDNESS',
+        'grade': 'IWUEJDKZMS:C+',
+        'courseCredit': 'QPWOEKDNZJ:4.00',
+        'courseCode': 'KSIDMAJJAP:PC1325'
+      }]
     }
-  };
+  },
+  'verification': {
+    'type': 'ETHStoreProof',
+    'contractAddress': '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb'
+  },
+  'signature': {
+    'type': 'SHA3MerkleProof',
+    'targetHash': '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb',
+    'proof': [
+      '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb',
+      '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb'
+    ],
+    'merkleRoot': '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb'
+  },
+  'recipient': [{
+    'type': 'email',
+    'identity': 'sample@example.com'
+  }, {
+    'type': 'did',
+    'identity': 'did:example:123456789abcdefghi'
+  }]
+};
 
+describe('certificate', () => {
   describe('Certificate', () => {
-    const cert = new Certificate(sampleCertificate);
+    const certificate = new Certificate(rawCertificate);
 
-    it('creates certificate object', () => {
-      expect(cert).to.be.an.instanceof(Certificate);
-      expect(cert).to.have.keys(['certificate', 'merkleTree']);
+    it('resolves a partially private certificate', () => {
+      const rawCertificate2 = {
+        'type': 'Assertion',
+        'issuedOn': '2017-05-01',
+        'id': 'urn:uuid:8e0b8a28-beff-43de-a72c-820bc360db3d',
+        '@context': [
+          'https://openbadgespec.org/v2/context.json',
+          'https://govtechsg.github.io/certificate-schema/schema/1.0/context.json'
+        ],
+        'badge': {
+          'type': 'BadgeClass',
+          'issuer': {
+            'type': 'Profile',
+            'id': 'https://www.nus.edu.sg/profile.json',
+            'url': 'https://www.nus.edu.sg',
+            'name': 'National University of Singapore'
+          },
+          'name': 'BACHELOR OF ARTS',
+          'criteria': {
+            'narrative': 'Student must complete all require academic units'
+          },
+          'evidencePrivacyFilter': {
+            'type': 'SaltedProof',
+            'saltLength': '10'
+          },
+          'evidence': {
+            'transcript': [{
+              'name': 'AUSJDLEOFP:AN INTRODUCTION TO LITERARY STUDIES',
+              'grade': 'DUEJFOSDEL:C+',
+              'courseCredit': 'UDIFMCJSPD:4.00',
+              'courseCode': 'EPDUSJCNZL:EN1101E'
+            }, {
+            }, {
+              'name': 'PAJSUDJCHS:EINSTEIN\'s UNIVERSE & QUANTUM WEIRDNESS',
+              'grade': 'IWUEJDKZMS:C+',
+              'courseCredit': 'QPWOEKDNZJ:4.00',
+              'courseCode': 'KSIDMAJJAP:PC1325'
+            }]
+          },
+          'privateEvidence': [
+            'e8c1585967cdff8ccda49d1b715d5e2d5c7358b523fd4931f0004f5f97ac0ad3',
+            '79b146d13c5188d6196fd217e219aeff485f2f553b63b6d2764579193d039aea',
+            'ff99de3091f27a8c1be3ba693b06e99871f4f7bbaf6dfe9494eb782fbb4b60a9',
+            'bd2f72d7197dd8cf80530b1a1558ebb46740b3d5d646d146e9f91df93ad49acc'
+          ]
+        },
+        'verification': {
+          'type': 'ETHStoreProof',
+          'contractAddress': '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb'
+        },
+        'signature': {
+          'type': 'SHA3MerkleProof',
+          'targetHash': '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb',
+          'proof': [
+            '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb',
+            '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb'
+          ],
+          'merkleRoot': '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb'
+        },
+        'recipient': [{
+          'type': 'email',
+          'identity': 'sample@example.com'
+        }, {
+          'type': 'did',
+          'identity': 'did:example:123456789abcdefghi'
+        }]
+      };
+
+      const equivalentCert = new Certificate(rawCertificate2);
+      expect(certificate.evidenceTree.getRoot().toString('hex'))
+        .to.eql(equivalentCert.evidenceTree.getRoot().toString('hex'));
+
+      expect(certificate.certificateTree.getRoot().toString('hex'))
+        .to.eql(equivalentCert.certificateTree.getRoot().toString('hex'));
     });
 
-    describe('getRoot', () => {
-      it('returns the root of the merkle tree', () => {
-        const rootBuf = cert.getRoot();
-        const rootHex = rootBuf.toString('hex');
+    it('resolves a private certificate', () => {
+      const rawCertificate2 = {
+        'type': 'Assertion',
+        'issuedOn': '2017-05-01',
+        'id': 'urn:uuid:8e0b8a28-beff-43de-a72c-820bc360db3d',
+        '@context': [
+          'https://openbadgespec.org/v2/context.json',
+          'https://govtechsg.github.io/certificate-schema/schema/1.0/context.json'
+        ],
+        'badge': {
+          'type': 'BadgeClass',
+          'issuer': {
+            'type': 'Profile',
+            'id': 'https://www.nus.edu.sg/profile.json',
+            'url': 'https://www.nus.edu.sg',
+            'name': 'National University of Singapore'
+          },
+          'name': 'BACHELOR OF ARTS',
+          'criteria': {
+            'narrative': 'Student must complete all require academic units'
+          },
+          'evidencePrivacyFilter': {
+            'type': 'SaltedProof',
+            'saltLength': '10'
+          },
+          'evidenceRoot': 'ae2b5444f5bbe0cabcd67b7ea902f308f106ee0ae2634007d2e2e14884a74ce1'
+        },
+        'verification': {
+          'type': 'ETHStoreProof',
+          'contractAddress': '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb'
+        },
+        'signature': {
+          'type': 'SHA3MerkleProof',
+          'targetHash': '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb',
+          'proof': [
+            '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb',
+            '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb'
+          ],
+          'merkleRoot': '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb'
+        },
+        'recipient': [{
+          'type': 'email',
+          'identity': 'sample@example.com'
+        }, {
+          'type': 'did',
+          'identity': 'did:example:123456789abcdefghi'
+        }]
+      };
 
-        const expectedHash = 'eda23cef95b04640004ab0592c482e26436a3cff399dfdbff1f2c9398c874edf';
+      const equivalentCert = new Certificate(rawCertificate2);
 
-        expect(rootHex).to.be.eql(expectedHash);
-      });
-    });
-
-    describe('proofCertificate', () => {
-      it('checks proof for all visible claims', () => {
-        const claims = flattenJson(sampleCertificate);
-        assert(cert.proofCertificate(claims));
-      });
-
-      it('checks proof for some visible claims', () => {
-        const claims = flattenJson(sampleCertificate);
-        
-        let visibleClaims = [];
-        let hiddenProofs = [];
-
-        claims.forEach((c, i) => {
-          (i % 2 == 0) ? visibleClaims.push(c) : hiddenProofs.push(toBuffer(c));
-        });
-
-        assert(cert.proofCertificate(visibleClaims, hiddenProofs));
-      });
-
-      it('checks proof for all hidden proofs', () => {
-        const claims = flattenJson(sampleCertificate);
-        
-        let hiddenProofs = claims.map(c => toBuffer(c));
-
-        assert(cert.proofCertificate(null, hiddenProofs));
-      });
-
-      it('fails if any claims is invalid', () => {
-        const claims = flattenJson(sampleCertificate);
-        
-        let visibleClaims = [];
-        let hiddenProofs = [];
-
-        claims.forEach((c, i) => {
-          (i % 2 == 0) ? visibleClaims.push(c) : hiddenProofs.push(toBuffer(c));
-        });
-
-        visibleClaims.push({key:'invalid value'});
-
-        expect(cert.proofCertificate(visibleClaims, hiddenProofs))
-        .to.eql(false);
-      });
-
-      it('fails if any proofs is invalid', () => {
-        const claims = flattenJson(sampleCertificate);
-        
-        let visibleClaims = [];
-        let hiddenProofs = [];
-
-        claims.forEach((c, i) => {
-          (i % 2 == 0) ? visibleClaims.push(c) : hiddenProofs.push(toBuffer(c));
-        });
-
-        hiddenProofs.push(toBuffer('invalid hash'));
-
-        expect(cert.proofCertificate(visibleClaims, hiddenProofs))
-        .to.eql(false);
-      });
-
-      it('accepts certificate object as claim', () => {
-        const claims = sampleCertificate;
-        assert(cert.proofCertificate(claims));
-      });
-    });
-
-    describe('getProof', () => {
-      it('returns an array of proofs for valid claim', () => {
-        const claims = flattenJson(sampleCertificate);
-        const claimToValidate = claims[0];
-
-        const proofs = cert.getProof(claimToValidate);
-        expect(proofs[0].toString('hex')).to
-        .eql('6d0c0226e52a1632f9f5b72176b81b34efbb27f7244580bc0d4f0172a6b62838');
-        expect(proofs[1].toString('hex')).to
-        .eql('707ba78e305dc247c51f3e1186f78695fa979a884c38d435a565e37ef8f6eca4');
-        expect(proofs[2].toString('hex')).to
-        .eql('e1493cf92567c23ba497012854eb51c670b55110e4cf7127008ea2bdcf47dd90');
-      });
-
-      it('returns null for invalid claim', () => {
-        const claimToValidate = {claim:'invalid claim'};
-
-        const proofs = cert.getProof(claimToValidate);
-        expect(proofs).to.be.null;
-      });
-    });
-
-    describe('proofClaim', () => {
-      it('returns true if claim is true', () => {
-        const claims = flattenJson(sampleCertificate);
-        const claimToValidate = claims[0];
-        
-        const proofs = [
-          '6d0c0226e52a1632f9f5b72176b81b34efbb27f7244580bc0d4f0172a6b62838',
-          '707ba78e305dc247c51f3e1186f78695fa979a884c38d435a565e37ef8f6eca4',
-          'e1493cf92567c23ba497012854eb51c670b55110e4cf7127008ea2bdcf47dd90'
-        ];
-
-        expect(cert.proofClaim(claimToValidate, proofs)).to.eql(true);
-      });
-
-      it('returns false if proof is invalid', () => {
-        const claims = flattenJson(sampleCertificate);
-        const claimToValidate = claims[0];
-        
-        const proofs = [
-          '6d0c0226e52a1632f9f5b72176b81b34efbb27f7244580bc0d4f0172a6b62838',
-          '707ba78e305dc247c51f3e1186f78695fa979a894c38d435a565e37ef8f6eca4',
-          'e1493cf92567c23ba497012854eb51c670b55110e4cf7127008ea2bdcf47dd90'
-        ];
-
-        expect(cert.proofClaim(claimToValidate, proofs)).to.eql(false);
-      })
-
-      it('returns false if claim is invalid', () => {
-        const claims = flattenJson(sampleCertificate);
-        const claimToValidate = {'invalid':'claim'};
-        
-        const proofs = [
-          '6d0c0226e52a1632f9f5b72176b81b34efbb27f7244580bc0d4f0172a6b62838',
-          '707ba78e305dc247c51f3e1186f78695fa979a894c38d435a565e37ef8f6eca4',
-          'e1493cf92567c23ba497012854eb51c670b55110e4cf7127008ea2bdcf47dd90'
-        ];
-
-        expect(cert.proofClaim(claimToValidate, proofs)).to.eql(false);
-      })
+      expect(certificate.certificateTree.getRoot().toString('hex'))
+        .to.eql(equivalentCert.certificateTree.getRoot().toString('hex'));
     });
   });
-})
+});

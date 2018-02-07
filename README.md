@@ -51,3 +51,9 @@ Warning: Please verify this certificate on the blockchain with the issuer's cert
 - Refactor to allow this package to be used as a npm module
 - Add support to batch issue certificate on the contract store
 - Add support to verify certificate on the contract store
+
+## Test
+
+```
+npm run test
+```

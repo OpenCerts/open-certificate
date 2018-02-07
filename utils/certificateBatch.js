@@ -1,49 +1,37 @@
 const Certificate = require('./Certificate');
-const {MerkleTree, checkProof} = require('./merkle');
-const {flattenJson, hashArray, hashToBuffer, toBuffer} = require('./utils');
+const {MerkleTree} = require('./merkle');
 
-function CertificateBatch(certificates){
+function CertificateBatch (certificates) {
   this.certificates = certificates
-  .map(c => {return new Certificate(c).getRoot()})
-  .sort(Buffer.compare)
+    .map(c => { return new Certificate(c).getRoot(); })
+    .sort(Buffer.compare);
 
   this.merkleTree = new MerkleTree(this.certificates);
 }
 
-CertificateBatch.prototype.getRoot = function(){
+CertificateBatch.prototype.getRoot = function () {
   return this.merkleTree.getRoot();
-}
+};
 
-CertificateBatch.prototype.getProof = function(certificate){
+CertificateBatch.prototype.getProof = function (certificate) {
   // if certificate is a cert object, change to cert, if its
   let buf = null;
-  if(Buffer.isBuffer(certificate) && certificate.length === 32){
+  if (Buffer.isBuffer(certificate) && certificate.length === 32) {
     buf = certificate;
-  }else{
+  } else {
     buf = new Certificate(certificate).getRoot();
   }
 
-  let proof = null;
-  try {
-    proof = this.merkleTree.getProof(buf)
-  }catch(err){}
+  return this.merkleTree.getProof(buf);
+};
 
-  return proof;
-}
-
-function issueCertificates(certificates) {
-  if(!Array.isArray(certificates)){
-    throw new Error("Certificates must be in an array");
+function issueCertificates (certificates) {
+  if (!Array.isArray(certificates)) {
+    throw new Error('Certificates must be in an array');
   }
   return new CertificateBatch(certificates);
 }
 
-function getCertificateProof(certificate){
-  // Input: certificate hash/entire certificate
-  // Output: proof (buf)
-}
-
 module.exports = {
-  issueCertificates,
-  getCertificateProof,
-}
+  issueCertificates
+};

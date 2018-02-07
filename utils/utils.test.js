@@ -8,11 +8,11 @@ describe('utils', () => {
         a: 'a',
         b: ['b.0', 'b.1', {b2: 'b.0.b2'}],
         c: {
-          c1:'c.c1',
-          c2:12.15,
-          c3:true,
+          c1: 'c.c1',
+          c2: 12.15,
+          c3: true
         }
-      }
+      };
 
       const result = utils.flattenJson(json);
 
@@ -23,7 +23,7 @@ describe('utils', () => {
         { 'b.2.b2': 'b.0.b2' },
         { 'c.c1': 'c.c1' },
         { 'c.c2': 12.15 },
-        { 'c.c3': true },
+        { 'c.c3': true }
       ]);
     });
   });
@@ -37,7 +37,7 @@ describe('utils', () => {
         { 'b.2.b2': 'b.0.b2' },
         { 'c.c1': 'c.c1' },
         { 'c.c2': 12.15 },
-        { 'c.c3': true },
+        { 'c.c3': true }
       ];
       const result = utils.hashArray(arr);
 
@@ -48,7 +48,7 @@ describe('utils', () => {
         sha3(JSON.stringify(arr[6])),
         sha3(JSON.stringify(arr[0])),
         sha3(JSON.stringify(arr[3])),
-        sha3(JSON.stringify(arr[1])),
+        sha3(JSON.stringify(arr[1]))
       ]);
     });
   });

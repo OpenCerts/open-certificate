@@ -4,16 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover --reporter=html _mocha -- ./helpers.js \"./{,!(node_modules)/**/}*.test.js\""
+    "test": "istanbul cover --reporter=html _mocha -- ./helpers.js \"./{,!(node_modules)/**/}*.test.js\"",
+    "lint": "eslint . --fix"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "mocha": "^4.1.0",
-    "chai": "^4.1.2"
+    "chai": "^4.1.2",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^4.1.0"
   },
   "dependencies": {
-    "chai": "^4.1.2",
+    "commander": "^2.14.0",
     "deep-reduce": "^1.0.5",
     "ethereumjs-util": "^5.1.2"
   }

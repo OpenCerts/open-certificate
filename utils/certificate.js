@@ -29,15 +29,16 @@ function evidenceTree (certificate) {
 }
 
 function certificateTree (certificate, evidenceTree) {
-  if (certificate.signature) delete certificate.signature;
-  if (certificate.badge.evidence) delete certificate.badge.evidence;
-  if (certificate.badge.privateEvidence) delete certificate.badge.privateEvidence;
+  const cert = Object.assign({}, certificate);
+  if (cert.signature) delete cert.signature;
+  if (cert.badge.evidence) delete cert.badge.evidence;
+  if (cert.badge.privateEvidence) delete cert.badge.privateEvidence;
 
   if (evidenceTree) {
-    certificate.badge.evidenceRoot = evidenceTree.getRoot().toString('hex');
+    cert.badge.evidenceRoot = evidenceTree.getRoot().toString('hex');
   }
 
-  const flattenedCertificate = flattenJson(certificate);
+  const flattenedCertificate = flattenJson(cert);
   const certificateElements = flattenedCertificate.map(e => toBuffer(e));
 
   const tree = new MerkleTree(certificateElements);

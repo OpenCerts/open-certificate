@@ -19,7 +19,7 @@
     "mocha": "^4.1.0"
   },
   "dependencies": {
-    "chai": "^4.1.2",
+    "commander": "^2.14.0",
     "deep-reduce": "^1.0.5",
     "ethereumjs-util": "^5.1.2"
   }

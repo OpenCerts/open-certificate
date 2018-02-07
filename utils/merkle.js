@@ -37,7 +37,7 @@ MerkleTree.prototype.getProof = function (_element) {
 const checkProof = function (_proof, _root, _element) {
   const proof = _proof.map(step => hashToBuffer(step));
   const root = hashToBuffer(_root);
-  const element = toBuffer(_element);
+  const element = hashToBuffer(_element);
 
   const proofRoot = proof.reduce((hash, pair) => {
     return combinedHash(hash, pair);

@@ -1,6 +1,7 @@
 const utils = require('./utils');
 const {sha3} = require('ethereumjs-util');
 const {MerkleTree, checkProof} = require('./merkle');
+const {toBuffer} = require('./utils');
 
 describe('merkle', () => {
   const arr = [
@@ -43,17 +44,12 @@ describe('merkle', () => {
   describe('checkProof', () => {
     it('returns true for valid proof', () => {
       const proof = tree.getProof(arr[1]);
-      /*
-      console.log(proof.map(p => p.toString('hex')));
-      console.log(sha3(JSON.stringify(arr[1])).toString('hex'));
-      console.log(tree.getRoot().toString('hex'));
-      */
-      assert(checkProof(proof, tree.getRoot(), arr[1]));
+      assert(checkProof(proof, tree.getRoot(), toBuffer(arr[1])));
     });
 
     it('returns false for valid proof', () => {
       const proof = tree.getProof(arr[0]);
-      assert(!checkProof(proof, tree.getRoot(), arr[1]));
+      assert(!checkProof(proof, tree.getRoot(), toBuffer(arr[1])));
     });
   });
 });

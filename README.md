@@ -54,7 +54,7 @@ node index -V <PathToCertificate>
 
 Example:
 ```
-node index -V ./certificates/processed-certificates/03zuc9yjvt1b.json
+node index -V ./certificates/processed-certificates/urn:uuid:08b1f10a-6bf0-46c8-bbfd-64750b0d73ef.json
 
 ============================== Verifying certificate ==============================
 

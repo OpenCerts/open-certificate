@@ -28,7 +28,8 @@ function evidenceTree (certificate) {
   return tree;
 }
 
-function certificateTree (certificate, evidenceTree) {
+// TODO MAKE THIS INTO A PURE FUNCTION!
+function certificateTree(certificate, evidenceTree) {
   const cert = Object.assign({}, certificate);
   if (cert.signature) delete cert.signature;
   if (cert.badge.evidence) delete cert.badge.evidence;

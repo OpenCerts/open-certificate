@@ -1,14 +1,12 @@
-const program = require('commander');
-
-
 const fs = require('fs');
+const program = require('commander');
 const {issueCertificates} = require('./utils/certificateBatch');
 const Certificate = require('./utils/certificate');
 const {checkProof} = require('./utils/merkle');
 const {randomCertificate} = require('./test/utils');
 
 
-function generateRandomCertificate(num, dir){
+function generateRandomCertificate(num){
   for (let i = 0; i < num; i++) {
     const cert = randomCertificate();
     const certId = cert.id;

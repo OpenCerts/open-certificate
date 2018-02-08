@@ -69,8 +69,10 @@ Warning: Please verify this certificate on the blockchain with the issuer's cert
 
 - Test for functions in index.js
 - Refactor to allow this package to be used as a npm module
+- Checks for certificate structure when issuing certificate
 - Add support to batch issue certificate on the contract store
 - Add support to verify certificate on the contract store
+- Hiding evidences on fully visible certificates
 
 ## Test
 

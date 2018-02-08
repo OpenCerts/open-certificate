@@ -29,10 +29,9 @@ function evidenceTree (certificate) {
   return tree;
 }
 
-// TODO MAKE THIS INTO A PURE FUNCTION!
 function certificateTree(certificate, evidenceTree) {
   let cert = _.cloneDeep(certificate);
-  
+
   if (cert.signature){delete cert.signature;}
   if (cert.badge.evidence){ delete cert.badge.evidence;}
   if (cert.badge.privateEvidence){ delete cert.badge.privateEvidence;}

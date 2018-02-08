@@ -10,25 +10,25 @@ function recipientDecorator(certificate){
     return {
       type: 'email',
       identity: faker.internet.email()
-    }
+    };
   }
   function didProfile(){
     return {
       type: 'did',
       identity: `did:${faker.internet.domainWord()}:${faker.random.uuid()}`
-    }
+    };
   }
   function urlProfile(){
     return {
       type: 'url',
       identity: faker.internet.url()
-    }
+    };
   }
   function telephoneProfile(){
     return {
       type: 'telephone',
       identity: faker.phone.phoneNumber()
-    }
+    };
   }
 
   // Randomly decide to hash identity based on https://github.com/mozilla/openbadges-backpack/wiki/How-to-hash-&-salt-in-various-languages.
@@ -72,11 +72,11 @@ function certificateDecorator(certificate){
           grade: faker.random.alphaNumeric(10) + ':' + 'A+',
           courseCredit: faker.random.alphaNumeric(10) + ':' + '4.0',
           courseCode: faker.random.alphaNumeric(10) + ':' + faker.random.alphaNumeric(5)
-        })
+        });
       }
       return {
         transcript,
-      }
+      };
     }
   }
 
@@ -115,15 +115,15 @@ function randomCertificate () {
     badge:{
       type: 'BadgeClass',
       evidencePrivacyFilter: {
-        type: "SaltedProof",
-        saltLength: "10"
+        type: 'SaltedProof',
+        saltLength: '10'
       }
     },
     verification: {
       type: 'ETHStoreProof',
       contractAddress: '0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb'
     }
-  }
+  };
 
   recipientDecorator(certificate);
   certificateDecorator(certificate);

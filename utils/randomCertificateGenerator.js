@@ -142,4 +142,7 @@ function generateRandomCertificate(num, dir){
   return num;
 }
 
-module.exports = generateRandomCertificate;
+module.exports = {
+  generateRandomCertificate,
+  randomCertificate,
+};

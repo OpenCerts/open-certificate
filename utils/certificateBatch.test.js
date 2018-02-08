@@ -1,6 +1,6 @@
 const certificateBatch = require('./certificateBatch');
 const Certificate = require('./certificate');
-const {randomCertificate} = require('../test/utils');
+const {randomCertificate} = require('./randomCertificateGenerator.js');
 const {checkProof} = require('./merkle');
 
 describe('certificateBatch', () => {

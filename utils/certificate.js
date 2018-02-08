@@ -89,6 +89,6 @@ Certificate.prototype.getRoot = function () {
 
 Certificate.prototype.verify = function() {
   return verifyCertificate(this.certificate);
-}
+};
 
 module.exports = Certificate;

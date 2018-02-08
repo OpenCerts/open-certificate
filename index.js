@@ -1,9 +1,8 @@
-const fs = require('fs');
 const program = require('commander');
 
 const batchIssue = require('./utils/batchIssue');
 const Certificate = require('./utils/certificate');
-const generator = require('./utils/randomCertificateGenerator');
+const {generateRandomCertificate, randomCertificate} = require('./utils/randomCertificateGenerator');
 
 program
   .version('0.1.0', '-v, --version')
@@ -47,7 +46,7 @@ if(program.input && program.output){
 }else if(program.generate){
   console.log('========================== Generating random certificate ==========================\n');
 
-  const generated = generator(program.generate, './certificates/raw-certificates');
+  const generated = generateRandomCertificate(program.generate, './certificates/raw-certificates');
   console.log(`Generated ${generated} certificates.\n`);
   console.log('===================================================================================\n');
 }else{
@@ -64,5 +63,6 @@ if (require.main === module) {
 module.exports = {
   Certificate,
   batchIssue,
-  generator,
+  generateRandomCertificate,
+  randomCertificate,
 };

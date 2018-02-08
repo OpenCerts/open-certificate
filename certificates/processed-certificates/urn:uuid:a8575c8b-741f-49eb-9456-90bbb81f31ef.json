@@ -14,7 +14,28 @@
     },
     "name": "aeimrwewrc4oq86of5d4f54z7",
     "criteria": "0b5rg5zq4fp59ryfsf89bn9mqxidfqxpshakv0zshrb143m2eyh561u7nt69bedx15am2irye19vwnu1",
-    "evidenceRoot": "87c3a35b1b96ce6c3b3db74fb37deb8e3451d568590992f6fd56bccc82b09660"
+    "evidence": {
+      "transcript": [
+        {
+          "name": "o0uagx6yka:8chmb9zg9wufxca",
+          "grade": "x9oa0razym:A+",
+          "courseCredit": "12yeccxxql:4.0",
+          "courseCode": "fjebsf23g1:010jq"
+        },
+        {
+          "name": "w1aqhmpexa:i11c43tz96cnohi",
+          "grade": "ml905nghj6:A+",
+          "courseCredit": "vibyem2yta:4.0",
+          "courseCode": "dpztxtmcwf:y0v35"
+        },
+        {
+          "name": "daiom2kw1p:syc7bgle1w4gkj6",
+          "grade": "33xmjz9urd:A+",
+          "courseCredit": "6v2iyywais:4.0",
+          "courseCode": "fe1lbk54ty:vph6f"
+        }
+      ]
+    }
   },
   "verification": {
     "type": "ETHStoreProof",

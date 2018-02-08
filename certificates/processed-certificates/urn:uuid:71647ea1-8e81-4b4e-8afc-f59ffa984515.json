@@ -14,7 +14,10 @@
     },
     "name": "2db35ua7lpbhgk57gv83pxqe1",
     "criteria": "rtp3rcksfe3mtsuil5sm7by29dwyefnuc3y4arolan4s13mev8mqggz0dgnjfrparvwjzfynf7odlf9z",
-    "evidenceRoot": "4ae9945cc9879139cd7c69b4d04914bb3b85c117e42c7b5be8ece34b74fa812e"
+    "privateEvidence": [
+      "b7c33bca0761a9fb193ae76470e74beaf179a2a1bbdac495962a830ef7ef4786",
+      "fb62bee4e4f7adfea54e7fc674f4b648ab8d1cfa081fe53b18c2435fd7727643"
+    ]
   },
   "verification": {
     "type": "ETHStoreProof",

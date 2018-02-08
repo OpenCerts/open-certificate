@@ -14,7 +14,19 @@
     },
     "name": "h19kxfsdrap65wq1sfd0hu2rp",
     "criteria": "1tmm0ns8jd04bvsfx9zeh0jsc2hns053sjy3yreq9h2dyn9ykrbynfa2x88hiebgqbzht8qtaapd2nz3",
-    "evidenceRoot": "9bfc1e0d943cccdea7850f595444e76078bbe6fd7362aa50b4f9ffb9447ffd9f"
+    "privateEvidence": [
+      "9148a096a08d33f5a0d8b7f588c573d6ddbac1465e0b170ca0f8634a8f1ca9bb",
+      "1a79a7adb61b8452055974822d21a83169f64a09487ac06e1bb79034aa6102d9",
+      "f833ca5cedf2442c3c92dbccf7a01dab8027cb2e583349046d30006689dbcf2c",
+      "27295acd6725cd0bad237c5b92ed546b823872af5b02a3250cfdaae0ec3cd7f7",
+      "6f1c6e275f3dde350d7c3e29b1344f326d02dbbe3d3b8bde1f2161cd2423c2ed",
+      "c244fc5412dc51aa6acba95f7381a35bed0087c073c4b2196c927468aae44819",
+      "51db3731c26710552df8ecfdbbdb30c8746eb6f0b508824d3e2d473aab78bcf6",
+      "458666c5e91d659830aff19288755b5cf2806ebff159fc5c53ada3a0694766f7",
+      "b44bb8e542b83fad1710123aeeaee73ad80a0f85e6e81327e84b4547b7a2b9de",
+      "c1677d3375b3900d7022693fe857361e8fc07f578fa36d1647aa69bbd21cf8ce",
+      "9f422696b76882d18a2b7a68a99089e15645d0bb822e5475de14238b8d64a8ef"
+    ]
   },
   "verification": {
     "type": "ETHStoreProof",

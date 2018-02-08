@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const {MerkleTree} = require('./merkle');
 const {flattenJson, hashToBuffer, toBuffer} = require('./utils');
 
@@ -30,10 +31,11 @@ function evidenceTree (certificate) {
 
 // TODO MAKE THIS INTO A PURE FUNCTION!
 function certificateTree(certificate, evidenceTree) {
-  const cert = Object.assign({}, certificate);
-  if (cert.signature) delete cert.signature;
-  if (cert.badge.evidence) delete cert.badge.evidence;
-  if (cert.badge.privateEvidence) delete cert.badge.privateEvidence;
+  let cert = _.cloneDeep(certificate);
+  
+  if (cert.signature){delete cert.signature;}
+  if (cert.badge.evidence){ delete cert.badge.evidence;}
+  if (cert.badge.privateEvidence){ delete cert.badge.privateEvidence;}
 
   if (evidenceTree) {
     cert.badge.evidenceRoot = evidenceTree.getRoot().toString('hex');

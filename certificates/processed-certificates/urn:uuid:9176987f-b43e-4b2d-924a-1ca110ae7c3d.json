@@ -14,7 +14,52 @@
     },
     "name": "1kbotvmqg6qiv01g7lgqez7dq",
     "criteria": "lb9rvuh9z9fywho9vk3yzue1xouuwxyzp28db7tb6372ydjjd30nrgxxiwshn9rlojiijj5wsvzwcdy2",
-    "evidenceRoot": "e68014377db3f4de9b6ab7fb4dece1523cc6d7dc96d1b5d74d233858820d10a4"
+    "evidence": {
+      "transcript": [
+        {
+          "name": "4shflm508s:oqj8vgdttkqx7uz",
+          "grade": "yyjn0nsua6:A+",
+          "courseCredit": "zmmvmv9g28:4.0",
+          "courseCode": "4ruo9khvi0:0km0u"
+        },
+        {
+          "name": "6qmd3tponm:2hjd9r3wcskk8ck",
+          "grade": "4eczr8b9qp:A+",
+          "courseCredit": "whv0dafzmd:4.0",
+          "courseCode": "elbe376at1:v3trt"
+        },
+        {
+          "name": "niu9mqjnq9:cugcqgpgehqeho8",
+          "grade": "y0i6x37973:A+",
+          "courseCredit": "ivskl6wpr4:4.0",
+          "courseCode": "vluyc5q87v:44wu0"
+        },
+        {
+          "name": "uoseaotura:jhewj9zz6ro0hlb",
+          "grade": "g0h13rc6wi:A+",
+          "courseCredit": "yzkd5f2tqe:4.0",
+          "courseCode": "rlh35b50in:zhzow"
+        },
+        {
+          "name": "mw2zg8bqzw:dljwxql66skc8ix",
+          "grade": "7j5rdohi8w:A+",
+          "courseCredit": "l9yerd87mz:4.0",
+          "courseCode": "mhslbo38o7:c8s0f"
+        },
+        {
+          "name": "15clkd49i0:qifm7omva60dyqn",
+          "grade": "jhfw4vrsz2:A+",
+          "courseCredit": "ts1aa18bg9:4.0",
+          "courseCode": "ceijhoohe4:h9udc"
+        },
+        {
+          "name": "kxusirh1a7:qk2rj30gzir9itf",
+          "grade": "5lakz8b5vm:A+",
+          "courseCredit": "fwajsw8dk9:4.0",
+          "courseCode": "t8gga8ie6p:3b2jw"
+        }
+      ]
+    }
   },
   "verification": {
     "type": "ETHStoreProof",

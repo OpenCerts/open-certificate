@@ -69,9 +69,9 @@ describe('certificate', () => {
   describe('Certificate', () => {
     const certificate = new Certificate(rawCertificate);
 
-    it.only('is a pure function', () => {
+    it('is a pure function', () => {
       expect(rawCertificate.badge.evidenceRoot).to.be.undefined;
-      expect(rawCertificate.badge.evidence).to.be.defined;
+      expect(rawCertificate.badge.evidence).to.exist;
     });
 
     it('resolves a partially private certificate', () => {

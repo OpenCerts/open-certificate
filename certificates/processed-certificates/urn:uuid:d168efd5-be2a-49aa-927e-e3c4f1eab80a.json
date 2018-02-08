@@ -14,7 +14,13 @@
     },
     "name": "w8ykmey2opbh4v47ep41qfq13",
     "criteria": "drzais32wlclnhskfdmgqdbrs3ts3tsjs50361v751ook0xx3y7scip867a9awh1iyermoq5lfrv4gu4",
-    "evidenceRoot": "32b64212d340bcf35572618cf672713ff12fa793eedf9fb4b2c81f07986bdeec"
+    "privateEvidence": [
+      "0be251509c7f36ca1192d8fdd11407b27c23c59f31c2e2ecfc2e31b92fa46bbf",
+      "c3f7f735b71ff5f2c5f118e2bc8e81bce5e66b9c57d8342c6b32771dbd468ed0",
+      "1864fdb3618e7ff4e45d6bc713399368d4e573727582beaf94b73f3045328b19",
+      "0359ec743d2350a46f9309aff7f876b80a142c2c01b349c0f48e6bafb7d383f5",
+      "7fe4da1fe6e278cbcc943d0deff2a1405a61be8ee4e50a8755690197fc22fcf9"
+    ]
   },
   "verification": {
     "type": "ETHStoreProof",

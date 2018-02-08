@@ -14,7 +14,34 @@
     },
     "name": "vbewigrb0q9ec4gg1xvr7k6nv",
     "criteria": "y913wdx1z85xw2oma4i0m337pzk4orq6h3wrzphealmvrwu5kj5pckvrp272l3ft1g7641tc5fmxmcrf",
-    "evidenceRoot": "7b5d5644e1552d0d7d08bf16a06cb4308527929f559f6e10804453ba98917f4b"
+    "evidence": {
+      "transcript": [
+        {
+          "name": "akylbyb02b:9g10zyjxc24gp8l",
+          "grade": "6akbnh34c5:A+",
+          "courseCredit": "vfxowhx1m5:4.0",
+          "courseCode": "y1mki8kud3:4ida7"
+        },
+        {
+          "name": "ojk4dpmiht:5ezz7ycghes9xd6",
+          "grade": "b5lmxt14h1:A+",
+          "courseCredit": "0pxirl59ct:4.0",
+          "courseCode": "4wsbtpel09:any63"
+        },
+        {
+          "name": "8q3tebzu9a:aec84stdfw9m4w4",
+          "grade": "islg0p86k1:A+",
+          "courseCredit": "vn4bo0i9ex:4.0",
+          "courseCode": "fwunt6c11k:h2w7t"
+        },
+        {
+          "name": "siroh1rrod:bs61sker9er03z0",
+          "grade": "c0o3i61dbp:A+",
+          "courseCredit": "t1ylflcm9x:4.0",
+          "courseCode": "r3pxcvddhb:g6q0q"
+        }
+      ]
+    }
   },
   "verification": {
     "type": "ETHStoreProof",

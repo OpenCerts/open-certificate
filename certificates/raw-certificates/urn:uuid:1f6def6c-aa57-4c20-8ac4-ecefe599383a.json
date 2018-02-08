@@ -1,0 +1,81 @@
+{
+  "id": "urn:uuid:1f6def6c-aa57-4c20-8ac4-ecefe599383a",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.105Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "p637mjf7s3o64uh10ubuil6e2",
+    "criteria": "xmg037he57gxirn93g2nexq74aeqf7am3zymw29h5jn9jhklbkfxuvyxeuq0l88w7dop61429h7vahus",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "vkgevpok3n:2imrzxc5t3bg0ee",
+          "grade": "4bcf5ka73i:A+",
+          "courseCredit": "8rvh159wwg:4.0",
+          "courseCode": "tw4lnvd2zi:vogrp"
+        },
+        {
+          "name": "vh1qg4crf5:nbrvjr6nwv5fnsy",
+          "grade": "jy70cawgyo:A+",
+          "courseCredit": "8c2thocwqk:4.0",
+          "courseCode": "doikh99lbq:ey46a"
+        },
+        {
+          "name": "tm0ixnoq3e:6r877fuqfg50s7y",
+          "grade": "wrgr39d4gh:A+",
+          "courseCredit": "5u1lxovars:4.0",
+          "courseCode": "u38735x0ak:75sdd"
+        },
+        {
+          "name": "3e3199n6f9:uz57m353odhiot9",
+          "grade": "1ltyhmbin2:A+",
+          "courseCredit": "h2il5cjtnr:4.0",
+          "courseCode": "jh5t0ogkru:n9o08"
+        },
+        {
+          "name": "86i5jdvve5:ivcrdwvtkh24ib6",
+          "grade": "1cwps0d4yu:A+",
+          "courseCredit": "0ckgm4comz:4.0",
+          "courseCode": "34ogd2brky:0amvy"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$d11b12363ebce8f5ddb053640b9aff5498602be70e60bbdb0f82dd575c64904b",
+      "salt": "e7t49159ey",
+      "hashed": true
+    },
+    {
+      "type": "did",
+      "identity": "sha256$6f020ad7af617f220c7ad1e1447f852591bd09fef8b2e915a6d205aedc2fb470",
+      "salt": "njvw4hch10",
+      "hashed": true
+    },
+    {
+      "type": "url",
+      "identity": "https://rigoberto.name",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "sha256$490939ee9715f7a38dc4961bbcb9698eaa355ec1ab148e1fe98492f7e5336288",
+      "salt": "89pby1g2l4",
+      "hashed": true
+    }
+  ]
+}

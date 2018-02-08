@@ -1,0 +1,105 @@
+{
+  "id": "urn:uuid:62c14408-797a-401c-9dcc-4563a98d84d5",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.118Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "tw2sahaw43nd94y2z09qa8mkc",
+    "criteria": "e62qkdrxarv1lu2ohsrl9eccd8uhcsqns1n5z8lwbqu3hesesembcyhuk0jxa2ft3kri0m90brn3coa6",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "2ehfnsz9c3:0tkf8kj27fielb2",
+          "grade": "7w3dei26j7:A+",
+          "courseCredit": "tu9xjpmb1w:4.0",
+          "courseCode": "assb2atjhj:1rz4v"
+        },
+        {
+          "name": "9aqm3jd6wi:4hnykft8zj2tc60",
+          "grade": "kdzozsnw9v:A+",
+          "courseCredit": "umwn1bwo48:4.0",
+          "courseCode": "4c0txnwv2b:g7hr5"
+        },
+        {
+          "name": "zpptof7esw:6bw3789bybjxanl",
+          "grade": "7im5ue1pza:A+",
+          "courseCredit": "1p55xlg13x:4.0",
+          "courseCode": "6rv186nyvr:7fo07"
+        },
+        {
+          "name": "4t2mn3b2tw:4jufkhehst3w266",
+          "grade": "np7awd3s5p:A+",
+          "courseCredit": "kdzlclgj15:4.0",
+          "courseCode": "qtvfnqu1lm:ap6ax"
+        },
+        {
+          "name": "v0e4gpppmm:969qqzqa1jx47z8",
+          "grade": "r20zwb09ep:A+",
+          "courseCredit": "vcbpzcqvl0:4.0",
+          "courseCode": "jdl2vhlupz:h6v6l"
+        },
+        {
+          "name": "nl3nkvteti:yzodfyyiv7ox66y",
+          "grade": "x2n9wg2mgu:A+",
+          "courseCredit": "xegqe8xiwo:4.0",
+          "courseCode": "3tomklkvxg:jk5tq"
+        },
+        {
+          "name": "nzurrdm6s5:bllhgshgzl6pqye",
+          "grade": "656cvd6bgj:A+",
+          "courseCredit": "glpjrvmazl:4.0",
+          "courseCode": "mhgsqk7b97:rq5re"
+        },
+        {
+          "name": "sgo29v0qge:mtlq3tizzrlun0u",
+          "grade": "xdnpcltazy:A+",
+          "courseCredit": "3w9xkk1yim:4.0",
+          "courseCode": "a3ne9tvccb:hfnxd"
+        },
+        {
+          "name": "rzaahrhcic:6oxazo87y9er8q7",
+          "grade": "rckcpucvrr:A+",
+          "courseCredit": "8cpiaws30u:4.0",
+          "courseCode": "g7877vx3j0:qdt6e"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "Cristal_Quigley@yahoo.com",
+      "hashed": false
+    },
+    {
+      "type": "did",
+      "identity": "did:domingo:eaf57fa4-8889-4bca-9087-81e4bd48f40f",
+      "hashed": false
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "9060fc5168b0dabc977946f260c85401f3067df954ad94cdb234c6c0f9a30620",
+    "proof": [
+      "8d1377828c8564a40256bc5a49f82bb2b548a43b0ff120ab5fff45288cf38b33",
+      "59ead07b6c9f60c9b110d3443bff9f3a3972dbebe110b2c3624339a0b1844c8c",
+      "7145b16a68ce490f6b8767e3335332b12e874bed92a789927d0efb666600ced3",
+      "21759bc554143556711edadd64848b1c3788d40c8d422c6beda35a666501897c",
+      "7d278b42f58177104108f53ae3d0c69be62299515b8dedfd4a66ff0a715f7b55",
+      "9857c9e1b95e36b2638d43df1f3d1764947c01754e502f5c0ad95c80e7da1912"
+    ],
+    "merkleRoot": "ffe6b00d0bedb82dedb289cab6c4ae589474fe313b58cb953f7460509b223fa7"
+  }
+}

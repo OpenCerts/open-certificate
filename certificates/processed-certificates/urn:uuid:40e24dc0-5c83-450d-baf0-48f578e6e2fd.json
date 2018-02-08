@@ -1,0 +1,134 @@
+{
+  "id": "urn:uuid:40e24dc0-5c83-450d-baf0-48f578e6e2fd",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.110Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "8cjfgmoeaqjktbjkebo3vv3vh",
+    "criteria": "vfnv8lap8fn72e8pepgdo7cmv7f85eyemov78z1bsino1pkbfvmfqvu4e5g2t22eo7romjx2lmmsdaw2",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "rv0yg0vmpm:n4k2cidomyizyis",
+          "grade": "n9c8i92ior:A+",
+          "courseCredit": "8y3qsv98f1:4.0",
+          "courseCode": "xm1kazwt0r:7ykpn"
+        },
+        {
+          "name": "007a5h7kvl:ovgtoh6dioc84vb",
+          "grade": "tywuf7bdc4:A+",
+          "courseCredit": "bwuy7fw0uc:4.0",
+          "courseCode": "1ruyy6c4q9:xguyk"
+        },
+        {
+          "name": "c5tkj2ftwv:xnvoqu5m9a1h8m6",
+          "grade": "qfqrpr6fw1:A+",
+          "courseCredit": "ni9lhyr6fz:4.0",
+          "courseCode": "1y6ygogyce:qf6fb"
+        },
+        {
+          "name": "nmncexgje7:fguzf8ne8pa8jve",
+          "grade": "kahmbqo6d9:A+",
+          "courseCredit": "np60ak4zta:4.0",
+          "courseCode": "yhoiqrautm:4slry"
+        },
+        {
+          "name": "nnaijhei8l:9kehshdz00j85wu",
+          "grade": "y8cn4jo4kg:A+",
+          "courseCredit": "1s8spnkuap:4.0",
+          "courseCode": "t3cwjvsnto:q2d8h"
+        },
+        {
+          "name": "f2a2t4f293:rqcvtbyokefob5z",
+          "grade": "a4uiuw2h6h:A+",
+          "courseCredit": "vd51bcjo14:4.0",
+          "courseCode": "oeabv9ctck:168qr"
+        },
+        {
+          "name": "nr62hep5yk:3mthopi8avm7s8f",
+          "grade": "1o8pb9ut86:A+",
+          "courseCredit": "02g7sx4s0z:4.0",
+          "courseCode": "w21n5quuei:afeb3"
+        },
+        {
+          "name": "bcivz2kpme:owp9636veherfmy",
+          "grade": "bkcq0ofyxz:A+",
+          "courseCredit": "6f9l7i84eg:4.0",
+          "courseCode": "bbcjof15l5:8qfnj"
+        },
+        {
+          "name": "5medymx4p0:cp3d2pctckz2d8n",
+          "grade": "qjjql2yugb:A+",
+          "courseCredit": "odombul665:4.0",
+          "courseCode": "z4we9gvci3:7q68h"
+        },
+        {
+          "name": "4lc3dcd0l6:ixls89apkcap28u",
+          "grade": "gkhcr6fw8v:A+",
+          "courseCredit": "pdv8w2j2uq:4.0",
+          "courseCode": "8pni7whh7y:rrann"
+        },
+        {
+          "name": "5a4mejisv0:2ro1h7tb1zm9hes",
+          "grade": "jxv4mfk5iy:A+",
+          "courseCredit": "ot1h2vxpuf:4.0",
+          "courseCode": "c2pellp3pu:3bxq6"
+        },
+        {
+          "name": "39d50kmz9g:243uzfbjj4cnhiq",
+          "grade": "18jah4jesa:A+",
+          "courseCredit": "mmxr9igoqi:4.0",
+          "courseCode": "77jybady6r:lq4w6"
+        },
+        {
+          "name": "25tos8ax9s:dtm2z6nj8slaq0q",
+          "grade": "6il4fksj62:A+",
+          "courseCredit": "yj2uaqlns3:4.0",
+          "courseCode": "ie0vwft5g2:338zg"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "Gwendolyn_Crona30@yahoo.com",
+      "hashed": false
+    },
+    {
+      "type": "did",
+      "identity": "did:osvaldo:471afac4-ddfc-4571-aebf-a6aa9a081187",
+      "hashed": false
+    },
+    {
+      "type": "url",
+      "identity": "http://curt.biz",
+      "hashed": false
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "ae55f162b82e5075eec6dc680e6a6fb584f25afbbd25f09458f2af92ba93a375",
+    "proof": [
+      "cac918870b6d23ec45b12748ef9ade2413846342281337e3f118944988dce255",
+      "68b95ce92ee8fc1d32be5a318607f2663a2b4218d5ea0f26ccae48c4502883da",
+      "90c7c862e8538f8a7343b975c39147249c8e2d818ef591191367351745c68c4f",
+      "21759bc554143556711edadd64848b1c3788d40c8d422c6beda35a666501897c",
+      "7d278b42f58177104108f53ae3d0c69be62299515b8dedfd4a66ff0a715f7b55",
+      "9857c9e1b95e36b2638d43df1f3d1764947c01754e502f5c0ad95c80e7da1912"
+    ],
+    "merkleRoot": "ffe6b00d0bedb82dedb289cab6c4ae589474fe313b58cb953f7460509b223fa7"
+  }
+}

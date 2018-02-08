@@ -1,0 +1,35 @@
+{
+  "id": "urn:uuid:db51449f-4a70-42d9-82cc-921472837a16",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.132Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "nk9eff4kmexiubf96iva3e218",
+    "criteria": "ze2299ztvl5el7xlo0iwxdh4z8gdstjhog0m41fspi0be6l7rzrtrxq50sma44u4ia5yffa6j4v8pnqe"
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "did",
+      "identity": "did:ryley:b791d130-35fe-4553-917f-9cf8c108d54a",
+      "hashed": false
+    },
+    {
+      "type": "url",
+      "identity": "sha256$2dcb9769fcb70c09a37083f015933a7c66d3cdd41ef089b930d913f231b007c2",
+      "salt": "y7zxxc37xp",
+      "hashed": true
+    }
+  ]
+}

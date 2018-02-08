@@ -1,0 +1,40 @@
+{
+  "id": "urn:uuid:39cc823e-17d4-4140-9373-33c17f376e5b",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.119Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "3qtf3c6d46pimou3dft372bfr",
+    "criteria": "fmf7sap1jzpkwdxxcsfvkxxo0el7tulqgozz50n0gu107836r4zpasajt3drqgcit8kqyogqrtqw55wm"
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$72b99bfc01951d312c6e9590175a413e05e3e82ba4fdcaf336a44d8d981e62ee",
+      "salt": "5bcopumxw6",
+      "hashed": true
+    },
+    {
+      "type": "did",
+      "identity": "did:gonzalo:9639b444-1d2b-4707-b0e6-e74f234077fe",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "(098) 949-8986 x80321",
+      "hashed": false
+    }
+  ]
+}

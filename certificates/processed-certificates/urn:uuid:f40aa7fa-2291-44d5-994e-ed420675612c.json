@@ -1,0 +1,105 @@
+{
+  "id": "urn:uuid:f40aa7fa-2291-44d5-994e-ed420675612c",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.106Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "ra55rsqtawr52lutr70nc6ocx",
+    "criteria": "4nxs91o8cazgbihqzq24906jca5c6ut97ttbhcxe7i385sexl50k4hb5kjtub7dlj5s8fi98q2tibygr",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "twn40slui8:yizswrtfv1n16un",
+          "grade": "ekqcl8yjxf:A+",
+          "courseCredit": "97rv9wu0hu:4.0",
+          "courseCode": "6216jv2oh9:dg87m"
+        },
+        {
+          "name": "k9ncqyn6xy:h410dck3vtq4dot",
+          "grade": "91ike4hg8v:A+",
+          "courseCredit": "1u0pug4ot1:4.0",
+          "courseCode": "lx6sh4k2xm:1s2gs"
+        },
+        {
+          "name": "dc6m026bs7:33xg3iy3caur1sk",
+          "grade": "opuzs7yjl4:A+",
+          "courseCredit": "jimwz01i2a:4.0",
+          "courseCode": "9b9kn9klq0:4qabi"
+        },
+        {
+          "name": "yzw63qka2t:lvdvjwn76a9lv3r",
+          "grade": "q8rky9loqb:A+",
+          "courseCredit": "1y67nipwg1:4.0",
+          "courseCode": "ugu64jcbrp:uocvv"
+        },
+        {
+          "name": "rqkiw4l47x:cexm8etau6lns1d",
+          "grade": "4uablwdoij:A+",
+          "courseCredit": "118t0020zk:4.0",
+          "courseCode": "jkoyn4w91f:wb0aj"
+        },
+        {
+          "name": "0j0xm7nrv6:3ljcvb614n2vegs",
+          "grade": "y3qnvhokbf:A+",
+          "courseCredit": "1thb5l7zhl:4.0",
+          "courseCode": "805kychuhh:behl1"
+        }
+      ]
+    },
+    "privateEvidence": [
+      "ce483240b2362b73fc53ac2fb56506b48d8f49d5619cf900359b3994e056ffa8",
+      "26f6d2cbf74871ae0883b82fbe791b5d253a4c7c2be4671852bebfc096f9f2a6",
+      "dc18399ea72e79e0356f48206d630c6606b71e4f314ce68468cc36dfc446d34c",
+      "a5e0199f1c1b027fb8b117ca60e39611dbc8de2c7fa963893a69b34cd1bab9aa",
+      "4fef538d2da2fcee1ffa60192957302d02600ded86e7abdeaaa7926d413613b6",
+      "6d657e7130728ea8fbbc102ad3332f13afa18337868fdf6da9af840729f940b5",
+      "fd11fa780bf98f599575a569cf93921b5149a34a5576619d851a3d8a82a919d7",
+      "7fee1ef5c44d379107f40530431581c557723447a71168bb244dfa7760977272",
+      "e0d2a0c478d24bce94be8ff1bc90fc17d178cee3624ff93ea6d53548df50fc4c",
+      "90c01c08c9fb96657be9acbe841f90f9c1b443e86e4476db9eff4023eda6a713",
+      "27488f022677b97da9ae8e45e0d77b9984671c96435bee2bd2ff5627b3700b4f",
+      "d7473e6e936c277dc9a9cf1f41d9944638fc1cb1cc671716166de2ebd55fac8f",
+      "39ea2e80023271b2f549c0a7ea6fe28732f7edb3d340bfd68e579c61af869d5b",
+      "38f5f61b124b5b09cd435af29c3a0f15cfa0159b0b2477d59989bb500c81595c"
+    ]
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$c19e612618490b792d2c6d4f861775b4fb360cf601912a50103f105d4b652f55",
+      "salt": "7tpimgoqqh",
+      "hashed": true
+    },
+    {
+      "type": "url",
+      "identity": "sha256$b1c54b352dd7487af05402f0eba51210606e3a9d031c8182c142f67403706e74",
+      "salt": "vh9bgqtrk5",
+      "hashed": true
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "8c114531c80d939fc93650b5c3b258e579fe0c83f55be4f73a2319d02c0f5312",
+    "proof": [
+      "8c84ca76b2b2934ad8304b04facae743a5e2fe5224a777285ba9377e2584a5b9",
+      "fb9264975a73a08f55144544bdd7d87f0f5a42ec2e2effe29ad304a9b9272b83",
+      "7145b16a68ce490f6b8767e3335332b12e874bed92a789927d0efb666600ced3",
+      "21759bc554143556711edadd64848b1c3788d40c8d422c6beda35a666501897c",
+      "7d278b42f58177104108f53ae3d0c69be62299515b8dedfd4a66ff0a715f7b55",
+      "9857c9e1b95e36b2638d43df1f3d1764947c01754e502f5c0ad95c80e7da1912"
+    ],
+    "merkleRoot": "ffe6b00d0bedb82dedb289cab6c4ae589474fe313b58cb953f7460509b223fa7"
+  }
+}

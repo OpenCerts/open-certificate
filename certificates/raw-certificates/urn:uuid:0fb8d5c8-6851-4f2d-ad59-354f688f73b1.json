@@ -1,0 +1,56 @@
+{
+  "id": "urn:uuid:0fb8d5c8-6851-4f2d-ad59-354f688f73b1",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.132Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "k0fidcjxmtdsphkfhcdoya9wi",
+    "criteria": "f8b0bezukhs5kfvyrxie6y96gkhcnu4bjlwe13b3xb7635wya06u9oopl0t80udr6yj8woxrythxwf3p",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "8dj71tve5u:xvr8oriau0fit1r",
+          "grade": "39kfl5aehp:A+",
+          "courseCredit": "cp7ls3pet8:4.0",
+          "courseCode": "s6nx31y7jo:baym6"
+        },
+        {
+          "name": "my3t3vle9i:nlyl0olr73bubvu",
+          "grade": "y3bz93nt4a:A+",
+          "courseCredit": "xla0c6df3o:4.0",
+          "courseCode": "t7finsa9uu:f9t7x"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "did",
+      "identity": "sha256$83193d271396c923ee59c05f6dbb3a9f12d1e5aa49d7f9699ce48521c56bed8d",
+      "salt": "qhgc0qlguq",
+      "hashed": true
+    },
+    {
+      "type": "url",
+      "identity": "https://modesto.org",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "1-554-114-0682 x498",
+      "hashed": false
+    }
+  ]
+}

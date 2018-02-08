@@ -1,0 +1,116 @@
+{
+  "id": "urn:uuid:77a4066c-3f74-494b-8185-90b7172341c2",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.135Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "za2jhjpo38vd6d6pxxi6filb6",
+    "criteria": "tuduw9g1we1pd5jtf5weap6lz04smhmk99u7veq75h1h4ozfimbi6beafofsgid0d6r67ylykd3w24uq",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "cjixknm4km:vbig1n8i5e8rddf",
+          "grade": "dwbkr1674i:A+",
+          "courseCredit": "xtttx3ga04:4.0",
+          "courseCode": "zg8wdbtbir:9ja5o"
+        },
+        {
+          "name": "y3htdbmx8h:sujowb40p9d9vll",
+          "grade": "3bwf1x5po1:A+",
+          "courseCredit": "czs0ibjobl:4.0",
+          "courseCode": "v5rsp16bfr:8xcz3"
+        },
+        {
+          "name": "go4fmjh7vg:hih57onx6n5bqqs",
+          "grade": "ti8spmzzly:A+",
+          "courseCredit": "stl0dviovp:4.0",
+          "courseCode": "ka1lok7n09:0c8ij"
+        },
+        {
+          "name": "1tvvbfpv54:cvh4qafjej1f46m",
+          "grade": "nkukok9pm3:A+",
+          "courseCredit": "i1wgdx6t48:4.0",
+          "courseCode": "qg6pxfhn23:uw18b"
+        },
+        {
+          "name": "tttok10msq:yb5n1a3lcn2cvuq",
+          "grade": "07sscyfr1u:A+",
+          "courseCredit": "3zucoachig:4.0",
+          "courseCode": "y5s356h8cm:kaopf"
+        },
+        {
+          "name": "xi0jzxxomj:i2yr6ttj01leqv9",
+          "grade": "2uy0d3c638:A+",
+          "courseCredit": "ioz36m5vlk:4.0",
+          "courseCode": "hsim6j5a2a:ievz7"
+        },
+        {
+          "name": "zyllo870x9:a4cg6qazynn0kmd",
+          "grade": "002628bbtd:A+",
+          "courseCredit": "vie03nqn1o:4.0",
+          "courseCode": "j563sejqst:1p2y9"
+        },
+        {
+          "name": "x3inn5vgef:tyvb0wh6cg4qz8l",
+          "grade": "4efhxkn9qo:A+",
+          "courseCredit": "nbh63cz4i8:4.0",
+          "courseCode": "dv1q2ifhkd:o8g1s"
+        },
+        {
+          "name": "jhaat57ty1:1spq2xjn94t8kyt",
+          "grade": "b5djdphdo1:A+",
+          "courseCredit": "r8qzwwv73z:4.0",
+          "courseCode": "37b62ticvd:bj21r"
+        },
+        {
+          "name": "vxe6wbatb3:lbhpui5gu7oxprm",
+          "grade": "y01p48ysd7:A+",
+          "courseCredit": "c1grut4bkm:4.0",
+          "courseCode": "ai04doanis:g0ykj"
+        },
+        {
+          "name": "x5zifka65d:rlwktxodgm8b4vt",
+          "grade": "4xk92mpvvf:A+",
+          "courseCredit": "8yep5h88x2:4.0",
+          "courseCode": "jbuq9hzrzk:g81f4"
+        },
+        {
+          "name": "d4hn3elpvi:598ldwvsaoi3v21",
+          "grade": "30ga2j36pu:A+",
+          "courseCredit": "ekgso9kcoc:4.0",
+          "courseCode": "z316qtlyvh:tqt0a"
+        },
+        {
+          "name": "fxsv55wrog:x1k0heu1132a149",
+          "grade": "lv78nq1brk:A+",
+          "courseCredit": "n0br3roige:4.0",
+          "courseCode": "5zkqd8o4sa:ivk3e"
+        },
+        {
+          "name": "oeeigfqi39:korwieoiddzzq39",
+          "grade": "ry20jwktht:A+",
+          "courseCredit": "h5zgidh9m6:4.0",
+          "courseCode": "n3l4j5a5o8:ga16r"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": {
+    "type": "telephone",
+    "identity": "sha256$cfe3a33c330114d562a12c5b44dc74d4320ade3de6d824d8ee19b94913ba4606",
+    "salt": "6ef86e4azc",
+    "hashed": true
+  }
+}

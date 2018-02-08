@@ -1,0 +1,41 @@
+{
+  "id": "urn:uuid:5f6d3da4-1913-44cc-9700-cdacd6b300e7",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.104Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "lxxcnv73se5vcxvket5zthd9q",
+    "criteria": "qfb9naxv0hynmdy4r8p7odtf3ihq8ozt3vn36hyrq0410enzeuk4iu7er5yw4phi8pfeihqlnxc5ux0j"
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": {
+    "type": "telephone",
+    "identity": "sha256$a1e042d4c74bfd04718d1c7a705062cfe84894861749b3fcb17329fe23ee2ffd",
+    "salt": "l86sxw75xf",
+    "hashed": true
+  },
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "03a6729a59728f15f133560a5038502c27e6ca306ba51d9909c6382ab0c375c6",
+    "proof": [
+      "0f491b85ef4f27f4f8a0276e2cb9b9d1cf3f2c4a124891f73216408faaa1a868",
+      "0615c8321d3153176e10003aa27b14a49bd0a5e0ced0f9f937aefa42e26c3255",
+      "1b9ac1c0265ff55b2501deb2a3e32998b9650404aef7912c461968ab35610a2d",
+      "1c4e16f36a73a71678a1b2db2a60336487a21e306c9d86eb95217ddb2dc1c19d",
+      "f97f4d3469c73c0d99c6e8377641d3c4cbd0d8672ceae59a12088dff52ceb583",
+      "81611f9c6e8c8074e28c97774eb980cfad340bc075486abb7c7c3a93feb2343d"
+    ],
+    "merkleRoot": "ffe6b00d0bedb82dedb289cab6c4ae589474fe313b58cb953f7460509b223fa7"
+  }
+}

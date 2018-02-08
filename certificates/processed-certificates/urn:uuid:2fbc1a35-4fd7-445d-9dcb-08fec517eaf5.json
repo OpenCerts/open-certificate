@@ -1,0 +1,94 @@
+{
+  "id": "urn:uuid:2fbc1a35-4fd7-445d-9dcb-08fec517eaf5",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.117Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "jghj0t9f2rzq6cvgcabxixnv1",
+    "criteria": "yqvg0ecmcxnq6fn12pkvf9fxa9aszww5766ru6phkcj4ng1xgaqv0tf2b3ddcsu4vx2pquc71fnhymbu",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "cu45d6t97j:c5hcwk6b1db77m4",
+          "grade": "lgnxvxhn6w:A+",
+          "courseCredit": "00ec9aody0:4.0",
+          "courseCode": "lkjn558n1q:yzsfs"
+        },
+        {
+          "name": "eeg3i862wg:5r40dchh41atgxv",
+          "grade": "8qwpfow0ij:A+",
+          "courseCredit": "wyuznfiacx:4.0",
+          "courseCode": "331dom55mt:qo6y1"
+        },
+        {
+          "name": "zmygs3elri:bojym9857ajhshk",
+          "grade": "1nlrtrae9e:A+",
+          "courseCredit": "yeh53859xe:4.0",
+          "courseCode": "w6z37g0f5n:ho5rk"
+        },
+        {
+          "name": "joqate3l8s:dmr5fzsixzu7w4a",
+          "grade": "45apsekzzp:A+",
+          "courseCredit": "xubomfl0bn:4.0",
+          "courseCode": "wv2c6sytc3:coxdp"
+        },
+        {
+          "name": "8hti8yodhz:0vdjs2krrvett2f",
+          "grade": "2kiqkptjlf:A+",
+          "courseCredit": "5nmmfpgcxf:4.0",
+          "courseCode": "kl6fq37s3x:5kp4c"
+        },
+        {
+          "name": "uima4basla:7x9zo2m1f52p35g",
+          "grade": "vjeod7h8dc:A+",
+          "courseCredit": "yvw3k2f8j1:4.0",
+          "courseCode": "pwr5857v2z:q1tii"
+        },
+        {
+          "name": "wr6g3o6jdw:z0abxnivsm8qo7e",
+          "grade": "o8uzjnp0u2:A+",
+          "courseCredit": "r49nkbzsba:4.0",
+          "courseCode": "1f93nqpsb2:my9yl"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$e074a34a822a8992220467fe3cc4d8a842f43f6210a787a0abfa51ddf8e4725a",
+      "salt": "yerpuytplh",
+      "hashed": true
+    },
+    {
+      "type": "telephone",
+      "identity": "321.251.4426 x4482",
+      "hashed": false
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "e3652a0794623b7219dcfe68ebbc42ecc18c3e291fb8a6f27ef0e84417fe6d90",
+    "proof": [
+      "f17b806c1be9e097e88de2d496510514e9f3c20c7a1fca508085add206893ea8",
+      "67463b0ed83b0c8611885d05bb864f401de0c5d4b081afd56de3acd17019094a",
+      "43bace04dba07573f75d391a88aa45cf893f4614600abbd83c2e4531071aeee4",
+      "cdeacad2829699f3829a0b9821652d474c6e5bccdd0b540fe8951967a3b7c618",
+      "7d278b42f58177104108f53ae3d0c69be62299515b8dedfd4a66ff0a715f7b55",
+      "9857c9e1b95e36b2638d43df1f3d1764947c01754e502f5c0ad95c80e7da1912"
+    ],
+    "merkleRoot": "ffe6b00d0bedb82dedb289cab6c4ae589474fe313b58cb953f7460509b223fa7"
+  }
+}

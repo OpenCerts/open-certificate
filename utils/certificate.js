@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const {MerkleTree} = require('./merkle');
+const {MerkleTree, checkProof} = require('./merkle');
 const {flattenJson, hashToBuffer, toBuffer} = require('./utils');
 
 function evidenceTree (certificate) {
@@ -49,6 +49,8 @@ function certificateTree(certificate, evidenceTree) {
 }
 
 function Certificate (certificate) {
+  this.certificate = certificate;
+
   // Build an evidence tree if either evidence or private evidence is present
   if (certificate.badge.evidence || certificate.badge.privateEvidence) {
     this.evidenceTree = evidenceTree(certificate);
@@ -58,8 +60,35 @@ function Certificate (certificate) {
   this.certificateTree = certificateTree(certificate, this.evidenceTree);
 }
 
+function verifyCertificate(certificate){  
+  // Checks the signature of the certificate
+  if(!certificate.signature) throw new Error('Certificate does not have a signature');
+  if(certificate.signature.type != 'SHA3MerkleProof') throw new Error('Signature algorithm is not supported');
+  if(!certificate.signature.targetHash) throw new Error('Certificate does not have a targetHash');
+  if(!certificate.signature.merkleRoot) throw new Error('Certificate does not have a merkleRoot');
+
+  const generatedCertificate = new Certificate(certificate);
+  const targetHash = generatedCertificate.getRoot().toString('hex');
+
+  // Check the target hash of the certificate matches the signature's target hash
+  if(targetHash != certificate.signature.targetHash) throw new Error('Certificate hash does not match signature\'s targetHash');
+
+  // Check if target hash resolves to merkle root
+  if(!checkProof(
+    certificate.signature.proof,
+    certificate.signature.merkleRoot,
+    certificate.signature.targetHash
+  )) throw new Error('Certificate proof is invalid for merkle root');
+
+  return true;
+}
+
 Certificate.prototype.getRoot = function () {
   return this.certificateTree.getRoot();
 };
+
+Certificate.prototype.verify = function() {
+  return verifyCertificate(this.certificate);
+}
 
 module.exports = Certificate;

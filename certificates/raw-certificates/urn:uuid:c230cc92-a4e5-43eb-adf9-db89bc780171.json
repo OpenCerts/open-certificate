@@ -1,0 +1,80 @@
+{
+  "id": "urn:uuid:c230cc92-a4e5-43eb-adf9-db89bc780171",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.148Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "au8cyef6p1h7pkdfed1p0r9xh",
+    "criteria": "001xvh4ohnan76zoh1piztcfq1n8a2kql00rf13b8g7u45b7f21ylxibteeia491qt2qq8aqfde5r0t6",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "bwngqvq9zv:6ixcoke5sx5diqm",
+          "grade": "cqrglvj2xe:A+",
+          "courseCredit": "fjjffceu5s:4.0",
+          "courseCode": "zuro7lhb7y:fx27x"
+        },
+        {
+          "name": "82i0mwsck2:did53dozjf3rqoh",
+          "grade": "d7jaljjyor:A+",
+          "courseCredit": "b2v3smnevz:4.0",
+          "courseCode": "y8xya46zim:7c8a1"
+        },
+        {
+          "name": "5j1240dei0:qhdmc6stk080opb",
+          "grade": "9a0wyzsfir:A+",
+          "courseCredit": "cmkrf1lo1n:4.0",
+          "courseCode": "r9bu0o46xu:uzrn2"
+        },
+        {
+          "name": "gqjvzdf4fx:c632o3bujhturhx",
+          "grade": "hk74kmmiyt:A+",
+          "courseCredit": "31oyz0oau0:4.0",
+          "courseCode": "w0cf05de67:dn1zw"
+        },
+        {
+          "name": "dhnrwzv6a0:g2762hcf267tcc9",
+          "grade": "5327zjwi6p:A+",
+          "courseCredit": "jze0f63o4p:4.0",
+          "courseCode": "qqqx1qxjz8:cjbo7"
+        },
+        {
+          "name": "dh27ssnmp2:g9pbfqc4alwncny",
+          "grade": "froemqopzq:A+",
+          "courseCredit": "sraz58tljt:4.0",
+          "courseCode": "m3r3nmwgee:yufvh"
+        },
+        {
+          "name": "1yelxig77c:i81i49iiuky54u8",
+          "grade": "ejpmcq781x:A+",
+          "courseCredit": "40n5wxx12u:4.0",
+          "courseCode": "mh4g243rcz:fk3yg"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "Gerald.Cartwright@hotmail.com",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "874-907-3088",
+      "hashed": false
+    }
+  ]
+}

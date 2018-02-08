@@ -1,0 +1,88 @@
+{
+  "id": "urn:uuid:951e19e0-b0a7-433b-adb5-4c632b245622",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.130Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "prl7egawz2cyiqj0o7ii2pgss",
+    "criteria": "mmltcmezd8gcaci6lwflikbqqw32r8q0gha6i98aoapqbbe06duao0aggzvs5fxkuip8bnhf05l38l38",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "28w71lhrw0:4jy5ptapol9rexs",
+          "grade": "ltcxzkvutc:A+",
+          "courseCredit": "eea0hz3a6i:4.0",
+          "courseCode": "8s0f2w1j8f:gtyan"
+        },
+        {
+          "name": "6jcbcijsfv:t6tbtslqqr2sen0",
+          "grade": "i905infphf:A+",
+          "courseCredit": "8z9l2nz5cf:4.0",
+          "courseCode": "2ge2j624pz:l0vmn"
+        },
+        {
+          "name": "2cffw5b6ms:fze7uopqycpyoud",
+          "grade": "n37b6m265u:A+",
+          "courseCredit": "h3298bxue5:4.0",
+          "courseCode": "mb2ngiiu9h:d2lrk"
+        },
+        {
+          "name": "9ylbkts97o:0vng54x8h7pvct1",
+          "grade": "49cfl3lstv:A+",
+          "courseCredit": "2mtgy2vyp4:4.0",
+          "courseCode": "7lomlxmhmt:5nyiq"
+        },
+        {
+          "name": "y56cvi79fy:wbwtoi5lokcrfbo",
+          "grade": "32himwl218:A+",
+          "courseCredit": "edn7f6iq5t:4.0",
+          "courseCode": "nixgwqlpmz:g3g91"
+        },
+        {
+          "name": "7u0v4febe2:zscwy6tvt4uldo2",
+          "grade": "90bahglfzj:A+",
+          "courseCredit": "gylz83toca:4.0",
+          "courseCode": "7xpw36g8jy:iesfx"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$72f54f932650c9e029be682783f185bace4fa3866e6307a9f7c5aac9719794f5",
+      "salt": "11h3xgwpyc",
+      "hashed": true
+    },
+    {
+      "type": "telephone",
+      "identity": "783.127.9313 x518",
+      "hashed": false
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "db24305b5949769f3646c828d4359997eca0b32ea9932fe645a829b267326e90",
+    "proof": [
+      "d5d216f615affd13fdfb55e8ff86ca7610715a3b0eb7698a73063ce790a8b497",
+      "e969684f37567b0b899a28dac3985d724386af06943a923f1e745835a7d2fb30",
+      "3a7e87a67acc548fcc00d47fe9d084bfadf735a443017d94bfc9d7957825e9dd",
+      "cdeacad2829699f3829a0b9821652d474c6e5bccdd0b540fe8951967a3b7c618",
+      "7d278b42f58177104108f53ae3d0c69be62299515b8dedfd4a66ff0a715f7b55",
+      "9857c9e1b95e36b2638d43df1f3d1764947c01754e502f5c0ad95c80e7da1912"
+    ],
+    "merkleRoot": "ffe6b00d0bedb82dedb289cab6c4ae589474fe313b58cb953f7460509b223fa7"
+  }
+}

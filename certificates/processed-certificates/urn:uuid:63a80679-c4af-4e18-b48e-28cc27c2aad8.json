@@ -1,0 +1,79 @@
+{
+  "id": "urn:uuid:63a80679-c4af-4e18-b48e-28cc27c2aad8",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.131Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "acq8wqxhn2obzirw75pgof0fz",
+    "criteria": "orkoa75oifpi0xkftuli5cnd2a6z3zhsh8kt7drc8t2w3f0fxwp7o1aktzck4uuwyl14wcqigjyzyst1",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "5jodbc95n6:i1mpg80w3oteb3c",
+          "grade": "st22xm4tws:A+",
+          "courseCredit": "99hkykenxr:4.0",
+          "courseCode": "zull79avmm:hpkk2"
+        },
+        {
+          "name": "kfxd19w9kk:wytlo86ncamg64w",
+          "grade": "q1usacsr6l:A+",
+          "courseCredit": "cjuxy6camn:4.0",
+          "courseCode": "1g8hqsebdk:drmsq"
+        },
+        {
+          "name": "vlkap2tdsq:el019b9bl88kn13",
+          "grade": "m70cr6fsek:A+",
+          "courseCredit": "v1i3tmpk2q:4.0",
+          "courseCode": "nh20o1y370:ekjmq"
+        }
+      ]
+    },
+    "privateEvidence": [
+      "95903f858172e24a3d0899663d36f7c2fb82d320356bedf41bdb39cee7099dc2",
+      "b899c5ee80c43f46ca3f45f0ac3edfc7a307810b1b8e5a53884aa93f52dea6a7",
+      "66053bd1aea8cef5073b2205be1f297a898ada051ded0f6e72c183ea8c4efa93",
+      "c165e713fd36a8334db3dcb06f897d1f4be354c74554ed3b952b787e2222d2b9",
+      "4480460c8fee35b11f63be87b24a283b4511ab7fe37121343afc92eb08013c91",
+      "1e7d46a5f063675925ed6aa2464d311166dafe2a606b9daeb2e5d8e81d3d6276",
+      "8c3c3e616b842bcc9f439466d740a3c5ca64a9c67253a7286f2b0e3787975e1c",
+      "f79fee0ef78785b86e69e7747f14a4660552578c15958cbab13efbb26def8fae",
+      "4c645df05610f962cee9262e526f7d4091fe99e0f6bc58a2256949a0f64ee2c7",
+      "cb65edf940ee5297ef078e3785c4083101dfe107af1f803b449c81a63c3a2788",
+      "77c13b4d386f4ee4aa58e092eee1103a18834d693ed35e3d2a27cfebe1cad6fc",
+      "f9071019e78b9f6705cc16d7580e52319ab8fbc11fb3b2d7fae02ba7ec187c55",
+      "a8090e5d542ef1c746c3779867b8a258b92c8dccbaa85f68311fb8e55626847c",
+      "58f00a3052204de8ef9ff0510dde7d56fe5247be723a3a8be7aff6c9db8e04c2"
+    ]
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": {
+    "type": "url",
+    "identity": "sha256$3ee3b591309a6151034107ea40d79e48c68bbfb966f80a9b39d1afefa0687fca",
+    "salt": "da7ck8pvhb",
+    "hashed": true
+  },
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "8c84ca76b2b2934ad8304b04facae743a5e2fe5224a777285ba9377e2584a5b9",
+    "proof": [
+      "8c114531c80d939fc93650b5c3b258e579fe0c83f55be4f73a2319d02c0f5312",
+      "fb9264975a73a08f55144544bdd7d87f0f5a42ec2e2effe29ad304a9b9272b83",
+      "7145b16a68ce490f6b8767e3335332b12e874bed92a789927d0efb666600ced3",
+      "21759bc554143556711edadd64848b1c3788d40c8d422c6beda35a666501897c",
+      "7d278b42f58177104108f53ae3d0c69be62299515b8dedfd4a66ff0a715f7b55",
+      "9857c9e1b95e36b2638d43df1f3d1764947c01754e502f5c0ad95c80e7da1912"
+    ],
+    "merkleRoot": "ffe6b00d0bedb82dedb289cab6c4ae589474fe313b58cb953f7460509b223fa7"
+  }
+}

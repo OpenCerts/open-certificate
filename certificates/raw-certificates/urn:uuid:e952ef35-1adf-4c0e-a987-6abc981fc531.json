@@ -1,0 +1,76 @@
+{
+  "id": "urn:uuid:e952ef35-1adf-4c0e-a987-6abc981fc531",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.109Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "fm95z19byhupnulzvbk2uryo3",
+    "criteria": "s0sirxfltdmbb1ogyoggfckfm35wwg521qme9laqpynbimiry0m4u215lzqpfbtne0f09n2pna8q6oyl",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "kh862x34xq:0c1fyywmzb6a4lo",
+          "grade": "a9g0dt6r27:A+",
+          "courseCredit": "ccvon4o092:4.0",
+          "courseCode": "lujoiwne44:bx7ln"
+        },
+        {
+          "name": "0o822dfvw3:x851bp96xuamk32",
+          "grade": "4ejk1lxnj9:A+",
+          "courseCredit": "wo55vhd0xw:4.0",
+          "courseCode": "vr0g6mls1o:e1nkf"
+        },
+        {
+          "name": "7b0mscc2e7:ah5ws91nugx3kyn",
+          "grade": "ursv2yrdxz:A+",
+          "courseCredit": "4y0h7h8ynp:4.0",
+          "courseCode": "j36ofhq3cc:14yoj"
+        },
+        {
+          "name": "axzgjkuxer:w71bf9344fogz4v",
+          "grade": "kldc9gv6zr:A+",
+          "courseCredit": "atje67a3on:4.0",
+          "courseCode": "4f9yfiswtc:nq1ld"
+        },
+        {
+          "name": "g0ki51a7ro:uszlp0cpt4lbnx4",
+          "grade": "5rxmdkma92:A+",
+          "courseCredit": "etv9ihwyy5:4.0",
+          "courseCode": "x2acxgfdmx:pc610"
+        },
+        {
+          "name": "qp7vg32beg:6ee9w7wwafxfw7r",
+          "grade": "g1umzgdaae:A+",
+          "courseCredit": "a7i1wsyf73:4.0",
+          "courseCode": "c3yl1hedpv:gcmcb"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$3e9f74880a49fabb00cf825081e2ebde28025c5501ce31b6ad50ccf7204e891e",
+      "salt": "40if8lj210",
+      "hashed": true
+    },
+    {
+      "type": "did",
+      "identity": "sha256$e49913a85451b595e94b829817a5258ed6f23cd9d91db92d1c1bf51ced24f6fa",
+      "salt": "e5myyk0ek9",
+      "hashed": true
+    }
+  ]
+}

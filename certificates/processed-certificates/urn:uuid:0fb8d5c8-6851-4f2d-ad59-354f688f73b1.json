@@ -1,0 +1,69 @@
+{
+  "id": "urn:uuid:0fb8d5c8-6851-4f2d-ad59-354f688f73b1",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.132Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "k0fidcjxmtdsphkfhcdoya9wi",
+    "criteria": "f8b0bezukhs5kfvyrxie6y96gkhcnu4bjlwe13b3xb7635wya06u9oopl0t80udr6yj8woxrythxwf3p",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "8dj71tve5u:xvr8oriau0fit1r",
+          "grade": "39kfl5aehp:A+",
+          "courseCredit": "cp7ls3pet8:4.0",
+          "courseCode": "s6nx31y7jo:baym6"
+        },
+        {
+          "name": "my3t3vle9i:nlyl0olr73bubvu",
+          "grade": "y3bz93nt4a:A+",
+          "courseCredit": "xla0c6df3o:4.0",
+          "courseCode": "t7finsa9uu:f9t7x"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "did",
+      "identity": "sha256$83193d271396c923ee59c05f6dbb3a9f12d1e5aa49d7f9699ce48521c56bed8d",
+      "salt": "qhgc0qlguq",
+      "hashed": true
+    },
+    {
+      "type": "url",
+      "identity": "https://modesto.org",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "1-554-114-0682 x498",
+      "hashed": false
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "138bd93b729fde7cc257c6ff2c26f1e8a0640f4c5058f84400f318ec76130ed4",
+    "proof": [
+      "13e1d78e16dbf4ca07e90b06499d040e77bfacdcad41b1c1e77bbf7aff17a06d",
+      "ec632c5709ccaafc5116b70ba7f6acaaa69d1cffd438226fb9a965b7486c1abe",
+      "1b9ac1c0265ff55b2501deb2a3e32998b9650404aef7912c461968ab35610a2d",
+      "1c4e16f36a73a71678a1b2db2a60336487a21e306c9d86eb95217ddb2dc1c19d",
+      "f97f4d3469c73c0d99c6e8377641d3c4cbd0d8672ceae59a12088dff52ceb583",
+      "81611f9c6e8c8074e28c97774eb980cfad340bc075486abb7c7c3a93feb2343d"
+    ],
+    "merkleRoot": "ffe6b00d0bedb82dedb289cab6c4ae589474fe313b58cb953f7460509b223fa7"
+  }
+}

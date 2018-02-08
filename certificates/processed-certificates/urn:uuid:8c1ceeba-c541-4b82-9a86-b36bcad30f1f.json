@@ -1,0 +1,99 @@
+{
+  "id": "urn:uuid:8c1ceeba-c541-4b82-9a86-b36bcad30f1f",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.137Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "yr5p8et7kb28kx6tyvisc73q9",
+    "criteria": "py9aphe4leegottlfkbr70iz6bbhznbflmaqo3a1i02dmuizz535aw2l46fesqldlizhxmjmg2xbvayf",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "mtdnar83np:b9qbb8eobvoct52",
+          "grade": "9x051gzxth:A+",
+          "courseCredit": "b6qy04en3b:4.0",
+          "courseCode": "jb1t97vym2:n1wiw"
+        },
+        {
+          "name": "zsdoy1cad0:cdm8ib2tfvfx7cy",
+          "grade": "5xaglxie5w:A+",
+          "courseCredit": "dymqk4e0vs:4.0",
+          "courseCode": "znpleyprzg:5gzm6"
+        },
+        {
+          "name": "asfoapyfw1:60lhxior2cqasrb",
+          "grade": "u849zdwiz6:A+",
+          "courseCredit": "n1m6k3hqw7:4.0",
+          "courseCode": "fmpvupvdrp:u0dxj"
+        },
+        {
+          "name": "vqyw2rkvnf:qth3htd7fz3amzv",
+          "grade": "nemut6dx2e:A+",
+          "courseCredit": "yqsxp2hfa6:4.0",
+          "courseCode": "ag353a9txa:tnu35"
+        },
+        {
+          "name": "vp0491pqcy:hvnlw16o9nrdaa2",
+          "grade": "oy64htwdrc:A+",
+          "courseCredit": "rs6suxktw0:4.0",
+          "courseCode": "5sh863uyki:oriud"
+        },
+        {
+          "name": "4ilaw5fzz7:5v9mmiyqspbg4df",
+          "grade": "76r5cw8zvh:A+",
+          "courseCredit": "0mc3er2r0w:4.0",
+          "courseCode": "08b3wutjuq:6rc5u"
+        },
+        {
+          "name": "foo9cnayny:wpnkb6s2lc8ia6s",
+          "grade": "fe3hthqxwc:A+",
+          "courseCredit": "vomsan1ial:4.0",
+          "courseCode": "ohtujz49mm:vdolw"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "Raymundo.Keeling15@yahoo.com",
+      "hashed": false
+    },
+    {
+      "type": "url",
+      "identity": "http://gladyce.org",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "sha256$6a8c204df881b2f2450e13b81d2338985bce4b1c05be0a33a1b9f3cb8939c04f",
+      "salt": "pa0nytfuwq",
+      "hashed": true
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "513be7d7c8be57e585a6ae8d4c220de540642add6f15a399f6421fccc2910f34",
+    "proof": [
+      "58ee67622bfbe5293def5c60604bba4b26afed49669b3c85f75b991e0681ea36",
+      "1a469ad28b11819b4662fe90d9a64f3b9971d3f678ed27887dbaee6ba44322ae",
+      "745571178febfba360acca7f2a7bddb56b16af8f6e6a0aff576ffb2a55cd384a",
+      "f002f069688d6067bfcb53611391f900a573d2a720f827b809ffab1345c20362",
+      "6a11338ef54a594f5de84ddf0f1ee00862ab73e244baa18746db6208ebd83075",
+      "81611f9c6e8c8074e28c97774eb980cfad340bc075486abb7c7c3a93feb2343d"
+    ],
+    "merkleRoot": "ffe6b00d0bedb82dedb289cab6c4ae589474fe313b58cb953f7460509b223fa7"
+  }
+}

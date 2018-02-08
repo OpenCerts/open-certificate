@@ -1,0 +1,98 @@
+{
+  "id": "urn:uuid:b968ed25-22c7-4da0-88e9-63ad2394a571",
+  "type": "Assertion",
+  "issuedOn": "2018-02-08T06:54:49.116Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "237ws52w8xxzho2qfb2d6pfp7",
+    "criteria": "sy34dqoc6l2gc94rz0f1pqjdg7mgz4t7c04sxnb6m3aex9tx97m8yoxzhyrsm4owu9ryzfm9bk10i5p6",
+    "evidence": {
+      "transcript": [
+        {
+          "name": "yqownkfk6c:04x944ustotisuj",
+          "grade": "klodgji33b:A+",
+          "courseCredit": "xn29vwf4vb:4.0",
+          "courseCode": "xtdvt5mc8m:kbnyw"
+        },
+        {
+          "name": "biv7mrgqjf:3lxha0bq4g53rms",
+          "grade": "u3np1slpq0:A+",
+          "courseCredit": "coiehdgknq:4.0",
+          "courseCode": "kew3pjetnt:o6t5e"
+        },
+        {
+          "name": "s6jlg10e3v:d0ei90onhmdr8b3",
+          "grade": "da8eknqvlo:A+",
+          "courseCredit": "wx0l61qzjt:4.0",
+          "courseCode": "0tn2kfrd7y:c5xqc"
+        },
+        {
+          "name": "zuqfqzqw0k:9dgy0ptvlewvb3w",
+          "grade": "3w0b43a85i:A+",
+          "courseCredit": "h95a9qtjc1:4.0",
+          "courseCode": "z5ur17xgp9:bvv10"
+        },
+        {
+          "name": "sawym1nj99:94zx6evdjuqve1m",
+          "grade": "w0kgesojke:A+",
+          "courseCredit": "nyznx8d044:4.0",
+          "courseCode": "nyyhltxnzg:gzb1r"
+        },
+        {
+          "name": "4yizpsgxl0:r3guu7nq8z2xnsz",
+          "grade": "g8lv1ylawk:A+",
+          "courseCredit": "8l3qw9ku0m:4.0",
+          "courseCode": "25rcuoqza1:c05vb"
+        }
+      ]
+    },
+    "privateEvidence": [
+      "10c22932cda3c456342200ea35cdb620a28ec8ec66cd281f9674f75d09d8e222",
+      "d32f78533b0445eb22661516c05d0334ef730f2dbc17165893e200b8a8b27fe8",
+      "c1e1a328d20312f890af5af377a39d6f5e436e6a0c70a4c83c9d5ddda5582468",
+      "217d348b053cd270e2ecf0d29a63ce57ebdb44236483a0fd9bd2cedea1eb93b7",
+      "c3b9e6c87a6dda7be1c524be42df9eb656b9196842fc9bb0595856cb1803886b",
+      "e909280b439a95b59b6bcc58b9962ecebc653a4e12aed2b7d8cd2849a9ed03ca",
+      "0ec9f94977afd3a3f9934edf742955d6bb0b22ce008cee36908ead85e6c0edf4",
+      "b32b2dae727310f3562093d316f70ef8f42583bd51a89c6b6d3efaf593022693",
+      "35f76893b030d335908b01cfab96fbcafaca3237340cfea166c43da7ce07828f"
+    ]
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$1719703c86cb3ddd0ed116162b8b66029034f47a5e2570353fddb1177c577169",
+      "salt": "60uf2713r6",
+      "hashed": true
+    },
+    {
+      "type": "did",
+      "identity": "sha256$eb143dccd5cdd78198c34e14acf5885c48cf32c7ab83d86d6529c26e29a94326",
+      "salt": "tbssu4nmvy",
+      "hashed": true
+    },
+    {
+      "type": "url",
+      "identity": "https://ewell.biz",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "sha256$1e67a651e57db37099393067bfe07391b051a85d77b995c466b0db38590302a8",
+      "salt": "gt1r2fc8hw",
+      "hashed": true
+    }
+  ]
+}

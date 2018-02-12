@@ -3,3 +3,4 @@ coverage/
 certificates/
 certificates/
 package-lock.json
+npm-debug.log

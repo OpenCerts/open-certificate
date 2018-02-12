@@ -1,19 +1,19 @@
-const Certificate = require('./Certificate');
-const {MerkleTree} = require('./merkle');
+const Certificate = require("./certificate");
+const { MerkleTree } = require("./merkle");
 
-function CertificateBatch (certificates) {
+function CertificateBatch(certificates) {
   this.certificates = certificates
-    .map(c => { return new Certificate(c).getRoot(); })
+    .map(c => new Certificate(c).getRoot())
     .sort(Buffer.compare);
 
   this.merkleTree = new MerkleTree(this.certificates);
 }
 
-CertificateBatch.prototype.getRoot = function () {
+CertificateBatch.prototype.getRoot = function() {
   return this.merkleTree.getRoot();
 };
 
-CertificateBatch.prototype.getProof = function (certificate) {
+CertificateBatch.prototype.getProof = function(certificate) {
   // if certificate is a cert object, change to cert, if its
   let buf = null;
   if (Buffer.isBuffer(certificate) && certificate.length === 32) {
@@ -25,9 +25,9 @@ CertificateBatch.prototype.getProof = function (certificate) {
   return this.merkleTree.getProof(buf);
 };
 
-function issueCertificates (certificates) {
+function issueCertificates(certificates) {
   if (!Array.isArray(certificates)) {
-    throw new Error('Certificates must be in an array');
+    throw new Error("Certificates must be in an array");
   }
   return new CertificateBatch(certificates);
 }

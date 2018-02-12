@@ -1,31 +1,33 @@
-const certificateBatch = require('./certificateBatch');
-const Certificate = require('./certificate');
-const {randomCertificate} = require('./randomCertificateGenerator.js');
-const {checkProof} = require('./merkle');
+const certificateBatch = require("../utils/certificateBatch");
+const Certificate = require("../utils/certificate");
+const { randomCertificate } = require("../utils/randomCertificateGenerator.js");
+const { checkProof } = require("../utils/merkle");
 
-describe('certificateBatch', () => {
+describe("certificateBatch", () => {
   const CERTIFICATES_TO_ISSUE = 500;
-  let certificates = [];
-  for (let i = 0; i < CERTIFICATES_TO_ISSUE; i++) { certificates.push(randomCertificate()); }
+  const certificates = [];
+  for (let i = 0; i < CERTIFICATES_TO_ISSUE; i++) {
+    certificates.push(randomCertificate());
+  }
 
-  describe('issueCertificates', () => {
-    it('returns merkle root for batch', () => {
+  describe("issueCertificates", () => {
+    it("returns merkle root for batch", () => {
       const batchedCerts = certificateBatch.issueCertificates(certificates);
       expect(batchedCerts.certificates).to.exist;
       expect(batchedCerts.merkleTree).to.exist;
     });
   });
 
-  describe('CertificateBatch', () => {
-    describe('getProof', () => {
-      it('returns proofs for certificate in the batch', () => {
+  describe("CertificateBatch", () => {
+    describe("getProof", () => {
+      it("returns proofs for certificate in the batch", () => {
         const batchedCerts = certificateBatch.issueCertificates(certificates);
         const cert = certificates[0];
         const proof = batchedCerts.getProof(cert);
         expect(proof).to.not.be.null;
       });
 
-      it('returns proofs for certificate buffer in the batch', () => {
+      it("returns proofs for certificate buffer in the batch", () => {
         const batchedCerts = certificateBatch.issueCertificates(certificates);
         const cert = certificates[0];
         const buf = new Certificate(cert).getRoot();
@@ -35,10 +37,10 @@ describe('certificateBatch', () => {
         assert(checkProof(proof, batchedCerts.getRoot(), buf));
       });
 
-      it('throws when certificate is not in the batch', () => {
+      it("throws when certificate is not in the batch", () => {
         const batchedCerts = certificateBatch.issueCertificates(certificates);
         const cert = randomCertificate();
-        const proof = () => {return batchedCerts.getProof(cert);};
+        const proof = () => batchedCerts.getProof(cert);
         expect(proof).to.throw;
       });
     });

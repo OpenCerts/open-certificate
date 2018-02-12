@@ -4,19 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover --reporter=html _mocha -- ./helpers.js \"./{,!(node_modules)/**/}*.test.js\"",
-    "lint": "eslint . --fix"
+    "test": "nyc --reporter=html mocha -- ./test/helpers.js test",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.1.2",
-    "eslint-config-standard": "^11.0.0-beta.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-bignumber": "^2.0.2",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-chai-expect": "^1.1.1",
+    "eslint-plugin-chai-friendly": "^0.4.1",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^6.0.0",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "mocha": "^4.1.0"
+    "eslint-plugin-prettier": "^2.5.0",
+    "prettier": "^1.10.2",
+    "mocha": "^4.1.0",
+    "nyc": "^11.4.1"
   },
   "dependencies": {
     "commander": "^2.14.0",

@@ -1,12 +1,9 @@
-const _ = require('lodash');
-const {MerkleTree, checkProof} = require('./merkle');
-const {flattenJson, hashToBuffer, toBuffer} = require('./utils');
+const _ = require("lodash");
+const { MerkleTree, checkProof } = require("./merkle");
+const { flattenJson, hashToBuffer, toBuffer } = require("./utils");
 
-function evidenceTree (certificate) {
-  const {
-    evidence,
-    privateEvidence
-  } = certificate.badge;
+function evidenceTree(certificate) {
+  const { evidence, privateEvidence } = certificate.badge;
 
   let evidenceHashes = [];
 
@@ -30,14 +27,20 @@ function evidenceTree (certificate) {
 }
 
 function certificateTree(certificate, evidenceTree) {
-  let cert = _.cloneDeep(certificate);
+  const cert = _.cloneDeep(certificate);
 
-  if (cert.signature){delete cert.signature;}
-  if (cert.badge.evidence){ delete cert.badge.evidence;}
-  if (cert.badge.privateEvidence){ delete cert.badge.privateEvidence;}
+  if (cert.signature) {
+    delete cert.signature;
+  }
+  if (cert.badge.evidence) {
+    delete cert.badge.evidence;
+  }
+  if (cert.badge.privateEvidence) {
+    delete cert.badge.privateEvidence;
+  }
 
   if (evidenceTree) {
-    cert.badge.evidenceRoot = evidenceTree.getRoot().toString('hex');
+    cert.badge.evidenceRoot = evidenceTree.getRoot().toString("hex");
   }
 
   const flattenedCertificate = flattenJson(cert);
@@ -48,42 +51,50 @@ function certificateTree(certificate, evidenceTree) {
   return tree;
 }
 
-function Certificate (certificate) {
+function Certificate(certificate) {
   this.certificate = certificate;
 
   // Build an evidence tree if either evidence or private evidence is present
   if (certificate.badge.evidence || certificate.badge.privateEvidence) {
     this.evidenceTree = evidenceTree(certificate);
-    this.evidenceRoot = this.evidenceTree.getRoot().toString('hex');
+    this.evidenceRoot = this.evidenceTree.getRoot().toString("hex");
   }
 
   this.certificateTree = certificateTree(certificate, this.evidenceTree);
 }
 
-function verifyCertificate(certificate){  
+function verifyCertificate(certificate) {
   // Checks the signature of the certificate
-  if(!certificate.signature) throw new Error('Certificate does not have a signature');
-  if(certificate.signature.type != 'SHA3MerkleProof') throw new Error('Signature algorithm is not supported');
-  if(!certificate.signature.targetHash) throw new Error('Certificate does not have a targetHash');
-  if(!certificate.signature.merkleRoot) throw new Error('Certificate does not have a merkleRoot');
+  if (!certificate.signature)
+    throw new Error("Certificate does not have a signature");
+  if (certificate.signature.type != "SHA3MerkleProof")
+    throw new Error("Signature algorithm is not supported");
+  if (!certificate.signature.targetHash)
+    throw new Error("Certificate does not have a targetHash");
+  if (!certificate.signature.merkleRoot)
+    throw new Error("Certificate does not have a merkleRoot");
 
   const generatedCertificate = new Certificate(certificate);
-  const targetHash = generatedCertificate.getRoot().toString('hex');
+  const targetHash = generatedCertificate.getRoot().toString("hex");
 
   // Check the target hash of the certificate matches the signature's target hash
-  if(targetHash != certificate.signature.targetHash) throw new Error('Certificate hash does not match signature\'s targetHash');
+  if (targetHash != certificate.signature.targetHash)
+    throw new Error("Certificate hash does not match signature's targetHash");
 
   // Check if target hash resolves to merkle root
-  if(!checkProof(
-    certificate.signature.proof,
-    certificate.signature.merkleRoot,
-    certificate.signature.targetHash
-  )) throw new Error('Certificate proof is invalid for merkle root');
+  if (
+    !checkProof(
+      certificate.signature.proof,
+      certificate.signature.merkleRoot,
+      certificate.signature.targetHash
+    )
+  )
+    throw new Error("Certificate proof is invalid for merkle root");
 
   return true;
 }
 
-Certificate.prototype.getRoot = function () {
+Certificate.prototype.getRoot = function() {
   return this.certificateTree.getRoot();
 };
 

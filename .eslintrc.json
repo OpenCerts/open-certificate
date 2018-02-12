@@ -1,36 +1,35 @@
 {
+  "extends": [
+    "airbnb-base",
+    "prettier"
+  ],
   "env": {
-    "es6": true,
-    "node": true,
     "mocha": true
   },
+  "plugins": [
+    "prettier",
+    "chai-friendly",
+    "chai-expect"
+  ],
   "globals": {
+    "artifacts": false,
+    "contract": false,
+    "assert": false,
     "expect": true,
-    "assert": true
-  },
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "sourceType": "module"
+    "web3": false
   },
   "rules": {
-    "indent": [
+    "no-unused-vars": [
       "error",
-      2
+      {
+        "argsIgnorePattern": "^_"
+      }
     ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ],
-    "no-console": [
-      "warn"
-    ]
+    "prettier/prettier": "error",
+    "no-unused-expressions": "off",
+    "chai-friendly/no-unused-expressions": "error",
+    "chai-expect/no-inner-compare": "error",
+    "chai-expect/missing-assertion": "error",
+    "chai-expect/terminating-properties": "error"
   }
 }

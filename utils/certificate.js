@@ -26,7 +26,7 @@ function evidenceTree(certificate) {
   return tree;
 }
 
-function certificateTree(certificate, evidenceTree) {
+function certificateTree(certificate, evidences) {
   const cert = _.cloneDeep(certificate);
 
   if (cert.signature) {
@@ -39,8 +39,8 @@ function certificateTree(certificate, evidenceTree) {
     delete cert.badge.privateEvidence;
   }
 
-  if (evidenceTree) {
-    cert.badge.evidenceRoot = evidenceTree.getRoot().toString("hex");
+  if (evidences) {
+    cert.badge.evidenceRoot = evidences.getRoot().toString("hex");
   }
 
   const flattenedCertificate = flattenJson(cert);
@@ -67,7 +67,7 @@ function verifyCertificate(certificate) {
   // Checks the signature of the certificate
   if (!certificate.signature)
     throw new Error("Certificate does not have a signature");
-  if (certificate.signature.type != "SHA3MerkleProof")
+  if (certificate.signature.type !== "SHA3MerkleProof")
     throw new Error("Signature algorithm is not supported");
   if (!certificate.signature.targetHash)
     throw new Error("Certificate does not have a targetHash");
@@ -78,7 +78,7 @@ function verifyCertificate(certificate) {
   const targetHash = generatedCertificate.getRoot().toString("hex");
 
   // Check the target hash of the certificate matches the signature's target hash
-  if (targetHash != certificate.signature.targetHash)
+  if (targetHash !== certificate.signature.targetHash)
     throw new Error("Certificate hash does not match signature's targetHash");
 
   // Check if target hash resolves to merkle root

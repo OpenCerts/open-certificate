@@ -51,13 +51,14 @@ function recipientDecorator(certificate) {
   let profiles = [];
 
   // Randomly add 1 to 4 profiles
-  const seed = parseInt(Math.random() * 15) + 1;
-  if ((seed & 1) == 1) profiles.push(randomHashingFunction(emailProfile()));
-  if ((seed & 2) == 2) profiles.push(randomHashingFunction(didProfile()));
-  if ((seed & 4) == 4) profiles.push(randomHashingFunction(urlProfile()));
-  if ((seed & 8) == 8) profiles.push(randomHashingFunction(telephoneProfile()));
+  const seed = parseInt(Math.random() * 15, 10) + 1;
+  if ((seed & 1) === 1) profiles.push(randomHashingFunction(emailProfile()));
+  if ((seed & 2) === 2) profiles.push(randomHashingFunction(didProfile()));
+  if ((seed & 4) === 4) profiles.push(randomHashingFunction(urlProfile()));
+  if ((seed & 8) === 8)
+    profiles.push(randomHashingFunction(telephoneProfile()));
 
-  if (profiles.length == 1) profiles = profiles[0];
+  if (profiles.length === 1) [profiles] = profiles;
 
   certificate.recipient = profiles;
 }
@@ -67,13 +68,17 @@ function certificateDecorator(certificate) {
     // 80% will have visible evidences
     if (Math.random() < 0.8) {
       const transcript = [];
-      for (let i = 0; i < parseInt(Math.random() * 50) + 1; i++) {
+      for (let i = 0; i < parseInt(Math.random() * 50, 10) + 1; i += 1) {
         transcript.push({
           name: `${faker.random.alphaNumeric(10)}:${faker.random.alphaNumeric(
             15
           )}`,
-          grade: `${faker.random.alphaNumeric(10)}:` + `A+`,
-          courseCredit: `${faker.random.alphaNumeric(10)}:` + `4.0`,
+          grade: `${faker.random.alphaNumeric(10)}:${faker.random.alphaNumeric(
+            2
+          )}`,
+          courseCredit: `${faker.random.alphaNumeric(
+            10
+          )}:${faker.random.alphaNumeric(3)}`,
           courseCode: `${faker.random.alphaNumeric(
             10
           )}:${faker.random.alphaNumeric(5)}`
@@ -83,13 +88,14 @@ function certificateDecorator(certificate) {
         transcript
       };
     }
+    return null;
   }
 
   function generatePrivateEvidence() {
     // 30% will have hidden evidences
     if (Math.random() < 0.3) {
       const privateEvidence = [];
-      for (let i = 0; i < parseInt(Math.random() * 50) + 1; i++) {
+      for (let i = 0; i < parseInt(Math.random() * 50, 10) + 1; i += 1) {
         const plaintextEvidence = `${faker.random.alphaNumeric(
           10
         )}:${faker.random.alphaNumeric(15)}`;
@@ -98,6 +104,7 @@ function certificateDecorator(certificate) {
       }
       return privateEvidence;
     }
+    return null;
   }
 
   function generateIssuerIdentity() {
@@ -148,7 +155,7 @@ function randomCertificate() {
 }
 
 function generateRandomCertificate(num, dir) {
-  for (let i = 0; i < num; i++) {
+  for (let i = 0; i < num; i += 1) {
     const cert = randomCertificate();
     const certId = cert.id;
     fs.writeFileSync(`${dir}/${certId}.json`, JSON.stringify(cert, null, 2));

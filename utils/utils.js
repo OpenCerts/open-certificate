@@ -43,7 +43,7 @@ function toBuffer(element) {
 function hashToBuffer(hash) {
   return Buffer.isBuffer(hash) && hash.length === 32
     ? hash
-    : Buffer(hash, "hex");
+    : Buffer.from(hash, "hex");
 }
 
 module.exports = {

@@ -6,7 +6,7 @@ const { checkProof } = require("../utils/merkle");
 describe("certificateBatch", () => {
   const CERTIFICATES_TO_ISSUE = 500;
   const certificates = [];
-  for (let i = 0; i < CERTIFICATES_TO_ISSUE; i++) {
+  for (let i = 0; i < CERTIFICATES_TO_ISSUE; i += 1) {
     certificates.push(randomCertificate());
   }
 

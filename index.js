@@ -1,3 +1,4 @@
+const fs = require("fs");
 const program = require("commander");
 
 const batchIssue = require("./utils/batchIssue");
@@ -38,7 +39,8 @@ if (program.input && program.output) {
     "============================== Verifying certificate ==============================\n"
   );
 
-  const certificate = new Certificate(require(program.verify));
+  const certificateJson = fs.readFileSync(program.verify);
+  const certificate = new Certificate(certificateJson);
 
   try {
     certificate.verify();

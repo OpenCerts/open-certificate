@@ -11,7 +11,7 @@ function batchIssue(inputDir, outputDir) {
         const certificates = items.map(i =>
           JSON.parse(fs.readFileSync(path + i))
         );
-        resolve(certificates);
+        return resolve(certificates);
       });
     });
   }

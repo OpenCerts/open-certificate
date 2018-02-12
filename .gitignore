@@ -1,4 +1,5 @@
 node_modules/
 coverage/
-certificates/processed-certificates
-certificates/raw-certificates
+certificates/
+certificates/
+package-lock.json

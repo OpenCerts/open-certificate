@@ -3,7 +3,7 @@ const faker = require('faker');
 const crypto = require('crypto');
 const {sha3} = require('ethereumjs-util');
 
-// Generate receipient based on
+// Generate recipient based on
 // - Profile Identifier Properties in https://www.imsglobal.org/sites/default/files/Badges/OBv2p0/index.html#ProfileIdentifierProperties
 // - DID extension describe in https://govtechsg.github.io/certificate-schema/schema/1.0/
 function recipientDecorator(certificate){
@@ -59,7 +59,7 @@ function recipientDecorator(certificate){
 
   if(profiles.length == 1) profiles = profiles[0];
 
-  certificate.receipient = profiles;
+  certificate.recipient = profiles;
 }
 
 function certificateDecorator(certificate){
@@ -94,8 +94,17 @@ function certificateDecorator(certificate){
     }
   }
 
+  function generateIssuerIdentity(){
+    return {
+      id:'urn:uuid:'+faker.random.uuid(),
+      url:faker.internet.url(),
+      email:faker.internet.email()
+    }
+  }
+
   certificate.badge.name = faker.random.alphaNumeric(25);
   certificate.badge.criteria = faker.random.alphaNumeric(80);
+  certificate.badge.issuer = generateIssuerIdentity();
 
   const evidence = generateEvidence();
   if(evidence) certificate.badge.evidence = evidence;

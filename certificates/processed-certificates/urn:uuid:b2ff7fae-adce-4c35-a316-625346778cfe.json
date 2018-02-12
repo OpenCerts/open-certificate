@@ -1,0 +1,138 @@
+{
+  "id": "urn:uuid:b2ff7fae-adce-4c35-a316-625346778cfe",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.569Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "eyyeqi3yq87tw73c6rdji6h2a",
+    "criteria": "jwn355k2ytuk921x724csml75rne13l9fu8he12oxo5cr8s0egi546l86smxj0cmsob6zm21330nu76f",
+    "issuer": {
+      "id": "urn:uuid:868f06c7-e3a3-4168-ac53-eb79ac63023a",
+      "url": "https://sammy.info",
+      "email": "Fern94@hotmail.com"
+    },
+    "evidence": {
+      "transcript": [
+        {
+          "name": "83ndokc5ni:6jqz3kcf3x2ep5q",
+          "grade": "5t9qzukver:A+",
+          "courseCredit": "fl0oapr8n7:4.0",
+          "courseCode": "fyce685d1i:i65ys"
+        },
+        {
+          "name": "3xo6cndk4r:fhmwgj4t3ex1d45",
+          "grade": "jycswhvb6q:A+",
+          "courseCredit": "lfjvbduf2p:4.0",
+          "courseCode": "b0nn2je1ge:gh60n"
+        },
+        {
+          "name": "8ctlma48c8:dwjia4q4wzgkoz1",
+          "grade": "2ddygmvdt8:A+",
+          "courseCredit": "j8i0zg3z5p:4.0",
+          "courseCode": "62hbnwe7kf:e33y1"
+        },
+        {
+          "name": "qdvlwshtr3:bndvhxctyv1kxgm",
+          "grade": "xc9hxlj2s4:A+",
+          "courseCredit": "493dwjvvvc:4.0",
+          "courseCode": "kcp598vpmi:sj4fa"
+        },
+        {
+          "name": "y2jnccgzjl:nv6q6xzfwr7ixak",
+          "grade": "1pr0xqmc4r:A+",
+          "courseCredit": "4qp53xkag9:4.0",
+          "courseCode": "r2pv9uswoh:xtxk7"
+        },
+        {
+          "name": "3chck94z73:q4c5ilstgk9v8ey",
+          "grade": "4res424cn2:A+",
+          "courseCredit": "sj3oyybr21:4.0",
+          "courseCode": "gydv50wr1v:t4lfr"
+        },
+        {
+          "name": "gkpgtkqjbu:afvw6mrhrumckq2",
+          "grade": "kxl2k3mbo1:A+",
+          "courseCredit": "o3fyx98o4b:4.0",
+          "courseCode": "hq8py83p9z:smdoy"
+        },
+        {
+          "name": "eucdietdsd:qvv051l2djzxga8",
+          "grade": "xnbl9v254l:A+",
+          "courseCredit": "tmirp3gfem:4.0",
+          "courseCode": "z8i11sn36o:j74vd"
+        },
+        {
+          "name": "9m40n6ozl9:3qa1sjl7ldul30q",
+          "grade": "00y6ybrays:A+",
+          "courseCredit": "vlrm2kq8y0:4.0",
+          "courseCode": "ksnp7u82v4:idc3j"
+        },
+        {
+          "name": "wu8hmp18q9:3cylx49wk4wnt44",
+          "grade": "g3txkf3my1:A+",
+          "courseCredit": "8evjv8emap:4.0",
+          "courseCode": "b02kbklkbd:e75yh"
+        },
+        {
+          "name": "d7u4vnp244:u1pnelzblsurz6w",
+          "grade": "gi4a8bjuyy:A+",
+          "courseCredit": "ecgekczn1p:4.0",
+          "courseCode": "iyaf7y94u0:k4jvc"
+        },
+        {
+          "name": "ynng19wa4v:gith2buywcjpzms",
+          "grade": "vk0bd0rhwk:A+",
+          "courseCredit": "sb4itpb01n:4.0",
+          "courseCode": "yx5aqwjtq6:84wtg"
+        },
+        {
+          "name": "9cqvhokp7j:1cti6byy5nizflx",
+          "grade": "6mplm5nc43:A+",
+          "courseCredit": "fjvejktykk:4.0",
+          "courseCode": "p9lle0e5iu:nmtp7"
+        }
+      ]
+    },
+    "privateEvidence": [
+      "09dda70e22aff9cebbe6e25b5da0c88657826a34d2f58af78f32dbf188023506",
+      "b0a8c34300a8bcbbfeb85fcbb32373cf98b3e06777b38cb76f76bab7edd359d2",
+      "651ba29f98c47c14772e51bd6ccf0b16935bc9463482936dab3b56bc18022139",
+      "753f15703d8a0317d6fd6440a51f29688b1ae7c5317700663635df2acba47eb1",
+      "75e74386bcb84b42ad4a196b1032224daec3ebbfb160cc53932e07c884e9e6aa",
+      "825ca5a9fc2714cc3208c043f50d16c8c88f4a3dbdeedd97227ee5a99095d6f9",
+      "13b8fcb7833b3fe7e096996e564d6386158053e11228c448b2efdbc72f14ef39",
+      "4400c8835268c86b1bd5537ee55771e457cc81d479eb81428c5611a7b9df41fd",
+      "a6a7dda88266154b3d515ac628dbd2054160287127cdefe507344b35380b2b5c"
+    ]
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": {
+    "type": "telephone",
+    "identity": "629.918.3176 x4463",
+    "hashed": false
+  },
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "666ecb0f88f30823ab1ec612840974257eb10b5eff7a401188a4daff11514136",
+    "proof": [
+      "70b6013854132d2ca8bd4568530a236a362e743df34bbee511f4eb9e28724600",
+      "f55b3b6a8cd51cd6ee7c583025900867602e2403680a7cdf6233bf35a0b5f8d2",
+      "88b9801d6ec2828e06e4b45fd542afb3d8161cf29586fe5f74a8f13e1624b441",
+      "a8d15a14ed16d961c009a801fe144909dc35ab700e730314cd08cc825441e22a",
+      "d855bfdd7df6b12c333a38f2df47739ac1bd2edbcfa91d5d07373cb1b91b6de7",
+      "f3f1493b731589217c922bef8bc021404923a6f4156a6d95c9d50dac41873174"
+    ],
+    "merkleRoot": "b77fde2a4d3f7aa8dc9774eaddb9a4347296c0f5d2f0bf369ca92853e2d215b1"
+  }
+}

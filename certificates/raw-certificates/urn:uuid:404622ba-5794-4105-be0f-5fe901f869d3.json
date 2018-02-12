@@ -1,0 +1,87 @@
+{
+  "id": "urn:uuid:404622ba-5794-4105-be0f-5fe901f869d3",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.585Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "4yjijc1k9ea4lmk8hkpr7e1eg",
+    "criteria": "tymafps999aegl1nrf1ex4v5e9qejyfjq9xzw160gf4snwnkeo4sv3fzchyg8ykiw0ueh6rvzombg6n3",
+    "issuer": {
+      "id": "urn:uuid:717fc7c2-07a8-4198-a10e-1d24efb2e5bf",
+      "url": "https://sibyl.com",
+      "email": "Judy.Roberts@yahoo.com"
+    },
+    "evidence": {
+      "transcript": [
+        {
+          "name": "i3xqtkyhst:xfm4i1rau4qpqmp",
+          "grade": "tndgcwamz7:A+",
+          "courseCredit": "itocm1aew1:4.0",
+          "courseCode": "e6jxx4789o:bcx0r"
+        },
+        {
+          "name": "2ck3qwx64x:v1050w5gftg5r28",
+          "grade": "2fcctahq9x:A+",
+          "courseCredit": "ux6lwhj77d:4.0",
+          "courseCode": "ehsyms618t:sk5fw"
+        },
+        {
+          "name": "0dnpr062d0:2sb1dbplh6kcxhr",
+          "grade": "xsljm8k2wi:A+",
+          "courseCredit": "cgb8ea8ftb:4.0",
+          "courseCode": "xw8kxowh1c:z3uo8"
+        },
+        {
+          "name": "1ryflvkaj5:r0c9f9s2pj253i0",
+          "grade": "2yf7hgfgar:A+",
+          "courseCredit": "b7odqowgyu:4.0",
+          "courseCode": "2vzvo6dywm:uv81s"
+        },
+        {
+          "name": "ylwc9m1m4o:284qyuywz8ndsya",
+          "grade": "5142lkw7a3:A+",
+          "courseCredit": "nfsvzxtl90:4.0",
+          "courseCode": "zpvm4dl09b:juj09"
+        }
+      ]
+    },
+    "privateEvidence": [
+      "5b6d6aca42726127f51739f1e5a1dafa90a27d39ca4a9352a07a5dc3d609132f",
+      "8982c651e5d3efe753bf2ea5a56514cac7bad19dade81055dc5e51b535c9bcf5",
+      "5a419edd5a0be3ca437b04f2e6d943f51cd27864e7b168597cd0a65fd32063d5",
+      "ea1b2acda286c595268595d9b3a54abed3274dc78da856d75563cfdf86b93329",
+      "dce8c2cf5da88821fa9e5f1346bda859597e9fb9e626bade8b02ca7a158c6a8a",
+      "5db5447047429c589d6bd67b7ebf3bc156c8194444809afc6939f79c6a2a73f5",
+      "86f5970c971d8f626366689843972a193b5f04801a731fec9e1670e29016c4e2",
+      "e3e2938f0f14bf9ea92384b71f201ff2d8dd8751c9a67e1d732c419c0ac36c57",
+      "fe238adc3223ce9155d601628023fa8849b158d3c41a7ce8c49a4efce8ff5773",
+      "8aef453377d5be8f762640876a83bb9ce652acc124c15e04d7064da72eb42a88",
+      "efbff3540f0bff8e8fb0bb1088c324907fa8416a16ff22595bd9a759096f886b"
+    ]
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$acc71b5018b8c063ab5e1f63c21934cd643cb52170145f5a8b26175d165a4063",
+      "salt": "b577i8gi9l",
+      "hashed": true
+    },
+    {
+      "type": "url",
+      "identity": "http://arianna.com",
+      "hashed": false
+    }
+  ]
+}

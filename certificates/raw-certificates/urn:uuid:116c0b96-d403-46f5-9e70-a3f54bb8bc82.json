@@ -1,0 +1,141 @@
+{
+  "id": "urn:uuid:116c0b96-d403-46f5-9e70-a3f54bb8bc82",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.536Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "l50i1f4k3q2074kz0p4vas7jd",
+    "criteria": "q318f8yzsrj1a73o2sylghqwi47m4uo1h461n5r6fs8b03w2uptk0vi0mknz0uha9gao7rk6uj5t6fxp",
+    "issuer": {
+      "id": "urn:uuid:3fc912b3-c9da-4270-8631-4ea33e9f8359",
+      "url": "https://naomi.biz",
+      "email": "Lulu.Johnson59@hotmail.com"
+    },
+    "evidence": {
+      "transcript": [
+        {
+          "name": "b3knro0yo6:e3y8f6ebghoipgr",
+          "grade": "6y7yk3onaq:A+",
+          "courseCredit": "y3vm41mced:4.0",
+          "courseCode": "5kf341bb2p:6uxua"
+        },
+        {
+          "name": "pl0rqlswfv:g7imb5ugb0y96g0",
+          "grade": "ffe97az3c0:A+",
+          "courseCredit": "duodwdeddi:4.0",
+          "courseCode": "nhsqejref1:sfe98"
+        },
+        {
+          "name": "2rk4ro0imk:y3s766q04t7bb1u",
+          "grade": "365f12g4dk:A+",
+          "courseCredit": "v68i2717zy:4.0",
+          "courseCode": "np42tqgw4i:ubpuq"
+        },
+        {
+          "name": "5unyse5bef:7sbcn6io3j7ugot",
+          "grade": "l1dit9iujl:A+",
+          "courseCredit": "r25a8gw6u1:4.0",
+          "courseCode": "0glrjy3gdf:qbk8a"
+        },
+        {
+          "name": "2qhjntk4w7:x5drgruj9u41rff",
+          "grade": "0j4sd9jto6:A+",
+          "courseCredit": "lh0gkykyzv:4.0",
+          "courseCode": "al8p57ywmr:48007"
+        },
+        {
+          "name": "5tkxvzheua:62ct1gc8sdqm4u6",
+          "grade": "k9e5eqrk51:A+",
+          "courseCredit": "r0j0mxchzi:4.0",
+          "courseCode": "9miz9ca778:y48vh"
+        },
+        {
+          "name": "vokyj3uerm:q4ahrsfa6tvw965",
+          "grade": "6i9ybadw38:A+",
+          "courseCredit": "j7dizu1z0e:4.0",
+          "courseCode": "rbvu69bple:ktlb0"
+        },
+        {
+          "name": "6f7trnqijj:x4wd1ix5v92mpqa",
+          "grade": "bdds7wm5kh:A+",
+          "courseCredit": "b1h1o9ao8n:4.0",
+          "courseCode": "wy0tzxha0r:vpzi2"
+        },
+        {
+          "name": "29dhmwjvj2:w6lbl8rol113ivy",
+          "grade": "4cl742rn37:A+",
+          "courseCredit": "ro8kq6ig1k:4.0",
+          "courseCode": "s0h3kzkuoo:f6c11"
+        },
+        {
+          "name": "lhukyyn83m:1p2xsvkj70m8uxn",
+          "grade": "elafm9q2zj:A+",
+          "courseCredit": "i0ee7euzk7:4.0",
+          "courseCode": "cgr55asm6j:spswv"
+        },
+        {
+          "name": "0t55nm6vl3:mrqpb4py1s8q65x",
+          "grade": "4h4td7c39j:A+",
+          "courseCredit": "dh3soxp8mn:4.0",
+          "courseCode": "15mokcn2z4:za7rq"
+        },
+        {
+          "name": "2r5g14ye6g:mb043ewjytjx5kt",
+          "grade": "hbj9fzw9hr:A+",
+          "courseCredit": "luaw5ngral:4.0",
+          "courseCode": "aq9bb1bm0u:9dl2f"
+        },
+        {
+          "name": "cwxdgzkfcj:h2xz23devs73jbz",
+          "grade": "a8biggnqa0:A+",
+          "courseCredit": "3j4nbsmc5h:4.0",
+          "courseCode": "spnafytomw:j5m2w"
+        }
+      ]
+    },
+    "privateEvidence": [
+      "540e9882b3a1f5a6b81a4b99cb4176fcd7959023068409b2ffc3bcb4eb34666f",
+      "fe12aa2d4459655c70e0fff70959b19eff69f23a1209c77296ace0864b5029b1",
+      "99ee25b60c0cd67c5866b0e61cf2ac8e4f5f79217a8119c06449fe2222093d23",
+      "1fdc034e449d14aa6d541d07e7ce880df8d8f0cc782ee9cad6b3b5d93971df9a",
+      "fce9b16faac2e578744ac51b0ad969273d67795f72b37420b94306f36168b111",
+      "46958d18f776560ff4dea254656cb977495c373a05f78806e01d4c44e7decc60",
+      "dc3f176f825050f598f250b111a47ad02963caf2cb2e4a315ec2004c77e6250f",
+      "644ed7fb6ad61929ae9d494877e5c1c1b35baf55400c4e3393f24acbf85db495",
+      "c0b2cbec9cd9a7308d04bf950da0ff198eb7e90b0a24c545f732398f2b46dc2a",
+      "07f142adbef6d886948d28d6d153a0da28cbc98b8f0cbcdd7fe06eab25c0864d",
+      "471cc2ba4bde7621d78422cbb539bcbda722d474a519ee32b7b900fce6bea257",
+      "24783fd2c70aac0c3f168a8d57cb87a1ba3cc0cf85ef33e60ce99e4a879de1dc",
+      "2595b211ee96afc1499851216935d53b0075429e9666f85409b62dac90c3a42c"
+    ]
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "Karlee78@hotmail.com",
+      "hashed": false
+    },
+    {
+      "type": "did",
+      "identity": "did:khalid:9bcd0902-082e-4620-bf4a-e28e5be16c7b",
+      "hashed": false
+    },
+    {
+      "type": "url",
+      "identity": "https://rita.biz",
+      "hashed": false
+    }
+  ]
+}

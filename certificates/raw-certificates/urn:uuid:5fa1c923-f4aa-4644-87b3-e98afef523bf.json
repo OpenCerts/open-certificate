@@ -1,0 +1,33 @@
+{
+  "id": "urn:uuid:5fa1c923-f4aa-4644-87b3-e98afef523bf",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.581Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "lvtcnxiaqnsftd2l1mnvlqe6a",
+    "criteria": "mjr6f50f35up3tyun4jbw9jruef6ys65rgpdbpagpvx2k44yik9iwwu8kqz832s9edpu0vgsryb7r52v",
+    "issuer": {
+      "id": "urn:uuid:9f33a995-7626-4c1f-b9cc-db51567b450a",
+      "url": "http://lamont.biz",
+      "email": "Vivian_Bogisich@yahoo.com"
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": {
+    "type": "telephone",
+    "identity": "sha256$c700666a46d24b20a869d5de7e891a87d28ae55ca8f713dd34f616ed0edb520b",
+    "salt": "hhqarq2gdg",
+    "hashed": true
+  }
+}

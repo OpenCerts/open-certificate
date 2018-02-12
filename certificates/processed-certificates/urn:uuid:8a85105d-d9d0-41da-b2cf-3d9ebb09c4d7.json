@@ -1,0 +1,57 @@
+{
+  "id": "urn:uuid:8a85105d-d9d0-41da-b2cf-3d9ebb09c4d7",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.530Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "u90ybhx9jf3v4ud1k6nzw9efs",
+    "criteria": "9qe59etkk9rfh6tqs7xcwmj159x0v0frjkuypceiw3td6svghe0mrjxghf26urn5v04c003bybqh5d7p",
+    "issuer": {
+      "id": "urn:uuid:54c11c32-8a7f-4ab8-9e5d-58e9f6c94626",
+      "url": "http://danial.biz",
+      "email": "Makenzie.Zulauf@yahoo.com"
+    },
+    "privateEvidence": [
+      "9912d7d257e279df9979e59499086fd3652a62b4cfb0a5078502e74c28721c30",
+      "9e8472790e979b645330bb590ad7769f11dd5ed5c33ac05b11e9c8fd29ef6381",
+      "496fe0b6da793272e35266f865038c80ff7de9d48a3bb0a84ff5f623c2d84589",
+      "a49ed218a54809f487f233568b151864d04c8953fba299d51217448f8fa1da1a",
+      "71027f66eca00698059ec7b8ca43f390a133d25230e2655f811bdd51db0765bd",
+      "8c72601c9383622b7950d93648fd71739643c803b078026eb59fe3aecd6a631b",
+      "7cab16f8fd8385455adb6f90c77a228dcf68dd62a03d5659cbd08facdcebb1ae",
+      "2d30ccede1f26da7ef742e6849eb63db99189b157c07a710cc1d343ed6a1ba92",
+      "3b9243546dacffc9a09defa71c1f67ecf44c90c15b6381fa3180e1d575acc2b2"
+    ]
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": {
+    "type": "telephone",
+    "identity": "sha256$e1e49da57350f0fb64d06972ad210d60af8853c782a8e8c579ffe57c9e9235ef",
+    "salt": "cd77xspxq8",
+    "hashed": true
+  },
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "aa9ede6be1cf4024f633b2f2b3031ed11a770adff83ef4c2af9580da6a58ee5e",
+    "proof": [
+      "af7cbd085ad4ae3c17eb7584a0c95edab7c5ac83c48121d065d2dc03a05c09ad",
+      "1a62e40bcebad81dfa9eca30b03f5d53a25f20dd6d093af7ea769694acf5e96e",
+      "18a2a2d5fb3fb9325e56dfb81bae8dff73d8784d0922b7cede62a3095c7b6fd6",
+      "ab175befcf67bf2f878ffb9da76999f8a8f479371bad0cc336cec394eaf71a02",
+      "d855bfdd7df6b12c333a38f2df47739ac1bd2edbcfa91d5d07373cb1b91b6de7",
+      "f3f1493b731589217c922bef8bc021404923a6f4156a6d95c9d50dac41873174"
+    ],
+    "merkleRoot": "b77fde2a4d3f7aa8dc9774eaddb9a4347296c0f5d2f0bf369ca92853e2d215b1"
+  }
+}

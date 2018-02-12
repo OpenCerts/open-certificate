@@ -1,0 +1,46 @@
+{
+  "id": "urn:uuid:5fa1c923-f4aa-4644-87b3-e98afef523bf",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.581Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "lvtcnxiaqnsftd2l1mnvlqe6a",
+    "criteria": "mjr6f50f35up3tyun4jbw9jruef6ys65rgpdbpagpvx2k44yik9iwwu8kqz832s9edpu0vgsryb7r52v",
+    "issuer": {
+      "id": "urn:uuid:9f33a995-7626-4c1f-b9cc-db51567b450a",
+      "url": "http://lamont.biz",
+      "email": "Vivian_Bogisich@yahoo.com"
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": {
+    "type": "telephone",
+    "identity": "sha256$c700666a46d24b20a869d5de7e891a87d28ae55ca8f713dd34f616ed0edb520b",
+    "salt": "hhqarq2gdg",
+    "hashed": true
+  },
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "627eed29fe726e0d3c85651c32df482cc4098173a1e262c91acec39dc30a2568",
+    "proof": [
+      "63cce3f6ea9d0a756b7411b20ab6be165e6ce17265f9e1c4abc3ea2e685332f8",
+      "9010cc34f2bd71a334029568df6989939668cfe64fe74ca6df8a903f486c6043",
+      "88b9801d6ec2828e06e4b45fd542afb3d8161cf29586fe5f74a8f13e1624b441",
+      "a8d15a14ed16d961c009a801fe144909dc35ab700e730314cd08cc825441e22a",
+      "d855bfdd7df6b12c333a38f2df47739ac1bd2edbcfa91d5d07373cb1b91b6de7",
+      "f3f1493b731589217c922bef8bc021404923a6f4156a6d95c9d50dac41873174"
+    ],
+    "merkleRoot": "b77fde2a4d3f7aa8dc9774eaddb9a4347296c0f5d2f0bf369ca92853e2d215b1"
+  }
+}

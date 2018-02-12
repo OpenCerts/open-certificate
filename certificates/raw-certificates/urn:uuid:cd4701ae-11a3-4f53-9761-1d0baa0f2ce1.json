@@ -1,0 +1,94 @@
+{
+  "id": "urn:uuid:cd4701ae-11a3-4f53-9761-1d0baa0f2ce1",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.590Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "p7u1fv5c7ynf38a5w2jxgirac",
+    "criteria": "kqap7fv2xi41n6vfj7oyrazi0a10wy52ksf5su4oajwmoesmihl75vma6c7pbqk3vj51pqnzmzeeh09q",
+    "issuer": {
+      "id": "urn:uuid:c130048b-c807-47e2-9753-f20ef7ffa4ee",
+      "url": "http://garrison.biz",
+      "email": "Reece.Satterfield@gmail.com"
+    },
+    "evidence": {
+      "transcript": [
+        {
+          "name": "jqlaa626gw:2bn9xa3ydk2ek6q",
+          "grade": "y23fossy3b:A+",
+          "courseCredit": "3uvtx743uo:4.0",
+          "courseCode": "lv95izob7c:viynv"
+        },
+        {
+          "name": "yr5474fv5v:to0b69wp47lwmx0",
+          "grade": "vxrsln4z8c:A+",
+          "courseCredit": "m2ewxs8qn3:4.0",
+          "courseCode": "ok21dh2iqm:l0gvr"
+        },
+        {
+          "name": "8ec23egicq:lkk2y3776vbdrrf",
+          "grade": "xx433lsqux:A+",
+          "courseCredit": "yvuuc0ruu6:4.0",
+          "courseCode": "aizy6a4d7p:u9tbu"
+        },
+        {
+          "name": "smzrzhol02:ixr04nwwvnppd02",
+          "grade": "za69hz3bxr:A+",
+          "courseCredit": "iq248nd44d:4.0",
+          "courseCode": "exoarsutg4:ewhur"
+        },
+        {
+          "name": "f56ofdn6ni:dgilltheemurgia",
+          "grade": "l4r557dg5f:A+",
+          "courseCredit": "0lyvt8gvpd:4.0",
+          "courseCode": "ppi0vqhtdn:en8hm"
+        }
+      ]
+    },
+    "privateEvidence": [
+      "3e9a7ac4df3c94f06e3cddb419cbc9266a5a3bc9121733d4e5b1623abc786df0",
+      "bb69a64fa94038ce42380f6be1f2facd39af737485ff875625394aadc9380fe2",
+      "eab60c7ffd5974b72603c633c6e8c057b0545f23965c9f7444b0bbeec0a0fcdd",
+      "b5c0c2b2f153aab6303ebb40134113e619133a3b2d6e4f608913e66be32e5592",
+      "408d069d5f3579098a941cf4d35aaaf3042560e7a0ed727abac287d4194353c3",
+      "bd8bf89d08880282b7ce4ed15819539adf18513e601a8983e81edaec60107019",
+      "34e957dbf8938252b0cdd5940555379037c8be007c3de46b208ce6eaf92be8aa",
+      "fe672d816418d2edb8bdb18ffd147b5a0a68ccb813df62d24cc873a72d36296e"
+    ]
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$e1d35026fa926629f4c454655062a72cc81258ab4e8ec50ced6554131f2b0a14",
+      "salt": "9onz2qtbms",
+      "hashed": true
+    },
+    {
+      "type": "did",
+      "identity": "did:brooks:066cee5e-fadd-4faa-a674-888925aa6554",
+      "hashed": false
+    },
+    {
+      "type": "url",
+      "identity": "https://alexandro.com",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "722.927.0109",
+      "hashed": false
+    }
+  ]
+}

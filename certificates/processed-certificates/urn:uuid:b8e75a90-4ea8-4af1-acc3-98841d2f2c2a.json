@@ -1,0 +1,53 @@
+{
+  "id": "urn:uuid:b8e75a90-4ea8-4af1-acc3-98841d2f2c2a",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.540Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "ul2g9mm18769nevcsktbzpuqz",
+    "criteria": "spsaax9fn7qncz12r7tt1aihwzb95toc1xqvbml954ffi8s9rq3lf1q2vui69g7fsrtmxanfy1yzahei",
+    "issuer": {
+      "id": "urn:uuid:51f304f8-a1ff-47c7-9fcd-7e1325db10f5",
+      "url": "http://arthur.info",
+      "email": "Davonte48@gmail.com"
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "url",
+      "identity": "sha256$e182ccf339d232e7a358e49ac6808a5528745c9fa4a5164a6bdb9a436bfad0fc",
+      "salt": "8bmj8g2fa8",
+      "hashed": true
+    },
+    {
+      "type": "telephone",
+      "identity": "(671) 457-2740 x3320",
+      "hashed": false
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "cfb2213676d93e5c7323f50291fc4abbdd2d044e8e914a8ac63d99eb22a05dee",
+    "proof": [
+      "c7c4f87119340b647a3f1739e9291dfc13f74969e56763e706b05d55c48f61a5",
+      "a42247f5ed86b7918e73ae8d95d919aca5c5bfeee72549e60e07da57a814367d",
+      "2ab9886f08f192cc430d7bf0dd94d052de5f0a3507bfb1b165965daec9cfb61b",
+      "cea71c313972822cc00995b65807edcd3654c91ae11e7da66f068d04b227e471",
+      "71a2be738f965dab93de45a26ac04a580310d2203e33d003d96e917f6b499ec4",
+      "207f71940c27452b80de458306c051dbaa632bc85a10f0771e647650e666562b"
+    ],
+    "merkleRoot": "b77fde2a4d3f7aa8dc9774eaddb9a4347296c0f5d2f0bf369ca92853e2d215b1"
+  }
+}

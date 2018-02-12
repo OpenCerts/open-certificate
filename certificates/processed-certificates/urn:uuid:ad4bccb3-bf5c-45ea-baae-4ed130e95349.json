@@ -1,0 +1,109 @@
+{
+  "id": "urn:uuid:ad4bccb3-bf5c-45ea-baae-4ed130e95349",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.563Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "uki6hhv9uqhfijuwmxprfnilo",
+    "criteria": "lo0ex207z8cq83k1yl042zrfbj8igdfkcalbelia8mk8ufv2vjdzuugx7qhcuuoq1c3rvkz449veeqzg",
+    "issuer": {
+      "id": "urn:uuid:5616303f-6390-44bd-9444-ed8f956712d7",
+      "url": "https://evangeline.name",
+      "email": "Lavada_Anderson@yahoo.com"
+    },
+    "evidence": {
+      "transcript": [
+        {
+          "name": "a3w87tdy0c:iu4cg59yv4jlpi9",
+          "grade": "k5l66um9se:A+",
+          "courseCredit": "fsq450dmxp:4.0",
+          "courseCode": "u0mwj83jh3:je9m5"
+        },
+        {
+          "name": "takh6izr7r:5m4w2fd6ajb4n15",
+          "grade": "gm1zr3bj52:A+",
+          "courseCredit": "gyp063k9wf:4.0",
+          "courseCode": "353115sg44:1uwfa"
+        },
+        {
+          "name": "l8umyioktk:c0scsjxvowsky5q",
+          "grade": "ow1crtsddi:A+",
+          "courseCredit": "uuysbrdxcq:4.0",
+          "courseCode": "w1yq71qxf0:tgeaa"
+        },
+        {
+          "name": "4smf73kav5:4mdiq6hgsnl7ou5",
+          "grade": "ofe0cb0kgw:A+",
+          "courseCredit": "7retjauhpi:4.0",
+          "courseCode": "t1qsc18du9:4dlm0"
+        },
+        {
+          "name": "0xo1y1inny:smx4prjszzj59e4",
+          "grade": "hql86hkw0j:A+",
+          "courseCredit": "zk8c1hn570:4.0",
+          "courseCode": "8niqwzpv0s:0zt7z"
+        },
+        {
+          "name": "y3b0bdqjvv:v6sy7jym9yd6hv9",
+          "grade": "ruwuucq4j1:A+",
+          "courseCredit": "3ttyvyy8bv:4.0",
+          "courseCode": "wizxpyxvt8:74hd7"
+        },
+        {
+          "name": "7rrzvf0rh0:mz1ck2pfxurslxa",
+          "grade": "8ioyioalbg:A+",
+          "courseCredit": "4zrpdv4emo:4.0",
+          "courseCode": "e54plw8e99:4dqr6"
+        },
+        {
+          "name": "n0u6cnh1kj:7puss6at5xbgowu",
+          "grade": "nfs68t1jd8:A+",
+          "courseCredit": "87jdob4we0:4.0",
+          "courseCode": "4z31mu6r5f:y4ecm"
+        },
+        {
+          "name": "gebtdysiku:yodujkpoeo7e0be",
+          "grade": "j8ocgj6ymy:A+",
+          "courseCredit": "bihiuv8qrw:4.0",
+          "courseCode": "iv5w41yrqf:lloe8"
+        },
+        {
+          "name": "jbbndn152e:v92jkuzsdn673os",
+          "grade": "72et2maxs3:A+",
+          "courseCredit": "1n3unwklc9:4.0",
+          "courseCode": "1pl91i89nc:pwksn"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": {
+    "type": "url",
+    "identity": "https://robyn.org",
+    "hashed": false
+  },
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "d792939183dd1ad251f6c281f51cb581f99640aaa2c34b6f92ecca4b72c9e51e",
+    "proof": [
+      "de733123c79c2cff6dabe5b77004b47bd742772460ff30d30059f186f28dbde3",
+      "0ccef369437934af2058859d15234b1108de35bdc2f732cc671a3cacc001085a",
+      "498252f1a81f1e84b763bbed18b4d51f5cd003d3760d7a9e8d96b412b0f9dcd7",
+      "80058aaacf79a64b16c8b358b7805b5987537ee51047315f976854805d7536ae",
+      "71a2be738f965dab93de45a26ac04a580310d2203e33d003d96e917f6b499ec4",
+      "207f71940c27452b80de458306c051dbaa632bc85a10f0771e647650e666562b"
+    ],
+    "merkleRoot": "b77fde2a4d3f7aa8dc9774eaddb9a4347296c0f5d2f0bf369ca92853e2d215b1"
+  }
+}

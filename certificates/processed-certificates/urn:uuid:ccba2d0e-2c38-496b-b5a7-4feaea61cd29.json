@@ -1,0 +1,86 @@
+{
+  "id": "urn:uuid:ccba2d0e-2c38-496b-b5a7-4feaea61cd29",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.567Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "enqsr4zosmtqwyqjjm13kl4vk",
+    "criteria": "0xsfu1st9ru0dr15ccj5k19o0igw80vfh5m1xkzzcc3c722yz1puui8cbtv7032np7cb0ova7bcc8mjl",
+    "issuer": {
+      "id": "urn:uuid:87897890-58bb-4dc8-b8a4-d3344bb0cf91",
+      "url": "https://rodger.biz",
+      "email": "Jany94@yahoo.com"
+    },
+    "evidence": {
+      "transcript": [
+        {
+          "name": "vwiuu8o22b:280rjz5v5dbapjn",
+          "grade": "luze0rzn7d:A+",
+          "courseCredit": "06iullj621:4.0",
+          "courseCode": "zznvd8vykc:vj9uc"
+        },
+        {
+          "name": "mws3v7axlb:80ucp1dcup5567o",
+          "grade": "m1pt6pdjru:A+",
+          "courseCredit": "fge7ihcly2:4.0",
+          "courseCode": "su7kb1fzff:kasrn"
+        },
+        {
+          "name": "2camvmluta:b87vq3t7jwgdjnj",
+          "grade": "tqhqpdiax8:A+",
+          "courseCredit": "94jru0wsju:4.0",
+          "courseCode": "k3rze8o1ja:mbpu2"
+        },
+        {
+          "name": "s5nk5hsiys:uswuktue48wbgu8",
+          "grade": "o72a0ofc45:A+",
+          "courseCredit": "3k423ndg3q:4.0",
+          "courseCode": "2j3ewevpnt:thwrj"
+        },
+        {
+          "name": "99d3u8fqn9:x5svx08j8872hrj",
+          "grade": "2tha49yfyr:A+",
+          "courseCredit": "oouufpnzmf:4.0",
+          "courseCode": "1rq5unwzvw:brohw"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "did",
+      "identity": "did:kiarra:693465e9-42cd-45c2-a83d-8ad3a446fc12",
+      "hashed": false
+    },
+    {
+      "type": "url",
+      "identity": "http://shakira.net",
+      "hashed": false
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "ea4bf115558d47b2ebd7fa49dc1e5b86f7f6cbd5aa7d0d4395e7f63a3c1b4fd2",
+    "proof": [
+      "f049065be15c4a4f60915dd1bfc5ca9faa1a0f4d40abc65b6f44787656693e10",
+      "f32c5f91353a28e46f1a3bad26aae015da72ac15df69c578d73b9e154f521307",
+      "e07d9fbc694229f101b088d35ba2bb10192836ae947eca6ab1c818cf85635a57",
+      "80058aaacf79a64b16c8b358b7805b5987537ee51047315f976854805d7536ae",
+      "71a2be738f965dab93de45a26ac04a580310d2203e33d003d96e917f6b499ec4",
+      "207f71940c27452b80de458306c051dbaa632bc85a10f0771e647650e666562b"
+    ],
+    "merkleRoot": "b77fde2a4d3f7aa8dc9774eaddb9a4347296c0f5d2f0bf369ca92853e2d215b1"
+  }
+}

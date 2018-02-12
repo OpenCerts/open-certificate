@@ -1,0 +1,75 @@
+{
+  "id": "urn:uuid:a6d82714-51cd-44d1-bd68-d84a931e2815",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.566Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "iv22q2mx0fk3465zrdvxgtf51",
+    "criteria": "7ef3j9bksoda12gkukp88okyzdekhton89j8x52lbbiiurtewdw73yniof0i0aspopzbku6m17ompoz6",
+    "issuer": {
+      "id": "urn:uuid:69fee1b8-d90a-4d94-9332-863727d7ef74",
+      "url": "http://shyann.org",
+      "email": "Jadyn.Ullrich@hotmail.com"
+    },
+    "evidence": {
+      "transcript": [
+        {
+          "name": "1o4b305b16:bw7mg232ixtk64m",
+          "grade": "3lxdvkngrr:A+",
+          "courseCredit": "z1xvgjlx40:4.0",
+          "courseCode": "67dluuwo5h:r5j3a"
+        },
+        {
+          "name": "atupuyptny:wowfig11paoniug",
+          "grade": "1pq3nfje3z:A+",
+          "courseCredit": "6j1mw8667h:4.0",
+          "courseCode": "h07r9o4pkf:bui7a"
+        },
+        {
+          "name": "i3yfj72h2c:98qlmyg8vpyz7vk",
+          "grade": "0pfkj17531:A+",
+          "courseCredit": "7sxcayqmhi:4.0",
+          "courseCode": "b6njofmhkx:goyov"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$1ab9e7d955c89e65e7cafd98698cae6f58ff46914519c387e5c3cea0f66d8bd0",
+      "salt": "vyzr64khyg",
+      "hashed": true
+    },
+    {
+      "type": "did",
+      "identity": "did:marvin:937af580-5d52-48fb-95c4-6b987f15b56e",
+      "hashed": false
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "3e38b8832e5f52c241c9702b88d5168f7770534ff452a66d731754f3ee03ffbf",
+    "proof": [
+      "3bdab129e421c0c57e619aeada44fc0d56f385713703a79ea5336e2582a5f979",
+      "2e0f81ddef658db8bf57fbcc1f9d902cc6cdb4e96c2806159845e05821cb8374",
+      "d47bc24c02689b8be7ac186f0cff995dafeaafbdc4b269b4b47cab9b33c6d446",
+      "bc9c5db078090cf7387d8952e5c8d4a80937a803b1741682b6d8898d3ddb2de2",
+      "fe5689bec94504a5ce8d8db47c1279c770c83610138bd6ea34602a9ee238d682",
+      "f3f1493b731589217c922bef8bc021404923a6f4156a6d95c9d50dac41873174"
+    ],
+    "merkleRoot": "b77fde2a4d3f7aa8dc9774eaddb9a4347296c0f5d2f0bf369ca92853e2d215b1"
+  }
+}

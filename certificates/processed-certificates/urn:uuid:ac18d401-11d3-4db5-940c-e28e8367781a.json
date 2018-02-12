@@ -1,0 +1,86 @@
+{
+  "id": "urn:uuid:ac18d401-11d3-4db5-940c-e28e8367781a",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.573Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "19ictgnwqd20aai2rh9aef2vf",
+    "criteria": "hbwk4zdi4q4nt8py5jhjxjpuhat5icx5g6l5lucliia22t2buo2k2veokf553ol61xvacq6scqy767zs",
+    "issuer": {
+      "id": "urn:uuid:1791bcc9-d683-460c-a6f2-9d1f529b7c29",
+      "url": "http://vada.biz",
+      "email": "Meda_Hudson97@hotmail.com"
+    },
+    "evidence": {
+      "transcript": [
+        {
+          "name": "17v47c9xo6:lonbdreiw0x3iv2",
+          "grade": "y1zm30frew:A+",
+          "courseCredit": "ecvjgwvyj2:4.0",
+          "courseCode": "7zlcp5d2e0:jr1id"
+        },
+        {
+          "name": "9wn1yju7tp:csq180s0gepmu5a",
+          "grade": "5ujvuy9zyk:A+",
+          "courseCredit": "k3j9w5ottk:4.0",
+          "courseCode": "vvte1z4ocd:x7n3s"
+        },
+        {
+          "name": "7e58la17mh:vbcjzyldarcrozf",
+          "grade": "5gs5qhvvak:A+",
+          "courseCredit": "he30i1j8p7:4.0",
+          "courseCode": "0dtxwg1zvk:6h6cl"
+        },
+        {
+          "name": "ekgz493yby:0bgjvqdi4w8rju9",
+          "grade": "ovaq9ykr26:A+",
+          "courseCredit": "qn6e958f0z:4.0",
+          "courseCode": "zqgtehwtma:nfjry"
+        },
+        {
+          "name": "yqork38eef:v6v7u5nm8jlz925",
+          "grade": "y2hznzw8pe:A+",
+          "courseCredit": "tod984h4mh:4.0",
+          "courseCode": "schcjys2lo:7paav"
+        },
+        {
+          "name": "ejgpi1u7uw:bnklyhmsj5h5l79",
+          "grade": "ze99fe7iar:A+",
+          "courseCredit": "94wem2ofwy:4.0",
+          "courseCode": "4yyvuepryb:vxycr"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": {
+    "type": "email",
+    "identity": "sha256$ebd5218c1bcabc03c6e8866994be5de21e8a0967101793e7f9d56d1eaddc9e45",
+    "salt": "qv2ech83vb",
+    "hashed": true
+  },
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "c5558db51e9d548598f575d719bf0342f7e7c66127adefc4c4666e41f1bd9f4a",
+    "proof": [
+      "c53437096c11670479c3abd74e1bcad5e91fc5b5b363fb4954bcf56060673192",
+      "6fd50aff326f012abd0e92bab0ff006e98910f9647cb3a1d05c4c9390acd28a0",
+      "2ab9886f08f192cc430d7bf0dd94d052de5f0a3507bfb1b165965daec9cfb61b",
+      "cea71c313972822cc00995b65807edcd3654c91ae11e7da66f068d04b227e471",
+      "71a2be738f965dab93de45a26ac04a580310d2203e33d003d96e917f6b499ec4",
+      "207f71940c27452b80de458306c051dbaa632bc85a10f0771e647650e666562b"
+    ],
+    "merkleRoot": "b77fde2a4d3f7aa8dc9774eaddb9a4347296c0f5d2f0bf369ca92853e2d215b1"
+  }
+}

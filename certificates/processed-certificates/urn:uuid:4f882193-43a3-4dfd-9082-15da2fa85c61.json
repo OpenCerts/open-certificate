@@ -1,0 +1,60 @@
+{
+  "id": "urn:uuid:4f882193-43a3-4dfd-9082-15da2fa85c61",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.568Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "72o86fd5abggs3trf9dceq7jd",
+    "criteria": "czi562uoeuwqe8jjwqeh7rn8o5hz7mljp3cpia91ctszob224otd69m30i1z10eesj95uj1v71eqoccf",
+    "issuer": {
+      "id": "urn:uuid:f9fd7169-1fbd-41f0-aca4-4d5787dc5860",
+      "url": "https://corene.com",
+      "email": "Alice.Konopelski@gmail.com"
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "did",
+      "identity": "sha256$0d46a1e382883894decc5203481751ecf5c7a4472b092108cfc97e7e9037f312",
+      "salt": "b2811m1027",
+      "hashed": true
+    },
+    {
+      "type": "url",
+      "identity": "sha256$4b280e372969880e8c203588bc2345dedeff2c22b5396c74450d8f46199ea801",
+      "salt": "91k7reiyz4",
+      "hashed": true
+    },
+    {
+      "type": "telephone",
+      "identity": "sha256$79ad7926c20bf35e92c9b1f870f087fbafbf9ae4a64401816ac3a0e24f404619",
+      "salt": "ss051l7erj",
+      "hashed": true
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "5d1a18552976d896ecc2a9e256026008d70031111f3aa3168f6a812eb9cde025",
+    "proof": [
+      "4e9bcd15f7b8befefefdcb20c2f82f46d265e2a01e762723d5e030a57e88b1b4",
+      "810989c94e0cac2583c19aa9a343e2dfd67fc42b981a04d5ee93140802df3355",
+      "c02b74aa9e0e3a2ab45570e7aadb1eb1a71a7c659f908eee671aa53f377228d2",
+      "bc9c5db078090cf7387d8952e5c8d4a80937a803b1741682b6d8898d3ddb2de2",
+      "fe5689bec94504a5ce8d8db47c1279c770c83610138bd6ea34602a9ee238d682",
+      "f3f1493b731589217c922bef8bc021404923a6f4156a6d95c9d50dac41873174"
+    ],
+    "merkleRoot": "b77fde2a4d3f7aa8dc9774eaddb9a4347296c0f5d2f0bf369ca92853e2d215b1"
+  }
+}

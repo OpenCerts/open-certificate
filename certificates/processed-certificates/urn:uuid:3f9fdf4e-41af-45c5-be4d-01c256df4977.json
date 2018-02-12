@@ -1,0 +1,102 @@
+{
+  "id": "urn:uuid:3f9fdf4e-41af-45c5-be4d-01c256df4977",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.576Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "67zyzp4mo8z7mzgh6jchikw4r",
+    "criteria": "beucsmwdv5bvlyv26i6dqfmqrfslb7y9obui5v72mg0176jp6ixbh4auy8cgbjrzkbrlg51tcv5349f3",
+    "issuer": {
+      "id": "urn:uuid:e0b4014a-839e-4d6c-832c-6a79b7734462",
+      "url": "https://edythe.biz",
+      "email": "Tressie90@gmail.com"
+    },
+    "evidence": {
+      "transcript": [
+        {
+          "name": "0gfx1yb7ho:p9ur2yoprh1oqnx",
+          "grade": "dftlsg7p8y:A+",
+          "courseCredit": "v0vlpngyu7:4.0",
+          "courseCode": "pk9hqdy5wt:0v7ks"
+        },
+        {
+          "name": "iz0fqppn7u:udhxzl3l8wk9h3w",
+          "grade": "p5m0qbf5gh:A+",
+          "courseCredit": "cvnj13fpnz:4.0",
+          "courseCode": "apt15owcce:652zc"
+        },
+        {
+          "name": "9k0unftml0:bn3z9wxw69z766o",
+          "grade": "e8m99zzppb:A+",
+          "courseCredit": "919jj1qdin:4.0",
+          "courseCode": "vdll298uuz:2xeak"
+        },
+        {
+          "name": "7mu13sgtlr:ceusgqbny24pzks",
+          "grade": "lnvz5671mo:A+",
+          "courseCredit": "6c9rxmj7do:4.0",
+          "courseCode": "z9ehrdlp2t:6mc64"
+        },
+        {
+          "name": "85cxnfwz41:9o0cscafcz5e6s4",
+          "grade": "64nsvmi4o4:A+",
+          "courseCredit": "15nz6pk7rx:4.0",
+          "courseCode": "yd819rq8ow:t1twk"
+        },
+        {
+          "name": "35h632ntai:xpdwls1z04gjhs5",
+          "grade": "qc4699wx1t:A+",
+          "courseCredit": "mkndmzwcbc:4.0",
+          "courseCode": "gowy8v74ma:eqglr"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "Alek_Moen12@yahoo.com",
+      "hashed": false
+    },
+    {
+      "type": "did",
+      "identity": "did:josue:94e21c5f-bbde-4a45-a40a-6b5ec0ff2b16",
+      "hashed": false
+    },
+    {
+      "type": "url",
+      "identity": "http://german.name",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "552.026.5870 x583",
+      "hashed": false
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "9f74fa212b32dfe04bc70b6ef19b4a9807b84e7535a0086ebc65ff4f2e94651d",
+    "proof": [
+      "a40b06307d0c257bccbc1edfd33b2011b008479732423f25e3441f055d2100e4",
+      "0e07df7c52078ef9f6c514efa7b1e6e78c0998ca6466ef5fb55865fc5081974c",
+      "18a2a2d5fb3fb9325e56dfb81bae8dff73d8784d0922b7cede62a3095c7b6fd6",
+      "ab175befcf67bf2f878ffb9da76999f8a8f479371bad0cc336cec394eaf71a02",
+      "d855bfdd7df6b12c333a38f2df47739ac1bd2edbcfa91d5d07373cb1b91b6de7",
+      "f3f1493b731589217c922bef8bc021404923a6f4156a6d95c9d50dac41873174"
+    ],
+    "merkleRoot": "b77fde2a4d3f7aa8dc9774eaddb9a4347296c0f5d2f0bf369ca92853e2d215b1"
+  }
+}

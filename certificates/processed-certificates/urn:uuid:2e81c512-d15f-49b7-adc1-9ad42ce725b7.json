@@ -1,0 +1,135 @@
+{
+  "id": "urn:uuid:2e81c512-d15f-49b7-adc1-9ad42ce725b7",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.546Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "a09hos0kxpwvmuik8shvujhym",
+    "criteria": "h4xheddfauz4z8v90myljv4ek0381jvvjxyeav5tp68128y81f5vv2rki5uhxqi8cv4n0m1p9683afq4",
+    "issuer": {
+      "id": "urn:uuid:02cfc396-54a6-41b9-9a80-1b74becca32c",
+      "url": "http://rafael.info",
+      "email": "Serena87@hotmail.com"
+    },
+    "evidence": {
+      "transcript": [
+        {
+          "name": "6zf5yk0xue:gwsuvt6gqhkiyzx",
+          "grade": "uxu1wzegsj:A+",
+          "courseCredit": "57opowment:4.0",
+          "courseCode": "8hwb8hpf15:sugl3"
+        },
+        {
+          "name": "c82xle40s4:9hv2g91qnj7hdb2",
+          "grade": "dwt32d6hru:A+",
+          "courseCredit": "802emdpueo:4.0",
+          "courseCode": "c0jijng1gu:95hu6"
+        },
+        {
+          "name": "rwcmt632jr:tgyoabhzpekx7yv",
+          "grade": "7hxf7c36x2:A+",
+          "courseCredit": "ed4ywiddbf:4.0",
+          "courseCode": "s8i5l5t2c0:bgdoz"
+        },
+        {
+          "name": "yd6o8dnu7n:7in5y5g84eq4ayx",
+          "grade": "23ce23xr08:A+",
+          "courseCredit": "me15q6vrdu:4.0",
+          "courseCode": "rt0c96qkti:o2gdn"
+        },
+        {
+          "name": "tm83b96dux:mrqq1j0wt48awmo",
+          "grade": "tl4bq6hhy5:A+",
+          "courseCredit": "30wiw1pv9z:4.0",
+          "courseCode": "81zx4eiv3n:t54cq"
+        },
+        {
+          "name": "bcitcu6bej:yqo5jpgxxvp9nnu",
+          "grade": "rtzmn04625:A+",
+          "courseCredit": "v93oo329dp:4.0",
+          "courseCode": "jwpprd98sj:lp7af"
+        },
+        {
+          "name": "nxqb6k9zu3:v7n64x9m4ukkxz4",
+          "grade": "zqk0il5yl8:A+",
+          "courseCredit": "pjz9uciasg:4.0",
+          "courseCode": "riio3n1vc4:qny2y"
+        },
+        {
+          "name": "ta6kysgwo7:xh7hw5v0w1ouyc0",
+          "grade": "nwqc7q0pzs:A+",
+          "courseCredit": "8zueh8ukaj:4.0",
+          "courseCode": "ht1f9zwayu:hurty"
+        },
+        {
+          "name": "i40sone29q:jsufy40np2oz0jc",
+          "grade": "rwer1cikuq:A+",
+          "courseCredit": "clvrcohiz0:4.0",
+          "courseCode": "frh74f6mhm:uzkw2"
+        },
+        {
+          "name": "zf7gd20mm4:p8kd78v8xcnok94",
+          "grade": "iyg6rnt0g3:A+",
+          "courseCredit": "oarb1nr6a9:4.0",
+          "courseCode": "i7gnctbgje:gmmzw"
+        },
+        {
+          "name": "t1705ej4tb:y733a5nh3n85i89",
+          "grade": "9a5jx5tveh:A+",
+          "courseCredit": "xddfycu317:4.0",
+          "courseCode": "6m65qfmufa:i5dz8"
+        },
+        {
+          "name": "lbi8gt2oh6:m1enb5vxyrpwf6r",
+          "grade": "1zyr7bv9f5:A+",
+          "courseCredit": "nnm097xfaq:4.0",
+          "courseCode": "gnylcvxc39:0kxkr"
+        },
+        {
+          "name": "0tt4ml72vi:1yngtqtsf9xxleg",
+          "grade": "40lse2aefk:A+",
+          "courseCredit": "f0octvlspq:4.0",
+          "courseCode": "ox0ui72403:ij1b0"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "did",
+      "identity": "sha256$1cfff103329f86ad2a279c5c3f23a9a01e837b480d665d9f69c6aa6c89af060f",
+      "salt": "3pryasajug",
+      "hashed": true
+    },
+    {
+      "type": "telephone",
+      "identity": "755-451-1572 x877",
+      "hashed": false
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "c250aab3f64305ff360ab49b344220cc33a7015902c0cf10d76445f716f1770e",
+    "proof": [
+      "c515449562da7272e5cc4985a71ee9c37d276e1e9695991ad9c8af34df26315a",
+      "29c33e96d6acc3104771e23b286e88c43fd21e308bd73696b49e71994f3d87fa",
+      "a702b69c7e4fa8b26e322f50a01f2eb38072b540f49a81796a2f6feef0137de1",
+      "cea71c313972822cc00995b65807edcd3654c91ae11e7da66f068d04b227e471",
+      "71a2be738f965dab93de45a26ac04a580310d2203e33d003d96e917f6b499ec4",
+      "207f71940c27452b80de458306c051dbaa632bc85a10f0771e647650e666562b"
+    ],
+    "merkleRoot": "b77fde2a4d3f7aa8dc9774eaddb9a4347296c0f5d2f0bf369ca92853e2d215b1"
+  }
+}

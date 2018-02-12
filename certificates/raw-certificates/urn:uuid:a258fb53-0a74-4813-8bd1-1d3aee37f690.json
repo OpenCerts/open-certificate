@@ -1,0 +1,45 @@
+{
+  "id": "urn:uuid:a258fb53-0a74-4813-8bd1-1d3aee37f690",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.568Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "5mlvp7b7ry8txkiuvcohiqyh2",
+    "criteria": "74i7ltkzrvio78fbs36tm5owvciaqg5ds47izmlq3p82njke1tamr64smbsoy4ch06igihhre4jlgu2q",
+    "issuer": {
+      "id": "urn:uuid:05e3ab33-bcb9-478d-8823-043f12e8f661",
+      "url": "http://piper.org",
+      "email": "Danny.Quigley15@yahoo.com"
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "Iliana_Kozey@hotmail.com",
+      "hashed": false
+    },
+    {
+      "type": "did",
+      "identity": "sha256$9f0e8011ebf87a227989030ec37ffa5047b60d7e42f2b463702309b341429c84",
+      "salt": "ncusu8gxpf",
+      "hashed": true
+    },
+    {
+      "type": "url",
+      "identity": "http://fiona.name",
+      "hashed": false
+    }
+  ]
+}

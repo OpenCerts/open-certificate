@@ -1,0 +1,75 @@
+{
+  "id": "urn:uuid:f402918e-0faf-42ec-ad8b-951ff88949f1",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.594Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "3geusd5uvibrc148nkznziztd",
+    "criteria": "vdagdnidxuz73cvpmo72p8ganubq93jpkqn4ecljpv11t91gdiq3xpg1jgdjapgnytnl6i31wxt9xrwd",
+    "issuer": {
+      "id": "urn:uuid:c43ccec2-4194-4874-9609-3dcc8e49c7e4",
+      "url": "https://erwin.net",
+      "email": "Celine.Fisher93@gmail.com"
+    },
+    "evidence": {
+      "transcript": [
+        {
+          "name": "iem7f51ovd:2f2ajlmm3yfh3v2",
+          "grade": "qyi9n05j1q:A+",
+          "courseCredit": "ewys6cbser:4.0",
+          "courseCode": "2iyq2rpc7f:5i1qg"
+        },
+        {
+          "name": "lm0pksocrw:5jwlu8bjtqoy9xa",
+          "grade": "9qby2yoyx4:A+",
+          "courseCredit": "x2xlrhka0e:4.0",
+          "courseCode": "gp7b55yy4j:tkhoc"
+        },
+        {
+          "name": "nam9n4f0bv:fcypqzek5bb7w5c",
+          "grade": "utl86gq4m2:A+",
+          "courseCredit": "ff16idtue1:4.0",
+          "courseCode": "kyeoidqfy0:ksvaf"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "did",
+      "identity": "did:judge:8dc3f470-ab3a-4e50-a188-2cfd3878a5ea",
+      "hashed": false
+    },
+    {
+      "type": "telephone",
+      "identity": "sha256$6fd1419b46d6186cd96bb43b33d847768f42a07b331ed543424051a4f9fdc4b4",
+      "salt": "efe5pka9zd",
+      "hashed": true
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "f049065be15c4a4f60915dd1bfc5ca9faa1a0f4d40abc65b6f44787656693e10",
+    "proof": [
+      "ea4bf115558d47b2ebd7fa49dc1e5b86f7f6cbd5aa7d0d4395e7f63a3c1b4fd2",
+      "f32c5f91353a28e46f1a3bad26aae015da72ac15df69c578d73b9e154f521307",
+      "e07d9fbc694229f101b088d35ba2bb10192836ae947eca6ab1c818cf85635a57",
+      "80058aaacf79a64b16c8b358b7805b5987537ee51047315f976854805d7536ae",
+      "71a2be738f965dab93de45a26ac04a580310d2203e33d003d96e917f6b499ec4",
+      "207f71940c27452b80de458306c051dbaa632bc85a10f0771e647650e666562b"
+    ],
+    "merkleRoot": "b77fde2a4d3f7aa8dc9774eaddb9a4347296c0f5d2f0bf369ca92853e2d215b1"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "urn:uuid:df334725-c1cb-4ca7-b2f9-5fa3774fa718",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.565Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "rh8z6pyqra1jwjehfuddj930p",
+    "criteria": "khxnpvz0izfawxpp5cpf7lvnzajx091qshxg27g67z3mda97yk13s4it30jc47uz689lz60q0xnet4nb",
+    "issuer": {
+      "id": "urn:uuid:db94af0a-42ae-431f-a2d9-dc716a6da106",
+      "url": "https://salma.net",
+      "email": "Avis9@yahoo.com"
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "Pauline_Grady@hotmail.com",
+      "hashed": false
+    },
+    {
+      "type": "did",
+      "identity": "sha256$76a181294128d1cc8654c424e281ce8b40b3734621e668aa5b3a93069eb7321b",
+      "salt": "kule9q74cv",
+      "hashed": true
+    }
+  ],
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "893490a46e7d1e2318244aee0a4d783cb192788b96ba1c9ed0df3e9fcf4b1dc2",
+    "proof": [
+      "95ee64b1969a2e00832c5c6d0f516cfc11aff0437a026ef820b9732ba8160599",
+      "45756b41fc788481695423ac8de875e6ba910ec3781e4f017b87b2edc1e713ce",
+      "a27cc913d4eb9a6128be8b9df5fb6b3eb14eb715b5dab112a483cbc078d4fd14",
+      "ab175befcf67bf2f878ffb9da76999f8a8f479371bad0cc336cec394eaf71a02",
+      "d855bfdd7df6b12c333a38f2df47739ac1bd2edbcfa91d5d07373cb1b91b6de7",
+      "f3f1493b731589217c922bef8bc021404923a6f4156a6d95c9d50dac41873174"
+    ],
+    "merkleRoot": "b77fde2a4d3f7aa8dc9774eaddb9a4347296c0f5d2f0bf369ca92853e2d215b1"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "urn:uuid:7bfb3c60-51c9-4b28-8740-1244448c4641",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.535Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "xcxnl0y7zpee50ufw9e733ysn",
+    "criteria": "kk0d2j470tua25u3l5tlrjhcsma0837fvz7kt59vsb3g0zdrai7ndr3s3y436q7wua6un56pflwk3gol",
+    "issuer": {
+      "id": "urn:uuid:39510bfe-407e-49b9-b282-66e3ebc8e050",
+      "url": "https://claud.org",
+      "email": "Francesca.Smith17@yahoo.com"
+    },
+    "evidence": {
+      "transcript": [
+        {
+          "name": "u4bnb06y7e:40287j366krqo2v",
+          "grade": "uzkaugjq92:A+",
+          "courseCredit": "97hn78u7e8:4.0",
+          "courseCode": "jvwv013jno:0paf4"
+        },
+        {
+          "name": "mqutft8xmn:l1pvqcho2mvrx25",
+          "grade": "bw1y459ssj:A+",
+          "courseCredit": "99znwivw9p:4.0",
+          "courseCode": "d4q82denam:8akam"
+        },
+        {
+          "name": "fu119s03gf:uiguc1igzv2zwfz",
+          "grade": "18bjc5e50x:A+",
+          "courseCredit": "gw8ebg8t2l:4.0",
+          "courseCode": "u29o0yxbck:tl73y"
+        },
+        {
+          "name": "g91vkmv8sz:pgl1gg7j7m2vnbk",
+          "grade": "qd0mwuasfd:A+",
+          "courseCredit": "nzhft605dy:4.0",
+          "courseCode": "nu5ib5v9qw:sjahh"
+        },
+        {
+          "name": "ktpwg6b9bt:hfyejmx6i28cxya",
+          "grade": "49c3j4mn5d:A+",
+          "courseCredit": "54g0oyq7lm:4.0",
+          "courseCode": "t9ke2rk511:0h9ie"
+        },
+        {
+          "name": "j13kojxbsa:oqvbkri707tespn",
+          "grade": "dreipwqgw3:A+",
+          "courseCredit": "f0nfr7jhef:4.0",
+          "courseCode": "s5swpdbcr6:ma69o"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": {
+    "type": "did",
+    "identity": "did:hailee:f2e87d18-1419-4f2f-8c2b-4a8a148af35d",
+    "hashed": false
+  }
+}

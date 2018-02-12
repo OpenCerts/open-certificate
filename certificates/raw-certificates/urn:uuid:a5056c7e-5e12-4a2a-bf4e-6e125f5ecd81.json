@@ -1,0 +1,75 @@
+{
+  "id": "urn:uuid:a5056c7e-5e12-4a2a-bf4e-6e125f5ecd81",
+  "type": "Assertion",
+  "issuedOn": "2018-02-12T02:26:48.560Z",
+  "@context": [
+    "https://openbadgespec.org/v2/context.json",
+    "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
+  ],
+  "badge": {
+    "type": "BadgeClass",
+    "evidencePrivacyFilter": {
+      "type": "SaltedProof",
+      "saltLength": "10"
+    },
+    "name": "0b4wlk7xcwcg1rveadofmi650",
+    "criteria": "ao90g8l3plc599djx2os10xz9kz2qeob8sj1yrtpy853lm3fgx4ldnlp3l81az079l70f4exu38asmki",
+    "issuer": {
+      "id": "urn:uuid:2a7d0a11-40aa-4f2b-97bb-d70b3deafb2b",
+      "url": "http://amaya.name",
+      "email": "Zakary_Gleason36@gmail.com"
+    },
+    "evidence": {
+      "transcript": [
+        {
+          "name": "zmi4n6ai6a:l1mu05v8ezn3el0",
+          "grade": "jbj2lmo0hm:A+",
+          "courseCredit": "0rslfchivt:4.0",
+          "courseCode": "du1z0y55yp:8gpiu"
+        },
+        {
+          "name": "a7oiqx3vpf:txx1kho3f1izl7g",
+          "grade": "qopoq2lpvn:A+",
+          "courseCredit": "tjjwah54dp:4.0",
+          "courseCode": "czhivl2pzk:kc6em"
+        },
+        {
+          "name": "vcjuggi4tm:dj8p7i819m9c9j5",
+          "grade": "zcn23mdmp9:A+",
+          "courseCredit": "nt9njeqrv5:4.0",
+          "courseCode": "7ncmflve4v:bk22t"
+        },
+        {
+          "name": "6vvxxqq0a0:g18kfocmflev7zs",
+          "grade": "o50n0mrd38:A+",
+          "courseCredit": "1v94u4g25p:4.0",
+          "courseCode": "qbtdjaslsk:2wr84"
+        },
+        {
+          "name": "uakyh2cp8d:qg6bw48qiia3vga",
+          "grade": "eu7h9b0oy7:A+",
+          "courseCredit": "9auugdci8i:4.0",
+          "courseCode": "fsfaut60hw:jouh2"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "type": "ETHStoreProof",
+    "contractAddress": "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+  },
+  "receipient": [
+    {
+      "type": "email",
+      "identity": "sha256$0e001b99077c63b66ce044c5736a287372c209046c4280f65012c62b388d45c0",
+      "salt": "hbnavxs0e4",
+      "hashed": true
+    },
+    {
+      "type": "telephone",
+      "identity": "sha256$48f0dc7da7a54b5f7668e4bd3aefcefa1d248af9a57e94f9e8ee63fe679f8a2e",
+      "salt": "tsyww8ca1x",
+      "hashed": true
+    }
+  ]
+}

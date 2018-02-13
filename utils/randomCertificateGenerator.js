@@ -52,9 +52,13 @@ function recipientDecorator(certificate) {
 
   // Randomly add 1 to 4 profiles
   const seed = parseInt(Math.random() * 15, 10) + 1;
+  // eslint-disable-next-line no-bitwise
   if ((seed & 1) === 1) profiles.push(randomHashingFunction(emailProfile()));
+  // eslint-disable-next-line no-bitwise
   if ((seed & 2) === 2) profiles.push(randomHashingFunction(didProfile()));
+  // eslint-disable-next-line no-bitwise
   if ((seed & 4) === 4) profiles.push(randomHashingFunction(urlProfile()));
+  // eslint-disable-next-line no-bitwise
   if ((seed & 8) === 8)
     profiles.push(randomHashingFunction(telephoneProfile()));
 

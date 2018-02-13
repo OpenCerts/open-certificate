@@ -9,11 +9,11 @@ function CertificateBatch(certificates) {
   this.merkleTree = new MerkleTree(this.certificates);
 }
 
-CertificateBatch.prototype.getRoot = function() {
+CertificateBatch.prototype.getRoot = function _getRoot() {
   return this.merkleTree.getRoot();
 };
 
-CertificateBatch.prototype.getProof = function(certificate) {
+CertificateBatch.prototype.getProof = function _getProof(certificate) {
   // if certificate is a cert object, change to cert, if its
   let buf = null;
   if (Buffer.isBuffer(certificate) && certificate.length === 32) {

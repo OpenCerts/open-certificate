@@ -1,7 +1,6 @@
 node_modules/
 coverage/
 certificates/
-certificates/
 package-lock.json
 npm-debug.log
 .nyc_output

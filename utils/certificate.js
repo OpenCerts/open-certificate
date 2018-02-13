@@ -94,11 +94,11 @@ function verifyCertificate(certificate) {
   return true;
 }
 
-Certificate.prototype.getRoot = function() {
+Certificate.prototype.getRoot = function _getRoot() {
   return this.certificateTree.getRoot();
 };
 
-Certificate.prototype.verify = function() {
+Certificate.prototype.verify = function _verify() {
   return verifyCertificate(this.certificate);
 };
 

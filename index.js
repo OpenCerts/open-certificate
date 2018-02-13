@@ -1,87 +1,99 @@
+#!/usr/bin/env node
 const fs = require("fs");
 const program = require("commander");
 
 const batchIssue = require("./utils/batchIssue");
 const Certificate = require("./utils/certificate");
+const { logger, addConsole } = require("./lib/logger");
 const {
   generateRandomCertificate,
   randomCertificate
 } = require("./utils/randomCertificateGenerator");
 
-program
-  .version("0.1.0", "-v, --version")
-  .option("-i, --input <inputDir>", "Raw certificates directory")
-  .option("-o, --output <outputDir>", "Output directory")
+const parseArguments = argv => {
+  program
+    .version("0.1.0", "-v, --version")
+    .option("-i, --input <inputDir>", "Raw certificates directory")
+    .option("-o, --output <outputDir>", "Output directory")
+    .option(
+      "-V, --verify <certificateFile>",
+      "Verify authencity of certificate"
+    )
+    .option(
+      "-g, --generate <certificatesToGenerator>",
+      "Number of random certificates to generate",
+      parseInt
+    )
+    .option(
+      "--log-level <logLevel>",
+      "Logging level. Defaults to `info`. " +
+        "Possible values are `error`, `warn`, `info`, `verbose`, `debug`, `silly`."
+    )
+    .parse(argv);
+};
 
-  .option("-V, --verify <certificateFile>", "Verify authencity of certificate")
+const main = argv => {
+  parseArguments(argv);
+  addConsole(program.logLevel || "info");
 
-  .option(
-    "-g, --generate <certificatesToGenerator>",
-    "Generate sample raw certificates",
-    parseInt
-  )
-  .parse(process.argv);
+  if (program.input && program.output) {
+    logger.info(
+      "============================== Issuing certificates ==============================\n"
+    );
 
-if (program.input && program.output) {
-  console.log(
-    "============================== Issuing certificates ==============================\n"
-  );
+    batchIssue(program.input, program.output).then(merkleRoot => {
+      logger.info(`Batch Certificate Root:\n${merkleRoot}\n`);
 
-  batchIssue(program.input, program.output).then(merkleRoot => {
-    console.log(`Batch Certificate Root:\n${merkleRoot}\n`);
+      logger.info(
+        "===================================================================================\n"
+      );
+    });
+  } else if (program.verify) {
+    logger.info(
+      "============================== Verifying certificate ==============================\n"
+    );
 
-    console.log(
+    const certificateJson = fs.readFileSync(program.verify);
+    const certificate = new Certificate(certificateJson);
+
+    try {
+      certificate.verify();
+
+      logger.info("Certificate's signature is valid!\n");
+
+      logger.info(
+        "Warning: Please verify this certificate on the blockchain with the issuer's certificate store.\n"
+      );
+    } catch (e) {
+      logger.info("Certificate's signature is invalid!");
+      logger.info(`Reason: ${e.message}\n`);
+    }
+
+    logger.info(
       "===================================================================================\n"
     );
-  });
-} else if (program.verify) {
-  console.log(
-    "============================== Verifying certificate ==============================\n"
-  );
-
-  const certificateJson = fs.readFileSync(program.verify);
-  const certificate = new Certificate(certificateJson);
-
-  try {
-    certificate.verify();
-
-    console.log("Certificate's signature is valid!\n");
-
-    console.log(
-      "Warning: Please verify this certificate on the blockchain with the issuer's certificate store.\n"
+  } else if (program.generate) {
+    logger.info(
+      "========================== Generating random certificate ==========================\n"
     );
-  } catch (e) {
-    console.log("Certificate's signature is invalid!");
-    console.log(`Reason: ${e.message}\n`);
+
+    const generated = generateRandomCertificate(
+      program.generate,
+      "./certificates/raw-certificates"
+    );
+    logger.info(`Generated ${generated} certificates.\n`);
+    logger.info(
+      "===================================================================================\n"
+    );
+  } else {
+    program.help();
   }
+};
 
-  console.log(
-    "===================================================================================\n"
-  );
-} else if (program.generate) {
-  console.log(
-    "========================== Generating random certificate ==========================\n"
-  );
-
-  const generated = generateRandomCertificate(
-    program.generate,
-    "./certificates/raw-certificates"
-  );
-  console.log(`Generated ${generated} certificates.\n`);
-  console.log(
-    "===================================================================================\n"
-  );
-} else {
-  program.help();
+if (typeof require !== "undefined" && require.main === module) {
+  main(process.argv);
 }
 
-/*
-// Not sure if require this ..
-if (require.main === module) {
-  console.log('called directly');
-} */
-
-// Export as npm package
 module.exports = {
   Certificate,
   batchIssue,

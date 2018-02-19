@@ -119,7 +119,7 @@ function generatePrivateEvidence() {
   return null;
 }
 
-function randomCertificate() {
+function randomCertificate(contractAddress) {
   const certificate = {
     id: `urn:uuid:${faker.random.uuid()}`,
     type: "Assertion",
@@ -140,7 +140,7 @@ function randomCertificate() {
     },
     verification: {
       type: "ETHStoreProof",
-      contractAddress: "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+      contractAddress
     }
   };
 
@@ -155,9 +155,9 @@ function randomCertificate() {
   return certificate;
 }
 
-function generateRandomCertificate(num, dir) {
+function generateRandomCertificate(num, dir, contractAddress) {
   for (let i = 0; i < num; i += 1) {
-    const cert = randomCertificate();
+    const cert = randomCertificate(contractAddress);
     const certId = cert.id;
     fs.writeFileSync(`${dir}/${certId}.json`, JSON.stringify(cert, null, 2));
   }

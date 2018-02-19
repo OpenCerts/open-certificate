@@ -1,21 +1,24 @@
+# Certificate CLI tool
+
 ## Setup
 
-```
+```bash
 yarn
 ```
 
 ## Generate Sample Certificates
 
-Generates a number of sample certificates based on the specification by open badge v2 with our extension. Generated samples will be in ./certificates/raw-certificates
+Generates a number of sample certificates based on the specification by open badge
+v2 with our extension.
 
-```
-node index.js -g <CertificatesToGenerate>
+```bash
+./index.js generate <dir> --count 20
 ```
 
 Example:
 
-```
-node index.js -g 50
+```bash
+./index.js generate certificates/raw-certificates --count 50
 
 ========================== Generating random certificate ==========================
 
@@ -24,19 +27,21 @@ Generated 50 certificates.
 ===================================================================================
 ```
 
-## Issuing Certificates
+## Batching Certificates
 
-This command process all certificates in the input directory and issue all of them in a single batch. It will then add the signature to the individual certificates. 
+This command process all certificates in the input directory and issue all of them in a single
+batch. It will then add the signature to the individual certificates.
 
-```
-node index -i <PathToUnsignedCertificates> -o <PathToSignedCertificates>
+```bash
+./index.js batch <PathToUnsignedCertificates> <PathToSignedCertificates>
 ```
 
 Example:
-```
-node index -i ./certificates/raw-certificates/ -o ./certificates/processed-certificates/
 
-============================== Issuing certificates ==============================
+```bash
+./index.js batch ./certificates/raw-certificates/ ./certificates/processed-certificates/
+
+============================== Batching certificates ==============================
 
 Batch Certificate Root:
 458a80232eda8a816972be8ac731feb50727149aff6287d70142821ae160caf7
@@ -46,15 +51,16 @@ Batch Certificate Root:
 
 ## Verifying Signed Certificate
 
-This command verifies that the certificate (and all it's evidence) is valid and is part of the certificate batch. However, it does not verify that the batch's merkle root is stored on the blockchain. User will need to verify that the certificate has indeed been issued by checking with the issuer's smart contract. 
+This command verifies that the certificate (and all it's evidence) is valid and is part of the certificate batch. However, it does not verify that the batch's merkle root is stored on the blockchain. User will need to verify that the certificate has indeed been issued by checking with the issuer's smart contract.
 
-```
-node index -V <PathToCertificate>
+```bash
+./index.js verify <PathToCertificate>
 ```
 
 Example:
-```
-node index -V ./certificates/processed-certificates/urn:uuid:08b1f10a-6bf0-46c8-bbfd-64750b0d73ef.json
+
+```bash
+./index.js verify ./certificates/processed-certificates/urn:uuid:08b1f10a-6bf0-46c8-bbfd-64750b0d73ef.json
 
 ============================== Verifying certificate ==============================
 
@@ -69,13 +75,14 @@ Warning: Please verify this certificate on the blockchain with the issuer's cert
 
 This command deploys a copy of the current version of certificate store on the blockchain. The name of the organisation and verification url is needed to initialise the store.
 
-```
-node index -d -a <issuerAddress> -n <storeName> -u <verificationUrl>
+```bash
+./index.js deploy <issuerAddress> <storeName> <verificationUrl>
 ```
 
 Example:
-```
-node index -d -a 0x627306090abaB3A6e1400e9345bC60c78a8BEf57 -n "GovTech DLT" -u https://tech.gov.sg
+
+```bash
+./index.js deploy 0x627306090abaB3A6e1400e9345bC60c78a8BEf57 "GovTech DLT" https://tech.gov.sg
 
 ========================== Deploying new contract store ==========================
 
@@ -84,38 +91,42 @@ Contract deployed at 0x8CdaF0CD259887258Bc13a92C0a6dA92698644C0.
 ===================================================================================
 ```
 
-## Issue Certificate on Certificate Store
+## Commit Certificate Batch on Certificate Store
 
-This command issues the certificate batch on the blockchain using the given certificate store. 
+This command issues the certificate batch on the blockchain using the given certificate store.
 
-```
-node index -b <certificateBatchMerkleRoot> -a <issuerAddress> -s <storeAddress>
+```bash
+./index.js commit <merkleRoot> <issuerAddress> <storeAddress>
 ```
 
 Example:
-```
-node index -b 0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE -a 0x627306090abaB3A6e1400e9345bC60c78a8BEf57 -s 0x8CdaF0CD259887258Bc13a92C0a6dA92698644C0
 
-=================== Issuing certificate on contract store ====================
+```bash
+./index.js commit 0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE 0x627306090abaB3A6e1400e9345bC60c78a8BEf57 0x8CdaF0CD259887258Bc13a92C0a6dA92698644C0
 
-Certificate batch issued: 0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE.
+=================== Committing certificate on contract store ====================
+
+Certificate batch issued: 0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE
+by 0x627306090abaB3A6e1400e9345bC60c78a8BEf57 at contract address 0x8CdaF0CD259887258Bc13a92C0a6dA92698644C0
 
 ===================================================================================
 ```
 
 ## Transferring Ownership of Contract Store
 
-```
-node index -t <newOwnerAddress> -a <issuerAddress> -s <storeAddress>
+```bash
+./index.js transfer <originalOwner> <newOwner> <contractAddress>
+
 ```
 
 Example:
-```
-node index -t 0xf17f52151EbEF6C7334FAD080c5704D77216b732 -a 0x627306090abaB3A6e1400e9345bC60c78a8BEf57 -s 0x8CdaF0CD259887258Bc13a92C0a6dA92698644C0
+
+```bash
+./index.js transfer 0xf17f52151EbEF6C7334FAD080c5704D77216b732 0x627306090abaB3A6e1400e9345bC60c78a8BEf57  0x8CdaF0CD259887258Bc13a92C0a6dA92698644C0
 
 =================== Transfering ownership of contract store ====================
 
-Contract transfered to 0xf17f52151EbEF6C7334FAD080c5704D77216b732.
+Contract at 0x8CdaF0CD259887258Bc13a92C0a6dA92698644C0 transfered from 0xf17f52151EbEF6C7334FAD080c5704D77216b732 to 0x627306090abaB3A6e1400e9345bC60c78a8BEf57.
 
 ===================================================================================
 ```
@@ -127,7 +138,7 @@ This script automatically deploys a certificate store and runs all the functions
 Before running the script be sure to connect to ganache cli/ui with the following mnemonic: `candy maple cake sugar pudding cream honey rich smooth crumble sweet treat
 `
 
-```
+```bash
 node examples/sample.js
 ```
 
@@ -143,5 +154,5 @@ node examples/sample.js
 ## Test
 
 ```
-npm run test
+yarn test
 ```

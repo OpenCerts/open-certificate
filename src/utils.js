@@ -1,8 +1,10 @@
+const _ = require("lodash");
 const deepReduce = require("deep-reduce");
 const { sha3 } = require("ethereumjs-util");
 
 function flattenJson(object) {
-  const reducer = (reduced, value, path) => {
+  const reducer = (current, value, path) => {
+    const reduced = _.cloneDeep(current);
     if (
       typeof value === "string" ||
       typeof value === "number" ||

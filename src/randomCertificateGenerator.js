@@ -6,7 +6,7 @@ const { sha3 } = require("ethereumjs-util");
 // Generate recipient based on
 // - Profile Identifier Properties in https://www.imsglobal.org/sites/default/files/Badges/OBv2p0/index.html#ProfileIdentifierProperties
 // - DID extension describe in https://govtechsg.github.io/certificate-schema/schema/1.0/
-function recipientDecorator(certificate) {
+function profileGenerator() {
   function emailProfile() {
     return {
       type: "email",
@@ -34,18 +34,19 @@ function recipientDecorator(certificate) {
 
   // Randomly decide to hash identity based on https://github.com/mozilla/openbadges-backpack/wiki/How-to-hash-&-salt-in-various-languages.
   function randomHashingFunction(profile) {
+    const decoratedProfile = Object.assign({}, profile);
     if (Math.random() > 0.5) {
-      profile.hashed = false;
+      decoratedProfile.hashed = false;
     } else {
       const salt = faker.random.alphaNumeric(10);
       const hash = crypto.createHash("sha256");
-      hash.update(profile.identity + salt);
+      hash.update(decoratedProfile.identity + salt);
 
-      profile.salt = salt;
-      profile.identity = `sha256$${hash.digest("hex")}`;
-      profile.hashed = true;
+      decoratedProfile.salt = salt;
+      decoratedProfile.identity = `sha256$${hash.digest("hex")}`;
+      decoratedProfile.hashed = true;
     }
-    return profile;
+    return decoratedProfile;
   }
 
   let profiles = [];
@@ -64,70 +65,58 @@ function recipientDecorator(certificate) {
 
   if (profiles.length === 1) [profiles] = profiles;
 
-  certificate.recipient = profiles;
+  return profiles;
 }
 
-function certificateDecorator(certificate) {
-  function generateEvidence() {
-    // 80% will have visible evidences
-    if (Math.random() < 0.8) {
-      const transcript = [];
-      for (let i = 0; i < parseInt(Math.random() * 50, 10) + 1; i += 1) {
-        transcript.push({
-          name: `${faker.random.alphaNumeric(10)}:${faker.random.alphaNumeric(
-            15
-          )}`,
-          grade: `${faker.random.alphaNumeric(10)}:${faker.random.alphaNumeric(
-            2
-          )}`,
-          courseCredit: `${faker.random.alphaNumeric(
-            10
-          )}:${faker.random.alphaNumeric(3)}`,
-          courseCode: `${faker.random.alphaNumeric(
-            10
-          )}:${faker.random.alphaNumeric(5)}`
-        });
-      }
-      return {
-        transcript
-      };
-    }
-    return null;
-  }
+function generateIssuerIdentity() {
+  return {
+    id: `urn:uuid:${faker.random.uuid()}`,
+    url: faker.internet.url(),
+    email: faker.internet.email()
+  };
+}
 
-  function generatePrivateEvidence() {
-    // 30% will have hidden evidences
-    if (Math.random() < 0.3) {
-      const privateEvidence = [];
-      for (let i = 0; i < parseInt(Math.random() * 50, 10) + 1; i += 1) {
-        const plaintextEvidence = `${faker.random.alphaNumeric(
+function generateEvidence() {
+  // 80% will have visible evidences
+  if (Math.random() < 0.8) {
+    const transcript = [];
+    for (let i = 0; i < parseInt(Math.random() * 50, 10) + 1; i += 1) {
+      transcript.push({
+        name: `${faker.random.alphaNumeric(10)}:${faker.random.alphaNumeric(
+          15
+        )}`,
+        grade: `${faker.random.alphaNumeric(10)}:${faker.random.alphaNumeric(
+          2
+        )}`,
+        courseCredit: `${faker.random.alphaNumeric(
           10
-        )}:${faker.random.alphaNumeric(15)}`;
-        const hashedEvidence = sha3(plaintextEvidence).toString("hex");
-        privateEvidence.push(hashedEvidence);
-      }
-      return privateEvidence;
+        )}:${faker.random.alphaNumeric(3)}`,
+        courseCode: `${faker.random.alphaNumeric(
+          10
+        )}:${faker.random.alphaNumeric(5)}`
+      });
     }
-    return null;
-  }
-
-  function generateIssuerIdentity() {
     return {
-      id: `urn:uuid:${faker.random.uuid()}`,
-      url: faker.internet.url(),
-      email: faker.internet.email()
+      transcript
     };
   }
+  return null;
+}
 
-  certificate.badge.name = faker.random.alphaNumeric(25);
-  certificate.badge.criteria = faker.random.alphaNumeric(80);
-  certificate.badge.issuer = generateIssuerIdentity();
-
-  const evidence = generateEvidence();
-  if (evidence) certificate.badge.evidence = evidence;
-
-  const privateEvidence = generatePrivateEvidence();
-  if (privateEvidence) certificate.badge.privateEvidence = privateEvidence;
+function generatePrivateEvidence() {
+  // 30% will have hidden evidences
+  if (Math.random() < 0.3) {
+    const privateEvidence = [];
+    for (let i = 0; i < parseInt(Math.random() * 50, 10) + 1; i += 1) {
+      const plaintextEvidence = `${faker.random.alphaNumeric(
+        10
+      )}:${faker.random.alphaNumeric(15)}`;
+      const hashedEvidence = sha3(plaintextEvidence).toString("hex");
+      privateEvidence.push(hashedEvidence);
+    }
+    return privateEvidence;
+  }
+  return null;
 }
 
 function randomCertificate() {
@@ -140,6 +129,9 @@ function randomCertificate() {
       "https://govtechsg.github.io/certificate-schema/schema/1.0/context.json"
     ],
     badge: {
+      name: faker.random.alphaNumeric(25),
+      criteria: faker.random.alphaNumeric(80),
+      issuer: generateIssuerIdentity(),
       type: "BadgeClass",
       evidencePrivacyFilter: {
         type: "SaltedProof",
@@ -152,8 +144,13 @@ function randomCertificate() {
     }
   };
 
-  recipientDecorator(certificate);
-  certificateDecorator(certificate);
+  certificate.profile = profileGenerator();
+
+  const evidence = generateEvidence();
+  if (evidence) certificate.badge.evidence = evidence;
+
+  const privateEvidence = generatePrivateEvidence();
+  if (privateEvidence) certificate.badge.privateEvidence = privateEvidence;
 
   return certificate;
 }

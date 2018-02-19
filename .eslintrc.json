@@ -9,7 +9,8 @@
   "plugins": [
     "prettier",
     "chai-friendly",
-    "chai-expect"
+    "chai-expect",
+    "mocha"
   ],
   "globals": {
     "artifacts": false,
@@ -31,6 +32,7 @@
     ],
     "prettier/prettier": "error",
     "no-unused-expressions": "off",
+    "mocha/no-exclusive-tests": "error",
     "chai-friendly/no-unused-expressions": "error",
     "chai-expect/no-inner-compare": "error",
     "chai-expect/missing-assertion": "error",

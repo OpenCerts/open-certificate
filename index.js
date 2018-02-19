@@ -2,13 +2,14 @@
 const fs = require("fs");
 const program = require("commander");
 
-const batchIssue = require("./utils/batchIssue");
-const Certificate = require("./utils/certificate");
+const batchIssue = require("./src/batchIssue");
+const Certificate = require("./src/certificate");
+const CertificateStore = require("./src/contract/certificateStore.js");
 const { logger, addConsole } = require("./lib/logger");
 const {
   generateRandomCertificate,
   randomCertificate
-} = require("./utils/randomCertificateGenerator");
+} = require("./src/randomCertificateGenerator");
 
 const parseArguments = argv => {
   program
@@ -24,6 +25,16 @@ const parseArguments = argv => {
       "Number of random certificates to generate",
       parseInt
     )
+    .option("-d, --deploy", "Deploy a new certificate store")
+    .option("-a, --issuerAddress <issuerAddress>", "Address of issuer")
+    .option(
+      "-t, --transfer <newOwnerAddress>",
+      "Transfer contract ownership to new owner"
+    )
+    .option("-n, --name [storeName]", "Name of certificate store")
+    .option("-u, --url [url]", "Url of certificate store")
+    .option("-b, --issueBatch <batchMerkleRoot>", "Issue certificate")
+    .option("-s, --store <storeAddress>", "Address of Certificate Store")
     .option(
       "--log-level <logLevel>",
       "Logging level. Defaults to `info`. " +
@@ -85,6 +96,65 @@ const main = argv => {
     logger.info(
       "===================================================================================\n"
     );
+  } else if (program.deploy && program.issuerAddress) {
+    logger.info(
+      "========================== Deploying new contract store ==========================\n"
+    );
+
+    const store = new CertificateStore(program.issuerAddress);
+    store.deployStore(program.name, program.url).then(address => {
+      logger.info(`Contract deployed at ${address}.\n`);
+      logger.info(
+        "===================================================================================\n"
+      );
+      process.exit(0);
+    });
+  } else if (program.transfer && program.issuerAddress && program.store) {
+    logger.info(
+      "=================== Transfering ownership of contract store ====================\n"
+    );
+
+    const store = new CertificateStore(program.issuerAddress, program.store);
+
+    store
+      .transferOwnership(program.transfer)
+      .then(() => {
+        logger.info(`Contract transfered to ${program.transfer}.\n`);
+        logger.info(
+          "===================================================================================\n"
+        );
+        process.exit(0);
+      })
+      .catch(err => {
+        logger.error(`${err.message}\n`);
+        logger.info(
+          "===================================================================================\n"
+        );
+        process.exit(0);
+      });
+  } else if (program.issueBatch && program.issuerAddress && program.store) {
+    logger.info(
+      "=================== Issuing certificate on contract store ====================\n"
+    );
+
+    const store = new CertificateStore(program.issuerAddress, program.store);
+
+    store
+      .issueBatch(program.issueBatch)
+      .then(() => {
+        logger.info(`Certificate batch issued: ${program.issueBatch}.\n`);
+        logger.info(
+          "===================================================================================\n"
+        );
+        process.exit(0);
+      })
+      .catch(err => {
+        logger.error(`${err.message}\n`);
+        logger.info(
+          "===================================================================================\n"
+        );
+        process.exit(0);
+      });
   } else {
     program.help();
   }

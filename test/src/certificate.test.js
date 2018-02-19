@@ -1,4 +1,4 @@
-const Certificate = require("../utils/certificate");
+const Certificate = require("../../src/certificate");
 
 const rawCertificate = {
   type: "Assertion",

@@ -1,4 +1,4 @@
-const utils = require("../utils/utils");
+const utils = require("../../src/utils");
 const { sha3 } = require("ethereumjs-util");
 
 describe("utils", () => {

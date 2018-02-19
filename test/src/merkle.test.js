@@ -1,7 +1,7 @@
-const utils = require("../utils/utils");
+const utils = require("../../src/utils");
 const { sha3 } = require("ethereumjs-util");
-const { MerkleTree, checkProof } = require("../utils/merkle");
-const { toBuffer } = require("../utils/utils");
+const { MerkleTree, checkProof } = require("../../src/merkle");
+const { toBuffer } = require("../../src/utils");
 
 describe("merkle", () => {
   const arr = ["item1", "item2", "item3", "item4", "item5"];

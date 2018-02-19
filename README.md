@@ -65,6 +65,72 @@ Warning: Please verify this certificate on the blockchain with the issuer's cert
 ===================================================================================
 ```
 
+## Deploy Certificate Store
+
+This command deploys a copy of the current version of certificate store on the blockchain. The name of the organisation and verification url is needed to initialise the store.
+
+```
+node index -d -a <issuerAddress> -n <storeName> -u <verificationUrl>
+```
+
+Example:
+```
+node index -d -a 0x627306090abaB3A6e1400e9345bC60c78a8BEf57 -n "GovTech DLT" -u https://tech.gov.sg
+
+========================== Deploying new contract store ==========================
+
+Contract deployed at 0x8CdaF0CD259887258Bc13a92C0a6dA92698644C0.
+
+===================================================================================
+```
+
+## Issue Certificate on Certificate Store
+
+This command issues the certificate batch on the blockchain using the given certificate store. 
+
+```
+node index -b <certificateBatchMerkleRoot> -a <issuerAddress> -s <storeAddress>
+```
+
+Example:
+```
+node index -b 0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE -a 0x627306090abaB3A6e1400e9345bC60c78a8BEf57 -s 0x8CdaF0CD259887258Bc13a92C0a6dA92698644C0
+
+=================== Issuing certificate on contract store ====================
+
+Certificate batch issued: 0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE.
+
+===================================================================================
+```
+
+## Transferring Ownership of Contract Store
+
+```
+node index -t <newOwnerAddress> -a <issuerAddress> -s <storeAddress>
+```
+
+Example:
+```
+node index -t 0xf17f52151EbEF6C7334FAD080c5704D77216b732 -a 0x627306090abaB3A6e1400e9345bC60c78a8BEf57 -s 0x8CdaF0CD259887258Bc13a92C0a6dA92698644C0
+
+=================== Transfering ownership of contract store ====================
+
+Contract transfered to 0xf17f52151EbEF6C7334FAD080c5704D77216b732.
+
+===================================================================================
+```
+
+## Smart Contract Sample Interaction
+
+This script automatically deploys a certificate store and runs all the functions available in the smart contract.
+
+Before running the script be sure to connect to ganache cli/ui with the following mnemonic: `candy maple cake sugar pudding cream honey rich smooth crumble sweet treat
+`
+
+```
+node examples/sample.js
+```
+
 ## TBD
 
 - Test for functions in index.js

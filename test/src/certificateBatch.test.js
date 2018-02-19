@@ -1,7 +1,9 @@
-const certificateBatch = require("../utils/certificateBatch");
-const Certificate = require("../utils/certificate");
-const { randomCertificate } = require("../utils/randomCertificateGenerator.js");
-const { checkProof } = require("../utils/merkle");
+const certificateBatch = require("../../src/certificateBatch");
+const Certificate = require("../../src/certificate");
+const {
+  randomCertificate
+} = require("../../src/randomCertificateGenerator.js");
+const { checkProof } = require("../../src/merkle");
 
 describe("certificateBatch", () => {
   const CERTIFICATES_TO_ISSUE = 500;

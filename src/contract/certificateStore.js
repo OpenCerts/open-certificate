@@ -1,5 +1,4 @@
 const Web3 = require("web3");
-const config = require("./config.js");
 
 const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
 
@@ -9,8 +8,6 @@ const {
 } = require("../../node_modules/certificate-contract/build/contracts/CertificateStore.json");
 
 function CertificateStore(issuerAccount, address) {
-  this.gas = process.env.GAS || config.defaults.gas;
-  this.gasPrice = process.env.GAS_PRICE || config.defaults.gasPrice;
   this.account = issuerAccount;
   this.contract = new web3.eth.Contract(abi, address);
 }
@@ -33,8 +30,10 @@ CertificateStore.prototype.getIssuedBlock = function _getIssuedBlock(
   return this.contract.methods.getIssuedBlock(merkleRoot).call();
 };
 
-CertificateStore.prototype.isBatchIssued = function _isBatchIssued(merkleRoot) {
-  return this.contract.methods.isBatchIssued(merkleRoot).call();
+CertificateStore.prototype.isCertificateIssued = function _isCertificateIssued(
+  merkleRoot
+) {
+  return this.contract.methods.isCertificateIssued(merkleRoot).call();
 };
 
 CertificateStore.prototype.isRevoked = function _isRevoked(merkleRoot) {
@@ -60,9 +59,9 @@ CertificateStore.prototype.transferOwnership = function _transferOwnership(
     });
 };
 
-CertificateStore.prototype.issueBatch = function _issueBatch(hash) {
+CertificateStore.prototype.issueCertificate = function _issueCertificate(hash) {
   return this.contract.methods
-    .issueBatch(hash)
+    .issueCertificate(hash)
     .send({ from: this.account })
     .then(tx => {
       const { status, transactionHash } = tx;
@@ -77,13 +76,12 @@ CertificateStore.prototype.issueBatch = function _issueBatch(hash) {
     });
 };
 
-CertificateStore.prototype.revokeClaim = function _revokeClaim(
+CertificateStore.prototype.revokeCertificate = function _revokeCertificate(
   merkleRoot,
-  claim,
   reason
 ) {
   return this.contract.methods
-    .revokeClaim(merkleRoot, claim, reason)
+    .revokeCertificate(merkleRoot, reason)
     .send({ from: this.account })
     .then(tx => {
       const { status, transactionHash } = tx;
@@ -98,22 +96,28 @@ CertificateStore.prototype.revokeClaim = function _revokeClaim(
     });
 };
 
-CertificateStore.prototype.deployStore = function _deployStore(
+CertificateStore.prototype.deployStore = async function _deployStore(
   verificationUrl,
   name
 ) {
-  return this.contract
-    .deploy({
-      data: bytecode,
-      arguments: [verificationUrl, name]
-    })
-    .send({ from: this.account, gas: this.gas, gasPrice: this.gasPrice })
+  const deployParams = {
+    data: bytecode,
+    arguments: [verificationUrl, name]
+  };
+
+  const gasRequired = await this.contract.deploy(deployParams).estimateGas();
+
+  const contractAddress = await this.contract
+    .deploy(deployParams)
+    .send({ from: this.account, gas: gasRequired })
     .then(contract => {
       // eslint-disable-next-line no-underscore-dangle
       const address = contract._address;
       this.contract = new web3.eth.Contract(abi, address);
       return address;
     });
+
+  return contractAddress;
 };
 
 module.exports = CertificateStore;

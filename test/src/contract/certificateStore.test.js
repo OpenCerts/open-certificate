@@ -70,17 +70,19 @@ describe("certificateStore", () => {
     });
   });
 
-  describe("isBatchIssued", () => {
-    it("should return isBatchIssued from contract", () => {
+  describe("isCertificateIssued", () => {
+    it("should return isCertificateIssued from contract", () => {
       const store = new CertificateStore(address0, contract0);
-      const isBatchIssued = true;
+      const isCertificateIssued = true;
 
-      store.contract.addMethod("isBatchIssued");
-      store.contract.methods.isBatchIssued().setResult(true, isBatchIssued);
+      store.contract.addMethod("isCertificateIssued");
+      store.contract.methods
+        .isCertificateIssued()
+        .setResult(true, isCertificateIssued);
 
       return store
-        .isBatchIssued(certificate0)
-        .should.eventually.deep.equal(isBatchIssued);
+        .isCertificateIssued(certificate0)
+        .should.eventually.deep.equal(isCertificateIssued);
     });
   });
 
@@ -187,7 +189,7 @@ describe("certificateStore", () => {
     });
   });
 
-  describe("issueBatch", () => {
+  describe("issueCertificate", () => {
     it("should issue a batch of certificate on contract", () => {
       const store = new CertificateStore(address0, contract0);
 
@@ -236,12 +238,12 @@ describe("certificateStore", () => {
         }
       };
 
-      store.contract.addMethod("issueBatch");
-      store.contract.methods.issueBatch().setResult(true, issueTx);
-      store.contract.methods.issueBatch().expectParams(certificate0);
+      store.contract.addMethod("issueCertificate");
+      store.contract.methods.issueCertificate().setResult(true, issueTx);
+      store.contract.methods.issueCertificate().expectParams(certificate0);
 
       return store
-        .issueBatch(certificate0)
+        .issueCertificate(certificate0)
         .should.eventually.deep.equal(issueTx);
     });
 
@@ -265,18 +267,18 @@ describe("certificateStore", () => {
         events: {}
       };
 
-      store.contract.addMethod("issueBatch");
-      store.contract.methods.issueBatch().setResult(true, issueTx);
-      store.contract.methods.issueBatch().expectParams(certificate0);
+      store.contract.addMethod("issueCertificate");
+      store.contract.methods.issueCertificate().setResult(true, issueTx);
+      store.contract.methods.issueCertificate().expectParams(certificate0);
 
       return store
-        .issueBatch(certificate0)
+        .issueCertificate(certificate0)
         .should.be.rejectedWith(/Transaction has failed, check tx hash/);
     });
   });
 
   describe("deploy", () => {
-    it("should deploy a copy of contract", () => {
+    it("should deploy a copy of contract after estimating gas", () => {
       const store = new CertificateStore(address0, contract0);
 
       const url = "http://tech.gov.sg";
@@ -284,6 +286,7 @@ describe("certificateStore", () => {
 
       const contractAddress = "0x13274Fe19C0178208bCbee397af8167A7be27f6f";
 
+      const espectedGas = 99999;
       store.contract.deploy().setResult(true, {
         _address: contractAddress
       });
@@ -292,6 +295,13 @@ describe("certificateStore", () => {
         data: bytecode,
         arguments: [url, name]
       });
+
+      store.contract.deploy().expectOptions({
+        from: address0,
+        gas: espectedGas
+      });
+
+      store.contract.deploy().setGasEstimate(espectedGas);
 
       return store
         .deployStore(url, name)

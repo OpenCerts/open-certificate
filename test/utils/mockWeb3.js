@@ -19,10 +19,30 @@ Web3MockContractTxObject.prototype.setResult = function setResult(
   this.results = results;
 };
 
+Web3MockContractTxObject.prototype.setGasEstimate = function setGasEstimate(
+  gas
+) {
+  this.gasEstimate = gas;
+};
+
 Web3MockContractTxObject.prototype.expectParams = function expectParams(
   ...args
 ) {
   this.expectedParam = args;
+};
+
+Web3MockContractTxObject.prototype.expectOptions = function expectOptions(
+  opts
+) {
+  this.expectedOpts = opts;
+};
+
+Web3MockContractTxObject.prototype.optionsCheck = function optionsCheck(opts) {
+  if (this.expectedOpts && !_.isEqual(this.expectedOpts, opts)) {
+    throw new Error(`Options mismatch
+      Expected: ${JSON.stringify(this.expectedOpts, null, 2)}
+      Received: ${JSON.stringify(opts, null, 2)}`);
+  }
 };
 
 Web3MockContractTxObject.prototype.argumentCheck = function argumentCheck() {
@@ -33,7 +53,12 @@ Web3MockContractTxObject.prototype.argumentCheck = function argumentCheck() {
   }
 };
 
-Web3MockContractTxObject.prototype.call = function call() {
+Web3MockContractTxObject.prototype.estimateGas = function deploy() {
+  return Promise.resolve(this.gasEstimate);
+};
+
+Web3MockContractTxObject.prototype.call = function call(opts) {
+  this.optionsCheck(opts);
   this.argumentCheck();
 
   return this.resolves
@@ -41,7 +66,8 @@ Web3MockContractTxObject.prototype.call = function call() {
     : Promise.reject(this.results);
 };
 
-Web3MockContractTxObject.prototype.send = function send() {
+Web3MockContractTxObject.prototype.send = function send(opts) {
+  this.optionsCheck(opts);
   this.argumentCheck();
 
   return this.resolves

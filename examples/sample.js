@@ -33,7 +33,7 @@ async function main() {
 
   // Issuing certificate
   console.log(`Issuing certificate 1...`);
-  const tx0 = await store.issueBatch(certificate1);
+  const tx0 = await store.issueCertificate(certificate1);
   console.log(`Certificate 1 is issued`);
   // console.log(JSON.stringify(tx0));
   console.log();
@@ -48,7 +48,7 @@ async function main() {
   const store2 = new CertificateStore(address1, address);
   // Issuing certificate
   console.log(`Issuing certificate 2...`);
-  const tx2 = await store2.issueBatch(certificate2);
+  const tx2 = await store2.issueCertificate(certificate2);
   console.log(`Certificate 2 is issued`);
   // console.log(JSON.stringify(tx2, null, 2));
   console.log();

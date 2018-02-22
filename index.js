@@ -67,6 +67,29 @@ const parseArguments = argv =>
           })
     })
     .command({
+      command:
+        "filter <inputCertificatePath> <outputCertificatePath> [filters...]",
+      description:
+        "Hide selected evidences on certificate. " +
+        "Example of filters: transcript.0.grade",
+      builder: sub =>
+        sub
+          .positional("inputCertificatePath", {
+            description: "The certificate file to read from",
+            normalize: true
+          })
+          .positional("outputCertificatePath", {
+            description: "The filtered certificate file to write to",
+            normalize: true
+          })
+          .options({
+            filters: {
+              type: "array",
+              description: "The number of certificates to generate"
+            }
+          })
+    })
+    .command({
       command: "deploy <address> <name> <verificationUrl>",
       description:
         "Deploy a certificate store for issuer at " +
@@ -134,6 +157,17 @@ const generate = (dir, count, contractAddress) => {
   const generated = generateRandomCertificate(count, dir, contractAddress);
   logger.info(`Generated ${generated} certificates.`);
   return count;
+};
+
+const filter = (inputPath, outputPath, filters) => {
+  const certificateJson = JSON.parse(fs.readFileSync(inputPath, "utf8"));
+  const cert = new Certificate(certificateJson);
+  cert.privacyFilter(filters);
+  const filteredCert = JSON.stringify(cert.getCertificate(), null, 2);
+
+  fs.writeFileSync(outputPath, filteredCert);
+
+  return filteredCert;
 };
 
 const batch = async (raw, batched) => {
@@ -205,6 +239,12 @@ const main = async argv => {
       return generate(args.dir, args.count, args.contractAddress);
     case "batch":
       return batch(args.rawDir, args.batchedDir);
+    case "filter":
+      return filter(
+        args.inputCertificatePath,
+        args.outputCertificatePath,
+        args.filters
+      );
     case "verify":
       return verify(args.file);
     case "deploy":

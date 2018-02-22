@@ -1,26 +1,4 @@
-const _ = require("lodash");
-const deepReduce = require("deep-reduce");
 const { sha3 } = require("ethereumjs-util");
-
-function flattenJson(object) {
-  const reducer = (current, value, path) => {
-    const reduced = _.cloneDeep(current);
-    if (
-      typeof value === "string" ||
-      typeof value === "number" ||
-      typeof value === "boolean"
-    ) {
-      reduced[path] = value;
-    }
-    return reduced;
-  };
-
-  const reduced = deepReduce(object, reducer);
-
-  const flattened = Object.keys(reduced).map(k => ({ [k]: reduced[k] }));
-
-  return flattened;
-}
 
 function hashArray(arr) {
   const stringifiedArray = arr.map(i => JSON.stringify(i));
@@ -49,7 +27,6 @@ function hashToBuffer(hash) {
 }
 
 module.exports = {
-  flattenJson,
   hashArray,
   bufSortJoin,
   toBuffer,

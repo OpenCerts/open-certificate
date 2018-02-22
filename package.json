@@ -29,9 +29,9 @@
   },
   "dependencies": {
     "certificate-contract": "https://github.com/GovTechSG/certificate-contract",
-    "deep-reduce": "^1.0.5",
     "ethereumjs-util": "^5.1.2",
     "faker": "^4.1.0",
+    "flat": "^4.0.0",
     "lodash": "^4.17.5",
     "mkdirp": "^0.5.1",
     "proxyquire": "^1.8.0",

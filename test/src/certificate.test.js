@@ -53,12 +53,14 @@ const rawCertificate = {
   },
   signature: {
     type: "SHA3MerkleProof",
-    targetHash: "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb",
+    targetHash:
+      "1de4d6b598ea494b400d5b805dc2f8f6928c64cb392506929b3c4f4c795b466f",
     proof: [
-      "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb",
-      "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+      "09017ea119c27f432fcbddf3c01027bb8678949d5c39b103d190f7e34b0a4b7d",
+      "c7c153c8c694e3d02a1cae25763a01172a702da69f63c831358a522628880284"
     ],
-    merkleRoot: "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+    merkleRoot:
+      "1b5402f3b9100a87dca74a1a7ff64bcfd2f29c5c73857486f663b320caafb45f"
   },
   recipient: [
     {
@@ -107,6 +109,7 @@ describe("certificate", () => {
             saltLength: "10"
           },
           evidence: {
+            // eslint-disable-next-line no-sparse-arrays
             transcript: [
               {
                 name: "AUSJDLEOFP:AN INTRODUCTION TO LITERARY STUDIES",
@@ -136,12 +139,14 @@ describe("certificate", () => {
         },
         signature: {
           type: "SHA3MerkleProof",
-          targetHash: "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb",
+          targetHash:
+            "1de4d6b598ea494b400d5b805dc2f8f6928c64cb392506929b3c4f4c795b466f",
           proof: [
-            "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb",
-            "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+            "09017ea119c27f432fcbddf3c01027bb8678949d5c39b103d190f7e34b0a4b7d",
+            "c7c153c8c694e3d02a1cae25763a01172a702da69f63c831358a522628880284"
           ],
-          merkleRoot: "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+          merkleRoot:
+            "1b5402f3b9100a87dca74a1a7ff64bcfd2f29c5c73857486f663b320caafb45f"
         },
         recipient: [
           {
@@ -199,12 +204,14 @@ describe("certificate", () => {
         },
         signature: {
           type: "SHA3MerkleProof",
-          targetHash: "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb",
+          targetHash:
+            "1de4d6b598ea494b400d5b805dc2f8f6928c64cb392506929b3c4f4c795b466f",
           proof: [
-            "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb",
-            "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+            "09017ea119c27f432fcbddf3c01027bb8678949d5c39b103d190f7e34b0a4b7d",
+            "c7c153c8c694e3d02a1cae25763a01172a702da69f63c831358a522628880284"
           ],
-          merkleRoot: "0x76bc9e61a1904b82cbf70d1fd9c0f8a120483bbb"
+          merkleRoot:
+            "1b5402f3b9100a87dca74a1a7ff64bcfd2f29c5c73857486f663b320caafb45f"
         },
         recipient: [
           {
@@ -223,6 +230,88 @@ describe("certificate", () => {
       expect(certificate.certificateTree.getRoot().toString("hex")).to.eql(
         equivalentCert.certificateTree.getRoot().toString("hex")
       );
+    });
+
+    describe("privacyFilter", () => {
+      it("can remove one key/value from array", () => {
+        const cert = new Certificate(rawCertificate);
+        const originalRoot = cert.getRoot().toString("hex");
+
+        const filteredCert = cert.privacyFilter("transcript.1.name");
+        const newRoot = filteredCert.getRoot().toString("hex");
+
+        expect(filteredCert.getCertificate().badge.evidence.transcript[1].name)
+          .to.be.undefined;
+        expect(
+          filteredCert.getCertificate().badge.privateEvidence.length
+        ).to.eql(1, "Incorrect number of private evidences");
+        expect(originalRoot).to.eql(newRoot, "Certificate has been changed");
+        expect(filteredCert.verify()).to.eql(
+          true,
+          "Certificate signature is corrupt"
+        );
+      });
+
+      it("can remove key/value from array", () => {
+        const cert = new Certificate(rawCertificate);
+        const originalRoot = cert.getRoot().toString("hex");
+
+        const filteredCert = cert.privacyFilter(["transcript.2.name"]);
+        const newRoot = filteredCert.getRoot().toString("hex");
+
+        expect(filteredCert.getCertificate().badge.evidence.transcript[2].name)
+          .to.be.undefined;
+        expect(
+          filteredCert.getCertificate().badge.privateEvidence.length
+        ).to.eql(1, "Incorrect number of private evidences");
+        expect(originalRoot).to.eql(newRoot, "Certificate has been changed");
+        expect(filteredCert.verify()).to.eql(
+          true,
+          "Certificate signature is corrupt"
+        );
+      });
+
+      it("can remove entire object from array", () => {
+        const cert = new Certificate(rawCertificate);
+        const originalRoot = cert.getRoot().toString("hex");
+
+        const filteredCert = cert.privacyFilter([
+          "transcript.1.name",
+          "transcript.1.grade",
+          "transcript.1.courseCredit",
+          "transcript.1.courseCode"
+        ]);
+        const newRoot = filteredCert.getRoot().toString("hex");
+
+        expect(
+          filteredCert.getCertificate().badge.evidence.transcript[1]
+        ).to.eql({});
+        expect(
+          filteredCert.getCertificate().badge.privateEvidence.length
+        ).to.eql(4, "Incorrect number of private evidences");
+        expect(originalRoot).to.eql(newRoot, "Certificate has been changed");
+        expect(filteredCert.verify()).to.eql(
+          true,
+          "Certificate signature is corrupt"
+        );
+      });
+
+      it("does nothing for unpresent fields", () => {
+        const cert = new Certificate(rawCertificate);
+        const originalRoot = cert.getRoot().toString("hex");
+
+        const filteredCert = cert.privacyFilter("transcript.1.invalidField");
+
+        const newRoot = filteredCert.getRoot().toString("hex");
+
+        expect(filteredCert.getCertificate().badge.privateEvidence).to.be
+          .undefined;
+        expect(originalRoot).to.eql(newRoot, "Certificate has been changed");
+        expect(filteredCert.verify()).to.eql(
+          true,
+          "Certificate signature is corrupt"
+        );
+      });
     });
   });
 });

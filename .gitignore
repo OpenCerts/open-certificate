@@ -4,3 +4,4 @@ certificates/
 package-lock.json
 npm-debug.log
 .nyc_output
+yarn-error.log

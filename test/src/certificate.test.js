@@ -1,4 +1,5 @@
 const Certificate = require("../../src/certificate");
+const _ = require("lodash");
 
 const rawCertificate = {
   type: "Assertion",
@@ -232,6 +233,67 @@ describe("certificate", () => {
       );
     });
 
+    describe("verifyCertificate", () => {
+      it("should throw an error if the certificate does not have a signature", () => {
+        const invalidCertJson = _.cloneDeep(rawCertificate);
+        delete invalidCertJson.signature;
+        const invalidCert = new Certificate(invalidCertJson);
+
+        expect(invalidCert.verify.bind(invalidCert)).to.throw(
+          "Certificate does not have a signature"
+        );
+      });
+
+      it("should throw an error if the signature algorithm is not supported", () => {
+        const invalidCertJson = _.cloneDeep(rawCertificate);
+        invalidCertJson.signature.type = "unsupported signature";
+        const invalidCert = new Certificate(invalidCertJson);
+
+        expect(invalidCert.verify.bind(invalidCert)).to.throw(
+          "Signature algorithm is not supported"
+        );
+      });
+
+      it("should throw an error if the certificate does not have a targetHash", () => {
+        const invalidCertJson = _.cloneDeep(rawCertificate);
+        delete invalidCertJson.signature.targetHash;
+        const invalidCert = new Certificate(invalidCertJson);
+
+        expect(invalidCert.verify.bind(invalidCert)).to.throw(
+          "Certificate does not have a targetHash"
+        );
+      });
+
+      it("should throw an error if the certificate does not have a merkleRoot", () => {
+        const invalidCertJson = _.cloneDeep(rawCertificate);
+        delete invalidCertJson.signature.merkleRoot;
+        const invalidCert = new Certificate(invalidCertJson);
+
+        expect(invalidCert.verify.bind(invalidCert)).to.throw(
+          "Certificate does not have a merkleRoot"
+        );
+      });
+
+      it("should throw an error if the certificate hash does not match signature target hash", () => {
+        const invalidCertJson = _.cloneDeep(rawCertificate);
+        invalidCertJson.signature.targetHash = "wrong target hash";
+        const invalidCert = new Certificate(invalidCertJson);
+
+        expect(invalidCert.verify.bind(invalidCert)).to.throw(
+          "Certificate hash does not match signature targetHash"
+        );
+      });
+
+      it("should throw an error if certificate proof is invalid for merkle root", () => {
+        const invalidCertJson = _.cloneDeep(rawCertificate);
+        invalidCertJson.signature.proof[0] = "0xfail";
+        const invalidCert = new Certificate(invalidCertJson);
+
+        expect(invalidCert.verify.bind(invalidCert)).to.throw(
+          "Certificate proof is invalid for merkle root"
+        );
+      });
+    });
     describe("privacyFilter", () => {
       it("can remove one key/value from array", () => {
         const cert = new Certificate(rawCertificate);

@@ -83,10 +83,10 @@ function verifyCertificate(certificate) {
   // Checks the signature of the certificate
   if (!certificate.signature)
     throw new Error("Certificate does not have a signature");
-  if (certificate.signature.type !== "SHA3MerkleProof")
-    throw new Error("Signature algorithm is not supported");
   if (!certificate.signature.targetHash)
     throw new Error("Certificate does not have a targetHash");
+  if (certificate.signature.type !== "SHA3MerkleProof")
+    throw new Error("Signature algorithm is not supported");
   if (!certificate.signature.merkleRoot)
     throw new Error("Certificate does not have a merkleRoot");
 
@@ -95,7 +95,7 @@ function verifyCertificate(certificate) {
 
   // Check the target hash of the certificate matches the signature's target hash
   if (targetHash !== certificate.signature.targetHash)
-    throw new Error("Certificate hash does not match signature's targetHash");
+    throw new Error("Certificate hash does not match signature targetHash");
 
   // Check if target hash resolves to merkle root
   if (

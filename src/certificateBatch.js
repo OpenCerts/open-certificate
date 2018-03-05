@@ -33,5 +33,6 @@ function issueCertificates(certificates) {
 }
 
 module.exports = {
+  CertificateBatch,
   issueCertificates
 };

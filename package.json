@@ -1,7 +1,7 @@
 {
-  "name": "certificate-app",
+  "name": "open-certificate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Extension to open badge to allow blockchain verification, selective disclosure and multiple identity profile.",
   "main": "index.js",
   "scripts": {
     "test": "nyc --reporter=html mocha --timeout 5000 -- ./test/helpers.js './test/**/*.test.js'",
@@ -14,7 +14,6 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "chai-bignumber": "^2.0.2",
     "eslint": "^4.17.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -25,20 +24,12 @@
     "eslint-plugin-prettier": "^2.6.0",
     "mocha": "^4.1.0",
     "nyc": "^11.4.1",
-    "prettier": "^1.10.2",
-    "web3-utils": "^1.0.0-beta.30"
+    "prettier": "^1.10.2"
   },
   "dependencies": {
-    "certificate-contract": "https://github.com/GovTechSG/certificate-contract",
     "ethereumjs-util": "^5.1.2",
     "faker": "^4.1.0",
     "flat": "^4.0.0",
-    "lodash": "^4.17.5",
-    "mkdirp": "^0.5.1",
-    "proxyquire": "^1.8.0",
-    "truffle-contract": "^3.0.3",
-    "web3": "^1.0.0-beta.29",
-    "winston": "^3.0.0-rc1",
-    "yargs": "^11.0.0"
+    "lodash": "^4.17.5"
   }
 }

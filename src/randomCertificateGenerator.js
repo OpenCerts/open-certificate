@@ -1,4 +1,3 @@
-const fs = require("fs");
 const faker = require("faker");
 const crypto = require("crypto");
 const { sha3 } = require("ethereumjs-util");
@@ -155,17 +154,4 @@ function randomCertificate(contractAddress) {
   return certificate;
 }
 
-function generateRandomCertificate(num, dir, contractAddress) {
-  for (let i = 0; i < num; i += 1) {
-    const cert = randomCertificate(contractAddress);
-    const certId = cert.id;
-    fs.writeFileSync(`${dir}/${certId}.json`, JSON.stringify(cert, null, 2));
-  }
-
-  return num;
-}
-
-module.exports = {
-  generateRandomCertificate,
-  randomCertificate
-};
+module.exports = { randomCertificate };

@@ -1,6 +1,6 @@
 {
-  "name": "open-certificate",
-  "version": "1.0.0",
+  "name": "@govtechsg/open-certificate",
+  "version": "1.0.1",
   "description": "Extension to open badge to allow blockchain verification, selective disclosure and multiple identity profile.",
   "main": "index.js",
   "scripts": {

@@ -234,6 +234,13 @@ describe("certificate", () => {
     });
 
     describe("verifyCertificate", () => {
+      it("should verify a valid cert", () => {
+        const validCertJson = _.cloneDeep(rawCertificate);
+        const validCert = new Certificate(validCertJson);
+
+        expect(validCert.verify()).to.be.true;
+      });
+
       it("should throw an error if the certificate does not have a signature", () => {
         const invalidCertJson = _.cloneDeep(rawCertificate);
         delete invalidCertJson.signature;

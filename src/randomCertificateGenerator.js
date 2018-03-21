@@ -143,7 +143,7 @@ function randomCertificate(contractAddress) {
     }
   };
 
-  certificate.profile = profileGenerator();
+  certificate.recipient = profileGenerator();
 
   const evidence = generateEvidence();
   if (evidence) certificate.badge.evidence = evidence;

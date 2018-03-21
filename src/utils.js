@@ -1,4 +1,5 @@
 const { sha3 } = require("ethereumjs-util");
+const crypto = require("crypto");
 
 /**
  * Sorts the given Buffers lexicographically and then concatenates them to form one continuous Buffer
@@ -30,9 +31,22 @@ function hashArray(arr) {
   return arr.map(i => toBuffer(i)).sort(Buffer.compare);
 }
 
+function randomSalt(saltLength = 10) {
+  return crypto.randomBytes(saltLength).toString("hex");
+}
+
+function sha256(content, salt = "") {
+  const hash = crypto.createHash("sha256");
+  hash.update(content + salt);
+
+  return `sha256$${hash.digest("hex")}`;
+}
+
 module.exports = {
   hashArray,
   bufSortJoin,
   toBuffer,
-  hashToBuffer
+  hashToBuffer,
+  sha256,
+  randomSalt
 };

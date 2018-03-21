@@ -16,6 +16,7 @@ describe("Util Functions", () => {
       expect(res.map(p => p.hexSlice())).to.deep.equal(expectedHashResults);
     });
   });
+
   describe("bufSortJoin", () => {
     it("should work", () => {
       const res = utils.bufSortJoin(
@@ -40,6 +41,7 @@ describe("Util Functions", () => {
       expect(utils.hashToBuffer(originalBuffer)).to.deep.equal(originalBuffer);
     });
   });
+
   describe("toBuffer", () => {
     it("should work", () => {
       expect(utils.toBuffer("foo").hexSlice()).to.deep.equal(
@@ -50,6 +52,34 @@ describe("Util Functions", () => {
     it("should do nothing if the input is a hash", () => {
       const originalBuffer = sha3(Buffer.from("foo", "utf8"));
       expect(utils.toBuffer(originalBuffer)).to.deep.equal(originalBuffer);
+    });
+  });
+
+  describe("sha256", () => {
+    it("should hash content without salt", () => {
+      expect(utils.sha256("password123")).to.deep.equal(
+        "sha256$ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f"
+      );
+    });
+
+    it("should hash content with salt", () => {
+      expect(utils.sha256("password", "123")).to.deep.equal(
+        "sha256$ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f"
+      );
+    });
+  });
+
+  describe("randomSalt", () => {
+    it("should generate default salt", () => {
+      expect(utils.randomSalt().length).to.equal(20);
+    });
+
+    it("should generate salt with given entropy (in bytes)", () => {
+      expect(utils.randomSalt(256).length).to.equal(512);
+    });
+
+    it("should not collide LOL", () => {
+      expect(utils.randomSalt()).to.not.equal(utils.randomSalt());
     });
   });
 });

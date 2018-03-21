@@ -1,6 +1,6 @@
 const _ = require("lodash");
 const { MerkleTree, checkProof } = require("./merkle");
-const { hashToBuffer, toBuffer } = require("./utils");
+const { hashToBuffer, toBuffer, sha256, randomSalt } = require("./utils");
 const { flatten } = require("flat");
 
 function evidenceTree(certificate) {
@@ -109,6 +109,43 @@ function verifyCertificate(certificate) {
 
   return true;
 }
+
+Certificate.identityCheck = function _identityCheck(hashedIdentity, test) {
+  const { salt, identity } = hashedIdentity;
+  return sha256(test, salt) === identity;
+};
+
+Certificate.prototype.identityFilter = function _identityFilter(index) {
+  let { recipient } = this.certificate;
+
+  // Convert object to array
+  if (!recipient.length) recipient = [recipient];
+
+  let newIdentities = recipient.map((r, i) => {
+    if (i === index || index === undefined) {
+      if (r.hashed) return r;
+
+      const salt = randomSalt();
+      const identity = sha256(r.identity, salt);
+
+      return {
+        type: r.type,
+        salt,
+        identity,
+        hashed: true
+      };
+    }
+    return r;
+  });
+
+  // Convert single item array to object
+  if (newIdentities.length === 1) [newIdentities] = newIdentities;
+
+  const filteredCertificate = Object.assign({}, _.cloneDeep(this.certificate), {
+    recipient: newIdentities
+  });
+  return new Certificate(filteredCertificate);
+};
 
 Certificate.prototype.privacyFilter = function _privacyFilter(fields) {
   const filteredCertificate = _.cloneDeep(this.certificate);

@@ -2,6 +2,7 @@ const _ = require("lodash");
 const { MerkleTree, checkProof } = require("./merkle");
 const { hashToBuffer, toBuffer, sha256, randomSalt } = require("./utils");
 const { flatten } = require("flat");
+const { get, isNumber } = require("lodash");
 
 function evidenceTree(certificate) {
   const { evidence, privateEvidence } = certificate.badge;
@@ -65,7 +66,7 @@ function certificateTree(certificate, evidences) {
 }
 
 function Certificate(certificate) {
-  this.certificate = certificate;
+  this.certificate = Object.assign({}, certificate);
 
   // Build an evidence tree if either evidence or private evidence is present
   if (
@@ -194,6 +195,40 @@ Certificate.prototype.getCertificate = function _getCertificate() {
 
 Certificate.prototype.verify = function _verify() {
   return verifyCertificate(this.certificate);
+};
+
+const unsaltField = (saltLength, saltedfield) =>
+  saltedfield ? saltedfield.substring(saltLength + 1) : "";
+
+const unsaltRow = (saltLength, row) => ({
+  name: unsaltField(saltLength, row.name),
+  grade: unsaltField(saltLength, row.grade),
+  courseCredit: unsaltField(saltLength, row.courseCredit),
+  courseCode: unsaltField(saltLength, row.courseCode)
+});
+
+function unsaltCertificate(certificate) {
+  const saltLength = parseInt(
+    get(certificate, "badge.evidencePrivacyFilter.saltLength"),
+    10
+  );
+
+  if (!isNumber(saltLength)) {
+    throw Error("Salt length not present in certificate");
+  }
+
+  const unsaltedTranscript = certificate.badge.evidence.transcript.map(row =>
+    unsaltRow(saltLength, row)
+  );
+
+  const unsaltedCertificate = Object.assign({}, certificate);
+
+  unsaltedCertificate.badge.evidence.transcript = unsaltedTranscript;
+  return unsaltedCertificate;
+}
+
+Certificate.prototype.unsalt = function _unsalt() {
+  return unsaltCertificate(this.certificate);
 };
 
 module.exports = Certificate;

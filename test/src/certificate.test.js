@@ -523,5 +523,35 @@ describe("certificate", () => {
           .false;
       });
     });
+
+    describe("unsalt", () => {
+      const unsaltedTranscript = [
+        {
+          name: "AN INTRODUCTION TO LITERARY STUDIES",
+          grade: "C+",
+          courseCredit: "4.00",
+          courseCode: "EN1101E"
+        },
+        {
+          name: "HIDDEN COURSE NAME",
+          grade: "D",
+          courseCredit: "4.00",
+          courseCode: "HID001"
+        },
+        {
+          name: "EINSTEIN's UNIVERSE & QUANTUM WEIRDNESS",
+          grade: "C+",
+          courseCredit: "4.00",
+          courseCode: "PC1325"
+        }
+      ];
+
+      it("should remove the salt on the certificate correctly", () => {
+        const unsaltedCert = new Certificate(rawCertificate).unsalt();
+        expect(unsaltedCert.badge.evidence.transcript).to.deep.eql(
+          unsaltedTranscript
+        );
+      });
+    });
   });
 });

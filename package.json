@@ -1,6 +1,6 @@
 {
   "name": "@govtechsg/open-certificate",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -31,5 +31,6 @@
     "mocha": "^5.2.0",
     "nyc": "^12.0.2",
     "prettier": "^1.14.0"
-  }
+  },
+  "gitHead": "30b920cdb75183237ad3c3ddbd43e1f8d7886ee6"
 }

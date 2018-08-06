@@ -1,5 +1,5 @@
 {
-  "name": "v2",
+  "name": "@govtechsg/open-certificate",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",

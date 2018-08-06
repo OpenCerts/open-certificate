@@ -1,35 +1,35 @@
 {
-  "name": "@govtechsg/open-certificate",
-  "version": "1.0.4",
-  "description": "Extension to open badge to allow blockchain verification, selective disclosure and multiple identity profile.",
-  "main": "index.js",
+  "name": "v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
   "scripts": {
-    "test": "nyc --reporter=html mocha --timeout 5000 -- ./test/helpers.js './test/**/*.test.js'",
-    "test-watch": "mocha ./test/helpers.js './test/**/*.test.js' --watch --recursive",
+    "test": "nyc --reporter=html mocha --timeout 5000 -- ./test/helpers.js './schema/**/*.test.js' './src/**/*.test.js' './test/**/*.test.js'",
+    "test-watch": "mocha ./test/helpers.js './schema/**/*.test.js' './src/**/*.test.js' './test/**/*.test.js' --watch --recursive",
     "lint": "eslint . --ext .js --max-warnings 0",
     "lint:fix": "eslint . --ext .js --fix"
   },
-  "author": "",
+  "author": "Raymond Yeh <yehjxraymond@gmail.com> (http://geek.sg)",
   "license": "ISC",
+  "dependencies": {
+    "@govtechsg/open-attestation": "^1.1.4",
+    "flat": "^4.1.0",
+    "lerna": "^3.0.0-rc.0",
+    "lodash": "^4.17.10"
+  },
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "eslint": "^4.17.0",
-    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint": "^5.2.0",
+    "eslint-config-airbnb-base": "^13.0.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-chai-expect": "^1.1.1",
     "eslint-plugin-chai-friendly": "^0.4.1",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-mocha": "^4.11.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "mocha": "^4.1.0",
-    "nyc": "^11.4.1",
-    "prettier": "^1.10.2"
-  },
-  "dependencies": {
-    "ethereumjs-util": "^5.1.2",
-    "faker": "^4.1.0",
-    "flat": "^4.0.0",
-    "lodash": "^4.17.5"
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-mocha": "^5.1.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "prettier": "^1.14.0"
   }
 }

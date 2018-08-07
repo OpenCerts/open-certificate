@@ -7,7 +7,7 @@ const {
   obfuscateDocument
 } = require("@govtechsg/open-attestation");
 
-const schemaV1 = require("../schema/v1.json");
+const schemaV1 = require("../schema/v1/schema.json");
 
 const defaultSchema = schemaV1;
 

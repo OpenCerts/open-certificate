@@ -3,7 +3,7 @@ const {
   addSchema,
   validateSchema
 } = require("@govtechsg/open-attestation");
-const schema = require("./v1.json");
+const schema = require("./schema.json");
 
 describe("schema/v1", () => {
   before(() => {

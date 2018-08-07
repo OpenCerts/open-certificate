@@ -1,0 +1,64 @@
+{
+  "id": "SERIAL-2018-08-01-112",
+  "issuedOn": "2018-08-01",
+  "expiredOn": "2118-08-01",
+  "name": "Master of Blockchain",
+  "admissionDate": "2017-08-01",
+  "graduationDate": "2018-08-01",
+  "issuer": {
+    "name": "Blockchain Academy",
+    "did": "DID:SG-UEN:U18274928E",
+    "url": "https://blockchainacademy.com",
+    "email": "registrar@blockchainacademy.com",
+    "certificateStore": "0xd9580260be45c3c0c2fb259a82f219b513054012"
+  },
+  "recipient": {
+    "name": "Mr Blockchain",
+    "did": "DID:SG-NRIC:S99999999A",
+    "email": "mr-blockchain@gmail.com",
+    "phone": "88888888"
+  },
+  "transcript": [
+    {
+      "name": "Bitcoin",
+      "grade": "A+",
+      "courseCredit": 3,
+      "courseCode": "BTC-01",
+      "examinationDate": "2018-08-01",
+      "url": "https://blockchainacademy.com/subject/BTC-01",
+      "description": "Everything and more about bitcoin!"
+    },
+    {
+      "name": "Ethereum",
+      "grade": "A+",
+      "courseCredit": "3.5",
+      "courseCode": "ETH-01",
+      "examinationDate": "2018-08-01",
+      "url": "https://blockchainacademy.com/subject/ETH-01",
+      "description": "Everything and more about ethereum!"
+    }
+  ],
+  "cumulativeScore": 3.9935,
+  "metadata": {
+    "coCurricularActivities": [{
+      "name": "Crypto-investment Club",
+      "position": "Club President",
+      "startDate": "2017-08-01",
+      "endDate": "2018-08-01",
+      "remarks": "Top trader (2018)"
+    }],
+    "npfa": "silver",
+    "visuals": {
+      "signature1":{
+        "name": "Mr Important",
+        "designation": "President",
+        "signature": "<-- Base64 Image -->"
+      },
+      "signature2":{
+        "name": "Mr Not-So-Important",
+        "designation": "Chairman, Blockchain Faculty",
+        "signature": "<-- Base64 Image -->"
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 const {
+  getData,
   issueDocument,
   issueDocuments,
   addSchema,
@@ -22,10 +23,13 @@ const issueCertificates = dataArray => issueDocuments(dataArray, defaultSchema);
 const obfuscateFields = (document, fields) =>
   obfuscateDocument(document, fields);
 
+const certificateData = document => getData(document);
+
 module.exports = {
   issueCertificate,
   issueCertificates,
   verifySignature,
   validateSchema,
-  obfuscateFields
+  obfuscateFields,
+  certificateData
 };

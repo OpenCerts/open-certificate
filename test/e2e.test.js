@@ -28,6 +28,11 @@ describe("E2E Test", () => {
     });
   });
 
+  xit('can get data from the certificate document', () => {
+    const data = openCert.certificateData(certificate);
+    expect(data).to.deep.equal(testCerts[0]);
+  });
+
   it("can validate schema of certificates", () => {
     const isValid = openCert.validateSchema(certificate);
     expect(isValid).to.be.true;

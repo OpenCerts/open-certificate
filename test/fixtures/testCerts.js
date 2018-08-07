@@ -14,7 +14,7 @@ const testCerts = [
       name: "Mr Blockchain",
       did: "DID:SG-NRIC:S99999999A",
       email: "mr-blockchain@gmail.com",
-      phone: "88888888"
+      phone: 88888888
     },
     transcript: [
       {
@@ -28,7 +28,7 @@ const testCerts = [
       {
         name: "Ethereum",
         grade: "A+",
-        courseCredit: "3.5",
+        courseCredit: 3.5,
         courseCode: "ETH-01",
         url: "https://blockchainacademy.com/subject/ETH-01",
         description: "Everything and more about ethereum!"

@@ -23,6 +23,7 @@ const issueCertificates = dataArray => issueDocuments(dataArray, defaultSchema);
 const obfuscateFields = (document, fields) =>
   obfuscateDocument(document, fields);
 
+
 const certificateData = document => getData(document);
 
 module.exports = {

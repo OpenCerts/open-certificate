@@ -28,7 +28,7 @@ describe("E2E Test", () => {
     });
   });
 
-  xit('can get data from the certificate document', () => {
+  it("can get data from the certificate document", () => {
     const data = openCert.certificateData(certificate);
     expect(data).to.deep.equal(testCerts[0]);
   });
@@ -49,12 +49,21 @@ describe("E2E Test", () => {
     expect(isValid).to.be.false;
   });
 
-  xit("can obfuscate fields", () => {
-    // TODO: Fix open attestation's salt function
+  it("can obfuscate fields (repeatedly)", () => {
     const obfuscatedCert = openCert.obfuscateFields(certificate, [
       "recipient.email",
       "recipient.phone"
     ]);
     expect(obfuscatedCert).to.exist;
+    expect(obfuscatedCert.privacy.obfuscatedData.length).to.be.equal(2);
+    expect(obfuscatedCert.data.recipient.email).to.not.exist;
+    expect(obfuscatedCert.data.recipient.phone).to.not.exist;
+
+    const moreObfuscation = openCert.obfuscateFields(
+      obfuscatedCert,
+      "recipient.did"
+    );
+    expect(moreObfuscation.privacy.obfuscatedData.length).to.be.equal(3);
+    expect(moreObfuscation.data.recipient.did).to.not.exist;
   });
 });

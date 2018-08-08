@@ -82,21 +82,18 @@
     lodash "^4.17.5"
     to-fast-properties "^2.0.0"
 
-"@govtechsg/open-attestation@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@govtechsg/open-attestation/-/open-attestation-1.1.4.tgz#3ee2b74c0e4246e94f067bbff661651a67526477"
+"@govtechsg/open-attestation@^1.1.15":
+  version "1.1.15"
+  resolved "https://registry.yarnpkg.com/@govtechsg/open-attestation/-/open-attestation-1.1.15.tgz#a72f1e7a6723b9efd3a17629983f3f8dbe287815"
   dependencies:
     ajv "^6.5.2"
-    djv "^2.1.0"
     ethereumjs-util "^5.2.0"
     flat "^4.1.0"
     lerna "^3.0.0-rc.0"
     lodash "^4.17.10"
     uuid "^3.3.2"
-
-"@korzio/djv-draft-04@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@korzio/djv-draft-04/-/djv-draft-04-2.0.0.tgz#9b459a6c72b2a9c50bf4ef1d249bdb58dd840566"
+    validator "^10.5.0"
+    verbal-expressions "^0.3.0"
 
 "@lerna/add@^3.0.0-rc.0":
   version "3.0.0-rc.0"
@@ -1459,12 +1456,6 @@ dir-glob@^2.0.0:
   dependencies:
     arrify "^1.0.1"
     path-type "^3.0.0"
-
-djv@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/djv/-/djv-2.1.0.tgz#6b75592bb285d081a4f4e6e462871849bd6e6ee4"
-  optionalDependencies:
-    "@korzio/djv-draft-04" "^2.0.0"
 
 doctrine@1.5.0:
   version "1.5.0"
@@ -4473,6 +4464,14 @@ validate-npm-package-name@^3.0.0:
   resolved "https://registry.yarnpkg.com/validate-npm-package-name/-/validate-npm-package-name-3.0.0.tgz#5fa912d81eb7d0c74afc140de7317f0ca7df437e"
   dependencies:
     builtins "^1.0.3"
+
+validator@^10.5.0:
+  version "10.5.0"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-10.5.0.tgz#1debbe1e6f5fd0c920ed2af47516f3762033939c"
+
+verbal-expressions@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/verbal-expressions/-/verbal-expressions-0.3.0.tgz#492447babfe44dd89802633c4518052617d527b2"
 
 verror@1.10.0:
   version "1.10.0"

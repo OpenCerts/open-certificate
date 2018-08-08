@@ -82,9 +82,9 @@
     lodash "^4.17.5"
     to-fast-properties "^2.0.0"
 
-"@govtechsg/open-attestation@^1.1.15":
-  version "1.1.15"
-  resolved "https://registry.yarnpkg.com/@govtechsg/open-attestation/-/open-attestation-1.1.15.tgz#a72f1e7a6723b9efd3a17629983f3f8dbe287815"
+"@govtechsg/open-attestation@^1.1.16":
+  version "1.1.16"
+  resolved "https://registry.yarnpkg.com/@govtechsg/open-attestation/-/open-attestation-1.1.16.tgz#2b862a51685cde897de6252c8873e2f45f3bcf9a"
   dependencies:
     ajv "^6.5.2"
     ethereumjs-util "^5.2.0"

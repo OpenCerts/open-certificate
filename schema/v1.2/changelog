@@ -1,0 +1,7 @@
+changelog
+
+issuer -> issuers, single issuer object to array of issuer objects
+metadata -> additionalData
+additionalData.visuals -> additionalData.images
+
+added $schema field, need to host the schema on open-certificate github pages

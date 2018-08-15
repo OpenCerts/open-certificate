@@ -5,7 +5,7 @@ const {
 } = require("@govtechsg/open-attestation");
 const schema = require("./schema.json");
 
-describe.only("schema/v1", () => {
+describe.only("schema/v1.2", () => {
   before(() => {
     addSchema(schema);
   });
@@ -19,7 +19,7 @@ describe.only("schema/v1", () => {
   it("is not valid with additional data", () => {
     const data = {
       name: "Certificate Name",
-      issuedOn: "2018-08-01",
+      issuedOn: "2018-08-01T00:00:00+08:00",
       issuer: {
         name: "Issuer Name",
         certificateStore: "0x0000000000000000000000000000000000000000"
@@ -33,10 +33,10 @@ describe.only("schema/v1", () => {
     expect(signing).to.throw("Invalid document");
   });
 
-  it("is valid with minimum data", () => {
+  it.only("is valid with minimum data", () => {
     const data = {
       name: "Certificate Name",
-      issuedOn: "2018-08-01",
+      issuedOn: "2018-08-01T00:00:00+08:00",
       issuer: {
         name: "Issuer Name",
         certificateStore: "0x0000000000000000000000000000000000000000"
@@ -45,9 +45,14 @@ describe.only("schema/v1", () => {
         name: "Recipient Name"
       }
     };
-    const signedDocument = issueDocument(data, schema);
-    const valid = validateSchema(signedDocument);
-    assert(valid);
+    // const signedDocument = issueDocument(data, schema);
+    const ajv = require('ajv')()
+    console.log(schema)
+    ajv.validate(schema, data)
+
+    // ajv.validate(schema, data)
+    // const valid = validateSchema(signedDocument);
+    // assert(valid);
   });
 
   it("is valid with standard data", () => {
@@ -123,4 +128,11 @@ describe.only("schema/v1", () => {
     const valid = validateSchema(signedDocument);
     assert(valid);
   });
+
+  it("validates the example document", () => {
+    const data = require("./example.json");
+    const signedDocument = issueDocument(data, schema);
+    const valid = validateSchema(signedDocument);
+    assert(valid);
+  })
 });

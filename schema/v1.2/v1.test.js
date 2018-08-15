@@ -33,7 +33,7 @@ describe.only("schema/v1.2", () => {
     expect(signing).to.throw("Invalid document");
   });
 
-  it.only("is valid with minimum data", () => {
+  it("is valid with minimum data", () => {
     const data = {
       name: "Certificate Name",
       issuedOn: "2018-08-01T00:00:00+08:00",
@@ -45,19 +45,16 @@ describe.only("schema/v1.2", () => {
         name: "Recipient Name"
       }
     };
-    const signedDocument = issueDocument(data, schema);
-    // const ajv = require('ajv')()
-    // console.log(schema)
-    // ajv.validate(schema, data)
 
-    // const valid = validateSchema(signedDocument);
-    // assert(valid);
+    const signedDocument = issueDocument(data, schema);
+    const valid = validateSchema(signedDocument);
+    assert(valid);
   });
 
   it("is valid with standard data", () => {
     const data = {
-      issuedOn: "2018-08-01",
-      expiredOn: "2118-08-01",
+      issuedOn: "2018-08-01T00:00:00+08:00",
+      expiredOn: "2118-08-01T00:00:00+08:00",
       name: "Master of Blockchain",
       issuer: {
         name: "Blockchain Academy",
@@ -70,7 +67,7 @@ describe.only("schema/v1.2", () => {
         name: "Mr Blockchain",
         did: "DID:SG-NRIC:S99999999A",
         email: "mr-blockchain@gmail.com",
-        phone: "88888888"
+        phone: "+65 88888888"
       },
       transcript: [
         {

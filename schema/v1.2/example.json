@@ -26,7 +26,7 @@
     "name": "Mr Blockchain",
     "did": "DID:SG-NRIC:S99999999A",
     "email": "mr-blockchain@gmail.com",
-    "phone": "88888888"
+    "phone": "+65 88888888" // E.164 standard formatting
   },
   "transcript": [
     {

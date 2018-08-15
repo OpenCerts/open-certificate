@@ -45,12 +45,11 @@ describe.only("schema/v1.2", () => {
         name: "Recipient Name"
       }
     };
-    // const signedDocument = issueDocument(data, schema);
-    const ajv = require('ajv')()
-    console.log(schema)
-    ajv.validate(schema, data)
-
+    const signedDocument = issueDocument(data, schema);
+    // const ajv = require('ajv')()
+    // console.log(schema)
     // ajv.validate(schema, data)
+
     // const valid = validateSchema(signedDocument);
     // assert(valid);
   });

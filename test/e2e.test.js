@@ -1,6 +1,6 @@
 const _ = require("lodash");
 const testCerts = require("./fixtures/testCerts");
-const openCert = require("../src");
+const openCert = require("../dist/open-certificate");
 
 describe("E2E Test", () => {
   let certificate;

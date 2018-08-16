@@ -1,4 +1,5 @@
-const {
+/* eslint-disable */
+let {
   issueDocument,
   addSchema,
   validateSchema
@@ -6,7 +7,6 @@ const {
 const schema = require("./schema.json");
 
 describe("schema/v1", () => {
-
   beforeEach(() => {
     addSchema(schema);
   });
@@ -18,7 +18,7 @@ describe("schema/v1", () => {
       addSchema,
       validateSchema
     } = require("@govtechsg/open-attestation");
-  })
+  });
 
   it("is not valid with missing data", () => {
     const data = {};

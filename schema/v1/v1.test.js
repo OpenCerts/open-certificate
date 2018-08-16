@@ -6,9 +6,19 @@ const {
 const schema = require("./schema.json");
 
 describe("schema/v1", () => {
-  before(() => {
+
+  beforeEach(() => {
     addSchema(schema);
   });
+
+  afterEach(() => {
+    delete require.cache[require.resolve("@govtechsg/open-attestation")];
+    let {
+      issueDocument,
+      addSchema,
+      validateSchema
+    } = require("@govtechsg/open-attestation");
+  })
 
   it("is not valid with missing data", () => {
     const data = {};
@@ -66,7 +76,7 @@ describe("schema/v1", () => {
         name: "Mr Blockchain",
         did: "DID:SG-NRIC:S99999999A",
         email: "mr-blockchain@gmail.com",
-        phone: "88888888"
+        phone: "+65 88888888"
       },
       transcript: [
         {

@@ -1,7 +1,7 @@
 const testCerts = [
   {
-    issuedOn: "2018-08-01",
-    expiredOn: "2118-08-01",
+    issuedOn: "2018-08-01T00:00:00+08:00",
+    expiredOn: "2118-08-01T00:00:00+08:00",
     name: "Master of Blockchain",
     issuer: {
       name: "Blockchain Academy",
@@ -14,7 +14,7 @@ const testCerts = [
       name: "Mr Blockchain",
       did: "DID:SG-NRIC:S99999999A",
       email: "mr-blockchain@gmail.com",
-      phone: 88888888
+      phone:"+65 88888888"
     },
     transcript: [
       {
@@ -36,8 +36,8 @@ const testCerts = [
     ]
   },
   {
-    issuedOn: "2018-08-01",
-    expiredOn: "2118-08-01",
+    issuedOn: "2018-08-01T00:00:00+08:00",
+    expiredOn: "2118-08-01T00:00:00+08:00",
     name: "Master of Blockchain",
     issuer: {
       name: "Blockchain Academy",
@@ -50,7 +50,7 @@ const testCerts = [
       name: "Mrs Blockchain",
       did: "DID:SG-NRIC:S88888888B",
       email: "mrs-blockchain@gmail.com",
-      phone: "81234567"
+      phone: "+65 81234567"
     },
     transcript: [
       {

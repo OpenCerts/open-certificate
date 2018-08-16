@@ -1,15 +1,17 @@
 const testCerts = [
   {
+    $schema: "https://govtechsg.github.io/open-certificate/schema/1.2/schema.json",
+    id: "SERIAL-2018-08-01-113",
     issuedOn: "2018-08-01T00:00:00+08:00",
     expiredOn: "2118-08-01T00:00:00+08:00",
     name: "Master of Blockchain",
-    issuer: {
+    issuers: [{
       name: "Blockchain Academy",
       did: "DID:SG-UEN:U18274928E",
       url: "https://blockchainacademy.com",
       email: "registrar@blockchainacademy.com",
       certificateStore: "0xd9580260be45c3c0c2fb259a82f219b513054012"
-    },
+    }],
     recipient: {
       name: "Mr Blockchain",
       did: "DID:SG-NRIC:S99999999A",
@@ -36,16 +38,19 @@ const testCerts = [
     ]
   },
   {
+    $schema: "https://govtechsg.github.io/open-certificate/schema/1.2/schema.json",
+    id: "SERIAL-2018-08-01-114",
+    issuedOn: "2018-08-01T00:00:00+08:00",
     issuedOn: "2018-08-01T00:00:00+08:00",
     expiredOn: "2118-08-01T00:00:00+08:00",
     name: "Master of Blockchain",
-    issuer: {
+    issuers: [{
       name: "Blockchain Academy",
       did: "DID:SG-UEN:U18274928E",
       url: "https://blockchainacademy.com",
       email: "registrar@blockchainacademy.com",
       certificateStore: "0xd9580260be45c3c0c2fb259a82f219b513054012"
-    },
+    }],
     recipient: {
       name: "Mrs Blockchain",
       did: "DID:SG-NRIC:S88888888B",

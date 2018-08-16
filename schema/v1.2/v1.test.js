@@ -1,14 +1,23 @@
-const {
+const schema = require("./schema.json");
+let {
   issueDocument,
   addSchema,
   validateSchema
 } = require("@govtechsg/open-attestation");
-const schema = require("./schema.json");
 
-describe.only("schema/v1.2", () => {
-  before(() => {
+describe("schema/v1.2", () => {
+  beforeEach(() => {
     addSchema(schema);
   });
+
+  afterEach(() => {
+    delete require.cache[require.resolve("@govtechsg/open-attestation")];
+    let {
+      issueDocument,
+      addSchema,
+      validateSchema
+    } = require("@govtechsg/open-attestation");
+  })
 
   it("is not valid with missing data", () => {
     const data = {};
@@ -18,12 +27,13 @@ describe.only("schema/v1.2", () => {
 
   it("is not valid with additional data", () => {
     const data = {
+      $schema: "invalid example", 
       name: "Certificate Name",
       issuedOn: "2018-08-01T00:00:00+08:00",
-      issuer: {
+      issuers: [{
         name: "Issuer Name",
         certificateStore: "0x0000000000000000000000000000000000000000"
-      },
+      }],
       recipient: {
         name: "Recipient Name"
       },
@@ -35,12 +45,14 @@ describe.only("schema/v1.2", () => {
 
   it("is valid with minimum data", () => {
     const data = {
+      $schema: "minimal schema",
+      id: "Example-minimal-2018-001",
       name: "Certificate Name",
       issuedOn: "2018-08-01T00:00:00+08:00",
-      issuer: {
+      issuers: [{
         name: "Issuer Name",
         certificateStore: "0x0000000000000000000000000000000000000000"
-      },
+      }],
       recipient: {
         name: "Recipient Name"
       }
@@ -53,16 +65,18 @@ describe.only("schema/v1.2", () => {
 
   it("is valid with standard data", () => {
     const data = {
+      $schema: "minimal schema",
+      id: "Example-standard-2018-002",
       issuedOn: "2018-08-01T00:00:00+08:00",
       expiredOn: "2118-08-01T00:00:00+08:00",
       name: "Master of Blockchain",
-      issuer: {
+      issuers: [{
         name: "Blockchain Academy",
         did: "DID:SG-UEN:U18274928E",
         url: "https://blockchainacademy.com",
         email: "registrar@blockchainacademy.com",
         certificateStore: "0xd9580260be45c3c0c2fb259a82f219b513054012"
-      },
+      }],
       recipient: {
         name: "Mr Blockchain",
         did: "DID:SG-NRIC:S99999999A",
@@ -95,16 +109,18 @@ describe.only("schema/v1.2", () => {
 
   it("is valid with extra metadata data", () => {
     const data = {
+      $schema: "minimal schema",
+      id: "Example-extrameta-2018-003",
       name: "Certificate Name",
-      issuedOn: "2018-08-01",
-      issuer: {
+      issuedOn: "2018-08-01T00:00:00+08:00",
+      issuers: [{
         name: "Issuer Name",
         certificateStore: "0x0000000000000000000000000000000000000000"
-      },
+      }],
       recipient: {
         name: "Recipient Name"
       },
-      metadata: {
+      additionalData: {
         array: [
           {
             key: "value"
@@ -130,5 +146,5 @@ describe.only("schema/v1.2", () => {
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
     assert(valid);
-  })
+  });
 });

@@ -1,7 +1,6 @@
 {
   "id": "SERIAL-2018-08-01-112",
   "$schema": "https://govtechsg.github.io/open-certificate/schema/1.2/schema.json",
-  "$comment": "schema URL to be updated to permanent url",
   "$template": "BLOCKCHAIN-ACADEMY-2018-001",
   "issuedOn": "2018-08-01T00:00:00+08:00",
   "expiredOn": "2118-08-01T00:00:00+08:00",
@@ -26,7 +25,7 @@
     "name": "Mr Blockchain",
     "did": "DID:SG-NRIC:S99999999A",
     "email": "mr-blockchain@gmail.com",
-    "phone": "+65 88888888" // E.164 standard formatting
+    "phone": "+65 88888888"
   },
   "transcript": [
     {

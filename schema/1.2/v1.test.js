@@ -1,13 +1,23 @@
-const {
+/* eslint-disable */
+const schema = require("./schema.json");
+let {
   issueDocument,
   addSchema,
   validateSchema
 } = require("@govtechsg/open-attestation");
-const schema = require("./schema.json");
 
-describe("schema/v1", () => {
-  before(() => {
+describe("schema/v1.2", () => {
+  beforeEach(() => {
     addSchema(schema);
+  });
+
+  afterEach(() => {
+    delete require.cache[require.resolve("@govtechsg/open-attestation")];
+    let {
+      issueDocument,
+      addSchema,
+      validateSchema
+    } = require("@govtechsg/open-attestation");
   });
 
   it("is not valid with missing data", () => {
@@ -18,12 +28,15 @@ describe("schema/v1", () => {
 
   it("is not valid with additional data", () => {
     const data = {
+      $schema: "invalid example",
       name: "Certificate Name",
-      issuedOn: "2018-08-01",
-      issuer: {
-        name: "Issuer Name",
-        certificateStore: "0x0000000000000000000000000000000000000000"
-      },
+      issuedOn: "2018-08-01T00:00:00+08:00",
+      issuers: [
+        {
+          name: "Issuer Name",
+          certificateStore: "0x0000000000000000000000000000000000000000"
+        }
+      ],
       recipient: {
         name: "Recipient Name"
       },
@@ -35,16 +48,21 @@ describe("schema/v1", () => {
 
   it("is valid with minimum data", () => {
     const data = {
+      $schema: "minimal schema",
+      id: "Example-minimal-2018-001",
       name: "Certificate Name",
-      issuedOn: "2018-08-01",
-      issuer: {
-        name: "Issuer Name",
-        certificateStore: "0x0000000000000000000000000000000000000000"
-      },
+      issuedOn: "2018-08-01T00:00:00+08:00",
+      issuers: [
+        {
+          name: "Issuer Name",
+          certificateStore: "0x0000000000000000000000000000000000000000"
+        }
+      ],
       recipient: {
         name: "Recipient Name"
       }
     };
+
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
     assert(valid);
@@ -52,21 +70,25 @@ describe("schema/v1", () => {
 
   it("is valid with standard data", () => {
     const data = {
-      issuedOn: "2018-08-01",
-      expiredOn: "2118-08-01",
+      $schema: "minimal schema",
+      id: "Example-standard-2018-002",
+      issuedOn: "2018-08-01T00:00:00+08:00",
+      expiredOn: "2118-08-01T00:00:00+08:00",
       name: "Master of Blockchain",
-      issuer: {
-        name: "Blockchain Academy",
-        did: "DID:SG-UEN:U18274928E",
-        url: "https://blockchainacademy.com",
-        email: "registrar@blockchainacademy.com",
-        certificateStore: "0xd9580260be45c3c0c2fb259a82f219b513054012"
-      },
+      issuers: [
+        {
+          name: "Blockchain Academy",
+          did: "DID:SG-UEN:U18274928E",
+          url: "https://blockchainacademy.com",
+          email: "registrar@blockchainacademy.com",
+          certificateStore: "0xd9580260be45c3c0c2fb259a82f219b513054012"
+        }
+      ],
       recipient: {
         name: "Mr Blockchain",
         did: "DID:SG-NRIC:S99999999A",
         email: "mr-blockchain@gmail.com",
-        phone: "88888888"
+        phone: "+65 88888888"
       },
       transcript: [
         {
@@ -94,16 +116,20 @@ describe("schema/v1", () => {
 
   it("is valid with extra metadata data", () => {
     const data = {
+      $schema: "minimal schema",
+      id: "Example-extrameta-2018-003",
       name: "Certificate Name",
-      issuedOn: "2018-08-01",
-      issuer: {
-        name: "Issuer Name",
-        certificateStore: "0x0000000000000000000000000000000000000000"
-      },
+      issuedOn: "2018-08-01T00:00:00+08:00",
+      issuers: [
+        {
+          name: "Issuer Name",
+          certificateStore: "0x0000000000000000000000000000000000000000"
+        }
+      ],
       recipient: {
         name: "Recipient Name"
       },
-      metadata: {
+      additionalData: {
         array: [
           {
             key: "value"
@@ -119,6 +145,13 @@ describe("schema/v1", () => {
         }
       }
     };
+    const signedDocument = issueDocument(data, schema);
+    const valid = validateSchema(signedDocument);
+    assert(valid);
+  });
+
+  it("validates the example document", () => {
+    const data = require("./example.json");
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
     assert(valid);

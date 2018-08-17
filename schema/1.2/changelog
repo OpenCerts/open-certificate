@@ -1,0 +1,13 @@
+changelog
+
+issuer -> issuers, single issuer object to array of issuer objects
+metadata -> additionalData
+additionalData.visuals -> additionalData.images
+
+added $schema field, need to host the schema on open-certificate github pages
+added id field, for serial number
+
+
+changed phone field to E.164 format // TODO: write a format validator for E.164
+
+//TODO: fix ajv initialisation

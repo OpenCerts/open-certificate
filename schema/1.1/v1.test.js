@@ -1,13 +1,29 @@
-const {
+/* eslint-disable */
+let {
   issueDocument,
   addSchema,
   validateSchema
 } = require("@govtechsg/open-attestation");
 const schema = require("./schema.json");
 
-describe("schema/v1", () => {
-  before(() => {
+describe("schema/v1.1", () => {
+  beforeEach(() => {
     addSchema(schema);
+  });
+
+  afterEach(() => {
+    delete require.cache[require.resolve("@govtechsg/open-attestation")];
+    let {
+      issueDocument,
+      addSchema,
+      validateSchema
+    } = require("@govtechsg/open-attestation");
+  });
+
+  it("is not valid with missing data", () => {
+    const data = {};
+    const signing = () => issueDocument(data, schema);
+    expect(signing).to.throw("Invalid document");
   });
 
   it("is not valid with missing data", () => {
@@ -66,7 +82,7 @@ describe("schema/v1", () => {
         name: "Mr Blockchain",
         did: "DID:SG-NRIC:S99999999A",
         email: "mr-blockchain@gmail.com",
-        phone: "88888888"
+        phone: "+65 88888888"
       },
       transcript: [
         {

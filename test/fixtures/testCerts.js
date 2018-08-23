@@ -1,7 +1,5 @@
 const testCerts = [
   {
-    $schema:
-      "https://govtechsg.github.io/open-certificate/schema/1.2/schema.json",
     id: "SERIAL-2018-08-01-113",
     issuedOn: "2018-08-01T00:00:00+08:00",
     expiredOn: "2118-08-01T00:00:00+08:00",
@@ -41,8 +39,6 @@ const testCerts = [
     ]
   },
   {
-    $schema:
-      "https://govtechsg.github.io/open-certificate/schema/1.2/schema.json",
     id: "SERIAL-2018-08-01-114",
     issuedOn: "2018-08-01T00:00:00+08:00",
     expiredOn: "2118-08-01T00:00:00+08:00",

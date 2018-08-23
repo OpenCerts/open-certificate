@@ -1,6 +1,5 @@
 {
   "id": "SERIAL-2018-08-01-112",
-  "$schema": "https://govtechsg.github.io/open-certificate/schema/1.2/schema.json",
   "$template": "BLOCKCHAIN-ACADEMY-2018-001",
   "issuedOn": "2018-08-01T00:00:00+08:00",
   "expiredOn": "2118-08-01T00:00:00+08:00",

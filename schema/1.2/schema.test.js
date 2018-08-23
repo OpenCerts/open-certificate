@@ -28,7 +28,6 @@ describe("schema/v1.2", () => {
 
   it("is not valid with additional data", () => {
     const data = {
-      $schema: "invalid example",
       name: "Certificate Name",
       issuedOn: "2018-08-01T00:00:00+08:00",
       issuers: [
@@ -48,7 +47,6 @@ describe("schema/v1.2", () => {
 
   it("is valid with minimum data", () => {
     const data = {
-      $schema: "minimal schema",
       id: "Example-minimal-2018-001",
       name: "Certificate Name",
       issuedOn: "2018-08-01T00:00:00+08:00",
@@ -70,7 +68,6 @@ describe("schema/v1.2", () => {
 
   it("is valid with standard data", () => {
     const data = {
-      $schema: "minimal schema",
       id: "Example-standard-2018-002",
       issuedOn: "2018-08-01T00:00:00+08:00",
       expiredOn: "2118-08-01T00:00:00+08:00",
@@ -116,7 +113,6 @@ describe("schema/v1.2", () => {
 
   it("is valid with extra metadata data", () => {
     const data = {
-      $schema: "minimal schema",
       id: "Example-extrameta-2018-003",
       name: "Certificate Name",
       issuedOn: "2018-08-01T00:00:00+08:00",

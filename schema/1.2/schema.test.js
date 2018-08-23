@@ -129,6 +129,12 @@ describe("schema/v1.2", () => {
       recipient: {
         name: "Recipient Name"
       },
+      transcript: [
+        {
+          "name": "Bitcoin",
+          "random-key": "Is Valid"
+        },
+      ],
       additionalData: {
         array: [
           {

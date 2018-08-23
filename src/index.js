@@ -8,12 +8,16 @@ const {
   obfuscateDocument
 } = require("@govtechsg/open-attestation");
 
-const schema = require("../schema/latest/schema.json");
+const schema_v1_0 = require("../schema/1.0/schema.json");
+const schema_v1_1 = require("../schema/1.1/schema.json");
+const schema_v1_2 = require("../schema/1.2/schema.json");
 
-const defaultSchema = schema;
+const defaultSchema = schema_v1_2;
 
 // Start - Initialise all valid schema
-addSchema(schema);
+addSchema(schema_v1_0);
+addSchema(schema_v1_1);
+addSchema(schema_v1_2);
 // End - Initialise all valid schema
 
 const issueCertificate = data => issueDocument(data, defaultSchema);

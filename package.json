@@ -6,9 +6,9 @@
   "module": "dist/open-certificate.esm.js",
   "browser": "dist/open-certificate.umd.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "npm run clean && rollup -c",
     "clean": "rm -rf dist/",
-    "test": "nyc --reporter=html mocha --timeout 5000 -- ./test/helpers.js './schema/**/*.test.js' './src/**/*.test.js' './test/**/*.test.js'",
+    "test": "npm run build && nyc --reporter=html mocha --timeout 5000 -- ./test/helpers.js './schema/**/*.test.js' './src/**/*.test.js' './test/**/*.test.js'",
     "test-watch": "mocha ./test/helpers.js './schema/**/*.test.js' './src/**/*.test.js' './test/**/*.test.js' --watch --watch-extensions js,json --recursive",
     "lint": "eslint . --ext .js --max-warnings 0",
     "lint:fix": "eslint . --ext .js --fix"

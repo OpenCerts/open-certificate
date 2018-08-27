@@ -1,98 +1,44 @@
 # Open Certificate
 
+This library supplies the schemas used for OpenCerts standards, in the form of [json schemas](http://json-schema.org)
+
 ## Installation
 
 Using npm:
 
 ```bash
-yarn add @govtechsg/open-certificate
+npm install @govtechsg/open-certificate
 ```
 
 ## Usage
 
-### Generate Certificate
+If you are writing a **certificate issuer**: you probably want to [issue a certificate](#issuing-a-certificate) or [issue multiple certificates](#issue-multiple-certificates)
 
-```js
-const {randomCertificate} from '@govtechsg/open-certificate';
+If you are writing a **certificate verifier or viewer**: you probably want to
+1. [validate that a certificate is well-formed](#validate-schema)
+1. [verify that a certificate has not been tampered with](#verifying-certificate-signature) 
+1. [retrieve certificate contents](#retrieving-certificate-contents)
+1. [obfuscate fields](#obfuscating-fields-in-a-certificate)
 
-const CERTIFICATE_STORE_ADDRESS = '0x000000000000000000';
-const randomlyGeneratedCertificate = randomCertificate(CERTIFICATE_STORE_ADDRESS);
+### Validate Schema
+### Verifying Certificate Signature
+### Issue a Certificate
+### Issue Multiple Certificates
+### Retrieving Certificate contents
+### Obfuscating Fields in a Certificate
 
-console.log(randomlyGeneratedCertificate);
-```
+# Developers
 
-### Issue A Batch of Certificate
-
-```js
-const {randomCertificate, issueCertificates} from '@govtechsg/open-certificate';
-
-const CERTIFICATE_STORE_ADDRESS = '0x000000000000000000';
-
-const certificates = new Array(10).fill(randomCertificate(CERTIFICATE_STORE_ADDRESS));
-const certificateBatch = issueCertificates(certificates);
-
-console.log('Batch Root:', certificateBatch.getRoot());
-console.log('Proof for cert #1', certificateBatch.getProof(certificates[0]));
-```
-
-### Verify A Certificate
-
-```js
-const {randomCertificate, Certificate} from '@govtechsg/open-certificate';
-
-const CERTIFICATE_STORE_ADDRESS = '0x000000000000000000';
-const randomlyGeneratedCertificate = randomCertificate(CERTIFICATE_STORE_ADDRESS);
-
-const certificate = new Certificate(randomlyGeneratedCertificate);
-certificate.verify();
-```
-
-### Redact Evidence
-
-```js
-const {randomCertificate, Certificate} from '@govtechsg/open-certificate';
-
-const CERTIFICATE_STORE_ADDRESS = '0x000000000000000000';
-const randomlyGeneratedCertificate = randomCertificate(CERTIFICATE_STORE_ADDRESS);
-
-const certificate = new Certificate(randomlyGeneratedCertificate);
-const filteredCertificate = certificate.privacyFilter(['transcript.0.grade']);
-
-console.log(filteredCertificate.certificate);
-```
-
-### Redact Identity
-
-```js
-const {randomCertificate, Certificate} from '@govtechsg/open-certificate';
-
-const CERTIFICATE_STORE_ADDRESS = '0x000000000000000000';
-const randomlyGeneratedCertificate = randomCertificate(CERTIFICATE_STORE_ADDRESS);
-
-const certificate = new Certificate(randomlyGeneratedCertificate);
-
-// Hide all the identity profile
-const filteredCertificate = certificate.identityFilter();
-console.log(filteredCertificate.certificate);
-
-// Hide only the first identity
-const filteredCertificate2 = certificate.identityFilter(0);
-console.log(filteredCertificate2.certificate);
-```
-
-
-### Verify Identity
-
-```js
-const cert = <SOME_CERTIFICATE_HERE>;
-
-const isCorrectIdentity = Certificate.identityCheck(cert.recipient[0], "someone@example.com");
-console.log(isCorrectIdentity);
-```
+The code is written to ES6 specs with stage-3 presets and is compiled by Babel.
 
 
 ## Test
 
 ```bash
-yarn test
+npm run test
+```
+## Build
+
+```bash
+npm run build
 ```

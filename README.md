@@ -1,98 +1,106 @@
 # Open Certificate
 
+This library supplies the schemas used for OpenCerts standards, in the form of [json schemas](http://json-schema.org)
+
 ## Installation
 
 Using npm:
 
 ```bash
-yarn add @govtechsg/open-certificate
+npm install @govtechsg/open-certificate
 ```
 
 ## Usage
 
-### Generate Certificate
+If you are writing a **certificate issuer**: you probably want to [issue a certificate](#issuing-a-certificate) or [issue multiple certificates](#issue-multiple-certificates)
 
-```js
-const {randomCertificate} from '@govtechsg/open-certificate';
+If you are writing a **certificate verifier or viewer**: you probably want to
+1. [validate that a certificate is well-formed](#validate-schema)
+1. [verify that a certificate has not been tampered with](#verifying-certificate-signature) 
+1. [retrieve certificate contents](#retrieving-certificate-contents)
+1. [obfuscate fields](#obfuscating-fields-in-a-certificate)
 
-const CERTIFICATE_STORE_ADDRESS = '0x000000000000000000';
-const randomlyGeneratedCertificate = randomCertificate(CERTIFICATE_STORE_ADDRESS);
+### Using OpenCerts
+```javascript
+const openCert = require("@govtechsg/open-certificate")
 
-console.log(randomlyGeneratedCertificate);
+const exampleCert = require("exampleCert.json") // reading an example certificate file
+openCert.verify(exampleCert)
 ```
 
-### Issue A Batch of Certificate
+### Validate Schema
 
-```js
-const {randomCertificate, issueCertificates} from '@govtechsg/open-certificate';
+This library comes with the schemas in the `./schema` folder, all of them are loaded as valid schemas upon initialization.
 
-const CERTIFICATE_STORE_ADDRESS = '0x000000000000000000';
+```javascript
+openCert.validateSchema(exampleCert)
+```
+### Verifying Certificate Signature
 
-const certificates = new Array(10).fill(randomCertificate(CERTIFICATE_STORE_ADDRESS));
-const certificateBatch = issueCertificates(certificates);
+Certificates are considered untampered-with if they have a valid signature field. Refer to the [Open Attestation](https://github.com/GovTechSG/open-attestation) library for more details on this.
 
-console.log('Batch Root:', certificateBatch.getRoot());
-console.log('Proof for cert #1', certificateBatch.getProof(certificates[0]));
+```javascript
+openCert.verifySignature(exampleCert)
 ```
 
-### Verify A Certificate
+### Issue a Certificate
 
-```js
-const {randomCertificate, Certificate} from '@govtechsg/open-certificate';
+A single Certificate can be issued using the `.issueCertificate(certificate)` method.
+Issuing a certificate in this manner will append a signature field to the certificate.
 
-const CERTIFICATE_STORE_ADDRESS = '0x000000000000000000';
-const randomlyGeneratedCertificate = randomCertificate(CERTIFICATE_STORE_ADDRESS);
+The return value of the method will be the signed certificate.
 
-const certificate = new Certificate(randomlyGeneratedCertificate);
-certificate.verify();
+```javascript
+const issuedCert = openCert.issueCertificate(exampleCert)
+```
+### Issue Multiple Certificates
+
+Multiple Certificates can be issued at once with the `.issueCertificates(certificate[])` method.
+
+The return value of the method will be an array of signed certificates.
+
+```javascript
+const exampleCerts = [cert1, cert2, cert3, ...]
+const issuedCerts = openCert.issueCertificates(exampleCerts)
+```
+### Retrieving Certificate contents
+
+The raw certificate has salt in the fields to prevent enumeration, we provide a convenience method to retrieve the unsalted contents of the certificate using the method `.certificateData(certificate)`
+
+```javascript
+const data = openCert.certificateData(exampleCert)
 ```
 
-### Redact Evidence
+### Obfuscating Fields in a Certificate
+To obfuscate fields in a cert, the method `.obfuscateFields(certificate, paths[])` is provided.
+The paths[] parameter is simply the JSON path for the fields to be obfuscated.
 
-```js
-const {randomCertificate, Certificate} from '@govtechsg/open-certificate';
+The method returns the obfuscated certificate.
 
-const CERTIFICATE_STORE_ADDRESS = '0x000000000000000000';
-const randomlyGeneratedCertificate = randomCertificate(CERTIFICATE_STORE_ADDRESS);
-
-const certificate = new Certificate(randomlyGeneratedCertificate);
-const filteredCertificate = certificate.privacyFilter(['transcript.0.grade']);
-
-console.log(filteredCertificate.certificate);
+```javascript
+const obfuscatedCert = openCert.obfuscateFields(exampleCert, [
+    "recipient.email",
+    "recipient.phone"
+]);
 ```
 
-### Redact Identity
+## Developers
 
-```js
-const {randomCertificate, Certificate} from '@govtechsg/open-certificate';
-
-const CERTIFICATE_STORE_ADDRESS = '0x000000000000000000';
-const randomlyGeneratedCertificate = randomCertificate(CERTIFICATE_STORE_ADDRESS);
-
-const certificate = new Certificate(randomlyGeneratedCertificate);
-
-// Hide all the identity profile
-const filteredCertificate = certificate.identityFilter();
-console.log(filteredCertificate.certificate);
-
-// Hide only the first identity
-const filteredCertificate2 = certificate.identityFilter(0);
-console.log(filteredCertificate2.certificate);
-```
+The code is written to ES6 specs with stage-3 presets and is compiled by Babel.
 
 
-### Verify Identity
-
-```js
-const cert = <SOME_CERTIFICATE_HERE>;
-
-const isCorrectIdentity = Certificate.identityCheck(cert.recipient[0], "someone@example.com");
-console.log(isCorrectIdentity);
-```
-
-
-## Test
+### Test
 
 ```bash
-yarn test
+npm run test
 ```
+### Build
+
+```bash
+npm run build
+```
+
+### Related Projects
+[Open Attestation](https://github.com/GovTechSG/open-attestation)
+[Certificate Contract](https://github.com/GovTechSG/certificate-contract)
+[OpenCert Web UI](https://github.com/GovTechSG/certificate-web-ui)

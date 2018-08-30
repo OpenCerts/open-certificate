@@ -11,14 +11,14 @@ const {
 /* eslint-disable global-require */
 // Disabling eslint for this because it doesn't make sense
 const schemas = {
-  "v1.0": require("../schema/1.0/schema.json"),
-  "v1.1": require("../schema/1.1/schema.json"),
-  "v1.2": require("../schema/1.2/schema.json"),
-  "v1.3": require("../schema/1.3/schema.json")
+  "1.0": require("../schema/1.0/schema.json"),
+  "1.1": require("../schema/1.1/schema.json"),
+  "1.2": require("../schema/1.2/schema.json"),
+  "1.3": require("../schema/1.3/schema.json")
 };
 /* eslint-enable global-require */
 
-const defaultSchema = schemas["v1.3"];
+const defaultSchema = schemas["1.3"];
 
 // Start - Initialise all valid schema
 addSchema(Object.values(schemas));
@@ -39,5 +39,6 @@ module.exports = {
   verifySignature,
   validateSchema,
   obfuscateFields,
-  certificateData
+  certificateData,
+  schemas
 };

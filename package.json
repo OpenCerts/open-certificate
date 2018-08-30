@@ -22,10 +22,10 @@
   "dependencies": {
     "@govtechsg/open-attestation": "^1.1.21",
     "flat": "^4.1.0",
-    "lerna": "^3.0.0-rc.0",
     "lodash": "^4.17.10"
   },
   "devDependencies": {
+    "lerna": "^3.0.0-rc.0",
     "@istanbuljs/nyc-config-babel": "^1.2.3",
     "babel-core": "^6.26.3",
     "babel-plugin-istanbul": "^4.1.6",

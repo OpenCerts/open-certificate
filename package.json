@@ -1,6 +1,6 @@
 {
   "name": "@govtechsg/open-certificate",
-  "version": "1.1.28",
+  "version": "1.1.29",
   "description": "",
   "main": "dist/open-certificate.js",
   "module": "dist/open-certificate.esm.js",
@@ -25,7 +25,6 @@
     "lodash": "^4.17.10"
   },
   "devDependencies": {
-    "lerna": "^3.0.0-rc.0",
     "@istanbuljs/nyc-config-babel": "^1.2.3",
     "babel-core": "^6.26.3",
     "babel-plugin-istanbul": "^4.1.6",
@@ -40,6 +39,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-mocha": "^5.1.0",
     "eslint-plugin-prettier": "^2.6.2",
+    "lerna": "^3.0.0-rc.0",
     "microbundle": "^0.6.0",
     "mocha": "^5.2.0",
     "nyc": "^12.0.2",

@@ -130,6 +130,7 @@ describe("schema/v1.4", () => {
       issuedOn: "2018-08-01T00:00:00+08:00",
       expiresOn: "2118-08-01T00:00:00+08:00",
       name: "Master of Blockchain",
+      description: "some description",
       issuers: [
         {
           name: "Blockchain Academy",
@@ -173,6 +174,7 @@ describe("schema/v1.4", () => {
     const data = {
       id: "Example-extrameta-2018-003",
       name: "Certificate Name",
+      description: "some description",
       issuedOn: "2018-08-01T00:00:00+08:00",
       issuers: [
         {

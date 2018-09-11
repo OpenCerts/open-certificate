@@ -9,6 +9,9 @@
     "$template": {
       "type": "string"
     },
+    "description": {
+      "type": "string"
+    },
     "issuedOn": {
       "type": "string",
       "format": "date-time"

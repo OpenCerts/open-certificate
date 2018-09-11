@@ -1,3 +1,6 @@
 changelog
 
-expiredOn -> expiresOn
+Added description field
+Additional properties allowed in recipient properties
+Additional properties allowed in issuer properties
+Minimum of one issuer is required

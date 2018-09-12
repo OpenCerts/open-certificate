@@ -1,6 +1,7 @@
 const testCerts = [
   {
     id: "SERIAL-2018-08-01-113",
+    description: "This is a masters program.",
     issuedOn: "2018-08-01T00:00:00+08:00",
     expiresOn: "2118-08-01T00:00:00+08:00",
     name: "Master of Blockchain",
@@ -10,14 +11,16 @@ const testCerts = [
         did: "DID:SG-UEN:U18274928E",
         url: "https://blockchainacademy.com",
         email: "registrar@blockchainacademy.com",
-        certificateStore: "0xd9580260be45c3c0c2fb259a82f219b513054012"
+        certificateStore: "0xd9580260be45c3c0c2fb259a82f219b513054012",
+        additionalProps: "issuerId"
       }
     ],
     recipient: {
       name: "Mr Blockchain",
       did: "DID:SG-NRIC:S99999999A",
       email: "mr-blockchain@gmail.com",
-      phone: "+65 88888888"
+      phone: "+65 88888888",
+      additionalProps: "studentId"
     },
     transcript: [
       {

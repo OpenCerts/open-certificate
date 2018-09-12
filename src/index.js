@@ -41,5 +41,6 @@ module.exports = {
   validateSchema,
   obfuscateFields,
   certificateData,
-  schemas
+  schemas,
+  defaultSchema
 };

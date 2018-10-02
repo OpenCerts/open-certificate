@@ -65,5 +65,11 @@ describe("E2E Test", () => {
     );
     expect(moreObfuscation.privacy.obfuscatedData.length).to.be.equal(3);
     expect(moreObfuscation.data.recipient.did).to.not.exist;
+
+    const isValidStructure = openCert.validateSchema(moreObfuscation);
+    expect(isValidStructure).to.be.true;
+
+    const isValidSignature = openCert.verifySignature(moreObfuscation);
+    expect(isValidSignature).to.be.true;
   });
 });

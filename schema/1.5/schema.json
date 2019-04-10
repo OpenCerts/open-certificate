@@ -1,0 +1,214 @@
+{
+  "$id": "opencerts/v1.5",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "$template": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "issuedOn": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiresOn": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "admissionDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "graduationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "qualificationLevel": {
+      "type": "array",
+      "description": "This is an array of objects used to attach descriptors from frameworks such as Singapore's SSEC-EQA or the internationally recognised ISCED. Multiple instances are allowed to indicate either equivalents or to indicate a multi-level qualifications",
+      "items": {
+        "type": "object",
+        "required": [
+          "frameworkName",
+          "frameworkVersion",
+          "levelCode",
+          "levelDescription"
+        ],
+        "properties": {
+          "frameworkName": {
+            "type": "string",
+            "examples": ["singapore/ssec-eqa", "international/isced"]
+          },
+          "frameworkVersion": {
+            "type": "string",
+            "examples": ["2015-level-2", "2011"]
+          },
+          "levelCode": {
+            "type": "string",
+            "examples": ["51", "55"]
+          },
+          "levelDescription": {
+            "type": "string",
+            "examples": [
+              "Polytechnic Diploma",
+              "(Short-cycle tertiary education) Vocational"
+            ]
+          },
+          "qualificationName": {
+            "type": "string",
+            "description": "Optional field used to indicate which qualification this qualification level is related to",
+            "examples": ["Diploma in Biomedical Science"]
+          }
+        }
+      }
+    },
+    "fieldOfStudy": {
+      "type": "array",
+      "description": "This is an array of objects used to attach descriptors from frameworks such as Singapore's SSEC-FOS or the internationally recognised ISCED-F. Multiple instances are allowed to indicate either equivalents or to indicate a multi-field qualification such as double degrees",
+      "items": {
+        "type": "object",
+        "required": [
+          "frameworkName",
+          "frameworkVersion",
+          "fieldCode",
+          "fieldDescription"
+        ],
+        "properties": {
+          "frameworkName": {
+            "type": "string",
+            "description": "Prepend the actual framework name with the scope of the framework",
+            "examples": ["singapore/ssec-fos", "international/isced-f"]
+          },
+          "frameworkVersion": {
+            "type": "string",
+            "examples": ["2015-level-4", "2013"]
+          },
+          "fieldCode": {
+            "type": "string",
+            "examples": ["0897"]
+          },
+          "fieldDescription": {
+            "type": "string",
+            "examples": ["Biomedical Science"]
+          }
+        }
+      }
+    },
+    "cumulativeScore": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string"
+    },
+    "issuers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "did": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "url"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "certificateStore": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "certificateStore"],
+        "additionalProperties": true
+      },
+      "minItems": 1
+    },
+    "recipient": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "did": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "nric": {
+          "type": "string"
+        },
+        "fin": {
+          "type": "string"
+        },
+        "studentId": {
+          "type": "string"
+        }
+      },
+      "required": ["name"],
+      "additionalProperties": true
+    },
+    "transcript": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "score": {
+            "type": ["number", "string"]
+          },
+          "grade": {
+            "type": ["number", "string"]
+          },
+          "courseCredit": {
+            "type": ["number", "string"]
+          },
+          "courseCode": {
+            "type": "string"
+          },
+          "examinationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "url": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "languageMedium": {
+            "description": "Language that the course was undertaken in",
+            "type": "string"
+          }
+        },
+        "required": ["name"]
+      }
+    },
+    "additionalData": {
+      "type": "object"
+    }
+  },
+  "required": ["id", "name", "issuedOn", "issuers", "recipient"],
+  "additionalProperties": false
+}

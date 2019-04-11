@@ -6,8 +6,7 @@ const {
   verifySignature,
   validateSchema,
   obfuscateDocument,
-  MerkleTree,
-  poop
+  MerkleTree
 } = require("@govtechsg/open-attestation");
 
 /* eslint-disable global-require */
@@ -46,6 +45,5 @@ module.exports = {
   certificateData,
   schemas,
   defaultSchema,
-  MerkleTree,
-  poop
+  MerkleTree
 };

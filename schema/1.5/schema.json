@@ -13,6 +13,7 @@
       "type": "string"
     },
     "issuedOn": {
+      "description": "The date that this certificate was issued by the issuer(s)",
       "type": "string",
       "format": "date-time"
     },
@@ -25,6 +26,12 @@
       "format": "date-time"
     },
     "graduationDate": {
+      "description": "The date that this student graduated from the course",
+      "type": "string",
+      "format": "date-time"
+    },
+    "attainmentDate": {
+      "description": "The date that this qualification was awarded to the recipient",
       "type": "string",
       "format": "date-time"
     },
@@ -36,8 +43,8 @@
         "required": [
           "frameworkName",
           "frameworkVersion",
-          "levelCode",
-          "levelDescription"
+          "code",
+          "description"
         ],
         "properties": {
           "frameworkName": {
@@ -46,23 +53,18 @@
           },
           "frameworkVersion": {
             "type": "string",
-            "examples": ["2015-level-2", "2011"]
+            "examples": ["2015", "2011"]
           },
-          "levelCode": {
+          "code": {
             "type": "string",
             "examples": ["51", "55"]
           },
-          "levelDescription": {
+          "description": {
             "type": "string",
             "examples": [
               "Polytechnic Diploma",
               "(Short-cycle tertiary education) Vocational"
             ]
-          },
-          "qualificationName": {
-            "type": "string",
-            "description": "Optional field used to indicate which qualification this qualification level is related to",
-            "examples": ["Diploma in Biomedical Science"]
           }
         }
       }
@@ -75,8 +77,8 @@
         "required": [
           "frameworkName",
           "frameworkVersion",
-          "fieldCode",
-          "fieldDescription"
+          "code",
+          "description"
         ],
         "properties": {
           "frameworkName": {
@@ -86,13 +88,13 @@
           },
           "frameworkVersion": {
             "type": "string",
-            "examples": ["2015-level-4", "2013"]
+            "examples": ["2015", "2013"]
           },
-          "fieldCode": {
+          "code": {
             "type": "string",
             "examples": ["0897"]
           },
-          "fieldDescription": {
+          "description": {
             "type": "string",
             "examples": ["Biomedical Science"]
           }

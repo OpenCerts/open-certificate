@@ -5,8 +5,9 @@
   "issuedOn": "2018-08-01T00:00:00+08:00",
   "expiresOn": "2118-08-01T00:00:00+08:00",
   "name": "Master of Blockchain",
-  "admissionDate": "2017-08-01T00:00:00+08:00",
+  "admissionDate": "2017-07-01T00:00:00+08:00",
   "graduationDate": "2018-08-01T00:00:00+08:00",
+  "attainmentDate": "2018-07-25T00:00:00+08:00",
   "issuers": [
     {
       "name": "Blockchain Academy",
@@ -33,24 +34,22 @@
   },
   "qualificationLevel": [{
     "frameworkName": "singapore/ssec-eqa",
-    "frameworkVersion": "2015-level-2",
-    "levelCode": "51",
-    "levelDescription": "Polytechnic Diploma",
-    "qualificationName": "Diploma in Biomedical Science"
+    "frameworkVersion": "2015",
+    "code": "51",
+    "description": "Polytechnic Diploma"
   },
   {
     "frameworkName": "international/isced",
     "frameworkVersion": "2011",
-    "levelCode": "55",
-    "levelDescription": "(Short-cycle tertiary education) Vocational",
-    "qualificationName": "Diploma in Biomedical Science"
+    "code": "55",
+    "description": "(Short-cycle tertiary education) Vocational"
   }],
   "fieldOfStudy": [
     {
       "frameworkName": "singapore/ssec-fos",
-      "frameworkVersion": "2015-level-4",
-      "fieldCode": "0897",
-      "fieldDescription": "Biomedical Science"
+      "frameworkVersion": "2015",
+      "code": "0897",
+      "description": "Biomedical Science"
     }
   ],
   "transcript": [

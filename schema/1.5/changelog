@@ -1,6 +1,7 @@
 changelog
 
 Added qualificationLevel field
+Added attainmentDate date-time string
 Added fieldOfStudy field
 Added field to transcript: languageMedium
 Added fields to recipient: studentId, nric, fin

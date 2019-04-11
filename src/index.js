@@ -21,7 +21,7 @@ const schemas = {
 };
 /* eslint-enable global-require */
 
-const defaultSchema = schemas["1.4"];
+const defaultSchema = schemas["1.5"];
 
 // Start - Initialise all valid schema
 addSchema(Object.values(schemas));

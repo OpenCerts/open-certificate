@@ -80,6 +80,191 @@ describe("schema/v1.5", () => {
     assert(valid);
   });
 
+  describe("schema 1.5 specific additions", () => {
+    it("should work with qualificationLevel and fieldOfStudy", () => {
+      const data = {
+        id: "with qualificationLevel and fieldOfStudy",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            certificateStore: "0x0000000000000000000000000000000000000000"
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        },
+        qualificationLevel: [
+          {
+            frameworkName: "singapore/ssec-eqa",
+            frameworkVersion: "2015",
+            code: "51",
+            description: "Polytechnic Diploma"
+          }
+        ],
+        fieldOfStudy: [
+          {
+            frameworkName: "singapore/ssec-fos",
+            frameworkVersion: "2015",
+            code: "0897",
+            description: "Biomedical Science"
+          }
+        ]
+      };
+
+      const signedDocument = issueDocument(data, schema);
+      const valid = validateSchema(signedDocument);
+      assert(valid);
+    });
+
+    it("should work with multiple qualificationLevel and fieldOfStudy", () => {
+      const data = {
+        id: "with multiple qualificationLevels and fieldOfStudy",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            certificateStore: "0x0000000000000000000000000000000000000000"
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        },
+        qualificationLevel: [
+          {
+            frameworkName: "singapore/ssec-eqa",
+            frameworkVersion: "2015",
+            code: "51",
+            description: "Polytechnic Diploma"
+          },
+          {
+            frameworkName: "international/isced",
+            frameworkVersion: "2011",
+            code: "55",
+            description: "(Short-cycle tertiary education) Vocational"
+          }
+        ],
+        fieldOfStudy: [
+          {
+            frameworkName: "singapore/ssec-fos",
+            frameworkVersion: "2015",
+            code: "0897",
+            description: "Biomedical Science"
+          },
+          {
+            frameworkName: "singapore/ssec-fos",
+            frameworkVersion: "2015",
+            code: "0791",
+            description: "Biochemistry"
+          }
+        ]
+      };
+
+      const signedDocument = issueDocument(data, schema);
+      const valid = validateSchema(signedDocument);
+      assert(valid);
+    });
+
+    it("should work with nric fin studentid attainmentDate and languageMedium", () => {
+      const data = {
+        id: "with schema 1.5 stuff",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        attainmentDate: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            certificateStore: "0x0000000000000000000000000000000000000000"
+          }
+        ],
+        recipient: {
+          name: "Recipient Name",
+          nric: "foo",
+          fin: "bar"
+        },
+        transcript: [
+          {
+            name: "Art of Glorious Battle",
+            languageMedium: "klingon"
+          }
+        ]
+      };
+
+      const signedDocument = issueDocument(data, schema);
+      const valid = validateSchema(signedDocument);
+      assert(valid);
+    });
+
+    it("should fail if qualificationLevel is malformed", () => {
+      const data = {
+        id: "malformed qualification level",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            certificateStore: "0x0000000000000000000000000000000000000000"
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        },
+        qualificationLevel: {
+          bad: "bad"
+        }
+      };
+
+      const signing = () => issueDocument(data, schema);
+      expect(signing).to.throw("Invalid document");
+    });
+
+    it("should fail if fieldOfStudy is malformed", () => {
+      const data = {
+        id: "Example-minimal-2018-001",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            certificateStore: "0x0000000000000000000000000000000000000000"
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        },
+        fieldOfStudy: {
+          bad: "bad"
+        }
+      };
+
+      const signing = () => issueDocument(data, schema);
+      expect(signing).to.throw("Invalid document");
+    });
+
+    it("should fail if attainmentDate is malformed", () => {
+      const data = {
+        id: "malformed attainmentDate",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        attainmentDate: "2019",
+        issuers: [
+          {
+            name: "Issuer Name",
+            certificateStore: "0x0000000000000000000000000000000000000000"
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        }
+      };
+
+      const signing = () => issueDocument(data, schema);
+      expect(signing).to.throw("Invalid document");
+    });
+  });
+
   it("is valid with additional properties in issuer", () => {
     const data = {
       id: "Example-minimal-2018-001",
@@ -187,9 +372,9 @@ describe("schema/v1.5", () => {
       },
       transcript: [
         {
-          "name": "Bitcoin",
+          name: "Bitcoin",
           "random-key": "Is Valid"
-        },
+        }
       ],
       additionalData: {
         array: [

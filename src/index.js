@@ -16,11 +16,12 @@ const schemas = {
   "1.1": require("../schema/1.1/schema.json"),
   "1.2": require("../schema/1.2/schema.json"),
   "1.3": require("../schema/1.3/schema.json"),
-  "1.4": require("../schema/1.4/schema.json")
+  "1.4": require("../schema/1.4/schema.json"),
+  "1.5": require("../schema/1.5/schema.json")
 };
 /* eslint-enable global-require */
 
-const defaultSchema = schemas["1.4"];
+const defaultSchema = schemas["1.5"];
 
 // Start - Initialise all valid schema
 addSchema(Object.values(schemas));

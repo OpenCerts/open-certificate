@@ -18,10 +18,12 @@
     "schema"
   ],
   "author": "Raymond Yeh <yehjxraymond@gmail.com> (http://geek.sg)",
-  "license": "ISC",
+  "contributors": [
+    "RJ Chow <me@rjchow.com> (https://about.rjchow.com)"
+  ],
+  "license": "Apache-2.0",
   "dependencies": {
-    "@govtechsg/open-attestation": "^1.1.24",
-    "flat": "^4.1.0",
+    "@govtechsg/open-attestation": "1.1.35",
     "lodash": "^4.17.10"
   },
   "devDependencies": {
@@ -39,12 +41,12 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-mocha": "^5.1.0",
     "eslint-plugin-prettier": "^2.6.2",
-    "lerna": "^3.13.2",
+    "lerna": "^3.13.4",
     "microbundle": "^0.11.0",
     "mocha": "^5.2.0",
-    "nyc": "^13.3.0",
+    "nyc": "^14.1.1",
     "prettier": "^1.14.0",
-    "rollup": "^0.64.1",
+    "rollup": "^1.11.3",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^9.1.5",
@@ -56,12 +58,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GovTechSG/open-certificate.git"
+    "url": "git+https://github.com/OpenCerts/open-certificate.git"
   },
   "bugs": {
-    "url": "https://github.com/GovTechSG/open-certificate/issues"
+    "url": "https://github.com/OpenCerts/open-certificate/issues"
   },
-  "homepage": "https://github.com/GovTechSG/open-certificate#readme",
+  "homepage": "https://github.com/OpenCerts/open-certificate#readme",
   "publishConfig": {
     "access": "public"
   }

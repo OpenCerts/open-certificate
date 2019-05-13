@@ -27,10 +27,11 @@
     "lodash": "^4.17.10"
   },
   "devDependencies": {
-    "@istanbuljs/nyc-config-babel": "^1.2.3",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "@istanbuljs/nyc-config-babel": "^2.1.1",
     "babel-core": "^6.26.3",
-    "babel-plugin-istanbul": "^4.1.6",
-    "babel-preset-env": "^1.7.0",
+    "babel-plugin-istanbul": "^5.1.4",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "eslint": "^5.2.0",
@@ -44,7 +45,7 @@
     "lerna": "^3.13.4",
     "microbundle": "^0.11.0",
     "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
+    "nyc": "^14.1.1",
     "prettier": "^1.14.0",
     "rollup": "^1.11.3",
     "rollup-plugin-auto-external": "^2.0.0",

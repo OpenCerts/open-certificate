@@ -10,13 +10,17 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "Template name to be use by template renderer to determine the template to use"
         },
         "type": {
-          "type": "string"
+          "type": "string",
+          "description": "Type of renderer template",
+          "enum": ["EMBEDDED_RENDERER"]
         },
         "url": {
-          "type": "string"
+          "type": "string",
+          "description": "URL of a decentralised renderer to render this document"
         }
       },
       "required": ["name", "type", "url"]

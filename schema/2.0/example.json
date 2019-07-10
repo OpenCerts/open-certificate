@@ -2,7 +2,7 @@
   "id": "SERIAL-2018-08-01-112",
   "$template": {
     "name": "CUSTOM_TEMPLATE",
-    "type": "IFRAME_RENDERER",
+    "type": "EMBEDDED_RENDERER",
     "url": "https://demo-renderer.opencerts.io"
   },
   "description": "This masters is awarded to developers who can blockchain",

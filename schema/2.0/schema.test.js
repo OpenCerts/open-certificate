@@ -80,7 +80,7 @@ describe("schema/v2.0", () => {
     assert(valid);
   });
 
-  describe("schema 1.5 specific additions", () => {
+  describe("schema 2.0specific additions", () => {
     it("should work with qualificationLevel and fieldOfStudy", () => {
       const data = {
         id: "with qualificationLevel and fieldOfStudy",
@@ -169,7 +169,7 @@ describe("schema/v2.0", () => {
 
     it("should work with nric fin studentid attainmentDate and languageMedium", () => {
       const data = {
-        id: "with schema 1.5 stuff",
+        id: "with schema 2.0 stuff",
         name: "Certificate Name",
         issuedOn: "2018-08-01T00:00:00+08:00",
         attainmentDate: "2018-08-01T00:00:00+08:00",
@@ -392,6 +392,48 @@ describe("schema/v2.0", () => {
         }
       }
     };
+    const signedDocument = issueDocument(data, schema);
+    const valid = validateSchema(signedDocument);
+    assert(valid);
+  });
+
+  it("should work with new $template format", () => {
+    const data = {
+      id: "new $template",
+      name: "Certificate Name",
+      issuedOn: "2018-08-01T00:00:00+08:00",
+      issuers: [
+        {
+          name: "Issuer Name",
+          certificateStore: "0x0000000000000000000000000000000000000000"
+        }
+      ],
+      recipient: {
+        name: "Recipient Name"
+      },
+      $template: {
+        name: "GOVTECH_DEMO",
+        type: "IFRAME_RENDERER",
+        url: "https://demo-renderer.opencerts.io"
+      },
+      qualificationLevel: [
+        {
+          frameworkName: "singapore/ssec-eqa",
+          frameworkVersion: "2015",
+          code: "51",
+          description: "Polytechnic Diploma"
+        }
+      ],
+      fieldOfStudy: [
+        {
+          frameworkName: "singapore/ssec-fos",
+          frameworkVersion: "2015",
+          code: "0897",
+          description: "Biomedical Science"
+        }
+      ]
+    };
+
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
     assert(valid);

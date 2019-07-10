@@ -176,7 +176,7 @@ describe("schema/v2.0", () => {
         },
         $template: {
           name: 5,
-          type: "IFRAME_RENDERER",
+          type: "EMBEDDED_RENDERER",
           url: "https://demo-renderer.opencerts.io"
         },
         qualificationLevel: [
@@ -219,6 +219,167 @@ describe("schema/v2.0", () => {
           name: "GOVTECH_DEMO",
           type: "IFRAME_RENDERER",
           url: "https://demo-renderer.opencerts.io"
+        },
+        qualificationLevel: [
+          {
+            frameworkName: "singapore/ssec-eqa",
+            frameworkVersion: "2015",
+            code: "51",
+            description: "Polytechnic Diploma"
+          }
+        ],
+        fieldOfStudy: [
+          {
+            frameworkName: "singapore/ssec-fos",
+            frameworkVersion: "2015",
+            code: "0897",
+            description: "Biomedical Science"
+          }
+        ]
+      };
+
+      const signing = () => issueDocument(data, schema);
+      expect(signing).to.throw("Invalid document");
+    });
+
+    it("should fail with invalid $template url field", () => {
+      const data = {
+        id: "new $template",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            certificateStore: "0x0000000000000000000000000000000000000000"
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        },
+        $template: {
+          name: "GOVTECH_DEMO",
+          type: "EMBEDDED_RENDERER",
+          url: 5
+        },
+        qualificationLevel: [
+          {
+            frameworkName: "singapore/ssec-eqa",
+            frameworkVersion: "2015",
+            code: "51",
+            description: "Polytechnic Diploma"
+          }
+        ],
+        fieldOfStudy: [
+          {
+            frameworkName: "singapore/ssec-fos",
+            frameworkVersion: "2015",
+            code: "0897",
+            description: "Biomedical Science"
+          }
+        ]
+      };
+
+      const signing = () => issueDocument(data, schema);
+      expect(signing).to.throw("Invalid document");
+    });
+
+    it("should fail with $template name missing", () => {
+      const data = {
+        id: "new $template",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            certificateStore: "0x0000000000000000000000000000000000000000"
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        },
+        $template: {
+          type: "EMBDEDDED_RENDERER",
+          url: "https://demo-renderer.opencerts.io"
+        },
+        qualificationLevel: [
+          {
+            frameworkName: "singapore/ssec-eqa",
+            frameworkVersion: "2015",
+            code: "51",
+            description: "Polytechnic Diploma"
+          }
+        ],
+        fieldOfStudy: [
+          {
+            frameworkName: "singapore/ssec-fos",
+            frameworkVersion: "2015",
+            code: "0897",
+            description: "Biomedical Science"
+          }
+        ]
+      };
+
+      const signing = () => issueDocument(data, schema);
+      expect(signing).to.throw("Invalid document");
+    });
+
+    it("should fail with $template type missing", () => {
+      const data = {
+        id: "new $template",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            certificateStore: "0x0000000000000000000000000000000000000000"
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        },
+        $template: {
+          name: "GOVTECH_DEMO",
+          url: "https://demo-renderer.opencerts.io"
+        },
+        qualificationLevel: [
+          {
+            frameworkName: "singapore/ssec-eqa",
+            frameworkVersion: "2015",
+            code: "51",
+            description: "Polytechnic Diploma"
+          }
+        ],
+        fieldOfStudy: [
+          {
+            frameworkName: "singapore/ssec-fos",
+            frameworkVersion: "2015",
+            code: "0897",
+            description: "Biomedical Science"
+          }
+        ]
+      };
+
+      const signing = () => issueDocument(data, schema);
+      expect(signing).to.throw("Invalid document");
+    });
+
+    it("should fail with $template url missing", () => {
+      const data = {
+        id: "new $template",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            certificateStore: "0x0000000000000000000000000000000000000000"
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        },
+        $template: {
+          name: "GOVTECH_DEMO",
+          type: "EMBEDDED_RENDERER"
         },
         qualificationLevel: [
           {

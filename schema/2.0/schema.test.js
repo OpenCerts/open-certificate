@@ -80,7 +80,7 @@ describe("schema/v2.0", () => {
     assert(valid);
   });
 
-  describe("schema 2.0specific additions", () => {
+  describe("schema 2.0 specific additions", () => {
     it("should work with new $template format", () => {
       const data = {
         id: "new $template",

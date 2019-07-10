@@ -44,7 +44,7 @@
     "lerna": "^3.13.4",
     "microbundle": "^0.11.0",
     "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
+    "nyc": "^14.1.1",
     "prettier": "^1.14.0",
     "rollup": "^1.11.3",
     "rollup-plugin-auto-external": "^2.0.0",

@@ -18,7 +18,8 @@
         "url": {
           "type": "string"
         }
-      }
+      },
+      "required": ["name", "type", "url"]
     },
     "description": {
       "type": "string"

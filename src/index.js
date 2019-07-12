@@ -28,9 +28,11 @@ const defaultSchema = schemas["2.0"];
 addSchema(Object.values(schemas));
 // End - Initialise all valid schema
 
-const issueCertificate = data => issueDocument(data, defaultSchema);
+const issueCertificate = (data, schema = defaultSchema) =>
+  issueDocument(data, schema);
 
-const issueCertificates = dataArray => issueDocuments(dataArray, defaultSchema);
+const issueCertificates = (dataArray, schema = defaultSchema) =>
+  issueDocuments(dataArray, schema);
 
 const obfuscateFields = (document, fields) =>
   obfuscateDocument(document, fields);

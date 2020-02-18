@@ -1,8 +1,7 @@
-node_modules/
-coverage/
-certificates/
-package-lock.json
+/node_modules/
+/coverage/
+/certificates/
 npm-debug.log
 .nyc_output
-yarn-error.log
-dist/
+/dist/
+/.idea

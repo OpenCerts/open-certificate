@@ -18,13 +18,21 @@
       "did": "DID:SG-UEN:U18274928E",
       "url": "https://blockchainacademy.com",
       "email": "registrar@blockchainacademy.com",
-      "certificateStore": "0xd9580260be45c3c0c2fb259a82f219b513054012",
+      "documentStore": "0xd9580260be45c3c0c2fb259a82f219b513054012",
+      "identityProof": {
+        "type": "DNS-TXT",
+        "location": "example.com"
+      },
       "additionalProp": "0x0000000000000000000000000000000000000000000000000000000000000000"
     },
     {
       "name": "School of Crypto-economics",
       "url": "https://ceschool.sg",
-      "certificateStore": "0xA33ddAEE02369D18A21E29dD2E7A12d65eE671d2"
+      "documentStore": "0xA33ddAEE02369D18A21E29dD2E7A12d65eE671d2",
+      "identityProof": {
+        "type": "DNS-TXT",
+        "location": "example.com"
+      }
     }
   ],
   "recipient": {

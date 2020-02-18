@@ -33,7 +33,11 @@ describe("schema/v2.0", () => {
       issuers: [
         {
           name: "Issuer Name",
-          certificateStore: "0x0000000000000000000000000000000000000000"
+          documentStore: "0x0000000000000000000000000000000000000000",
+          identityProof: {
+            type: "DNS-TXT",
+            location: "example.com"
+          }
         }
       ],
       recipient: {
@@ -67,7 +71,11 @@ describe("schema/v2.0", () => {
       issuers: [
         {
           name: "Issuer Name",
-          certificateStore: "0x0000000000000000000000000000000000000000"
+          documentStore: "0x0000000000000000000000000000000000000000",
+          identityProof: {
+            type: "DNS-TXT",
+            location: "example.com"
+          }
         }
       ],
       recipient: {
@@ -89,7 +97,11 @@ describe("schema/v2.0", () => {
         issuers: [
           {
             name: "Issuer Name",
-            certificateStore: "0x0000000000000000000000000000000000000000"
+            documentStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              type: "DNS-TXT",
+              location: "example.com"
+            }
           }
         ],
         recipient: {
@@ -131,7 +143,11 @@ describe("schema/v2.0", () => {
         issuers: [
           {
             name: "Issuer Name",
-            certificateStore: "0x0000000000000000000000000000000000000000"
+            documentStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              type: "DNS-TXT",
+              location: "example.com"
+            }
           }
         ],
         recipient: {
@@ -168,7 +184,11 @@ describe("schema/v2.0", () => {
         issuers: [
           {
             name: "Issuer Name",
-            certificateStore: "0x0000000000000000000000000000000000000000"
+            documentStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              type: "DNS-TXT",
+              location: "example.com"
+            }
           }
         ],
         recipient: {
@@ -209,7 +229,11 @@ describe("schema/v2.0", () => {
         issuers: [
           {
             name: "Issuer Name",
-            certificateStore: "0x0000000000000000000000000000000000000000"
+            documentStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              type: "DNS-TXT",
+              location: "example.com"
+            }
           }
         ],
         recipient: {
@@ -250,7 +274,11 @@ describe("schema/v2.0", () => {
         issuers: [
           {
             name: "Issuer Name",
-            certificateStore: "0x0000000000000000000000000000000000000000"
+            documentStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              type: "DNS-TXT",
+              location: "example.com"
+            }
           }
         ],
         recipient: {
@@ -291,7 +319,11 @@ describe("schema/v2.0", () => {
         issuers: [
           {
             name: "Issuer Name",
-            certificateStore: "0x0000000000000000000000000000000000000000"
+            documentStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              type: "DNS-TXT",
+              location: "example.com"
+            }
           }
         ],
         recipient: {
@@ -331,7 +363,11 @@ describe("schema/v2.0", () => {
         issuers: [
           {
             name: "Issuer Name",
-            certificateStore: "0x0000000000000000000000000000000000000000"
+            documentStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              type: "DNS-TXT",
+              location: "example.com"
+            }
           }
         ],
         recipient: {
@@ -371,7 +407,11 @@ describe("schema/v2.0", () => {
         issuers: [
           {
             name: "Issuer Name",
-            certificateStore: "0x0000000000000000000000000000000000000000"
+            documentStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              type: "DNS-TXT",
+              location: "example.com"
+            }
           }
         ],
         recipient: {
@@ -412,8 +452,12 @@ describe("schema/v2.0", () => {
       issuers: [
         {
           name: "Issuer Name",
-          certificateStore: "0x0000000000000000000000000000000000000000",
-          additionalProp: true
+          documentStore: "0x0000000000000000000000000000000000000000",
+          additionalProp: true,
+          identityProof: {
+            type: "DNS-TXT",
+            location: "example.com"
+          }
         }
       ],
       recipient: {
@@ -434,7 +478,11 @@ describe("schema/v2.0", () => {
       issuers: [
         {
           name: "Issuer Name",
-          certificateStore: "0x0000000000000000000000000000000000000000"
+          documentStore: "0x0000000000000000000000000000000000000000",
+          identityProof: {
+            type: "DNS-TXT",
+            location: "example.com"
+          }
         }
       ],
       recipient: {
@@ -461,7 +509,11 @@ describe("schema/v2.0", () => {
           did: "DID:SG-UEN:U18274928E",
           url: "https://blockchainacademy.com",
           email: "registrar@blockchainacademy.com",
-          certificateStore: "0xd9580260be45c3c0c2fb259a82f219b513054012"
+          documentStore: "0xd9580260be45c3c0c2fb259a82f219b513054012",
+          identityProof: {
+            type: "DNS-TXT",
+            location: "example.com"
+          }
         }
       ],
       recipient: {
@@ -503,7 +555,11 @@ describe("schema/v2.0", () => {
       issuers: [
         {
           name: "Issuer Name",
-          certificateStore: "0x0000000000000000000000000000000000000000"
+          documentStore: "0x0000000000000000000000000000000000000000",
+          identityProof: {
+            type: "DNS-TXT",
+            location: "example.com"
+          }
         }
       ],
       recipient: {

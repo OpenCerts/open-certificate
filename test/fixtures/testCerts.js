@@ -11,7 +11,11 @@ const testCerts = [
         did: "DID:SG-UEN:U18274928E",
         url: "https://blockchainacademy.com",
         email: "registrar@blockchainacademy.com",
-        certificateStore: "0xd9580260be45c3c0c2fb259a82f219b513054012",
+        documentStore: "0xd9580260be45c3c0c2fb259a82f219b513054012",
+        identityProof: {
+          type: "DNS-TXT",
+          location: "example.com"
+        },
         additionalProps: "issuerId"
       }
     ],
@@ -52,7 +56,11 @@ const testCerts = [
         did: "DID:SG-UEN:U18274928E",
         url: "https://blockchainacademy.com",
         email: "registrar@blockchainacademy.com",
-        certificateStore: "0xd9580260be45c3c0c2fb259a82f219b513054012"
+        documentStore: "0xd9580260be45c3c0c2fb259a82f219b513054012",
+        identityProof: {
+          type: "DNS-TXT",
+          location: "example.com"
+        }
       }
     ],
     recipient: {

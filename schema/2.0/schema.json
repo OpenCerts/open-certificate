@@ -145,11 +145,26 @@
           "phone": {
             "type": "string"
           },
-          "certificateStore": {
+          "documentStore": {
             "type": "string"
+          },
+          "identityProof": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["DNS-TXT"]
+              },
+              "location": {
+                "type": "string",
+                "description": "Url of the website referencing to document store"
+              }
+            },
+            "required": ["type", "location"],
+            "additionalProperties": false
           }
         },
-        "required": ["name", "certificateStore"],
+        "required": ["name", "documentStore"],
         "additionalProperties": true
       },
       "minItems": 1

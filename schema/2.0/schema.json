@@ -164,7 +164,7 @@
             "additionalProperties": false
           }
         },
-        "required": ["name", "documentStore", "identityProof"],
+        "required": ["name", "documentStore"],
         "additionalProperties": true
       },
       "minItems": 1

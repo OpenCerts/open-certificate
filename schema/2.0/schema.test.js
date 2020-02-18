@@ -442,6 +442,76 @@ describe("schema/v2.0", () => {
       const signing = () => issueDocument(data, schema);
       expect(signing).to.throw("Invalid document");
     });
+
+    it("should fail when identity type is missing", () => {
+      const data = {
+        id: "Example-minimal-2018-001",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            documentStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              location: "example.com"
+            }
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        }
+      };
+
+      const signing = () => issueDocument(data, schema);
+      expect(signing).to.throw("Invalid document");
+    });
+
+    it("should fail when identity location is missing", () => {
+      const data = {
+        id: "Example-minimal-2018-001",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            documentStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              type: "DNS-TXT"
+            }
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        }
+      };
+
+      const signing = () => issueDocument(data, schema);
+      expect(signing).to.throw("Invalid document");
+    });
+
+    it("should fail when identity type is not dns-txt", () => {
+      const data = {
+        id: "Example-minimal-2018-001",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            documentStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              type: "ABC",
+              location: "example.com"
+            }
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        }
+      };
+
+      const signing = () => issueDocument(data, schema);
+      expect(signing).to.throw("Invalid document");
+    });
   });
 
   it("is valid with additional properties in issuer", () => {

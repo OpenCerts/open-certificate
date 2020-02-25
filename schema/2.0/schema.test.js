@@ -668,4 +668,97 @@ describe("schema/v2.0", () => {
     const valid = validateSchema(signedDocument);
     assert(valid);
   });
+
+  describe("documentStore and certificateStore", () => {
+    it("should fail when there is no documentStore nor certificateStore", () => {
+      const data = {
+        id: "Example-minimal-2018-001",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            identityProof: {
+              type: "DNS-TXT",
+              location: "example.com"
+            }
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        }
+      };
+      const signing = () => issueDocument(data, schema);
+      expect(signing).to.throw("Invalid document");
+    });
+    it("should fail when there is no documentStore and certificateStore", () => {
+      const data = {
+        id: "Example-minimal-2018-001",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            documentStore: "0x0000000000000000000000000000000000000000",
+            certificateStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              type: "DNS-TXT",
+              location: "example.com"
+            }
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        }
+      };
+      const signing = () => issueDocument(data, schema);
+      expect(signing).to.throw("Invalid document");
+    });
+    it("is valid when there is only documentStore", () => {
+      const data = {
+        id: "Example-minimal-2018-001",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            documentStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              type: "DNS-TXT",
+              location: "example.com"
+            }
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        }
+      };
+      const signedDocument = issueDocument(data, schema);
+      const valid = validateSchema(signedDocument);
+      assert(valid);
+    });
+    it("is valid when there is only certificateStore", () => {
+      const data = {
+        id: "Example-minimal-2018-001",
+        name: "Certificate Name",
+        issuedOn: "2018-08-01T00:00:00+08:00",
+        issuers: [
+          {
+            name: "Issuer Name",
+            certificateStore: "0x0000000000000000000000000000000000000000",
+            identityProof: {
+              type: "DNS-TXT",
+              location: "example.com"
+            }
+          }
+        ],
+        recipient: {
+          name: "Recipient Name"
+        }
+      };
+      const signedDocument = issueDocument(data, schema);
+      const valid = validateSchema(signedDocument);
+      assert(valid);
+    });
+  });
 });

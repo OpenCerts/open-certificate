@@ -148,6 +148,9 @@
           "documentStore": {
             "type": "string"
           },
+          "certificateStore": {
+            "type": "string"
+          },
           "identityProof": {
             "type": "object",
             "properties": {
@@ -164,7 +167,8 @@
             "additionalProperties": false
           }
         },
-        "required": ["name", "documentStore"],
+        "required": ["name"],
+        "oneOf": [{ "required": ["documentStore"] }, { "required": ["certificateStore"] }],
         "additionalProperties": true
       },
       "minItems": 1

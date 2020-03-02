@@ -1,8 +1,5 @@
 #!/usr/bin/env sh
 
-# Remove previously published schema
-rm -rf ./public
-
 copy() {
     version=$1
     from="schema/${version}/schema.json"

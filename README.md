@@ -1,3 +1,8 @@
+# [DEPRECATED]
+
+**This CLI has been deprecated in favor of open-attestation CLI. Please read [OpenCerts documentation](https://docs.opencerts.io/docs/) to find out more.**
+
+
 # Open Certificate
 
 This library supplies the schemas used for OpenCerts standards, in the form of [json schemas](http://json-schema.org)

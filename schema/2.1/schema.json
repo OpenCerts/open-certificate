@@ -1,0 +1,314 @@
+{
+  "$id": "opencerts/v2.1",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "$template": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Template name to be use by template renderer to determine the template to use"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of renderer template",
+          "enum": ["EMBEDDED_RENDERER"]
+        },
+        "url": {
+          "type": "string",
+          "description": "URL of a decentralised renderer to render this document"
+        }
+      },
+      "required": ["name", "type", "url"]
+    },
+    "description": {
+      "type": "string"
+    },
+    "issuedOn": {
+      "description": "The date that this certificate was issued by the issuer(s)",
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiresOn": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "admissionDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "graduationDate": {
+      "description": "The date that this student graduated from the course",
+      "type": "string",
+      "format": "date-time"
+    },
+    "attainmentDate": {
+      "description": "The date that this qualification was awarded to the recipient",
+      "type": "string",
+      "format": "date-time"
+    },
+    "qualificationLevel": {
+      "type": "array",
+      "description": "This is an array of objects used to attach descriptors from frameworks such as Singapore's SSEC-EQA or the internationally recognised ISCED. Multiple instances are allowed to indicate either equivalents or to indicate a multi-level qualifications",
+      "items": {
+        "type": "object",
+        "required": [
+          "frameworkName",
+          "frameworkVersion",
+          "code",
+          "description"
+        ],
+        "properties": {
+          "frameworkName": {
+            "type": "string",
+            "examples": ["singapore/ssec-eqa", "international/isced"]
+          },
+          "frameworkVersion": {
+            "type": "string",
+            "examples": ["2015", "2011"]
+          },
+          "code": {
+            "type": "string",
+            "examples": ["51", "55"]
+          },
+          "description": {
+            "type": "string",
+            "examples": [
+              "Polytechnic Diploma",
+              "(Short-cycle tertiary education) Vocational"
+            ]
+          }
+        }
+      }
+    },
+    "fieldOfStudy": {
+      "type": "array",
+      "description": "This is an array of objects used to attach descriptors from frameworks such as Singapore's SSEC-FOS or the internationally recognised ISCED-F. Multiple instances are allowed to indicate either equivalents or to indicate a multi-field qualification such as double degrees",
+      "items": {
+        "type": "object",
+        "required": [
+          "frameworkName",
+          "frameworkVersion",
+          "code",
+          "description"
+        ],
+        "properties": {
+          "frameworkName": {
+            "type": "string",
+            "description": "Prepend the actual framework name with the scope of the framework",
+            "examples": ["singapore/ssec-fos", "international/isced-f"]
+          },
+          "frameworkVersion": {
+            "type": "string",
+            "examples": ["2015", "2013"]
+          },
+          "code": {
+            "type": "string",
+            "examples": ["0897"]
+          },
+          "description": {
+            "type": "string",
+            "examples": ["Biomedical Science"]
+          }
+        }
+      }
+    },
+    "cumulativeScore": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string"
+    },
+    "issuers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "did": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "url"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "documentStore": {
+            "type": "string"
+          },
+          "certificateStore": {
+            "type": "string"
+          },
+          "identityProof": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["DNS-TXT"]
+              },
+              "location": {
+                "type": "string",
+                "description": "Url of the website referencing to document store"
+              }
+            },
+            "required": ["type", "location"],
+            "additionalProperties": false
+          }
+        },
+        "required": ["name"],
+        "oneOf": [
+          { "required": ["documentStore"] },
+          { "required": ["certificateStore"] }
+        ],
+        "additionalProperties": true
+      },
+      "minItems": 1
+    },
+    "recipient": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "did": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "nric": {
+          "type": "string"
+        },
+        "fin": {
+          "type": "string"
+        },
+        "studentId": {
+          "type": "string"
+        }
+      },
+      "required": ["name"],
+      "additionalProperties": true
+    },
+    "transcript": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "score": {
+            "type": ["number", "string"]
+          },
+          "grade": {
+            "type": ["number", "string"]
+          },
+          "courseCredit": {
+            "type": ["number", "string"]
+          },
+          "courseCode": {
+            "type": "string"
+          },
+          "examinationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "url": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "languageMedium": {
+            "description": "Language that the course was undertaken in",
+            "type": "string"
+          }
+        },
+        "required": ["name"]
+      }
+    },
+    "additionalData": {
+      "type": "object"
+    },
+    "skills": {
+      "description": "Information about skills that the recipient learnt",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "frameworkUri": {
+            "description": "URI where to find the details about the framework",
+            "type": "string",
+            "format": "uri",
+            "examples": ["https://www.skillsfuture.sg/skills-framework"]
+          },
+          "frameworkName": {
+            "description": "Framework name",
+            "type": "string",
+            "examples": ["SFw"]
+          },
+          "frameworkVersion": {
+            "description": "Framework version",
+            "type": "string",
+            "examples": ["1.0"]
+          },
+          "sector": {
+            "description": "The industry/sector for which this framework is meant for",
+            "type": "string",
+            "examples": ["Air Transport"]
+          },
+          "category": {
+            "description": "Skills and competency category. (Technical Skills Competency (TSC) or Critical Core Skills (CCS)",
+            "type": "string",
+            "examples": ["Aircraft Operations"]
+          },
+          "competencyCode": {
+            "description": "Skills and competency code from Skills Framework",
+            "type": "string",
+            "examples": ["ATP-ACO-4001-1.1"]
+          },
+          "competencyDescription": {
+            "description": "Detailed description of the skill or competency",
+            "type": "string",
+            "examples": [
+              "Monitor aircraft systems, performance and external environments as well as comply with Air Traffic Control (ATC) instructions and en route navigation requirements to ensure safe and optimal flight conditions"
+            ]
+          },
+          "competencyLevel": {
+            "description": "Level of competency / skills: TSC Pro Level (numeric from 1 onward), GSC Pro Level (Critical Core Skills - basic, intermediate, advanced)",
+            "type": "string",
+            "examples": ["Level 4"]
+          },
+          "competencyLevelDescription": {
+            "description": "Narrative information for this competency level",
+            "type": "string",
+            "examples": [
+              "Analyse aircraft performance through close monitoring of flight decks to ensure optimal flight conditions during cruise"
+            ]
+          }
+        },
+        "required": ["frameworkUri", "frameworkName", "frameworkVersion"]
+      }
+    }
+  },
+  "required": ["id", "name", "issuedOn", "issuers", "recipient"],
+  "additionalProperties": false
+}

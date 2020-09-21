@@ -1,0 +1,12 @@
+changelog
+
+Added new optional skills field as an array of object with fields:
+- frameworkUri => mandatory URI
+- frameworkName => mandatory string
+- frameworkVersion => mandatory string
+- sector => optional string
+- category => optional string
+- competencyCode => optional string
+- competencyDescription => optional string
+- competencyLevel => optional string
+- competencyLevelDescription => optional string

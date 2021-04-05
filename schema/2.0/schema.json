@@ -2,6 +2,115 @@
   "$id": "opencerts/v2.0",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
+  "definitions": {
+    "identityProofDns": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["DNS-TXT"]
+        },
+        "location": {
+          "type": "string",
+          "description": "Url of the website referencing to document store"
+        }
+      },
+      "required": ["type", "location"]
+    },
+    "identityProofDid": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["DID"]
+        },
+        "key": {
+          "type": "string",
+          "description": "Public key associated"
+        }
+      },
+      "required": ["type", "key"]
+    },
+    "identityProofDnsDid": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["DNS-DID"]
+        },
+        "key": {
+          "type": "string",
+          "description": "Public key associated"
+        },
+        "location": {
+          "type": "string",
+          "description": "Url of the website referencing to document store"
+        }
+      },
+      "required": ["type", "key", "location"]
+    },
+    "identityProof": {
+      "type": "object",
+      "oneOf": [
+        { "$ref": "#/definitions/identityProofDns" },
+        { "$ref": "#/definitions/identityProofDnsDid" },
+        { "$ref": "#/definitions/identityProofDid" }
+      ]
+    },
+    "documentStore": {
+      "allOf": [
+        { "$ref": "#/definitions/issuer" },
+        {
+          "type": "object",
+          "properties": {
+            "documentStore": {
+              "type": "string"
+            }
+          },
+          "required": ["documentStore"]
+        }
+      ]
+    },
+    "certificateStore": {
+      "allOf": [
+        { "$ref": "#/definitions/issuer" },
+        {
+          "type": "object",
+          "properties": {
+            "certificateStore": {
+              "type": "string"
+            }
+          },
+          "required": ["certificateStore"]
+        }
+      ]
+    },
+    "issuer": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "did": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "url"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "identityProof": { "$ref": "#/definitions/identityProof" }
+      },
+      "required": ["name"],
+      "additionalProperties": true
+    }
+  },
   "properties": {
     "id": {
       "type": "string"
@@ -127,48 +236,32 @@
       "type": "array",
       "items": {
         "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
+        "title": "issuer",
+        "oneOf": [
+          {
+            "$ref": "#/definitions/documentStore"
           },
-          "did": {
-            "type": "string"
+          {
+            "$ref": "#/definitions/certificateStore"
           },
-          "url": {
-            "type": "string",
-            "format": "url"
-          },
-          "email": {
-            "type": "string",
-            "format": "email"
-          },
-          "phone": {
-            "type": "string"
-          },
-          "documentStore": {
-            "type": "string"
-          },
-          "certificateStore": {
-            "type": "string"
-          },
-          "identityProof": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": ["DNS-TXT"]
-              },
-              "location": {
-                "type": "string",
-                "description": "Url of the website referencing to document store"
+          {
+            "allOf": [
+              { "$ref": "#/definitions/issuer" },
+              {
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": ["certificateStore"]
+                    },
+                    {
+                      "required": ["documentStore"]
+                    }
+                  ]
+                }
               }
-            },
-            "required": ["type", "location"],
-            "additionalProperties": false
+            ]
           }
-        },
-        "required": ["name"],
-        "oneOf": [{ "required": ["documentStore"] }, { "required": ["certificateStore"] }],
+        ],
         "additionalProperties": true
       },
       "minItems": 1

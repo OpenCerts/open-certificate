@@ -670,28 +670,7 @@ describe("schema/v2.0", () => {
   });
 
   describe("documentStore and certificateStore", () => {
-    it("should fail when there is no documentStore nor certificateStore", () => {
-      const data = {
-        id: "Example-minimal-2018-001",
-        name: "Certificate Name",
-        issuedOn: "2018-08-01T00:00:00+08:00",
-        issuers: [
-          {
-            name: "Issuer Name",
-            identityProof: {
-              type: "DNS-TXT",
-              location: "example.com"
-            }
-          }
-        ],
-        recipient: {
-          name: "Recipient Name"
-        }
-      };
-      const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
-    });
-    it("should fail when there is no documentStore and certificateStore", () => {
+    it("should fail when there is both documentStore and certificateStore", () => {
       const data = {
         id: "Example-minimal-2018-001",
         name: "Certificate Name",
@@ -759,6 +738,67 @@ describe("schema/v2.0", () => {
       const signedDocument = issueDocument(data, schema);
       const valid = validateSchema(signedDocument);
       assert(valid);
+    });
+  });
+  describe("did", () => {
+    it("should be valid with document issued using did signing", () => {
+      const data = require("./example-did-document.json");
+      const signedDocument = issueDocument(data, schema);
+      const valid = validateSchema(signedDocument);
+      assert(valid);
+    });
+    it("should be valid with document issued using dns-did signing", () => {
+      const data = require("./example-dns-did-document.json");
+      const signedDocument = issueDocument(data, schema);
+      const valid = validateSchema(signedDocument);
+      assert(valid);
+    });
+    it("should be invalid with dns-did signing without location", () => {
+      const data = require("./example-dns-did-document.json");
+
+      data.issuers = [
+        {
+          id: "did:ethr:0xE712878f6E8d5d4F9e87E10DA604F9cB564C9a89",
+          name: "DEMO STORE",
+          revocation: { type: "NONE" },
+          identityProof: {
+            type: "DNS-DID",
+            key:
+              "did:ethr:0xE712878f6E8d5d4F9e87E10DA604F9cB564C9a89#controller"
+          }
+        }
+      ];
+
+      expect(() => issueDocument(data, schema)).to.throw("Invalid document");
+    });
+    it("should be invalid with dns-did signing without key", () => {
+      const data = require("./example-dns-did-document.json");
+      data.issuers = [
+        {
+          id: "did:ethr:0xE712878f6E8d5d4F9e87E10DA604F9cB564C9a89",
+          name: "DEMO STORE",
+          revocation: { type: "NONE" },
+          identityProof: {
+            type: "DNS-DID",
+            location: "example.tradetrust.io"
+          }
+        }
+      ];
+      expect(() => issueDocument(data, schema)).to.throw("Invalid document");
+    });
+    it("should be invalid with did signing without key", () => {
+      const data = require("./example-dns-did-document.json");
+      data.issuers = [
+        {
+          id: "did:ethr:0xE712878f6E8d5d4F9e87E10DA604F9cB564C9a89",
+          name: "DEMO STORE",
+          revocation: { type: "NONE" },
+          identityProof: {
+            type: "DID"
+          }
+        }
+      ];
+      expect(() => issueDocument(data, schema)).to.throw("Invalid document");
     });
   });
 });

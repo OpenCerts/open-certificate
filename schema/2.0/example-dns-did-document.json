@@ -1,0 +1,125 @@
+{
+  "id": "SERIAL-2018-08-01-112",
+  "$template": {
+    "name": "CUSTOM_TEMPLATE",
+    "type": "EMBEDDED_RENDERER",
+    "url": "https://demo-renderer.opencerts.io"
+  },
+  "description": "This masters is awarded to developers who can blockchain",
+  "issuedOn": "2018-08-01T00:00:00+08:00",
+  "expiresOn": "2118-08-01T00:00:00+08:00",
+  "name": "Master of Blockchain",
+  "admissionDate": "2017-07-01T00:00:00+08:00",
+  "graduationDate": "2018-08-01T00:00:00+08:00",
+  "attainmentDate": "2018-07-25T00:00:00+08:00",
+  "issuers": [
+    {
+      "name": "Blockchain Academy",
+      "did": "DID:SG-UEN:U18274928E",
+      "url": "https://blockchainacademy.com",
+      "email": "registrar@blockchainacademy.com",
+      "documentStore": "0xd9580260be45c3c0c2fb259a82f219b513054012",
+      "identityProof": {
+        "type": "DNS-TXT",
+        "location": "example.com"
+      },
+      "additionalProp": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "School of Crypto-economics",
+      "url": "https://ceschool.sg",
+      "documentStore": "0xA33ddAEE02369D18A21E29dD2E7A12d65eE671d2",
+      "identityProof": {
+        "type": "DNS-TXT",
+        "location": "example.com"
+      }
+    },
+    {
+      "id": "did:ethr:0xE712878f6E8d5d4F9e87E10DA604F9cB564C9a89",
+      "name": "DEMO STORE",
+      "revocation": { "type": "NONE" },
+      "identityProof": {
+        "type": "DNS-DID",
+        "key": "did:ethr:0xE712878f6E8d5d4F9e87E10DA604F9cB564C9a89#controller",
+        "location": "example.tradetrust.io"
+      }
+    }
+  ],
+  "recipient": {
+    "name": "Mr Blockchain",
+    "did": "DID:SG-NRIC:S99999999A",
+    "email": "mr-blockchain@gmail.com",
+    "phone": "+65 88888888",
+    "additionalProp": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nric": "S0000001Z",
+    "fin": "F0000001Z",
+    "studentId": "1232"
+  },
+  "qualificationLevel": [
+    {
+      "frameworkName": "singapore/ssec-eqa",
+      "frameworkVersion": "2015",
+      "code": "51",
+      "description": "Polytechnic Diploma"
+    },
+    {
+      "frameworkName": "international/isced",
+      "frameworkVersion": "2011",
+      "code": "55",
+      "description": "(Short-cycle tertiary education) Vocational"
+    }
+  ],
+  "fieldOfStudy": [
+    {
+      "frameworkName": "singapore/ssec-fos",
+      "frameworkVersion": "2015",
+      "code": "0897",
+      "description": "Biomedical Science"
+    }
+  ],
+  "transcript": [
+    {
+      "name": "Bitcoin",
+      "grade": "A+",
+      "courseCredit": 3,
+      "courseCode": "BTC-01",
+      "examinationDate": "2018-08-01T00:00:00+08:00",
+      "url": "https://blockchainacademy.com/subject/BTC-01",
+      "description": "Everything and more about bitcoin!"
+    },
+    {
+      "name": "Ethereum",
+      "grade": "A+",
+      "courseCredit": "3.5",
+      "courseCode": "ETH-01",
+      "examinationDate": "2018-08-01T00:00:00+08:00",
+      "url": "https://blockchainacademy.com/subject/ETH-01",
+      "description": "Everything and more about ethereum!"
+    }
+  ],
+  "cumulativeScore": 3.9935,
+  "additionalData": {
+    "coCurricularActivities": [
+      {
+        "name": "Crypto-investment Club",
+        "position": "Club President",
+        "startDate": "2017-08-01T00:00:00+08:00",
+        "endDate": "2018-08-01T00:00:00+08:00",
+        "remarks": "Top trader (2018)"
+      }
+    ],
+    "npfa": "silver",
+    "images": {
+      "signature1": {
+        "name": "Mr Important",
+        "designation": "President",
+        "signature": "<-- Base64 Image -->"
+      },
+      "signature2": {
+        "name": "Mr Not-So-Important",
+        "designation": "Chairman, Blockchain Faculty",
+        "signature": "<-- Base64 Image -->"
+      }
+    }
+  }
+}

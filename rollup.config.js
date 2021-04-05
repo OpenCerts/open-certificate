@@ -9,11 +9,11 @@ export default [
       {
         name: "open-certificate",
         file: pkg.browser,
-        format: "umd"
+        format: "umd",
       },
       { file: pkg.main, format: "cjs" },
-      { file: pkg.module, format: "es" }
+      { file: pkg.module, format: "es" },
     ],
-    plugins: [commonjs(), json()]
-  }
+    plugins: [commonjs(), json()],
+  },
 ];

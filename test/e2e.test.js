@@ -20,7 +20,7 @@ describe("E2E Test", () => {
     certificates = openCert.issueCertificates(data);
 
     expect(certificates.length).to.be.equal(testCerts.length);
-    certificates.forEach(c => {
+    certificates.forEach((c) => {
       expect(c.schema).to.exist;
       expect(c.data).to.exist;
       expect(c.privacy).to.exist;
@@ -37,7 +37,7 @@ describe("E2E Test", () => {
     const isValid = openCert.validateSchema(certificate);
     expect(isValid).to.be.true;
 
-    certificates.forEach(c => {
+    certificates.forEach((c) => {
       expect(openCert.validateSchema(c)).to.be.true;
     });
   });
@@ -52,7 +52,7 @@ describe("E2E Test", () => {
   it("can obfuscate fields (repeatedly)", () => {
     const obfuscatedCert = openCert.obfuscateFields(certificate, [
       "recipient.email",
-      "recipient.phone"
+      "recipient.phone",
     ]);
     expect(obfuscatedCert).to.exist;
     expect(obfuscatedCert.privacy.obfuscatedData.length).to.be.equal(2);

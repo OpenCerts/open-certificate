@@ -1,0 +1,54 @@
+{
+  "$id": "testimonials/1.0",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "definitions": {
+    "Testimonial": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "testimonial unique identifier",
+          "examples": ["testimonial-ynps2017-nric000G1002"]
+        },
+        "description": {
+          "type": "string",
+          "description": "indicate who made the testimonial (teacher, co-worker, client, ex-employer, etc)",
+          "examples": ["testimonial-ynps2017-nric000G1002"]
+        },
+        "issuedOn": {
+          "type": "string",
+          "format": "date-time",
+          "description": "the date that this certificate was issued by the issuer(s)",
+          "examples": ["2018-08-01T00:00:00+08:00"]
+        },
+        "name": {
+          "type": "string",
+          "description": "subject or title of the testimonial",
+          "examples": ["School Graduation Certificate Testimonial"]
+        },
+        "issuers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "did": {
+                "type": "string"
+              }
+            },
+            "required": ["did"]
+          }
+        }
+      },
+      "required": ["id", "issuedOn", "name"]
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "https://schema.openattestation.com/2.0/schema.json"
+    },
+    {
+      "$ref": "#/definitions/Testimonial"
+    }
+  ]
+}

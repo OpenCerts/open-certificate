@@ -2,7 +2,7 @@
 
 copy() {
     version=$1
-    from="schema/${version}/schema.json"
+    from="schema/transcripts/${version}/schema.json"
     to="public/transcripts/${version}/index.json"
     echo "Moving ${from} to ${to}"
     mkdir -p "public/transcripts/${version}/"

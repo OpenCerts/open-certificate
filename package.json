@@ -9,7 +9,7 @@
     "build": "npm run clean && rollup -c",
     "clean": "rm -rf dist/",
     "test": "npm run build && nyc --reporter=html mocha --timeout 5000 -- ./test/helpers.js './schema/**/*.test.js' './src/**/*.test.js' './test/**/*.test.js'",
-    "test-watch": "mocha ./test/helpers.js './schema/**/*.test.js' './src/**/*.test.js' './test/**/*.test.js' --watch --watch-extensions js,json --recursive",
+    "test:watch": "mocha ./test/helpers.js './schema/**/*.test.js' './src/**/*.test.js' './test/**/*.test.js' --watch --watch-extensions js,json --recursive",
     "lint": "eslint . --ext .js --max-warnings 0",
     "lint:fix": "eslint . --ext .js --fix",
     "publish:schema": "./scripts/publishSchema.sh"
@@ -29,6 +29,8 @@
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-babel": "^1.2.3",
+    "ajv": "^8.0.5",
+    "axios": "^0.21.1",
     "babel-core": "^6.26.3",
     "babel-plugin-istanbul": "^4.1.6",
     "babel-preset-env": "^1.7.0",

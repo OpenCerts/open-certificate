@@ -23,13 +23,13 @@ describe("schema/v1.1", () => {
   it("is not valid with missing data", () => {
     const data = {};
     const signing = () => issueDocument(data, schema);
-    expect(signing).to.throw("Invalid document");
+    expect(signing).toThrow("Invalid document");
   });
 
   it("is not valid with missing data", () => {
     const data = {};
     const signing = () => issueDocument(data, schema);
-    expect(signing).to.throw("Invalid document");
+    expect(signing).toThrow("Invalid document");
   });
 
   it("is not valid with additional data", () => {
@@ -46,7 +46,7 @@ describe("schema/v1.1", () => {
       invalidKey: "value"
     };
     const signing = () => issueDocument(data, schema);
-    expect(signing).to.throw("Invalid document");
+    expect(signing).toThrow("Invalid document");
   });
 
   it("is valid with minimum data", () => {
@@ -63,7 +63,7 @@ describe("schema/v1.1", () => {
     };
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 
   it("is valid with standard data", () => {
@@ -105,7 +105,7 @@ describe("schema/v1.1", () => {
     };
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 
   it("is valid with extra metadata data", () => {
@@ -137,6 +137,6 @@ describe("schema/v1.1", () => {
     };
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 });

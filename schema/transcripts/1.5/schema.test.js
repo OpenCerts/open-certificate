@@ -23,7 +23,7 @@ describe("schema/v1.5", () => {
   it("is not valid with missing data", () => {
     const data = {};
     const signing = () => issueDocument(data, schema);
-    expect(signing).to.throw("Invalid document");
+    expect(signing).toThrow("Invalid document");
   });
 
   it("is not valid with additional data", () => {
@@ -42,7 +42,7 @@ describe("schema/v1.5", () => {
       invalidKey: "value"
     };
     const signing = () => issueDocument(data, schema);
-    expect(signing).to.throw("Invalid document");
+    expect(signing).toThrow("Invalid document");
   });
 
   it("is not valid with empty issuer array (issue with 1.3)", () => {
@@ -56,7 +56,7 @@ describe("schema/v1.5", () => {
       invalidKey: "value"
     };
     const signing = () => issueDocument(data, schema);
-    expect(signing).to.throw("Invalid document");
+    expect(signing).toThrow("Invalid document");
   });
 
   it("is valid with minimum data", () => {
@@ -77,7 +77,7 @@ describe("schema/v1.5", () => {
 
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 
   describe("schema 1.5 specific additions", () => {
@@ -115,7 +115,7 @@ describe("schema/v1.5", () => {
 
       const signedDocument = issueDocument(data, schema);
       const valid = validateSchema(signedDocument);
-      assert(valid);
+      expect(valid).toBeTruthy();
     });
 
     it("should work with multiple qualificationLevel and fieldOfStudy", () => {
@@ -164,38 +164,41 @@ describe("schema/v1.5", () => {
 
       const signedDocument = issueDocument(data, schema);
       const valid = validateSchema(signedDocument);
-      assert(valid);
+      expect(valid).toBeTruthy();
     });
 
-    it("should work with nric fin studentid attainmentDate and languageMedium", () => {
-      const data = {
-        id: "with schema 1.5 stuff",
-        name: "Certificate Name",
-        issuedOn: "2018-08-01T00:00:00+08:00",
-        attainmentDate: "2018-08-01T00:00:00+08:00",
-        issuers: [
-          {
-            name: "Issuer Name",
-            certificateStore: "0x0000000000000000000000000000000000000000"
-          }
-        ],
-        recipient: {
-          name: "Recipient Name",
-          nric: "foo",
-          fin: "bar"
-        },
-        transcript: [
-          {
-            name: "Art of Glorious Battle",
-            languageMedium: "klingon"
-          }
-        ]
-      };
+    it(
+      "should work with nric fin studentid attainmentDate and languageMedium",
+      () => {
+        const data = {
+          id: "with schema 1.5 stuff",
+          name: "Certificate Name",
+          issuedOn: "2018-08-01T00:00:00+08:00",
+          attainmentDate: "2018-08-01T00:00:00+08:00",
+          issuers: [
+            {
+              name: "Issuer Name",
+              certificateStore: "0x0000000000000000000000000000000000000000"
+            }
+          ],
+          recipient: {
+            name: "Recipient Name",
+            nric: "foo",
+            fin: "bar"
+          },
+          transcript: [
+            {
+              name: "Art of Glorious Battle",
+              languageMedium: "klingon"
+            }
+          ]
+        };
 
-      const signedDocument = issueDocument(data, schema);
-      const valid = validateSchema(signedDocument);
-      assert(valid);
-    });
+        const signedDocument = issueDocument(data, schema);
+        const valid = validateSchema(signedDocument);
+        expect(valid).toBeTruthy();
+      }
+    );
 
     it("should fail if qualificationLevel is malformed", () => {
       const data = {
@@ -217,7 +220,7 @@ describe("schema/v1.5", () => {
       };
 
       const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
+      expect(signing).toThrow("Invalid document");
     });
 
     it("should fail if fieldOfStudy is malformed", () => {
@@ -240,7 +243,7 @@ describe("schema/v1.5", () => {
       };
 
       const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
+      expect(signing).toThrow("Invalid document");
     });
 
     it("should fail if attainmentDate is malformed", () => {
@@ -261,7 +264,7 @@ describe("schema/v1.5", () => {
       };
 
       const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
+      expect(signing).toThrow("Invalid document");
     });
   });
 
@@ -284,7 +287,7 @@ describe("schema/v1.5", () => {
 
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 
   it("is valid with additional properties in recipient", () => {
@@ -306,7 +309,7 @@ describe("schema/v1.5", () => {
 
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 
   it("is valid with standard data", () => {
@@ -352,7 +355,7 @@ describe("schema/v1.5", () => {
     };
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 
   it("is valid with extra metadata data", () => {
@@ -394,13 +397,13 @@ describe("schema/v1.5", () => {
     };
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 
   it("validates the example document", () => {
     const data = require("./example.json");
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 });

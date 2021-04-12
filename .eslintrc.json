@@ -1,17 +1,9 @@
 {
-  "extends": [
-    "airbnb-base",
-    "prettier"
-  ],
+  "extends": ["airbnb-base", "prettier", "plugin:jest/recommended"],
   "env": {
     "mocha": true
   },
-  "plugins": [
-    "prettier",
-    "chai-friendly",
-    "chai-expect",
-    "mocha"
-  ],
+  "plugins": ["prettier", "jest"],
   "globals": {
     "artifacts": false,
     "contract": false,
@@ -26,16 +18,8 @@
         "argsIgnorePattern": "^_"
       }
     ],
-    "func-names": [
-      "error",
-      "as-needed"
-    ],
+    "func-names": ["error", "as-needed"],
     "prettier/prettier": "error",
-    "no-unused-expressions": "off",
-    "mocha/no-exclusive-tests": "error",
-    "chai-friendly/no-unused-expressions": "error",
-    "chai-expect/no-inner-compare": "error",
-    "chai-expect/missing-assertion": "error",
-    "chai-expect/terminating-properties": "error"
+    "no-unused-expressions": "off"
   }
 }

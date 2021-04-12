@@ -23,7 +23,7 @@ describe("schema/v2.0", () => {
   it("is not valid with missing data", () => {
     const data = {};
     const signing = () => issueDocument(data, schema);
-    expect(signing).to.throw("Invalid document");
+    expect(signing).toThrow("Invalid document");
   });
 
   it("is not valid with additional data", () => {
@@ -46,7 +46,7 @@ describe("schema/v2.0", () => {
       invalidKey: "value"
     };
     const signing = () => issueDocument(data, schema);
-    expect(signing).to.throw("Invalid document");
+    expect(signing).toThrow("Invalid document");
   });
 
   it("is not valid with empty issuer array (issue with 1.3)", () => {
@@ -60,7 +60,7 @@ describe("schema/v2.0", () => {
       invalidKey: "value"
     };
     const signing = () => issueDocument(data, schema);
-    expect(signing).to.throw("Invalid document");
+    expect(signing).toThrow("Invalid document");
   });
 
   it("is valid with minimum data", () => {
@@ -85,7 +85,7 @@ describe("schema/v2.0", () => {
 
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 
   describe("schema 2.0 specific additions", () => {
@@ -132,7 +132,7 @@ describe("schema/v2.0", () => {
 
       const signedDocument = issueDocument(data, schema);
       const valid = validateSchema(signedDocument);
-      assert(valid);
+      expect(valid).toBeTruthy();
     });
 
     it("should fail with empty $template format", () => {
@@ -173,7 +173,7 @@ describe("schema/v2.0", () => {
       };
 
       const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
+      expect(signing).toThrow("Invalid document");
     });
 
     it("should fail with invalid $template name field", () => {
@@ -218,7 +218,7 @@ describe("schema/v2.0", () => {
       };
 
       const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
+      expect(signing).toThrow("Invalid document");
     });
 
     it("should fail with invalid $template type field", () => {
@@ -263,7 +263,7 @@ describe("schema/v2.0", () => {
       };
 
       const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
+      expect(signing).toThrow("Invalid document");
     });
 
     it("should fail with invalid $template url field", () => {
@@ -308,7 +308,7 @@ describe("schema/v2.0", () => {
       };
 
       const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
+      expect(signing).toThrow("Invalid document");
     });
 
     it("should fail with $template name missing", () => {
@@ -352,7 +352,7 @@ describe("schema/v2.0", () => {
       };
 
       const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
+      expect(signing).toThrow("Invalid document");
     });
 
     it("should fail with $template type missing", () => {
@@ -396,7 +396,7 @@ describe("schema/v2.0", () => {
       };
 
       const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
+      expect(signing).toThrow("Invalid document");
     });
 
     it("should fail with $template url missing", () => {
@@ -440,7 +440,7 @@ describe("schema/v2.0", () => {
       };
 
       const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
+      expect(signing).toThrow("Invalid document");
     });
 
     it("should fail when identity type is missing", () => {
@@ -463,7 +463,7 @@ describe("schema/v2.0", () => {
       };
 
       const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
+      expect(signing).toThrow("Invalid document");
     });
 
     it("should fail when identity location is missing", () => {
@@ -486,7 +486,7 @@ describe("schema/v2.0", () => {
       };
 
       const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
+      expect(signing).toThrow("Invalid document");
     });
 
     it("should fail when identity type is not dns-txt", () => {
@@ -510,7 +510,7 @@ describe("schema/v2.0", () => {
       };
 
       const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
+      expect(signing).toThrow("Invalid document");
     });
   });
 
@@ -537,7 +537,7 @@ describe("schema/v2.0", () => {
 
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 
   it("is valid with additional properties in recipient", () => {
@@ -563,7 +563,7 @@ describe("schema/v2.0", () => {
 
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 
   it("is valid with standard data", () => {
@@ -613,7 +613,7 @@ describe("schema/v2.0", () => {
     };
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 
   it("is valid with extra metadata data", () => {
@@ -659,40 +659,43 @@ describe("schema/v2.0", () => {
     };
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 
   it("validates the example document", () => {
     const data = require("./example.json");
     const signedDocument = issueDocument(data, schema);
     const valid = validateSchema(signedDocument);
-    assert(valid);
+    expect(valid).toBeTruthy();
   });
 
   describe("documentStore and certificateStore", () => {
-    it("should fail when there is both documentStore and certificateStore", () => {
-      const data = {
-        id: "Example-minimal-2018-001",
-        name: "Certificate Name",
-        issuedOn: "2018-08-01T00:00:00+08:00",
-        issuers: [
-          {
-            name: "Issuer Name",
-            documentStore: "0x0000000000000000000000000000000000000000",
-            certificateStore: "0x0000000000000000000000000000000000000000",
-            identityProof: {
-              type: "DNS-TXT",
-              location: "example.com"
+    it(
+      "should fail when there is both documentStore and certificateStore",
+      () => {
+        const data = {
+          id: "Example-minimal-2018-001",
+          name: "Certificate Name",
+          issuedOn: "2018-08-01T00:00:00+08:00",
+          issuers: [
+            {
+              name: "Issuer Name",
+              documentStore: "0x0000000000000000000000000000000000000000",
+              certificateStore: "0x0000000000000000000000000000000000000000",
+              identityProof: {
+                type: "DNS-TXT",
+                location: "example.com"
+              }
             }
+          ],
+          recipient: {
+            name: "Recipient Name"
           }
-        ],
-        recipient: {
-          name: "Recipient Name"
-        }
-      };
-      const signing = () => issueDocument(data, schema);
-      expect(signing).to.throw("Invalid document");
-    });
+        };
+        const signing = () => issueDocument(data, schema);
+        expect(signing).toThrow("Invalid document");
+      }
+    );
     it("is valid when there is only documentStore", () => {
       const data = {
         id: "Example-minimal-2018-001",
@@ -714,7 +717,7 @@ describe("schema/v2.0", () => {
       };
       const signedDocument = issueDocument(data, schema);
       const valid = validateSchema(signedDocument);
-      assert(valid);
+      expect(valid).toBeTruthy();
     });
     it("is valid when there is only certificateStore", () => {
       const data = {
@@ -737,7 +740,7 @@ describe("schema/v2.0", () => {
       };
       const signedDocument = issueDocument(data, schema);
       const valid = validateSchema(signedDocument);
-      assert(valid);
+      expect(valid).toBeTruthy();
     });
   });
   describe("did", () => {
@@ -745,13 +748,13 @@ describe("schema/v2.0", () => {
       const data = require("./example-did-document.json");
       const signedDocument = issueDocument(data, schema);
       const valid = validateSchema(signedDocument);
-      assert(valid);
+      expect(valid).toBeTruthy();
     });
     it("should be valid with document issued using dns-did signing", () => {
       const data = require("./example-dns-did-document.json");
       const signedDocument = issueDocument(data, schema);
       const valid = validateSchema(signedDocument);
-      assert(valid);
+      expect(valid).toBeTruthy();
     });
     it("should be invalid with dns-did signing without location", () => {
       const data = require("./example-dns-did-document.json");
@@ -769,7 +772,7 @@ describe("schema/v2.0", () => {
         }
       ];
 
-      expect(() => issueDocument(data, schema)).to.throw("Invalid document");
+      expect(() => issueDocument(data, schema)).toThrow("Invalid document");
     });
     it("should be invalid with dns-did signing without key", () => {
       const data = require("./example-dns-did-document.json");
@@ -784,7 +787,7 @@ describe("schema/v2.0", () => {
           }
         }
       ];
-      expect(() => issueDocument(data, schema)).to.throw("Invalid document");
+      expect(() => issueDocument(data, schema)).toThrow("Invalid document");
     });
     it("should be invalid with did signing without key", () => {
       const data = require("./example-dns-did-document.json");
@@ -798,7 +801,7 @@ describe("schema/v2.0", () => {
           }
         }
       ];
-      expect(() => issueDocument(data, schema)).to.throw("Invalid document");
+      expect(() => issueDocument(data, schema)).toThrow("Invalid document");
     });
   });
 });

@@ -14,12 +14,12 @@
         "description": {
           "type": "string",
           "description": "indicate who made the testimonial (teacher, co-worker, client, ex-employer, etc)",
-          "examples": ["testimonial-ynps2017-nric000G1002"]
+          "examples": ["SGC Testimonial"]
         },
         "issuedOn": {
           "type": "string",
           "format": "date-time",
-          "description": "the date that this certificate was issued by the issuer(s)",
+          "description": "the date and time that this certificate was issued by the issuer(s)",
           "examples": ["2018-08-01T00:00:00+08:00"]
         },
         "name": {
@@ -27,20 +27,153 @@
           "description": "subject or title of the testimonial",
           "examples": ["School Graduation Certificate Testimonial"]
         },
+        "content": {
+          "description": "content of the testimonial, as written by the referral. no specific structure is enforced. it can be added into a string as markdown / html / xml, or added in a structure object. it can also be composed of multiple entries.",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          ]
+        },
         "issuers": {
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
               "did": {
-                "type": "string"
+                "type": "string",
+                "description": "did owned by the issuer"
+              },
+              "url": {
+                "type": "string",
+                "examples": ["yunengpri.moe.edu.sg"]
+              },
+              "email": {
+                "type": "string",
+                "examples": ["yunengpri.moe.edu.sg"]
               }
-            },
-            "required": ["did"]
+            }
           }
+        },
+        "recipient": {
+          "type": "object",
+          "description": "information about the person that receive testimonials",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "recipient name on certificate",
+              "examples": ["John Doe"]
+            },
+            "nric": {
+              "type": "string",
+              "description": "recipient NRIC",
+              "examples": ["S1234567J"]
+            },
+            "fin": {
+              "type": "string",
+              "description": "recipient FIN"
+            },
+            "studentId": {
+              "type": "string",
+              "description": "student number issued by training centre",
+              "examples": ["12345"]
+            }
+          },
+          "required": ["name"]
+        },
+        "testimonial": {
+          "type": "object",
+          "properties": {
+            "role": {
+              "type": "string",
+              "description": "position held eg chairman, head prefect, regional director, etc.",
+              "examples": ["chairman"]
+            },
+            "instituteName": {
+              "type": "string",
+              "description": "school or institute name",
+              "examples": ["ABC Junior College"]
+            },
+            "achievementArea": {
+              "type": "string",
+              "description": "name of CCA/CIP/project/competition and achievement",
+              "examples": []
+            },
+            "achievementYear": {
+              "type": "string",
+              "description": "achievement/graduation year",
+              "pattern": "^[0-9]{4}$",
+              "examples": ["2016"]
+            },
+            "achievementDate": {
+              "type": "string",
+              "format": "date",
+              "description": "exact date of achievement/graduation",
+              "examples": ["2016-11-21"]
+            }
+          },
+          "anyOf": [
+            { "required": ["achievementYear"] },
+            { "required": ["achievementDate"] }
+          ]
+        },
+        "referee": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "referee name",
+              "examples": ["Mr Wong Siew Hoong"]
+            },
+            "designation": {
+              "type": "string",
+              "description": "referee designation",
+              "examples": ["Director-General of Education Singapore"]
+            },
+            "signature": {
+              "type": "string",
+              "description": "referee base64 image signature"
+            },
+            "seal": {
+              "type": "string",
+              "description": "referee base64 image seal"
+            },
+            "email": {
+              "type": "string",
+              "description": "referee mail"
+            },
+            "relationship": {
+              "type": "string",
+              "description": "referee relationship with recipient: teacher, co-worker, client, ex-employer, etc",
+              "examples": ["teacher"]
+            }
+          },
+          "required": ["name"]
         }
       },
-      "required": ["id", "issuedOn", "name"]
+      "required": [
+        "id",
+        "issuedOn",
+        "name",
+        "recipient",
+        "testimonial",
+        "referee"
+      ]
     }
   },
   "allOf": [

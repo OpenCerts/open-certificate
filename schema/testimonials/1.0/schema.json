@@ -28,7 +28,7 @@
           "examples": ["School Graduation Certificate Testimonial"]
         },
         "content": {
-          "description": "content of the testimonial, as written by the referral. no specific structure is enforced. it can be added into a string as markdown / html / xml, or added in a structure object. it can also be composed of multiple entries.",
+          "description": "content of the testimonial, as written by the referrer. no specific structure is enforced. it can be added into a string as markdown / html / xml, or added in a structure object. it can also be composed of multiple entries.",
           "oneOf": [
             {
               "type": "string"

@@ -66,6 +66,60 @@ describe("schema/v2.0", () => {
         ]
       `);
     });
+    it("should fail when content is a number", () => {
+      const data = set(cloneDeep(initialData), "content", 5);
+
+      expect(validator(data)).toBe(false);
+      expect(validator.errors).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "instancePath": "/content",
+            "keyword": "type",
+            "message": "must be string",
+            "params": Object {
+              "type": "string",
+            },
+            "schemaPath": "#/definitions/Testimonial/properties/content/oneOf/0/type",
+          },
+          Object {
+            "instancePath": "/content",
+            "keyword": "type",
+            "message": "must be object",
+            "params": Object {
+              "type": "object",
+            },
+            "schemaPath": "#/definitions/Testimonial/properties/content/oneOf/1/type",
+          },
+          Object {
+            "instancePath": "/content",
+            "keyword": "type",
+            "message": "must be array",
+            "params": Object {
+              "type": "array",
+            },
+            "schemaPath": "#/definitions/Testimonial/properties/content/oneOf/2/type",
+          },
+          Object {
+            "instancePath": "/content",
+            "keyword": "type",
+            "message": "must be array",
+            "params": Object {
+              "type": "array",
+            },
+            "schemaPath": "#/definitions/Testimonial/properties/content/oneOf/3/type",
+          },
+          Object {
+            "instancePath": "/content",
+            "keyword": "oneOf",
+            "message": "must match exactly one schema in oneOf",
+            "params": Object {
+              "passingSchemas": null,
+            },
+            "schemaPath": "#/definitions/Testimonial/properties/content/oneOf",
+          },
+        ]
+      `);
+    });
     it("should fail when issuedOn is missing", () => {
       const data = omit(cloneDeep(initialData), "issuedOn");
 

@@ -24,7 +24,7 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "@govtechsg/open-attestation": "1.1.42",
+    "@govtechsg/open-attestation": "5.2.2",
     "lodash": "^4.17.10"
   },
   "devDependencies": {

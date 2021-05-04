@@ -59,6 +59,10 @@
                 "type": "string",
                 "description": "did owned by the issuer"
               },
+              "uen": {
+                "type": "string",
+                "description": "did owned by the issuer"
+              },
               "url": {
                 "type": "string",
                 "examples": ["yunengpri.moe.edu.sg"]
@@ -67,7 +71,8 @@
                 "type": "string",
                 "examples": ["yunengpri.moe.edu.sg"]
               }
-            }
+            },
+            "required": ["did", "uen"]
           }
         },
         "recipient": {

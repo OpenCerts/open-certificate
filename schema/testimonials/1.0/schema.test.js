@@ -28,6 +28,8 @@ const initialData = {
   issuers: [
     {
       name: "Issuer Name",
+      did: "DID:SG-UEN:U18274928E",
+      uen: "U18274928E",
       documentStore: "0x0000000000000000000000000000000000000000",
       identityProof: {
         type: "DNS-TXT",
@@ -193,6 +195,42 @@ describe("schema/v2.0", () => {
             },
           ]
         `);
+    });
+    it("should fail when issuers.did is missing", () => {
+      const data = omit(cloneDeep(initialData), "issuers[0].did");
+
+      expect(validator(data)).toBe(false);
+      expect(validator.errors).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "instancePath": "/issuers/0",
+            "keyword": "required",
+            "message": "must have required property 'did'",
+            "params": Object {
+              "missingProperty": "did",
+            },
+            "schemaPath": "#/definitions/Testimonial/properties/issuers/items/required",
+          },
+        ]
+      `);
+    });
+    it("should fail when issuers.uen is missing", () => {
+      const data = omit(cloneDeep(initialData), "issuers[0].uen");
+
+      expect(validator(data)).toBe(false);
+      expect(validator.errors).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "instancePath": "/issuers/0",
+            "keyword": "required",
+            "message": "must have required property 'uen'",
+            "params": Object {
+              "missingProperty": "uen",
+            },
+            "schemaPath": "#/definitions/Testimonial/properties/issuers/items/required",
+          },
+        ]
+      `);
     });
   });
 

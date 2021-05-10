@@ -61,7 +61,7 @@
               },
               "uen": {
                 "type": "string",
-                "description": "did owned by the issuer"
+                "description": "uen of the issuer"
               },
               "url": {
                 "type": "string",

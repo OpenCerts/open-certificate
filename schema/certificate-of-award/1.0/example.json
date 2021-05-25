@@ -1,0 +1,35 @@
+{
+  "id": "EAG171622",
+  "issuedOn": "2018-08-01T00:00:00+08:00",
+  "name": "Edusave Award for Achievement, Good Leadership and Service (EAGLES) 2017",
+  "description": "Students who are within the top 10% of their school’s level and course in terms of academic performance, and have demonstrated good conduct.",
+  "issuers": [
+    {
+      "name": "Ministry of Education",
+      "did": "DID:SG-UEN:U18274928E",
+      "uen": "U18274928E",
+      "url": "https://www.moe.gov.sg",
+      "email": "registrar@moe.gov.sg",
+      "documentStore": "0xd9580260be45c3c0c2fb259a82f219b513054012",
+      "identityProof": {
+        "type": "DNS-TXT",
+        "location": "moe.gov.sg"
+      }
+    }
+  ],
+  "recipient": {
+    "name": "John Doe",
+    "nric": "S1234567J",
+    "studentId": "12345"
+  },
+  "award": {
+    "instituteName": "ABC Junior College",
+    "achievementArea": "ABC Milestone",
+    "achievementDate": "2016-11-21"
+  },
+  "signature": {
+    "name": "Vikram Nair",
+    "designation": "Adviser to Sembawang GRC Grassroots Organisations",
+    "relationship": "teacher"
+  }
+}

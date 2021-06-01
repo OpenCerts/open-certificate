@@ -124,21 +124,21 @@
           "properties": {
             "name": {
               "type": "string",
-              "description": "referee name",
+              "description": "signee name",
               "examples": ["Mr Wong Siew Hoong"]
             },
             "designation": {
               "type": "string",
-              "description": "referee designation",
+              "description": "signee designation",
               "examples": ["Adviser to Sembawang GRC Grassroots Organisations"]
             },
             "signature": {
               "type": "string",
-              "description": "referee base64 image signature"
+              "description": "signee base64 image signature"
             },
             "seal": {
               "type": "string",
-              "description": "referee base64 image seal"
+              "description": "signee base64 image seal"
             }
           },
           "required": ["name"]

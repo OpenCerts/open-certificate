@@ -1,6 +1,6 @@
 {
   "name": "@govtechsg/open-certificate",
-  "version": "2.0.125",
+  "version": "2.0.126",
   "description": "",
   "main": "dist/open-certificate.js",
   "module": "dist/open-certificate.esm.js",

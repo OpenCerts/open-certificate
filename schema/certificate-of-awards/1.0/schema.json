@@ -1,5 +1,5 @@
 {
-  "$id": "certificate-of-award/1.0",
+  "$id": "https://schema.opencerts.io/certificate-of-awards/1.0",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "definitions": {

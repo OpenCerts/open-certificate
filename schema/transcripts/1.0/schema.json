@@ -34,7 +34,7 @@
           "type": "string"
         }
       },
-      "required": [ "name", "certificateStore" ],
+      "required": ["name", "certificateStore"],
       "additionalProperties": false
     },
     "recipient": {
@@ -56,7 +56,7 @@
           "type": "string"
         }
       },
-      "required": [ "name" ],
+      "required": ["name"],
       "additionalProperties": false
     },
     "transcript": {
@@ -86,7 +86,7 @@
             "type": "string"
           }
         },
-        "required": [ "name" ],
+        "required": ["name"],
         "additionalProperties": false
       }
     },
@@ -94,6 +94,6 @@
       "type": "object"
     }
   },
-  "required": [ "name", "issuedOn", "issuer", "recipient" ],
+  "required": ["name", "issuedOn", "issuer", "recipient"],
   "additionalProperties": false
 }

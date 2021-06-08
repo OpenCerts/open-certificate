@@ -18,6 +18,7 @@ let validator;
 
 const initialData = {
   id: "Example-minimal-2018-001",
+  schema: "testimonials/1.0",
   name: "Certificate Name",
   issuedOn: "2018-08-01T00:00:00+08:00",
   recipient: {
@@ -64,6 +65,44 @@ describe("schema/v2.0", () => {
               "missingProperty": "id",
             },
             "schemaPath": "#/definitions/Testimonial/required",
+          },
+        ]
+      `);
+    });
+    it("should fail when schema is missing", () => {
+      const data = omit(cloneDeep(initialData), "schema");
+
+      expect(validator(data)).toBe(false);
+      expect(validator.errors).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "instancePath": "",
+            "keyword": "required",
+            "message": "must have required property 'schema'",
+            "params": Object {
+              "missingProperty": "schema",
+            },
+            "schemaPath": "#/definitions/Testimonial/required",
+          },
+        ]
+      `);
+    });
+    it("should fail when schema value is not allowed", () => {
+      const data = set(cloneDeep(initialData), "schema", "abc");
+
+      expect(validator(data)).toBe(false);
+      expect(validator.errors).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "instancePath": "/schema",
+            "keyword": "enum",
+            "message": "must be equal to one of the allowed values",
+            "params": Object {
+              "allowedValues": Array [
+                "testimonials/1.0",
+              ],
+            },
+            "schemaPath": "#/definitions/Testimonial/properties/schema/enum",
           },
         ]
       `);

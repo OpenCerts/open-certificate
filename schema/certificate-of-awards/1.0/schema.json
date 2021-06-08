@@ -11,6 +11,10 @@
           "description": "certificate of award unique identifier",
           "examples": ["EAG171622"]
         },
+        "schema": {
+          "type": "string",
+          "enum": ["certificate-of-awards/1.0"]
+        },
         "description": {
           "type": "string",
           "description": "certificate information",
@@ -146,6 +150,7 @@
       },
       "required": [
         "id",
+        "schema",
         "issuedOn",
         "name",
         "issuers",

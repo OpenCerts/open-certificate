@@ -11,6 +11,10 @@
           "description": "testimonial unique identifier",
           "examples": ["testimonial-ynps2017-nric000G1002"]
         },
+        "schema": {
+          "type": "string",
+          "enum": ["testimonials/1.0"]
+        },
         "description": {
           "type": "string",
           "description": "indicate who made the testimonial (teacher, co-worker, client, ex-employer, etc)",
@@ -173,6 +177,7 @@
       },
       "required": [
         "id",
+        "schema",
         "issuedOn",
         "name",
         "recipient",

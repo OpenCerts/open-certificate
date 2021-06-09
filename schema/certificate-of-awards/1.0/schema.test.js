@@ -7,7 +7,7 @@ const { omit, cloneDeep, set } = require("lodash");
 const example = require("./example.json");
 
 function loadSchema(uri) {
-  return axios.get(uri).then(res => {
+  return axios.get(uri).then((res) => {
     return res.data;
   });
 }
@@ -18,6 +18,7 @@ let validator;
 
 const initialData = {
   id: "EAG171622",
+  schema: "certificate-of-awards/1.0",
   issuedOn: "2018-08-01T00:00:00+08:00",
   name: "Edusave Award for Achievement, Good Leadership and Service (EAGLES) 2017",
   issuers: [
@@ -28,13 +29,13 @@ const initialData = {
       documentStore: "0xd9580260be45c3c0c2fb259a82f219b513054012",
       identityProof: {
         type: "DNS-TXT",
-        location: "moe.gov.sg"
-      }
-    }
+        location: "moe.gov.sg",
+      },
+    },
   ],
   recipient: { name: "John Doe" },
   award: { achievementDate: "2016-11-21" },
-  signature: { name: "Vikram Nair" }
+  signature: { name: "Vikram Nair" },
 };
 
 describe("schema/v1.0", () => {
@@ -70,6 +71,44 @@ describe("schema/v1.0", () => {
               "missingProperty": "id",
             },
             "schemaPath": "#/definitions/CertificateOfAward/required",
+          },
+        ]
+      `);
+    });
+    it("should fail when schema is missing", () => {
+      const data = omit(cloneDeep(initialData), "schema");
+
+      expect(validator(data)).toBe(false);
+      expect(validator.errors).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "instancePath": "",
+            "keyword": "required",
+            "message": "must have required property 'schema'",
+            "params": Object {
+              "missingProperty": "schema",
+            },
+            "schemaPath": "#/definitions/CertificateOfAward/required",
+          },
+        ]
+      `);
+    });
+    it("should fail when schema value is not allowed", () => {
+      const data = set(cloneDeep(initialData), "schema", "abc");
+
+      expect(validator(data)).toBe(false);
+      expect(validator.errors).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "instancePath": "/schema",
+            "keyword": "enum",
+            "message": "must be equal to one of the allowed values",
+            "params": Object {
+              "allowedValues": Array [
+                "certificate-of-awards/1.0",
+              ],
+            },
+            "schemaPath": "#/definitions/CertificateOfAward/properties/schema/enum",
           },
         ]
       `);
@@ -212,7 +251,7 @@ describe("schema/v1.0", () => {
     it("should fail when achievementYear and achievementDate are missing", () => {
       const data = omit(cloneDeep(initialData), [
         "award.achievementDate",
-        "award.achievementYear"
+        "award.achievementYear",
       ]);
 
       expect(validator(data)).toBe(false);

@@ -33,7 +33,7 @@
     "@istanbuljs/nyc-config-babel": "^1.2.3",
     "ajv": "^8.0.5",
     "ajv-formats": "^2.0.2",
-    "axios": "^0.21.1",
+    "axios": "^0.30.2",
     "babel-jest": "^27.0.1",
     "eslint": "^7.24.0",
     "eslint-config-airbnb-base": "^14.0.0",

@@ -19,6 +19,8 @@ const schemas = {
   1.4: require("../schema/transcripts/1.4/schema.json"),
   1.5: require("../schema/transcripts/1.5/schema.json"),
   2.0: require("../schema/transcripts/2.0/schema.json"),
+  2.1: require("../schema/transcripts/2.1/schema.json"),
+  2.2: require("../schema/transcripts/2.2/schema.json"),
 };
 /* eslint-enable global-require */
 

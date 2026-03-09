@@ -24,6 +24,7 @@ copy "transcripts" "1.4"
 copy "transcripts" "1.5"
 copy "transcripts" "2.0"
 copy "transcripts" "2.1"
+copy "transcripts" "2.2"
 # copy testimonials
 copy "testimonials" "1.0"
 # copy certificate of awards

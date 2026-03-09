@@ -1,0 +1,6 @@
+changelog
+
+Added new optional network field as an object for use with DNS-TXT Blockchain issued certificates with fields:
+- chain => mandatory string
+- chainId => mandatory string
+Taken from (https://github.com/Open-Attestation/open-attestation/blob/master/src/2.0/schema/schema.json)

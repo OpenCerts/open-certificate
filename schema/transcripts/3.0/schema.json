@@ -1,0 +1,261 @@
+{
+  "$id": "https://schema.opencerts.io/transcripts/3.0",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Transcript (W3C Verifiable Credential)",
+  "description": "W3C Verifiable Credentials Data Model 2.0 representation of an OpenCerts transcript, for use with the TrustVC (@trustvc/trustvc) library.",
+  "type": "object",
+  "definitions": {
+    "issuer": {
+      "description": "W3C VC issuer: a URI/DID string, or an object with an id and name.",
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uri",
+              "description": "DID or URL identifying the issuer",
+              "examples": ["did:web:opencerts.io:blockchain-academy"]
+            },
+            "name": { "type": "string", "examples": ["Blockchain Academy"] }
+          },
+          "required": ["id"],
+          "additionalProperties": true
+        }
+      ]
+    },
+    "credentialSubject": {
+      "type": "object",
+      "description": "The transcript data.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "identifier of the recipient (DID/URL), when known"
+        },
+        "type": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "items": { "type": "string" } }
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "name of the qualification",
+          "examples": ["Master of Blockchain"]
+        },
+        "description": { "type": "string" },
+        "admissionDate": { "type": "string", "format": "date-time" },
+        "graduationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date that this student graduated from the course"
+        },
+        "attainmentDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date that this qualification was awarded to the recipient"
+        },
+        "recipient": {
+          "type": "object",
+          "description": "information about the person that is receiving the transcript",
+          "properties": {
+            "name": { "type": "string", "examples": ["Mr Blockchain"] },
+            "did": { "type": "string" },
+            "url": { "type": "string" },
+            "email": { "type": "string" },
+            "phone": { "type": "string" },
+            "nric": { "type": "string" },
+            "fin": { "type": "string" },
+            "studentId": { "type": "string" }
+          },
+          "required": ["name"],
+          "additionalProperties": true
+        },
+        "qualificationLevel": {
+          "type": "array",
+          "description": "This is an array of objects used to attach descriptors from frameworks such as Singapore's SSEC-EQA or the internationally recognised ISCED. Multiple instances are allowed to indicate either equivalents or to indicate a multi-level qualifications",
+          "items": {
+            "type": "object",
+            "required": ["frameworkName", "frameworkVersion", "code", "description"],
+            "properties": {
+              "frameworkName": {
+                "type": "string",
+                "examples": ["singapore/ssec-eqa", "international/isced"]
+              },
+              "frameworkVersion": { "type": "string", "examples": ["2015", "2011"] },
+              "code": { "type": "string", "examples": ["51", "55"] },
+              "description": {
+                "type": "string",
+                "examples": [
+                  "Polytechnic Diploma",
+                  "(Short-cycle tertiary education) Vocational"
+                ]
+              }
+            }
+          }
+        },
+        "fieldOfStudy": {
+          "type": "array",
+          "description": "This is an array of objects used to attach descriptors from frameworks such as Singapore's SSEC-FOS or the internationally recognised ISCED-F. Multiple instances are allowed to indicate either equivalents or to indicate a multi-field qualification such as double degrees",
+          "items": {
+            "type": "object",
+            "required": ["frameworkName", "frameworkVersion", "code", "description"],
+            "properties": {
+              "frameworkName": {
+                "type": "string",
+                "description": "Prepend the actual framework name with the scope of the framework",
+                "examples": ["singapore/ssec-fos", "international/isced-f"]
+              },
+              "frameworkVersion": { "type": "string", "examples": ["2015", "2013"] },
+              "code": { "type": "string", "examples": ["0897"] },
+              "description": { "type": "string", "examples": ["Biomedical Science"] }
+            }
+          }
+        },
+        "cumulativeScore": { "type": "number" },
+        "transcript": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "score": { "type": ["number", "string"] },
+              "grade": { "type": ["number", "string"] },
+              "courseCredit": { "type": ["number", "string"] },
+              "courseCode": { "type": "string" },
+              "examinationDate": { "type": "string", "format": "date-time" },
+              "url": { "type": "string" },
+              "description": { "type": "string" },
+              "languageMedium": {
+                "description": "Language that the course was undertaken in",
+                "type": "string"
+              }
+            },
+            "required": ["name"]
+          }
+        },
+        "additionalData": { "type": "object" },
+        "skills": {
+          "description": "Information about skills that the recipient learnt",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "frameworkUri": {
+                "description": "URI where to find the details about the framework",
+                "type": "string",
+                "format": "uri",
+                "examples": ["https://www.skillsfuture.sg/skills-framework"]
+              },
+              "frameworkName": {
+                "description": "Framework name",
+                "type": "string",
+                "examples": ["SFw"]
+              },
+              "frameworkVersion": {
+                "description": "Framework version",
+                "type": "string",
+                "examples": ["1.0"]
+              },
+              "sector": {
+                "description": "The industry/sector for which this framework is meant for",
+                "type": "string",
+                "examples": ["Air Transport"]
+              },
+              "category": {
+                "description": "Skills and competency category. (Technical Skills Competency (TSC) or Critical Core Skills (CCS)",
+                "type": "string",
+                "examples": ["Aircraft Operations"]
+              },
+              "competencyCode": {
+                "description": "Skills and competency code from Skills Framework",
+                "type": "string",
+                "examples": ["ATP-ACO-4001-1.1"]
+              },
+              "competencyDescription": {
+                "description": "Detailed description of the skill or competency",
+                "type": "string"
+              },
+              "competencyLevel": {
+                "description": "Level of competency / skills",
+                "type": "string",
+                "examples": ["Level 4"]
+              },
+              "competencyLevelDescription": {
+                "description": "Narrative information for this competency level",
+                "type": "string"
+              }
+            },
+            "required": ["frameworkUri", "frameworkName", "frameworkVersion"]
+          }
+        }
+      },
+      "required": ["name", "recipient", "transcript"],
+      "additionalProperties": true
+    }
+  },
+  "properties": {
+    "@context": {
+      "type": "array",
+      "description": "JSON-LD contexts. The first entry must be the W3C VC v2.0 context.",
+      "minItems": 1,
+      "items": [
+        { "const": "https://www.w3.org/ns/credentials/v2" }
+      ],
+      "additionalItems": { "type": ["string", "object"] }
+    },
+    "id": {
+      "type": "string",
+      "description": "credential identifier",
+      "examples": ["urn:uuid:0198e4a3-b601-7117-9d02-8c9a9a54ab5d"]
+    },
+    "type": {
+      "type": "array",
+      "description": "credential types; must include VerifiableCredential",
+      "items": { "type": "string" },
+      "contains": { "const": "VerifiableCredential" }
+    },
+    "issuer": { "$ref": "#/definitions/issuer" },
+    "validFrom": {
+      "type": "string",
+      "format": "date-time",
+      "description": "the date and time from which the credential is valid (replaces issuedOn)"
+    },
+    "validUntil": {
+      "type": "string",
+      "format": "date-time",
+      "description": "the date and time after which the credential is no longer valid (replaces expiresOn)"
+    },
+    "credentialSubject": { "$ref": "#/definitions/credentialSubject" },
+    "credentialStatus": {
+      "type": "object",
+      "properties": { "type": { "type": "string" } },
+      "required": ["type"]
+    },
+    "credentialSchema": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": { "type": { "type": "string" } },
+          "required": ["type"]
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": { "type": { "type": "string" } },
+            "required": ["type"]
+          }
+        }
+      ]
+    },
+    "renderMethod": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "proof": { "type": "object" }
+  },
+  "required": ["@context", "type", "issuer", "credentialSubject"],
+  "additionalProperties": true
+}

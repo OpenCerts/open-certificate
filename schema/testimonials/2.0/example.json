@@ -1,0 +1,43 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://trustvc.io/context/render-method-context-v2.json",
+    "https://schema.opencerts.io/testimonials/2.0/context.json"
+  ],
+  "type": ["VerifiableCredential"],
+  "issuer": {
+    "id": "did:web:opencerts.io:moe",
+    "name": "Ministry of Education"
+  },
+  "validFrom": "2018-08-01T00:00:00+08:00",
+  "renderMethod": [
+    {
+      "id": "https://demo-renderer.opencerts.io",
+      "type": "EMBEDDED_RENDERER",
+      "templateName": "TESTIMONIAL"
+    }
+  ],
+  "credentialSubject": {
+    "id": "did:example:s1234567j",
+    "type": ["Testimonial"],
+    "name": "School Graduation Certificate Testimonial",
+    "description": "SGC Testimonial",
+    "content": "Content of the Testimonial",
+    "recipient": {
+      "name": "John Doe",
+      "nric": "S1234567J",
+      "studentId": "12345"
+    },
+    "testimonial": {
+      "role": "chairman",
+      "instituteName": "ABC Junior College",
+      "achievementArea": "No Idea",
+      "achievementDate": "2016-11-21"
+    },
+    "referee": {
+      "name": "Mrs Jane Doe",
+      "designation": "Director-General of Education Singapore",
+      "relationship": "teacher"
+    }
+  }
+}

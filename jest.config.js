@@ -80,8 +80,13 @@ module.exports = {
   //   "node"
   // ],
 
-  // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module.
+  // cborg (pulled in by TrustVC's bls crypto deps) only ships an "import"
+  // condition in its exports, so map it directly to its (ESM) entrypoint, which
+  // is then transpiled via transformIgnorePatterns below.
+  moduleNameMapper: {
+    "^cborg$": "<rootDir>/node_modules/cborg/cborg.js",
+  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -139,8 +144,13 @@ module.exports = {
   // The test environment that will be used for testing
   testEnvironment: "node",
 
-  // Options that will be passed to the testEnvironment
-  // testEnvironmentOptions: {},
+  // Options that will be passed to the testEnvironment.
+  // Some TrustVC crypto dependencies (e.g. cborg) only declare an "import"
+  // condition in their package "exports"; let the node test environment resolve
+  // those entrypoints too.
+  testEnvironmentOptions: {
+    customExportConditions: ["node", "require", "default"],
+  },
 
   // Adds a location field to test results
   // testLocationInResults: false,
@@ -174,11 +184,13 @@ module.exports = {
   // A map from regular expressions to paths to transformers
   // transform: undefined,
 
-  // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  // transformIgnorePatterns: [
-  //   "/node_modules/",
-  //   "\\.pnp\\.[^\\/]+$"
-  // ],
+  // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation.
+  // TrustVC and its cryptographic dependencies ship as ES modules. Allow
+  // babel-jest to transpile them so they can be required from the (CommonJS)
+  // test suites.
+  transformIgnorePatterns: [
+    "node_modules/(?!(@trustvc|@digitalbazaar|@noble|@stablelib|@scure|jsonld|jsonld-signatures|rdf-canonize|canonicalize|cborg|base-x|base58-universal|base64url-universal|multiformats|uint8arrays|crypto-ld|@interledger|klona|@mattrglobal|@transmute|@or13|did-resolver|key-did-resolver|web-streams-polyfill)/)",
+  ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

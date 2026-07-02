@@ -1,0 +1,194 @@
+{
+  "$id": "https://schema.opencerts.io/certificate-of-awards/2.0",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Certificate of Award (W3C Verifiable Credential)",
+  "description": "W3C Verifiable Credentials Data Model 2.0 representation of an OpenCerts certificate of award, for use with the TrustVC (@trustvc/trustvc) library.",
+  "type": "object",
+  "definitions": {
+    "issuer": {
+      "description": "W3C VC issuer: a URI/DID string, or an object with an id and name.",
+      "oneOf": [
+        { "type": "string", "format": "uri" },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uri",
+              "description": "DID or URL identifying the issuer",
+              "examples": ["did:web:opencerts.io:moe"]
+            },
+            "name": { "type": "string", "examples": ["Ministry of Education"] }
+          },
+          "required": ["id"],
+          "additionalProperties": true
+        }
+      ]
+    },
+    "credentialSubject": {
+      "type": "object",
+      "description": "The certificate of award data.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "identifier of the recipient (DID/URL), when known"
+        },
+        "type": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "items": { "type": "string" } }
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "name of the award or participated course/activity",
+          "examples": [
+            "Edusave Award for Achievement, Good Leadership and Service (EAGLES) 2017"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "certificate information"
+        },
+        "recipient": {
+          "type": "object",
+          "description": "information about the person that is receiving the certificate of award",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "recipient name on certificate",
+              "examples": ["John Doe"]
+            },
+            "nric": { "type": "string", "examples": ["S1234567J"] },
+            "fin": { "type": "string", "examples": ["F1234567E"] },
+            "studentId": {
+              "type": "string",
+              "description": "student number issued by training centre",
+              "examples": ["12345"]
+            }
+          },
+          "required": ["name"],
+          "additionalProperties": true
+        },
+        "award": {
+          "type": "object",
+          "properties": {
+            "instituteName": {
+              "type": "string",
+              "description": "school or institute name",
+              "examples": ["ABC Junior College"]
+            },
+            "achievementArea": {
+              "type": "string",
+              "description": "name of CCA/CIP/project/competition and achievement"
+            },
+            "achievementYear": {
+              "type": "string",
+              "description": "achievement/graduation year",
+              "pattern": "^[0-9]{4}$",
+              "examples": ["2016"]
+            },
+            "achievementDate": {
+              "type": "string",
+              "format": "date",
+              "description": "exact date of achievement/graduation",
+              "examples": ["2016-11-21"]
+            }
+          },
+          "anyOf": [
+            { "required": ["achievementYear"] },
+            { "required": ["achievementDate"] }
+          ]
+        },
+        "signature": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "signee name",
+              "examples": ["Vikram Nair"]
+            },
+            "designation": {
+              "type": "string",
+              "description": "signee designation"
+            },
+            "signatureImage": {
+              "type": "string",
+              "description": "signee base64 image signature"
+            },
+            "seal": {
+              "type": "string",
+              "description": "signee base64 image seal"
+            }
+          },
+          "required": ["name"]
+        }
+      },
+      "required": ["name", "recipient", "award", "signature"],
+      "additionalProperties": true
+    }
+  },
+  "properties": {
+    "@context": {
+      "type": "array",
+      "description": "JSON-LD contexts. The first entry must be the W3C VC v2.0 context.",
+      "minItems": 1,
+      "items": [
+        { "const": "https://www.w3.org/ns/credentials/v2" }
+      ],
+      "additionalItems": { "type": ["string", "object"] }
+    },
+    "id": {
+      "type": "string",
+      "description": "credential identifier",
+      "examples": ["urn:uuid:0198e4a3-b601-7117-9d02-8c9a9a54ab5d"]
+    },
+    "type": {
+      "type": "array",
+      "description": "credential types; must include VerifiableCredential",
+      "items": { "type": "string" },
+      "contains": { "const": "VerifiableCredential" }
+    },
+    "issuer": { "$ref": "#/definitions/issuer" },
+    "validFrom": {
+      "type": "string",
+      "format": "date-time",
+      "description": "the date and time from which the credential is valid (replaces issuedOn)"
+    },
+    "validUntil": {
+      "type": "string",
+      "format": "date-time",
+      "description": "the date and time after which the credential is no longer valid"
+    },
+    "credentialSubject": { "$ref": "#/definitions/credentialSubject" },
+    "credentialStatus": {
+      "type": "object",
+      "properties": { "type": { "type": "string" } },
+      "required": ["type"]
+    },
+    "credentialSchema": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": { "type": { "type": "string" } },
+          "required": ["type"]
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": { "type": { "type": "string" } },
+            "required": ["type"]
+          }
+        }
+      ]
+    },
+    "renderMethod": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "proof": { "type": "object" }
+  },
+  "required": ["@context", "type", "issuer", "credentialSubject"],
+  "additionalProperties": true
+}

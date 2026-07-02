@@ -1,0 +1,93 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "opencerts": "https://schema.opencerts.io/vocab#",
+    "schema": "https://schema.org/",
+    "Transcript": {
+      "@id": "opencerts:Transcript",
+      "@type": "@id",
+      "@context": {
+        "@protected": true,
+        "name": "schema:name",
+        "description": "schema:description",
+        "admissionDate": "opencerts:admissionDate",
+        "graduationDate": "opencerts:graduationDate",
+        "attainmentDate": "opencerts:attainmentDate",
+        "cumulativeScore": "opencerts:cumulativeScore",
+        "additionalData": {
+          "@id": "opencerts:additionalData",
+          "@type": "@json"
+        },
+        "recipient": {
+          "@id": "opencerts:recipient",
+          "@context": {
+            "@protected": true,
+            "name": "schema:name",
+            "did": "opencerts:did",
+            "url": "schema:url",
+            "email": "schema:email",
+            "phone": "schema:telephone",
+            "nric": "opencerts:nric",
+            "fin": "opencerts:fin",
+            "studentId": "opencerts:studentId"
+          }
+        },
+        "qualificationLevel": {
+          "@id": "opencerts:qualificationLevel",
+          "@container": "@set",
+          "@context": {
+            "@protected": true,
+            "frameworkName": "opencerts:frameworkName",
+            "frameworkVersion": "opencerts:frameworkVersion",
+            "code": "opencerts:code",
+            "description": "schema:description"
+          }
+        },
+        "fieldOfStudy": {
+          "@id": "opencerts:fieldOfStudy",
+          "@container": "@set",
+          "@context": {
+            "@protected": true,
+            "frameworkName": "opencerts:frameworkName",
+            "frameworkVersion": "opencerts:frameworkVersion",
+            "code": "opencerts:code",
+            "description": "schema:description"
+          }
+        },
+        "transcript": {
+          "@id": "opencerts:transcript",
+          "@container": "@set",
+          "@context": {
+            "@protected": true,
+            "name": "schema:name",
+            "score": "opencerts:score",
+            "grade": "opencerts:grade",
+            "courseCredit": "opencerts:courseCredit",
+            "courseCode": "opencerts:courseCode",
+            "examinationDate": "opencerts:examinationDate",
+            "url": "schema:url",
+            "description": "schema:description",
+            "languageMedium": "opencerts:languageMedium"
+          }
+        },
+        "skills": {
+          "@id": "opencerts:skills",
+          "@container": "@set",
+          "@context": {
+            "@protected": true,
+            "frameworkUri": "opencerts:frameworkUri",
+            "frameworkName": "opencerts:frameworkName",
+            "frameworkVersion": "opencerts:frameworkVersion",
+            "sector": "opencerts:sector",
+            "category": "opencerts:category",
+            "competencyCode": "opencerts:competencyCode",
+            "competencyDescription": "opencerts:competencyDescription",
+            "competencyLevel": "opencerts:competencyLevel",
+            "competencyLevelDescription": "opencerts:competencyLevelDescription"
+          }
+        }
+      }
+    }
+  }
+}

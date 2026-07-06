@@ -3,7 +3,7 @@ let {
   issueDocument,
   addSchema,
   validateSchema
-} = require("@govtechsg/open-attestation");
+} = require("../../../test/oa-compat");
 const schema = require("./schema.json");
 
 describe("schema/v1.1", () => {
@@ -12,12 +12,12 @@ describe("schema/v1.1", () => {
   });
 
   afterEach(() => {
-    delete require.cache[require.resolve("@govtechsg/open-attestation")];
+    delete require.cache[require.resolve("../../../test/oa-compat")];
     let {
       issueDocument,
       addSchema,
       validateSchema
-    } = require("@govtechsg/open-attestation");
+    } = require("../../../test/oa-compat");
   });
 
   it("is not valid with missing data", () => {

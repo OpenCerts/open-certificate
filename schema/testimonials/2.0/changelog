@@ -1,0 +1,22 @@
+changelog
+
+Version 2.0 — W3C Verifiable Credentials format
+
+This schema version is for W3C Verifiable Credential (VC) format documents ONLY.
+It follows the W3C Verifiable Credentials Data Model 2.0 and is meant to be
+issued / signed / verified with the TrustVC library (@trustvc/trustvc).
+
+What changed from 1.0:
+- The document is now a W3C Verifiable Credential. The top level carries the
+  standard VC envelope: "@context", "type" (must include "VerifiableCredential"),
+  "issuer", "validFrom" (replaces "issuedOn"), and "credentialSubject".
+- All testimonial data (name, description, content, recipient, testimonial,
+  referee) now lives inside "credentialSubject" instead of at the document root.
+- The issuer is now the W3C "issuer" property (a DID/URL string, or an object
+  with an "id"), replacing the OpenAttestation "issuers" array.
+- Optional W3C/TrustVC properties are supported: "validUntil", "credentialStatus",
+  "credentialSchema", "renderMethod", "id" and "proof".
+
+IMPORTANT: This version is for W3C VC documents only. If you are NOT using the
+W3C VC format (e.g. OpenAttestation v2 / OpenCerts verifiable documents), please
+use an older version instead: testimonials/1.0.

@@ -5,8 +5,16 @@ const addFormats = require("ajv-formats");
 const axios = require("axios");
 const { omit, cloneDeep, set } = require("lodash");
 const example = require("./example.json");
+// OpenAttestation v2.0 schema (referenced by this schema via $ref). Resolve it
+// from the locally installed @tradetrust-tt/tradetrust package (bundled by
+// @trustvc/trustvc) instead of fetching schema.openattestation.com, so the test
+// does not depend on that host being reachable.
+const openAttestationV2Schema = require("@tradetrust-tt/tradetrust/dist/cjs/2.0/schema/schema.json");
 
 function loadSchema(uri) {
+  if (uri === "https://schema.openattestation.com/2.0/schema.json") {
+    return Promise.resolve(openAttestationV2Schema);
+  }
   return axios.get(uri).then((res) => {
     return res.data;
   });
@@ -56,12 +64,12 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-        Array [
-          Object {
+        [
+          {
             "instancePath": "",
             "keyword": "required",
             "message": "must have required property 'id'",
-            "params": Object {
+            "params": {
               "missingProperty": "id",
             },
             "schemaPath": "#/definitions/Testimonial/required",
@@ -74,12 +82,12 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-        Array [
-          Object {
+        [
+          {
             "instancePath": "",
             "keyword": "required",
             "message": "must have required property 'schema'",
-            "params": Object {
+            "params": {
               "missingProperty": "schema",
             },
             "schemaPath": "#/definitions/Testimonial/required",
@@ -92,13 +100,13 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-        Array [
-          Object {
+        [
+          {
             "instancePath": "/schema",
             "keyword": "enum",
             "message": "must be equal to one of the allowed values",
-            "params": Object {
-              "allowedValues": Array [
+            "params": {
+              "allowedValues": [
                 "testimonials/1.0",
               ],
             },
@@ -112,48 +120,48 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-        Array [
-          Object {
+        [
+          {
             "instancePath": "/content",
             "keyword": "type",
             "message": "must be string",
-            "params": Object {
+            "params": {
               "type": "string",
             },
             "schemaPath": "#/definitions/Testimonial/properties/content/oneOf/0/type",
           },
-          Object {
+          {
             "instancePath": "/content",
             "keyword": "type",
             "message": "must be object",
-            "params": Object {
+            "params": {
               "type": "object",
             },
             "schemaPath": "#/definitions/Testimonial/properties/content/oneOf/1/type",
           },
-          Object {
+          {
             "instancePath": "/content",
             "keyword": "type",
             "message": "must be array",
-            "params": Object {
+            "params": {
               "type": "array",
             },
             "schemaPath": "#/definitions/Testimonial/properties/content/oneOf/2/type",
           },
-          Object {
+          {
             "instancePath": "/content",
             "keyword": "type",
             "message": "must be array",
-            "params": Object {
+            "params": {
               "type": "array",
             },
             "schemaPath": "#/definitions/Testimonial/properties/content/oneOf/3/type",
           },
-          Object {
+          {
             "instancePath": "/content",
             "keyword": "oneOf",
             "message": "must match exactly one schema in oneOf",
-            "params": Object {
+            "params": {
               "passingSchemas": null,
             },
             "schemaPath": "#/definitions/Testimonial/properties/content/oneOf",
@@ -166,12 +174,12 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-        Array [
-          Object {
+        [
+          {
             "instancePath": "",
             "keyword": "required",
             "message": "must have required property 'issuedOn'",
-            "params": Object {
+            "params": {
               "missingProperty": "issuedOn",
             },
             "schemaPath": "#/definitions/Testimonial/required",
@@ -184,12 +192,12 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-        Array [
-          Object {
+        [
+          {
             "instancePath": "/issuedOn",
             "keyword": "format",
-            "message": "must match format \\"date-time\\"",
-            "params": Object {
+            "message": "must match format "date-time"",
+            "params": {
               "format": "date-time",
             },
             "schemaPath": "#/definitions/Testimonial/properties/issuedOn/format",
@@ -202,12 +210,12 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-        Array [
-          Object {
+        [
+          {
             "instancePath": "",
             "keyword": "required",
             "message": "must have required property 'name'",
-            "params": Object {
+            "params": {
               "missingProperty": "name",
             },
             "schemaPath": "#/definitions/Testimonial/required",
@@ -222,30 +230,30 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-          Array [
-            Object {
-              "instancePath": "",
-              "keyword": "required",
-              "message": "must have required property 'issuers'",
-              "params": Object {
-                "missingProperty": "issuers",
-              },
-              "schemaPath": "#/required",
+        [
+          {
+            "instancePath": "",
+            "keyword": "required",
+            "message": "must have required property 'issuers'",
+            "params": {
+              "missingProperty": "issuers",
             },
-          ]
-        `);
+            "schemaPath": "#/required",
+          },
+        ]
+      `);
     });
     it("should fail when issuers.did is missing", () => {
       const data = omit(cloneDeep(initialData), "issuers[0].did");
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-        Array [
-          Object {
+        [
+          {
             "instancePath": "/issuers/0",
             "keyword": "required",
             "message": "must have required property 'did'",
-            "params": Object {
+            "params": {
               "missingProperty": "did",
             },
             "schemaPath": "#/definitions/Testimonial/properties/issuers/items/required",
@@ -258,12 +266,12 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-        Array [
-          Object {
+        [
+          {
             "instancePath": "/issuers/0",
             "keyword": "required",
             "message": "must have required property 'uen'",
-            "params": Object {
+            "params": {
               "missingProperty": "uen",
             },
             "schemaPath": "#/definitions/Testimonial/properties/issuers/items/required",
@@ -279,18 +287,18 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-          Array [
-            Object {
-              "instancePath": "/recipient",
-              "keyword": "required",
-              "message": "must have required property 'name'",
-              "params": Object {
-                "missingProperty": "name",
-              },
-              "schemaPath": "#/definitions/Testimonial/properties/recipient/required",
+        [
+          {
+            "instancePath": "/recipient",
+            "keyword": "required",
+            "message": "must have required property 'name'",
+            "params": {
+              "missingProperty": "name",
             },
-          ]
-        `);
+            "schemaPath": "#/definitions/Testimonial/properties/recipient/required",
+          },
+        ]
+      `);
     });
   });
 
@@ -303,34 +311,34 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-          Array [
-            Object {
-              "instancePath": "/testimonial",
-              "keyword": "required",
-              "message": "must have required property 'achievementYear'",
-              "params": Object {
-                "missingProperty": "achievementYear",
-              },
-              "schemaPath": "#/definitions/Testimonial/properties/testimonial/anyOf/0/required",
+        [
+          {
+            "instancePath": "/testimonial",
+            "keyword": "required",
+            "message": "must have required property 'achievementYear'",
+            "params": {
+              "missingProperty": "achievementYear",
             },
-            Object {
-              "instancePath": "/testimonial",
-              "keyword": "required",
-              "message": "must have required property 'achievementDate'",
-              "params": Object {
-                "missingProperty": "achievementDate",
-              },
-              "schemaPath": "#/definitions/Testimonial/properties/testimonial/anyOf/1/required",
+            "schemaPath": "#/definitions/Testimonial/properties/testimonial/anyOf/0/required",
+          },
+          {
+            "instancePath": "/testimonial",
+            "keyword": "required",
+            "message": "must have required property 'achievementDate'",
+            "params": {
+              "missingProperty": "achievementDate",
             },
-            Object {
-              "instancePath": "/testimonial",
-              "keyword": "anyOf",
-              "message": "must match a schema in anyOf",
-              "params": Object {},
-              "schemaPath": "#/definitions/Testimonial/properties/testimonial/anyOf",
-            },
-          ]
-        `);
+            "schemaPath": "#/definitions/Testimonial/properties/testimonial/anyOf/1/required",
+          },
+          {
+            "instancePath": "/testimonial",
+            "keyword": "anyOf",
+            "message": "must match a schema in anyOf",
+            "params": {},
+            "schemaPath": "#/definitions/Testimonial/properties/testimonial/anyOf",
+          },
+        ]
+      `);
     });
     it("should fail when achievementDate is not a valid date", () => {
       const data = set(
@@ -341,18 +349,18 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-          Array [
-            Object {
-              "instancePath": "/testimonial/achievementDate",
-              "keyword": "format",
-              "message": "must match format \\"date\\"",
-              "params": Object {
-                "format": "date",
-              },
-              "schemaPath": "#/definitions/Testimonial/properties/testimonial/properties/achievementDate/format",
+        [
+          {
+            "instancePath": "/testimonial/achievementDate",
+            "keyword": "format",
+            "message": "must match format "date"",
+            "params": {
+              "format": "date",
             },
-          ]
-        `);
+            "schemaPath": "#/definitions/Testimonial/properties/testimonial/properties/achievementDate/format",
+          },
+        ]
+      `);
     });
     it("should fail when achievementYear is not a valid date", () => {
       const data = set(
@@ -363,18 +371,18 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-          Array [
-            Object {
-              "instancePath": "/testimonial/achievementYear",
-              "keyword": "pattern",
-              "message": "must match pattern \\"^[0-9]{4}$\\"",
-              "params": Object {
-                "pattern": "^[0-9]{4}$",
-              },
-              "schemaPath": "#/definitions/Testimonial/properties/testimonial/properties/achievementYear/pattern",
+        [
+          {
+            "instancePath": "/testimonial/achievementYear",
+            "keyword": "pattern",
+            "message": "must match pattern "^[0-9]{4}$"",
+            "params": {
+              "pattern": "^[0-9]{4}$",
             },
-          ]
-        `);
+            "schemaPath": "#/definitions/Testimonial/properties/testimonial/properties/achievementYear/pattern",
+          },
+        ]
+      `);
     });
   });
 
@@ -384,12 +392,12 @@ describe("schema/v2.0", () => {
 
       expect(validator(data)).toBe(false);
       expect(validator.errors).toMatchInlineSnapshot(`
-        Array [
-          Object {
+        [
+          {
             "instancePath": "/referee",
             "keyword": "required",
             "message": "must have required property 'name'",
-            "params": Object {
+            "params": {
               "missingProperty": "name",
             },
             "schemaPath": "#/definitions/Testimonial/properties/referee/required",

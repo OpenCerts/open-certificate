@@ -1,0 +1,40 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://trustvc.io/context/render-method-context-v2.json",
+    "https://schema.opencerts.io/certificate-of-awards/2.0/context.json"
+  ],
+  "type": ["VerifiableCredential"],
+  "issuer": {
+    "id": "did:web:opencerts.io:moe",
+    "name": "Ministry of Education"
+  },
+  "validFrom": "2018-08-01T00:00:00+08:00",
+  "renderMethod": [
+    {
+      "id": "https://demo-renderer.opencerts.io",
+      "type": "EMBEDDED_RENDERER",
+      "templateName": "CERTIFICATE_OF_AWARD"
+    }
+  ],
+  "credentialSubject": {
+    "id": "did:example:s1234567j",
+    "type": ["CertificateOfAward"],
+    "name": "Edusave Award for Achievement, Good Leadership and Service (EAGLES) 2017",
+    "description": "Students who are within the top 10% of their school's level and course in terms of academic performance, and have demonstrated good conduct.",
+    "recipient": {
+      "name": "John Doe",
+      "nric": "S1234567J",
+      "studentId": "12345"
+    },
+    "award": {
+      "instituteName": "ABC Junior College",
+      "achievementArea": "ABC Milestone",
+      "achievementDate": "2016-11-21"
+    },
+    "signature": {
+      "name": "Vikram Nair",
+      "designation": "Adviser to Sembawang GRC Grassroots Organisations"
+    }
+  }
+}

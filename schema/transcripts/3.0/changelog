@@ -1,0 +1,27 @@
+changelog
+
+Version 3.0 — W3C Verifiable Credentials format
+
+This schema version is for W3C Verifiable Credential (VC) format documents ONLY.
+It follows the W3C Verifiable Credentials Data Model 2.0 and is meant to be
+issued / signed / verified with the TrustVC library (@trustvc/trustvc).
+
+What changed from 2.2:
+- The document is now a W3C Verifiable Credential. The top level carries the
+  standard VC envelope: "@context", "type" (must include "VerifiableCredential"),
+  "issuer", "validFrom" (replaces "issuedOn"), "validUntil" (replaces "expiresOn")
+  and "credentialSubject".
+- All transcript data (name, description, recipient, admissionDate,
+  graduationDate, attainmentDate, qualificationLevel, fieldOfStudy, transcript,
+  cumulativeScore, skills, additionalData) now lives inside "credentialSubject"
+  instead of at the document root.
+- The issuer is now the single W3C "issuer" property (a DID/URL string, or an
+  object with an "id"), replacing the OpenAttestation "issuers" array.
+- The OpenAttestation "$template" / "network" fields are removed. Use the W3C/
+  TrustVC "renderMethod" for rendering and "credentialStatus" for revocation.
+- Optional W3C/TrustVC properties are supported: "validUntil", "credentialStatus",
+  "credentialSchema", "renderMethod", "id" and "proof".
+
+IMPORTANT: This version is for W3C VC documents only. If you are NOT using the
+W3C VC format (e.g. OpenAttestation v2 / OpenCerts verifiable documents), please
+use an older version instead: transcripts/2.2 (or 1.0).

@@ -1,0 +1,47 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "opencerts": "https://schema.opencerts.io/vocab#",
+    "schema": "https://schema.org/",
+    "CertificateOfAward": {
+      "@id": "opencerts:CertificateOfAward",
+      "@type": "@id",
+      "@context": {
+        "@protected": true,
+        "name": "schema:name",
+        "description": "schema:description",
+        "recipient": {
+          "@id": "opencerts:recipient",
+          "@context": {
+            "@protected": true,
+            "name": "schema:name",
+            "nric": "opencerts:nric",
+            "fin": "opencerts:fin",
+            "studentId": "opencerts:studentId"
+          }
+        },
+        "award": {
+          "@id": "opencerts:award",
+          "@context": {
+            "@protected": true,
+            "instituteName": "opencerts:instituteName",
+            "achievementArea": "opencerts:achievementArea",
+            "achievementYear": "opencerts:achievementYear",
+            "achievementDate": "opencerts:achievementDate"
+          }
+        },
+        "signature": {
+          "@id": "opencerts:signature",
+          "@context": {
+            "@protected": true,
+            "name": "schema:name",
+            "designation": "opencerts:designation",
+            "signatureImage": "opencerts:signatureImage",
+            "seal": "opencerts:seal"
+          }
+        }
+      }
+    }
+  }
+}

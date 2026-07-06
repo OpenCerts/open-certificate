@@ -1,0 +1,64 @@
+name: Deploy schemas
+
+# Publishes the JSON Schemas, examples and W3C VC contexts to S3 (behind
+# CloudFront).
+#   - DEV:  auto-deploys on push to develop             (DEV_* credentials)
+#   - PROD: manual only — run this workflow from master (AWS_* credentials)
+# workflow_dispatch deploys the environment matching the branch it is run from
+# (master -> production, anything else -> development).
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - "schema/**"
+      - "scripts/publishSchema.sh"
+      - ".github/workflows/deploy-schema.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-schema-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve target environment
+        id: target
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/master" ]; then
+            echo "env=production" >> "$GITHUB_OUTPUT"
+          else
+            echo "env=development" >> "$GITHUB_OUTPUT"
+          fi
+          echo "Deploying to ${{ github.ref }} -> $(cat "$GITHUB_OUTPUT" | tail -1)"
+
+      - name: Build public/ schema tree
+        run: sh scripts/publishSchema.sh
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ github.ref == 'refs/heads/master' && secrets.AWS_ACCESS_KEY_ID || secrets.DEV_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ github.ref == 'refs/heads/master' && secrets.AWS_SECRET_ACCESS_KEY || secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Sync to S3
+        env:
+          BUCKET: ${{ github.ref == 'refs/heads/master' && secrets.SCHEMA_S3_BUCKET || secrets.DEV_SCHEMA_S3_BUCKET }}
+        run: |
+          aws s3 sync public/ "s3://${BUCKET}/" \
+            --delete \
+            --cache-control "public, max-age=300"
+
+      - name: Invalidate CloudFront
+        env:
+          DISTRIBUTION_ID: ${{ github.ref == 'refs/heads/master' && secrets.SCHEMA_CLOUDFRONT_DISTRIBUTION_ID || secrets.DEV_SCHEMA_CLOUDFRONT_DISTRIBUTION_ID }}
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${DISTRIBUTION_ID}" \
+            --paths "/*"

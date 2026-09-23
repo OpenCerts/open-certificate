@@ -6,7 +6,7 @@
   "type": "object",
   "definitions": {
     "issuer": {
-      "description": "W3C VC issuer: a URI/DID string, or an object with an id and name.",
+      "description": "W3C VC issuer: a URI/DID string, or an object describing the issuing organisation. Replaces the OpenAttestation \"issuers\" array. The W3C VC v2 context marks \"issuer\" as @protected, so context.json declares these as top-level terms rather than scoping them under \"issuer\".",
       "oneOf": [
         { "type": "string", "format": "uri" },
         {
@@ -15,13 +15,20 @@
             "id": {
               "type": "string",
               "format": "uri",
-              "description": "DID or URL identifying the issuer",
+              "description": "DID or URL identifying the issuer; replaces the OpenAttestation issuer \"did\"",
               "examples": ["did:web:opencerts.io:moe"]
             },
-            "name": { "type": "string", "examples": ["Ministry of Education"] }
+            "name": { "type": "string", "examples": ["Ministry of Education"] },
+            "uen": {
+              "type": "string",
+              "description": "unique entity number of the issuing organisation",
+              "examples": ["U18274928E"]
+            },
+            "url": { "type": "string", "examples": ["https://www.moe.gov.sg"] },
+            "email": { "type": "string", "examples": ["registrar@moe.gov.sg"] }
           },
-          "required": ["id"],
-          "additionalProperties": true
+          "required": ["id", "name", "uen"],
+          "additionalProperties": false
         }
       ]
     },
@@ -34,9 +41,14 @@
           "description": "identifier of the recipient (DID/URL), when known"
         },
         "type": {
+          "description": "the credential subject type; must be (or include) \"CertificateOfAward\", because context.json defines the terms inside that type-scoped @context",
           "oneOf": [
-            { "type": "string" },
-            { "type": "array", "items": { "type": "string" } }
+            { "const": "CertificateOfAward" },
+            {
+              "type": "array",
+              "items": { "type": "string" },
+              "contains": { "const": "CertificateOfAward" }
+            }
           ]
         },
         "name": {
@@ -68,7 +80,7 @@
             }
           },
           "required": ["name"],
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "award": {
           "type": "object",
@@ -98,7 +110,12 @@
           "anyOf": [
             { "required": ["achievementYear"] },
             { "required": ["achievementDate"] }
-          ]
+          ],
+          "additionalProperties": false
+        },
+        "additionalData": {
+          "type": "object",
+          "description": "freeform issuer data. Declared as \"@type\": \"@json\" in context.json, so its contents are carried verbatim and may be arbitrarily nested without each field being declared."
         },
         "signature": {
           "type": "object",
@@ -121,11 +138,12 @@
               "description": "signee base64 image seal"
             }
           },
-          "required": ["name"]
+          "required": ["name"],
+          "additionalProperties": false
         }
       },
-      "required": ["name", "recipient", "award", "signature"],
-      "additionalProperties": true
+      "required": ["type", "name", "recipient", "award", "signature"],
+      "additionalProperties": false
     }
   },
   "properties": {
@@ -140,7 +158,8 @@
     },
     "id": {
       "type": "string",
-      "description": "credential identifier",
+      "format": "uri",
+      "description": "credential identifier. GENERATED, not supplied: TrustVC mints a urn:uuid at signing time and rejects a document that already carries an \"id\". It is therefore only valid on a signed credential (one that has a \"proof\"), which the conditional below enforces.",
       "examples": ["urn:uuid:0198e4a3-b601-7117-9d02-8c9a9a54ab5d"]
     },
     "type": {
@@ -163,8 +182,44 @@
     "credentialSubject": { "$ref": "#/definitions/credentialSubject" },
     "credentialStatus": {
       "type": "object",
-      "properties": { "type": { "type": "string" } },
-      "required": ["type"]
+      "description": "Bitstring Status List entry (W3C VC Data Model 2.0), used to revoke or suspend the credential. All four of type/statusPurpose/statusListIndex/statusListCredential are needed — a partial entry is rejected at signing time.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri",
+          "description": "identifier of this status entry",
+          "examples": ["https://opencerts.io/status/1#42"]
+        },
+        "type": {
+          "type": "string",
+          "enum": ["BitstringStatusListEntry"]
+        },
+        "statusPurpose": {
+          "type": "string",
+          "enum": ["revocation", "suspension"],
+          "description": "what setting this bit means"
+        },
+        "statusListIndex": {
+          "description": "position of this credential's bit in the status list; a non-negative integer, expressed as a string per the Bitstring Status List spec",
+          "oneOf": [
+            { "type": "string", "pattern": "^(0|[1-9][0-9]*)$" },
+            { "type": "integer", "minimum": 0 }
+          ],
+          "examples": ["42"]
+        },
+        "statusListCredential": {
+          "type": "string",
+          "format": "uri",
+          "description": "absolute URL of the status list credential",
+          "examples": ["https://opencerts.io/status/1"]
+        }
+      },
+      "required": [
+        "type",
+        "statusPurpose",
+        "statusListIndex",
+        "statusListCredential"
+      ]
     },
     "credentialSchema": {
       "oneOf": [
@@ -185,10 +240,43 @@
     },
     "renderMethod": {
       "type": "array",
-      "items": { "type": "object" }
+      "description": "How a viewer should render the credential. Replaces the OpenAttestation \"$template\": url -> id, type -> type, name -> templateName.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of a decentralised renderer to render this document",
+            "examples": ["https://demo-renderer.opencerts.io"]
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of renderer template",
+            "enum": ["EMBEDDED_RENDERER"]
+          },
+          "templateName": {
+            "type": "string",
+            "description": "Template name to be used by the template renderer to determine the template to use",
+            "examples": ["CERTIFICATE_OF_AWARD"]
+          }
+        },
+        "required": ["id", "type", "templateName"]
+      }
     },
     "proof": { "type": "object" }
   },
-  "required": ["@context", "type", "issuer", "credentialSubject"],
-  "additionalProperties": true
+  "required": [
+    "@context",
+    "type",
+    "issuer",
+    "validFrom",
+    "credentialSubject"
+  ],
+  "additionalProperties": true,
+  "if": { "not": { "required": ["proof"] } },
+  "then": {
+    "not": { "required": ["id"] },
+    "$comment": "An unsigned credential must not carry an \"id\": TrustVC generates it while signing and refuses any document that already has one."
+  }
 }

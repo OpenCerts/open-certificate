@@ -7,7 +7,7 @@
 const Ajv = require("ajv");
 const addFormats = require("ajv-formats");
 
-const ajv = new Ajv({ strictSchema: false, allErrors: true });
+const ajv = new Ajv({ strictSchema: false, allowUnionTypes: true, strictTuples: false, allErrors: true });
 addFormats(ajv);
 
 const validators = {};

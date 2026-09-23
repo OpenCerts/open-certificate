@@ -7,7 +7,10 @@
   "type": ["VerifiableCredential"],
   "issuer": {
     "id": "did:web:opencerts.io:moe",
-    "name": "Ministry of Education"
+    "name": "Ministry of Education",
+    "uen": "U18274928E",
+    "url": "https://www.moe.gov.sg",
+    "email": "registrar@moe.gov.sg"
   },
   "validFrom": "2018-08-01T00:00:00+08:00",
   "renderMethod": [

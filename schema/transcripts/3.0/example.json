@@ -7,7 +7,9 @@
   "type": ["VerifiableCredential"],
   "issuer": {
     "id": "did:web:opencerts.io:blockchain-academy",
-    "name": "Blockchain Academy"
+    "name": "Blockchain Academy",
+    "url": "https://blockchainacademy.com",
+    "email": "registrar@blockchainacademy.com"
   },
   "validFrom": "2018-08-01T00:00:00+08:00",
   "validUntil": "2118-08-01T00:00:00+08:00",

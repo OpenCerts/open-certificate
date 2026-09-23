@@ -4,6 +4,10 @@
     "@protected": true,
     "opencerts": "https://schema.opencerts.io/vocab#",
     "schema": "https://schema.org/",
+    "uen": "opencerts:uen",
+    "url": "schema:url",
+    "email": "schema:email",
+    "phone": "schema:telephone",
     "Transcript": {
       "@id": "opencerts:Transcript",
       "@type": "@id",

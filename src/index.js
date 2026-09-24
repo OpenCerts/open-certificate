@@ -35,7 +35,12 @@ const defaultSchema = schemas["2.0"];
 // OpenAttestation removed its custom-schema registration (addSchema), so the
 // OpenCerts schemas are validated with Ajv here while @tradetrust-tt/tradetrust
 // handles wrapping, data extraction, signature verification and obfuscation.
-const ajv = new Ajv({ strictSchema: false, allErrors: true });
+const ajv = new Ajv({
+  strictSchema: false,
+  allowUnionTypes: true,
+  strictTuples: false,
+  allErrors: true,
+});
 addFormats(ajv);
 const validators = {};
 Object.values(schemas).forEach((schema) => {

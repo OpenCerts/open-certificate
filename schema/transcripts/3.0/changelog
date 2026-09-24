@@ -17,10 +17,65 @@ What changed from 2.2:
   instead of at the document root.
 - The issuer is now the single W3C "issuer" property (a DID/URL string, or an
   object with an "id"), replacing the OpenAttestation "issuers" array.
+- The issuer keeps the contact fields the OpenAttestation issuers[] carried:
+  "name" (required, alongside "id"), plus optional "url", "email" and "phone".
+  The old "did" is now "issuer.id". The OpenAttestation-only fields
+  "documentStore" and "certificateStore" are gone.
+- "identityProof" is replaced by "issuer.id". The DID *is* the identity proof:
+  a DNS-TXT / DNS-DID identityProof bound an issuer to a domain, and did:web
+  does the same thing by putting the domain in the DID and resolving the DID
+  document over HTTPS from it; a DID-type identityProof named the issuer's
+  public key, which is now the verificationMethod in that DID document (or,
+  for did:key, the DID itself). The binding moved from a DNS TXT record to the
+  DID method; it did not go away.
+  The W3C VC v2 context marks "issuer" as @protected, so no scoped @context can
+  be attached to it; context.json declares these as top-level terms instead.
 - The OpenAttestation "$template" / "network" fields are removed. Use the W3C/
   TrustVC "renderMethod" for rendering and "credentialStatus" for revocation.
+  "renderMethod" entries require "id", "type" ("EMBEDDED_RENDERER") and
+  "templateName" — the same three fields "$template" required as url / type /
+  name, so a malformed renderer is still caught at validation time.
+  "credentialStatus" is a W3C VC Data Model 2.0 Bitstring Status List entry and
+  requires "type" ("BitstringStatusListEntry"), "statusPurpose" ("revocation"
+  or "suspension"), "statusListIndex" and "statusListCredential". Only the
+  W3C VC 2.0 status type is accepted here.
 - Optional W3C/TrustVC properties are supported: "validUntil", "credentialStatus",
   "credentialSchema", "renderMethod", "id" and "proof".
+
+Required fields — unchanged in substance from 2.2:
+- The document requires "@context", "type", "issuer", "validFrom" and
+  "credentialSubject". "validFrom" carries over the requirement that 2.2
+  placed on "issuedOn".
+- The credential "id" is NOT supplied by the issuer. 2.2 required an "id" at the
+  document root; in a W3C VC the "id" is generated — TrustVC mints a urn:uuid
+  while signing and rejects any document that already carries one. The schema
+  enforces this: an unsigned credential (no "proof") must not have an "id", a
+  signed one may. An issuer's own reference number therefore no longer belongs
+  in "id".
+- "credentialSubject" requires "type", "name" and "recipient". "transcript"
+  is optional, exactly as it was in 1.0 through 2.2. No field that was
+  optional in 2.2 has become mandatory.
+- "credentialSubject.type" must name the "Transcript" type. It is not merely
+  descriptive: context.json defines every term inside that type-scoped
+  @context, so a subject without it cannot be signed.
+
+Extra properties:
+- Every object the schema describes sets "additionalProperties": false:
+  "credentialSubject" (matching the "additionalProperties": false 2.2 had on
+  its root), and also "recipient", "issuer" and the "transcript[]",
+  "skills[]", "qualificationLevel[]" and "fieldOfStudy[]" items.
+- This removes no capability. A W3C VC is canonicalised as an RDF graph, so a
+  property that context.json does not define has no IRI and the credential
+  cannot be signed — undeclared fields were already impossible to issue, they
+  just failed at signing time instead of at validation. Closing the objects
+  makes schema.json say what the format actually allows.
+- 2.2 genuinely could carry arbitrary fields (its example had a
+  "recipient.additionalProp") because OpenAttestation wrapped a JSON blob.
+  That ended with the move to W3C VC, not with this schema change.
+- Freeform content belongs in "additionalData", which is "@type": "@json" and
+  accepts arbitrary nested content.
+- The document root stays open: it is the W3C VC envelope, and closing it
+  would reject standard VC properties this schema does not list.
 
 IMPORTANT: This version is for W3C VC documents only. If you are NOT using the
 W3C VC format (e.g. OpenAttestation v2 / OpenCerts verifiable documents), please

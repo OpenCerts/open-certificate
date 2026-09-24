@@ -120,6 +120,13 @@ Each W3C VC version folder under `schema/` contains:
 
 > These versions are for **W3C VC documents only**. If you are not using the W3C VC format, use the corresponding OpenAttestation version (e.g. `1.0` or `2.2`).
 
+Three things to know about the shape of a credential:
+
+- **Do not set `id`.** TrustVC generates the credential `id` when it signs, and rejects a document that already carries one. The schemas enforce this: an unsigned credential must omit `id`; a signed one carries the generated `urn:uuid`.
+
+- **`credentialSubject.type` must name the OpenCerts type** — `Transcript`, `Testimonial` or `CertificateOfAward`. `context.json` defines every OpenCerts term inside that type-scoped `@context`, so a subject without the type has no term definitions and cannot be signed. The schemas require it.
+- **Only declared fields are accepted.** `credentialSubject` and its nested objects set `additionalProperties: false`. A field that `context.json` does not define has no IRI, so the credential could not be signed anyway — the schema rejects it up front rather than letting issuance fail. Freeform content belongs in `additionalData`, which accepts arbitrary nested JSON.
+
 ### Signing and verifying
 
 Signing and verification are done with [`@trustvc/trustvc`](https://github.com/TrustVC/trustvc), which you install separately:

@@ -4,6 +4,10 @@
     "@protected": true,
     "opencerts": "https://schema.opencerts.io/vocab#",
     "schema": "https://schema.org/",
+    "uen": "opencerts:uen",
+    "url": "schema:url",
+    "email": "schema:email",
+    "phone": "schema:telephone",
     "Testimonial": {
       "@id": "opencerts:Testimonial",
       "@type": "@id",
@@ -35,6 +39,10 @@
             "achievementYear": "opencerts:achievementYear",
             "achievementDate": "opencerts:achievementDate"
           }
+        },
+        "additionalData": {
+          "@id": "opencerts:additionalData",
+          "@type": "@json"
         },
         "referee": {
           "@id": "opencerts:referee",

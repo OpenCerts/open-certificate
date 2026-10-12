@@ -17,6 +17,19 @@ const context = require("./context.json");
 const CONTEXT_URL =
   "https://schema.opencerts.io/transcripts/3.0/context.json";
 
+// An issuer-hosted context defining fields the issuer adds to recipient and
+// transcript items. Mapped locally, like CONTEXT_URL, so tests run offline.
+const ISSUER_CONTEXT_URL = "https://issuer.example/opencerts-context/v1.json";
+const issuerContext = {
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    dob: "https://issuer.example/vocab#dob",
+    semester: "https://issuer.example/vocab#semester",
+    zzz: "https://issuer.example/vocab#zzz",
+  },
+};
+
 const ajv = new Ajv({ strictSchema: false, allowUnionTypes: true, strictTuples: false, allErrors: true });
 addFormats(ajv);
 const validator = ajv.compile(schema);
@@ -92,14 +105,20 @@ describe("transcripts/v3.0 (W3C VC)", () => {
       expect(validator(data)).toBe(false);
     });
 
-    // nested objects stay open, exactly as they were in 2.2
-    it("should fail with an unknown recipient field", () => {
+    // recipient and transcript items stay open, as they were in 2.2. An extra
+    // field still needs a context that defines it before it can be signed.
+    it("should be valid with an extra recipient field", () => {
       const data = set(
         cloneDeep(initialData),
         "credentialSubject.recipient.additionalProp",
         "value"
       );
-      expect(validator(data)).toBe(false);
+      expect(validator(data)).toBe(true);
+    });
+
+    it("should be valid with an extra transcript item field", () => {
+      const data = set(cloneDeep(initialData), "credentialSubject.transcript[0].semester", "1");
+      expect(validator(data)).toBe(true);
     });
 
     it("should fail with an unknown issuer field", () => {
@@ -422,21 +441,52 @@ describe("transcripts/v3.0 (W3C VC)", () => {
       expect(signed.signed.proof).toBeDefined();
     }, 30000);
 
-    // The schema and the signer must agree: anything the schema accepts must be
-    // issuable, and anything it rejects is exactly what the signer would reject.
-    it("rejects undeclared properties at validation, as signing would", async () => {
+    // JSON Schema cannot see contexts: an extra field passes validation, but a
+    // field no context defines has no IRI, so signing rejects it.
+    it("cannot sign an extra field that no context defines", async () => {
       const documentLoader = await vc.getDocumentLoader({ [CONTEXT_URL]: context });
       const { did, didKeyPairs } = await generateDidKeyPair(CryptoSuite.EcdsaSd2023);
       const raw = cloneDeep(example);
       raw.issuer = did;
-      raw.credentialSubject.recipient.additionalProp = "value";
+      raw.credentialSubject.recipient.dob = "2000-01-01";
 
-      expect(validator(raw)).toBe(false);
+      expect(validator(raw)).toBe(true);
 
       const signed = await vc.signCredential(raw, didKeyPairs, "ecdsa-sd-2023", {
         documentLoader,
       });
       expect(signed.error).toBeDefined();
+    }, 30000);
+
+    it("signs and verifies extra fields defined in an issuer-hosted context", async () => {
+      const documentLoader = await vc.getDocumentLoader({
+        [CONTEXT_URL]: context,
+        [ISSUER_CONTEXT_URL]: issuerContext,
+      });
+      const { did, didKeyPairs } = await generateDidKeyPair(CryptoSuite.EcdsaSd2023);
+      const raw = cloneDeep(example);
+      raw.issuer = did;
+      raw["@context"].push(ISSUER_CONTEXT_URL);
+      raw.credentialSubject.recipient.dob = "2000-01-01";
+      raw.credentialSubject.transcript[0].semester = "1";
+
+      expect(validator(raw)).toBe(true);
+
+      const signed = await vc.signCredential(raw, didKeyPairs, "ecdsa-sd-2023", {
+        documentLoader,
+      });
+      expect(signed.error).toBeUndefined();
+      expect(signed.signed.credentialSubject.recipient.dob).toBe("2000-01-01");
+      expect(signed.signed.credentialSubject.transcript[0].semester).toBe("1");
+
+      const derived = await vc.deriveCredential(
+        signed.signed,
+        ["/credentialSubject/recipient/dob", "/credentialSubject/transcript/0/semester"],
+        { documentLoader }
+      );
+      expect(derived.error).toBeUndefined();
+      const result = await vc.verifyCredential(derived.derived, { documentLoader });
+      expect(result.verified).toBe(true);
     }, 30000);
   });
 
@@ -464,9 +514,11 @@ describe("transcripts/v3.0 (W3C VC)", () => {
   });
 
   // The invariant this whole schema depends on: anything schema.json accepts,
-  // TrustVC can actually issue. A "trap" is a document the schema calls valid
-  // that then fails at signing — the bug class this schema version exists to
-  // remove (credentialSubject.type, credentialStatus, undeclared fields, id).
+  // TrustVC can actually issue, provided every extra field in recipient or a
+  // transcript item is defined in a context (JSON Schema cannot check that).
+  // A "trap" is a document the schema calls valid that then fails at signing —
+  // the bug class this schema version exists to remove (credentialSubject.type,
+  // credentialStatus, undeclared fields, id).
   //
   // The reverse is allowed and intended: schema.json also enforces OpenCerts
   // business rules that TrustVC does not care about (a recipient must have a
@@ -490,7 +542,10 @@ describe("transcripts/v3.0 (W3C VC)", () => {
       ["recipient without name", (r) => unset(r, "credentialSubject.recipient.name")],
       ["unsigned credential carrying an id", (r) => set(r, "id", "urn:uuid:0198e4a3-b601-7117-9d02-8c9a9a54ab5d")],
       ["unknown key in credentialSubject", (r) => set(r, "credentialSubject.zzz", "v")],
-      ["unknown key in recipient", (r) => set(r, "credentialSubject.recipient.zzz", "v")],
+      ["extra key in recipient, defined in an issuer context", (r) => {
+        r["@context"].push(ISSUER_CONTEXT_URL);
+        set(r, "credentialSubject.recipient.zzz", "v");
+      }],
       ["unknown key in issuer", (r) => set(r, "issuer.zzz", "v")],
       ["renderMethod with an empty entry", (r) => set(r, "renderMethod", [{}])],
       ["renderMethod with an unknown type", (r) => set(r, "renderMethod[0].type", "NOPE")],
@@ -500,14 +555,20 @@ describe("transcripts/v3.0 (W3C VC)", () => {
       ["complete credentialStatus", (r) =>
         set(r, "credentialStatus", { id: "https://opencerts.io/status/1#42", type: "BitstringStatusListEntry", statusPurpose: "revocation", statusListIndex: "42", statusListCredential: "https://opencerts.io/status/1" })],
       ["transcript item without a name", (r) => unset(r, "credentialSubject.transcript[0].name")],
-      ["unknown key in a transcript item", (r) => set(r, "credentialSubject.transcript[0].zzz", "v")],
+      ["extra key in a transcript item, defined in an issuer context", (r) => {
+        r["@context"].push(ISSUER_CONTEXT_URL);
+        set(r, "credentialSubject.transcript[0].zzz", "v");
+      }],
       ["skills item without frameworkUri", (r) => unset(r, "credentialSubject.skills[0].frameworkUri")],
       ["unknown key in a skills item", (r) => set(r, "credentialSubject.skills[0].zzz", "v")],
       ["arbitrary content in additionalData", (r) => set(r, "credentialSubject.additionalData.zzz", { a: [1, 2] })],
     ];
 
     it("has no document that validates but cannot be signed", async () => {
-      const documentLoader = await vc.getDocumentLoader({ [CONTEXT_URL]: context });
+      const documentLoader = await vc.getDocumentLoader({
+        [CONTEXT_URL]: context,
+        [ISSUER_CONTEXT_URL]: issuerContext,
+      });
       const { did, didKeyPairs } = await generateDidKeyPair(CryptoSuite.EcdsaSd2023);
       const traps = [];
       let signedAtLeastOne = false;

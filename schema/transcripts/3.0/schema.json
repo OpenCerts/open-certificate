@@ -78,7 +78,7 @@
             "studentId": { "type": "string" }
           },
           "required": ["name"],
-          "additionalProperties": false
+          "additionalProperties": true
         },
         "qualificationLevel": {
           "type": "array",
@@ -143,7 +143,7 @@
               }
             },
             "required": ["name"],
-            "additionalProperties": false
+            "additionalProperties": true
           }
         },
         "additionalData": { "type": "object" },

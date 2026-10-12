@@ -60,20 +60,23 @@ Required fields — unchanged in substance from 2.2:
   @context, so a subject without it cannot be signed.
 
 Extra properties:
-- Every object the schema describes sets "additionalProperties": false:
+- "recipient" and the "transcript[]" items accept extra properties, as they
+  did in 2.2. Issuers use them widely (for example a recipient's date of
+  birth, or a course row's semester), and their meanings differ between
+  issuers, so they are not defined in context.json.
+- An extra property must be defined in a context before the credential can
+  be signed. A W3C VC is canonicalised as an RDF graph, so a property no
+  context defines has no IRI and signing fails ("Safe mode validation
+  error"). The issuer hosts its own context defining its fields and lists it
+  in "@context" after this version's context. That context must never change
+  once used, and it can only add new terms, not redefine OpenCerts or VC ones.
+  JSON Schema cannot check this, so schema.json accepts such fields either way.
+- Every other object the schema describes sets "additionalProperties": false:
   "credentialSubject" (matching the "additionalProperties": false 2.2 had on
-  its root), and also "recipient", "issuer" and the "transcript[]",
-  "skills[]", "qualificationLevel[]" and "fieldOfStudy[]" items.
-- This removes no capability. A W3C VC is canonicalised as an RDF graph, so a
-  property that context.json does not define has no IRI and the credential
-  cannot be signed — undeclared fields were already impossible to issue, they
-  just failed at signing time instead of at validation. Closing the objects
-  makes schema.json say what the format actually allows.
-- 2.2 genuinely could carry arbitrary fields (its example had a
-  "recipient.additionalProp") because OpenAttestation wrapped a JSON blob.
-  That ended with the move to W3C VC, not with this schema change.
-- Freeform content belongs in "additionalData", which is "@type": "@json" and
-  accepts arbitrary nested content.
+  its root), "issuer", and the "skills[]", "qualificationLevel[]" and
+  "fieldOfStudy[]" items.
+- Freeform content belongs in "additionalData", which is "@type": "@json",
+  accepts arbitrary nested content and needs no context.
 - The document root stays open: it is the W3C VC envelope, and closing it
   would reject standard VC properties this schema does not list.
 

@@ -92,6 +92,21 @@ describe("transcripts/v3.0 (W3C VC)", () => {
       expect(validator(data)).toBe(false);
     });
 
+    it("should be valid with a serialNumber", () => {
+      const data = set(cloneDeep(initialData), "credentialSubject.serialNumber", "EAG171622");
+      expect(validator(data)).toBe(true);
+    });
+
+    it("should fail when serialNumber is empty", () => {
+      const data = set(cloneDeep(initialData), "credentialSubject.serialNumber", "");
+      expect(validator(data)).toBe(false);
+    });
+
+    it("should fail when serialNumber is not a string", () => {
+      const data = set(cloneDeep(initialData), "credentialSubject.serialNumber", 171622);
+      expect(validator(data)).toBe(false);
+    });
+
     // nested objects stay open, exactly as they were in 2.2
     it("should fail with an unknown recipient field", () => {
       const data = set(
@@ -441,6 +456,34 @@ describe("transcripts/v3.0 (W3C VC)", () => {
   });
 
   describe("selective disclosure (deriveCredential)", () => {
+    // serialNumber is a term in context.json, so it is signed with a defined
+    // meaning (opencerts:serialNumber) rather than as opaque additionalData.
+    it("can disclose serialNumber on its own and still verify", async () => {
+      const documentLoader = await vc.getDocumentLoader({ [CONTEXT_URL]: context });
+      const { did, didKeyPairs } = await generateDidKeyPair(CryptoSuite.EcdsaSd2023);
+      const raw = { ...cloneDeep(example), issuer: { ...example.issuer, id: did } };
+
+      const signed = await vc.signCredential(raw, didKeyPairs, "ecdsa-sd-2023", { documentLoader });
+      expect(signed.error).toBeUndefined();
+
+      const derived = await vc.deriveCredential(
+        signed.signed,
+        ["/credentialSubject/serialNumber"],
+        { documentLoader }
+      );
+      expect(derived.error).toBeUndefined();
+      expect(derived.derived.credentialSubject.serialNumber).toBe(example.credentialSubject.serialNumber);
+
+      const result = await vc.verifyCredential(derived.derived, { documentLoader });
+      expect(result.verified).toBe(true);
+
+      const tampered = await vc.verifyCredential(
+        set(cloneDeep(derived.derived), "credentialSubject.serialNumber", "FORGED-001"),
+        { documentLoader }
+      );
+      expect(tampered.verified).toBe(false);
+    }, 30000);
+
     it("reveals only the selected fields, hides the rest, and still verifies", async () => {
       const documentLoader = await vc.getDocumentLoader({ [CONTEXT_URL]: context });
       const { did, didKeyPairs } = await generateDidKeyPair(CryptoSuite.EcdsaSd2023);
@@ -490,6 +533,9 @@ describe("transcripts/v3.0 (W3C VC)", () => {
       ["recipient without name", (r) => unset(r, "credentialSubject.recipient.name")],
       ["unsigned credential carrying an id", (r) => set(r, "id", "urn:uuid:0198e4a3-b601-7117-9d02-8c9a9a54ab5d")],
       ["unknown key in credentialSubject", (r) => set(r, "credentialSubject.zzz", "v")],
+      ["no serialNumber", (r) => unset(r, "credentialSubject.serialNumber")],
+      ["empty serialNumber", (r) => set(r, "credentialSubject.serialNumber", "")],
+      ["serialNumber not a string", (r) => set(r, "credentialSubject.serialNumber", 171622)],
       ["unknown key in recipient", (r) => set(r, "credentialSubject.recipient.zzz", "v")],
       ["unknown key in issuer", (r) => set(r, "issuer.zzz", "v")],
       ["renderMethod with an empty entry", (r) => set(r, "renderMethod", [{}])],

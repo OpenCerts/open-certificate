@@ -53,6 +53,12 @@
           "examples": ["Master of Blockchain"]
         },
         "description": { "type": "string" },
+        "serialNumber": {
+          "type": "string",
+          "minLength": 1,
+          "description": "the issuer's own identifier for this certificate, as printed on it; replaces the root \"id\" of the OpenAttestation versions (1.2 to 2.2), which a W3C VC now generates",
+          "examples": ["SERIAL-2018-08-01-112"]
+        },
         "admissionDate": { "type": "string", "format": "date-time" },
         "graduationDate": {
           "type": "string",

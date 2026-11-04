@@ -25,6 +25,7 @@
     "type": ["Testimonial"],
     "name": "School Graduation Certificate Testimonial",
     "description": "SGC Testimonial",
+    "serialNumber": "testimonial-ynps2017-nric000G1002",
     "content": "Content of the Testimonial",
     "recipient": {
       "name": "John Doe",

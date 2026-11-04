@@ -62,6 +62,12 @@
           "type": "string",
           "description": "certificate information"
         },
+        "serialNumber": {
+          "type": "string",
+          "minLength": 1,
+          "description": "the issuer's own identifier for this certificate, as printed on it; replaces the root \"id\" of the OpenAttestation version (1.0), which a W3C VC now generates",
+          "examples": ["EAG171622"]
+        },
         "recipient": {
           "type": "object",
           "description": "information about the person that is receiving the certificate of award",

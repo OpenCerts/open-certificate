@@ -48,7 +48,7 @@ Required fields — unchanged in substance from 1.0:
   while signing and rejects any document that already carries one. The schema
   enforces this: an unsigned credential (no "proof") must not have an "id", a
   signed one may. An issuer's own reference number therefore no longer belongs
-  in "id".
+  in "id"; it moves to "credentialSubject.serialNumber" (see below).
 - "credentialSubject" requires "type", "name", "recipient", "testimonial"
   and "referee" — the same set 1.0 required, plus the subject "type". No field
   that was optional in 1.0 has become mandatory.
@@ -61,8 +61,7 @@ New field:
   deliberate addition rather than a carry-over. It is "@type": "@json" in
   context.json, so its contents are carried verbatim and may be arbitrarily
   nested without declaring each field. It is where issuer-specific data now
-  belongs — including the reference number that used to live in the document
-  "id", which a W3C VC generates and no longer lets the issuer set.
+  belongs.
 
 Extra properties:
 - Every object the schema describes sets "additionalProperties": false:
@@ -76,6 +75,19 @@ Extra properties:
   JSON blob. That ended with the move to W3C VC, not with this schema change.
 - The document root stays open: it is the W3C VC envelope, and closing it
   would reject standard VC properties this schema does not list.
+
+serialNumber (added after the first release of this version):
+- "credentialSubject.serialNumber" (optional, non-empty string) carries the
+  issuer's own identifier for the certificate, as printed on it. It replaces
+  the root "id" of 1.0: map OpenAttestation "id" to
+  "credentialSubject.serialNumber".
+- context.json defines it as "opencerts:serialNumber", so it is signed with a
+  shared meaning instead of as opaque "additionalData", and can be disclosed
+  on its own.
+- Root "id" can't carry it, because a W3C VC generates its own "id".
+  "credentialSubject.id" identifies the recipient, not the document.
+- The change is additive. Credentials signed before it don't use the term, so
+  their canonical form, and therefore their proofs, are unchanged.
 
 IMPORTANT: This version is for W3C VC documents only. If you are NOT using the
 W3C VC format (e.g. OpenAttestation v2 / OpenCerts verifiable documents), please

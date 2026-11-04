@@ -78,7 +78,7 @@ Extra properties:
 
 serialNumber (added after the first release of this version):
 - "credentialSubject.serialNumber" (optional, non-empty string) carries the
-  issuer's own identifier for the certificate, as printed on it. It replaces
+  issuer's own identifier for the certificate. It replaces
   the root "id" of 1.0: map OpenAttestation "id" to
   "credentialSubject.serialNumber".
 - context.json defines it as "opencerts:serialNumber", so it is signed with a

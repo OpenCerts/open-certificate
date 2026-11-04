@@ -64,7 +64,7 @@
         "serialNumber": {
           "type": "string",
           "minLength": 1,
-          "description": "the issuer's own identifier for this certificate, as printed on it; replaces the root \"id\" of the OpenAttestation version (1.0), which a W3C VC now generates",
+          "description": "the issuer's own identifier for this certificate; replaces the root \"id\" of the OpenAttestation version (1.0), which a W3C VC now generates",
           "examples": ["testimonial-ynps2017-nric000G1002"]
         },
         "content": {

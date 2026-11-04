@@ -51,7 +51,7 @@ Required fields — unchanged in substance from 2.2:
   while signing and rejects any document that already carries one. The schema
   enforces this: an unsigned credential (no "proof") must not have an "id", a
   signed one may. An issuer's own reference number therefore no longer belongs
-  in "id".
+  in "id"; it moves to "credentialSubject.serialNumber" (see below).
 - "credentialSubject" requires "type", "name" and "recipient". "transcript"
   is optional, exactly as it was in 1.0 through 2.2. No field that was
   optional in 2.2 has become mandatory.
@@ -76,6 +76,19 @@ Extra properties:
   accepts arbitrary nested content.
 - The document root stays open: it is the W3C VC envelope, and closing it
   would reject standard VC properties this schema does not list.
+
+serialNumber (added after the first release of this version):
+- "credentialSubject.serialNumber" (optional, non-empty string) carries the
+  issuer's own identifier for the certificate. It replaces
+  the root "id" of 2.2: map OpenAttestation "id" to
+  "credentialSubject.serialNumber".
+- context.json defines it as "opencerts:serialNumber", so it is signed with a
+  shared meaning instead of as opaque "additionalData", and can be disclosed
+  on its own.
+- Root "id" can't carry it, because a W3C VC generates its own "id".
+  "credentialSubject.id" identifies the recipient, not the document.
+- The change is additive. Credentials signed before it don't use the term, so
+  their canonical form, and therefore their proofs, are unchanged.
 
 IMPORTANT: This version is for W3C VC documents only. If you are NOT using the
 W3C VC format (e.g. OpenAttestation v2 / OpenCerts verifiable documents), please

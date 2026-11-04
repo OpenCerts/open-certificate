@@ -15,6 +15,7 @@
         "@protected": true,
         "name": "schema:name",
         "description": "schema:description",
+        "serialNumber": "opencerts:serialNumber",
         "admissionDate": "opencerts:admissionDate",
         "graduationDate": "opencerts:graduationDate",
         "attainmentDate": "opencerts:attainmentDate",

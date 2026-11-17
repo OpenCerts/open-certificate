@@ -125,7 +125,25 @@ Three things to know about the shape of a credential:
 - **Do not set `id`.** TrustVC generates the credential `id` when it signs, and rejects a document that already carries one. The schemas enforce this: an unsigned credential must omit `id`; a signed one carries the generated `urn:uuid`.
 
 - **`credentialSubject.type` must name the OpenCerts type** — `Transcript`, `Testimonial` or `CertificateOfAward`. `context.json` defines every OpenCerts term inside that type-scoped `@context`, so a subject without the type has no term definitions and cannot be signed. The schemas require it.
-- **Only declared fields are accepted.** `credentialSubject` and its nested objects set `additionalProperties: false`. A field that `context.json` does not define has no IRI, so the credential could not be signed anyway — the schema rejects it up front rather than letting issuance fail. Freeform content belongs in `additionalData`, which accepts arbitrary nested JSON.
+- **Extra fields need a context.** In `transcripts/3.0`, `recipient` and `transcript[]` items accept fields the schema does not list; every other object sets `additionalProperties: false`. A field that no context defines has no IRI, so the credential cannot be signed. To add your own fields, host a context that defines them and list it in `@context` after the OpenCerts context (see [Custom fields](#custom-fields)). Freeform content can instead go in `additionalData`, which accepts arbitrary nested JSON and needs no context.
+
+### Custom fields
+
+To carry fields of your own on `recipient` or `transcript[]` items in `transcripts/3.0`, host a JSON-LD context that defines each one and add its URL to the credential's `@context`, after the OpenCerts context:
+
+```json
+{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "dob": "https://your-domain/vocab#dob",
+    "semester": "https://your-domain/vocab#semester"
+  }
+}
+```
+
+- **Never change a context once a credential uses it.** Verifiers fetch it when they check the signature, so editing it, or taking it offline, makes every credential issued with it fail verification. Publish changes under a new versioned URL (`.../v1.json`, then `.../v2.json`).
+- **Only add new terms.** A context that redefines a term from the W3C VC or OpenCerts contexts cannot be signed.
 
 ### Signing and verifying
 

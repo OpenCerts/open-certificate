@@ -27,7 +27,7 @@
             "url": { "type": "string", "examples": ["https://www.moe.gov.sg"] },
             "email": { "type": "string", "examples": ["registrar@moe.gov.sg"] }
           },
-          "required": ["id", "name", "uen"],
+          "required": ["id", "name"],
           "additionalProperties": false
         }
       ]

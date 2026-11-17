@@ -159,10 +159,10 @@ describe("certificate-of-awards/v2.0 (W3C VC)", () => {
         expect(validator(data)).toBe(false);
       });
 
-      // uen was required on issuers[] in 1.0 and stays required here
-      it("should fail when issuer object has no uen", () => {
+      // uen is optional: issuers registered outside Singapore have no UEN
+      it("should be valid when issuer object has no uen", () => {
         const data = omit(cloneDeep(initialData), "issuer.uen");
-        expect(validator(data)).toBe(false);
+        expect(validator(data)).toBe(true);
       });
 
       it("should be valid when issuer is a bare DID string", () => {

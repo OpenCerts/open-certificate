@@ -15,8 +15,10 @@ What changed from 1.0:
 - The issuer is now the W3C "issuer" property (a DID/URL string, or an object
   with an "id"), replacing the OpenAttestation "issuers" array.
 - The issuer keeps the contact fields the OpenAttestation issuers[] carried:
-  "name" and "uen" (both required, alongside "id"), plus optional "url" and
-  "email". "uen" was required on issuers[] in 1.0 and stays required. The old
+  "name" (required, alongside "id"), plus optional "uen", "url" and "email".
+  "uen" was required on issuers[] in 1.0 but is not carried forward: it is a
+  Singapore registration number, and this W3C VC format is intended for wider
+  use, including issuers registered outside Singapore, who have none. The old
   "did" is now "issuer.id". "name" was required in 1.0 too, via the
   OpenAttestation 2.0 base schema that 1.0 pulls in with allOf. The
   OpenAttestation-only fields "documentStore" and "certificateStore" are gone.

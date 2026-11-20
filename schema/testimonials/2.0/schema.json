@@ -61,6 +61,12 @@
           "description": "indicate who made the testimonial (teacher, co-worker, client, ex-employer, etc)",
           "examples": ["SGC Testimonial"]
         },
+        "serialNumber": {
+          "type": "string",
+          "minLength": 1,
+          "description": "the issuer's own identifier for this certificate; replaces the root \"id\" of the OpenAttestation version (1.0), which a W3C VC now generates",
+          "examples": ["testimonial-ynps2017-nric000G1002"]
+        },
         "content": {
           "description": "content of the testimonial, as written by the referrer. no specific structure is enforced. it can be added into a string as markdown / html / xml, or added in a structured object. it can also be composed of multiple entries.",
           "oneOf": [

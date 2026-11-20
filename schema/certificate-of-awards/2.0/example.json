@@ -25,6 +25,7 @@
     "type": ["CertificateOfAward"],
     "name": "Edusave Award for Achievement, Good Leadership and Service (EAGLES) 2017",
     "description": "Students who are within the top 10% of their school's level and course in terms of academic performance, and have demonstrated good conduct.",
+    "serialNumber": "EAG171622",
     "recipient": {
       "name": "John Doe",
       "nric": "S1234567J",

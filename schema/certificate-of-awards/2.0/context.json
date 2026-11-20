@@ -15,6 +15,7 @@
         "@protected": true,
         "name": "schema:name",
         "description": "schema:description",
+        "serialNumber": "opencerts:serialNumber",
         "recipient": {
           "@id": "opencerts:recipient",
           "@context": {
